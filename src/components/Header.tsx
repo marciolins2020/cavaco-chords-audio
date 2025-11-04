@@ -2,7 +2,7 @@ import { Hand, Heart, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { Link, useLocation } from "react-router-dom";
-import rzdLogo from "@/assets/rzd-logo-cavaquinho-real.png";
+import rzdLogo from "@/assets/rzd-logo-fixed.png";
 
 const Header = () => {
   const { leftHanded, setLeftHanded, favorites } = useApp();
