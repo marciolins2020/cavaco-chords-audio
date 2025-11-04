@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./contexts/AppContext";
+import { ChatWidget } from "./components/ChatWidget";
 import Index from "./pages/Index";
 import ChordDetail from "./pages/ChordDetail";
 import Favorites from "./pages/Favorites";
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <ChatWidget />
       </TooltipProvider>
     </AppProvider>
   </QueryClientProvider>

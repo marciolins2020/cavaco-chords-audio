@@ -1,0 +1,4 @@
+project_id = "qdoqnplotrjotrwkxmgd"
+
+[functions.rzd-assistant]
+verify_jwt = false
