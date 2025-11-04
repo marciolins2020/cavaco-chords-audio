@@ -17,10 +17,27 @@ let audioContext: Tone.PolySynth | null = null;
 function getSynth() {
   if (!audioContext) {
     audioContext = new Tone.PolySynth(Tone.Synth, {
-      volume: -8,
-      oscillator: { type: "triangle" },
-      envelope: { attack: 0.005, decay: 0.2, sustain: 0.3, release: 0.5 }
+      volume: -6,
+      oscillator: { 
+        type: "sine",
+        partialCount: 8
+      },
+      envelope: { 
+        attack: 0.002, 
+        decay: 0.4, 
+        sustain: 0.1, 
+        release: 1.5 
+      }
     }).toDestination();
+    
+    // Adicionar filtro para som mais brilhante (similar a cordas de aço)
+    const filter = new Tone.Filter({
+      type: "highpass",
+      frequency: 200,
+      rolloff: -12
+    }).toDestination();
+    
+    audioContext.connect(filter);
   }
   return audioContext;
 }
