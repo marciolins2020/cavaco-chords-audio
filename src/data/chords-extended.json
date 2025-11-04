@@ -7,8 +7,8 @@
     "intervals": ["1", "b3", "5"],
     "variations": [
       {
-        "frets": [4, 2, 2, 2],
-        "fingers": [4, 1, 2, 3],
+        "frets": [4, 4, 3, 2],
+        "fingers": [3, 4, 2, 1],
         "barre": null,
         "label": "4ª posição"
       },
@@ -16,7 +16,7 @@
         "frets": [2, 0, 0, 2],
         "fingers": [2, null, null, 3],
         "barre": null,
-        "label": "2ª posição"
+        "label": "Aberto"
       }
     ],
     "tags": ["básico"],
@@ -53,19 +53,19 @@
     "intervals": ["1", "b3", "5"],
     "variations": [
       {
+        "frets": [5, 5, 4, 3],
+        "fingers": [3, 4, 2, 1],
+        "barre": null,
+        "label": "4ª posição"
+      },
+      {
         "frets": [0, 3, 3, 1],
         "fingers": [null, 3, 4, 1],
         "barre": null,
         "label": "Aberto"
-      },
-      {
-        "frets": [5, 3, 3, 3],
-        "fingers": [4, 1, 2, 3],
-        "barre": null,
-        "label": "3ª posição"
       }
     ],
-    "tags": ["aberto"],
+    "tags": ["básico"],
     "difficulty": 2
   },
   {
@@ -82,59 +82,13 @@
         "label": "1ª posição"
       },
       {
-        "frets": [1, 1, 1, 1],
-        "fingers": [1, 1, 1, 1],
-        "barre": { "fromString": 4, "toString": 1, "fret": 1 },
-        "label": "Pestana 1ª"
+        "frets": [6, 6, 5, 4],
+        "fingers": [3, 4, 2, 1],
+        "barre": null,
+        "label": "5ª posição"
       }
     ],
-    "tags": ["pestana"],
-    "difficulty": 2
-  },
-  {
-    "id": "B7",
-    "root": "B",
-    "quality": "7",
-    "notes": ["B", "D#", "F#", "A"],
-    "intervals": ["1", "3", "5", "b7"],
-    "variations": [
-      {
-        "frets": [2, 1, 2, 2],
-        "fingers": [3, 1, 4, 2],
-        "barre": null,
-        "label": "2ª posição"
-      },
-      {
-        "frets": [4, 3, 4, 4],
-        "fingers": [3, 1, 4, 2],
-        "barre": null,
-        "label": "4ª posição"
-      }
-    ],
-    "tags": ["dominante"],
-    "difficulty": 2
-  },
-  {
-    "id": "F7",
-    "root": "F",
-    "quality": "7",
-    "notes": ["F", "A", "C", "Eb"],
-    "intervals": ["1", "3", "5", "b7"],
-    "variations": [
-      {
-        "frets": [1, 3, 1, 3],
-        "fingers": [1, 3, 2, 4],
-        "barre": null,
-        "label": "1ª posição"
-      },
-      {
-        "frets": [3, 2, 3, 1],
-        "fingers": [3, 2, 4, 1],
-        "barre": null,
-        "label": "Alternativo"
-      }
-    ],
-    "tags": ["dominante"],
+    "tags": ["básico"],
     "difficulty": 2
   },
   {
@@ -145,20 +99,20 @@
     "intervals": ["1", "3", "5", "7"],
     "variations": [
       {
-        "frets": [0, 0, 0, 2],
-        "fingers": [null, null, null, 2],
+        "frets": [2, 4, 1, 0],
+        "fingers": [2, 4, 1, null],
         "barre": null,
         "label": "Aberto"
       },
       {
-        "frets": [4, 3, 3, 3],
-        "fingers": [4, 1, 2, 3],
+        "frets": [5, 4, 5, 4],
+        "fingers": [3, 1, 4, 2],
         "barre": null,
-        "label": "3ª posição"
+        "label": "5ª posição"
       }
     ],
     "tags": ["jazz", "suave"],
-    "difficulty": 2
+    "difficulty": 3
   },
   {
     "id": "Gmaj7",
@@ -168,19 +122,19 @@
     "intervals": ["1", "3", "5", "7"],
     "variations": [
       {
-        "frets": [0, 0, 0, 4],
-        "fingers": [null, null, null, 4],
+        "frets": [0, 0, 2, 2],
+        "fingers": [null, null, 2, 3],
         "barre": null,
         "label": "Aberto"
       },
       {
-        "frets": [4, 5, 5, 5],
-        "fingers": [1, 2, 3, 4],
+        "frets": [0, 2, 2, 2],
+        "fingers": [null, 2, 3, 4],
         "barre": null,
-        "label": "4ª posição"
+        "label": "Alternativo"
       }
     ],
-    "tags": ["jazz", "suave"],
+    "tags": ["aberto", "jazz"],
     "difficulty": 2
   },
   {
@@ -191,19 +145,19 @@
     "intervals": ["1", "b3", "5", "b7"],
     "variations": [
       {
-        "frets": [0, 2, 2, 3],
-        "fingers": [null, 2, 3, 4],
+        "frets": [0, 2, 1, 1],
+        "fingers": [null, 4, 1, 2],
         "barre": null,
         "label": "Aberto"
       },
       {
-        "frets": [2, 2, 1, 3],
-        "fingers": [2, 3, 1, 4],
+        "frets": [0, 1, 0, 1],
+        "fingers": [null, 1, null, 2],
         "barre": null,
-        "label": "2ª posição"
+        "label": "Alternativo"
       }
     ],
-    "tags": ["jazz", "bossa"],
+    "tags": ["aberto", "jazz"],
     "difficulty": 2
   },
   {
@@ -214,16 +168,16 @@
     "intervals": ["1", "b3", "5", "b7"],
     "variations": [
       {
-        "frets": [2, 0, 0, 3],
-        "fingers": [2, null, null, 4],
+        "frets": [0, 0, 0, 0],
+        "fingers": [null, null, null, null],
         "barre": null,
         "label": "Aberto"
       },
       {
-        "frets": [0, 0, 0, 1],
-        "fingers": [null, null, null, 1],
+        "frets": [2, 2, 1, 3],
+        "fingers": [2, 3, 1, 4],
         "barre": null,
-        "label": "Alternativo"
+        "label": "2ª posição"
       }
     ],
     "tags": ["aberto", "jazz"],
@@ -237,19 +191,42 @@
     "intervals": ["1", "b3", "5", "b7"],
     "variations": [
       {
-        "frets": [0, 2, 0, 2],
-        "fingers": [null, 2, null, 3],
+        "frets": [0, 0, 0, 2],
+        "fingers": [null, null, null, 2],
         "barre": null,
         "label": "Aberto"
       },
       {
-        "frets": [0, 0, 0, 3],
-        "fingers": [null, null, null, 3],
+        "frets": [2, 2, 3, 2],
+        "fingers": [1, 2, 4, 3],
         "barre": null,
-        "label": "Alternativo"
+        "label": "2ª posição"
       }
     ],
     "tags": ["aberto", "jazz"],
     "difficulty": 1
+  },
+  {
+    "id": "Fmaj7",
+    "root": "F",
+    "quality": "maj7",
+    "notes": ["F", "A", "C", "E"],
+    "intervals": ["1", "3", "5", "7"],
+    "variations": [
+      {
+        "frets": [3, 2, 0, 0],
+        "fingers": [3, 2, null, null],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [1, 0, 0, 3],
+        "fingers": [1, null, null, 4],
+        "barre": null,
+        "label": "Alternativo"
+      }
+    ],
+    "tags": ["jazz", "suave"],
+    "difficulty": 2
   }
 ]
