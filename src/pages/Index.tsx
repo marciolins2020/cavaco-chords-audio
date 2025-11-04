@@ -4,14 +4,13 @@ import { Input } from "@/components/ui/input";
 import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
 import { ChordEntry } from "@/types/chords";
-import baseChords from "@/data/chords.json";
-import extendedChords from "@/data/chords-extended.json";
+import { convertedChords } from "@/lib/chordConverter";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   
-  // Combine all chords
-  const allChords = [...baseChords, ...extendedChords] as ChordEntry[];
+  // Use converted chords from cavaquinho-source.json
+  const allChords = convertedChords;
 
   const filteredChords = useMemo(() => {
     if (!searchQuery.trim()) return allChords;
