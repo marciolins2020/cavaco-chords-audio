@@ -2,6 +2,7 @@ import { Music2, Guitar, Zap, Heart } from "lucide-react";
 import Header from "@/components/Header";
 import { Card } from "@/components/ui/card";
 import rzdIconSquare from "@/assets/rzd-icon-square.png";
+import juninhoPhoto from "@/assets/juninho-rezende.png";
 
 const About = () => {
   return (
@@ -64,23 +65,35 @@ const About = () => {
         </section>
 
         {/* Mentor */}
-        <section className="max-w-3xl mx-auto mb-16">
+        <section className="max-w-4xl mx-auto mb-16">
           <Card className="p-8">
             <div className="flex items-center gap-3 mb-6">
               <Music2 className="w-8 h-8 text-primary" />
               <h2 className="text-3xl font-bold">Mentoria Musical</h2>
             </div>
             
-            <div className="mb-4">
-              <h3 className="text-2xl font-semibold text-primary mb-2">
-                Juninho Rezende
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                Músico Cavaquinista · Autor · Mentor
-              </p>
-            </div>
-            
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="grid md:grid-cols-[280px_1fr] gap-8 items-start">
+              {/* Foto do Juninho */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="relative w-64 h-64 rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 shadow-xl">
+                  <img 
+                    src={juninhoPhoto}
+                    alt="Juninho Rezende tocando cavaquinho"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-semibold text-primary mb-1">
+                    Juninho Rezende
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Músico Cavaquinista · Autor · Mentor
+                  </p>
+                </div>
+              </div>
+
+              {/* Bio */}
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 <strong className="text-foreground">Juninho Rezende</strong> é músico cavaquinista brasileiro 
                 com vasta experiência no ensino do instrumento e presença digital consolidada através da 
@@ -105,12 +118,13 @@ const About = () => {
                 <footer className="text-sm mt-2">— Juninho Rezende</footer>
               </blockquote>
 
-              <div className="bg-card border border-border rounded-lg p-4 mt-6">
-                <h4 className="font-semibold text-foreground mb-2">Powered by RZD Music</h4>
-                <p className="text-sm">
-                  Plataforma educacional dedicada ao ensino de cavaquinho, violão e teoria musical, 
-                  com foco em samba, choro e música popular brasileira.
-                </p>
+                <div className="bg-card border border-border rounded-lg p-4 mt-6">
+                  <h4 className="font-semibold text-foreground mb-2">Powered by RZD Music</h4>
+                  <p className="text-sm">
+                    Plataforma educacional dedicada ao ensino de cavaquinho, violão e teoria musical, 
+                    com foco em samba, choro e música popular brasileira.
+                  </p>
+                </div>
               </div>
             </div>
           </Card>
