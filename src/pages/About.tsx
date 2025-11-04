@@ -1,7 +1,7 @@
 import { Music2, Guitar, Zap, Heart } from "lucide-react";
 import Header from "@/components/Header";
 import { Card } from "@/components/ui/card";
-import rzdLogo from "@/assets/rzd-logo.png";
+import rzdIconSquare from "@/assets/rzd-icon-square.png";
 
 const About = () => {
   return (
@@ -13,9 +13,9 @@ const About = () => {
         <section className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-6">
             <img 
-              src={rzdLogo} 
+              src={rzdIconSquare} 
               alt="RZD Music" 
-              className="w-20 h-20"
+              className="w-24 h-24 rounded-lg shadow-lg"
             />
             <h1 className="text-4xl md:text-5xl font-bold">Sobre o Projeto</h1>
           </div>
@@ -153,9 +153,9 @@ const About = () => {
         <footer className="text-center mt-16 py-8 border-t border-border">
           <div className="flex flex-col items-center gap-2 mb-4">
             <img 
-              src={rzdLogo} 
+              src={rzdIconSquare} 
               alt="RZD Music" 
-              className="w-12 h-12 opacity-80"
+              className="w-16 h-16 rounded-lg opacity-90"
             />
             <p className="text-lg font-bold">
               Powered by <span className="text-primary">RZD Music</span>
