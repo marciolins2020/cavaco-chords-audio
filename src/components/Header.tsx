@@ -2,7 +2,7 @@ import { Hand, Heart, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { Link, useLocation } from "react-router-dom";
-import rzdLogo from "@/assets/logo-rzd.png";
+import LogoRZD from "@/components/LogoRZD";
 
 const Header = () => {
   const { leftHanded, setLeftHanded, favorites } = useApp();
@@ -16,11 +16,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-4 group flex-shrink-0">
-            <img 
-              src={rzdLogo} 
-              alt="RZD Music - Dicionário de Acordes para Cavaquinho" 
-              className="h-20 md:h-24 w-auto transition-transform group-hover:scale-105"
-            />
+            <LogoRZD size={80} className="transition-transform group-hover:scale-105" />
             <div className="hidden lg:block">
               <h1 className="text-2xl font-bold leading-tight">
                 Dicionário de Acordes
