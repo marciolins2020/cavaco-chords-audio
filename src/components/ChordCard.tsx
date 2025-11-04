@@ -5,7 +5,7 @@ import { ChordEntry } from "@/types/chords";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ChordDiagram from "./ChordDiagram";
-import { playChord } from "@/lib/audio";
+import { playChord, initAudio } from "@/lib/audio";
 import { useApp } from "@/contexts/AppContext";
 import { toast } from "sonner";
 
@@ -27,8 +27,10 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
     
     setIsPlaying(true);
     try {
+      await initAudio(); // Inicializa no gesto do usuário
       await playChord(mainVariation.frets, "strum");
     } catch (error) {
+      console.error("Erro ao tocar acorde:", error);
       toast.error("Erro ao tocar o acorde");
     } finally {
       setTimeout(() => setIsPlaying(false), 600);

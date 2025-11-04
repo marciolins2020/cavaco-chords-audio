@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import ChordDiagram from "@/components/ChordDiagram";
 import Header from "@/components/Header";
 import { ChordEntry } from "@/types/chords";
-import { playChord } from "@/lib/audio";
+import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
 import baseChords from "@/data/chords.json";
@@ -49,9 +49,11 @@ const ChordDetail = () => {
     
     setIsPlaying(true);
     try {
+      await initAudio(); // Inicializa no gesto do usuário
       await playChord(currentVariation.frets, mode);
       toast.success(`Tocando ${chord.id} - ${mode === "strum" ? "dedilhado" : "simultâneo"}`);
     } catch (error) {
+      console.error("Erro ao tocar acorde:", error);
       toast.error("Erro ao tocar o acorde");
     } finally {
       setTimeout(() => setIsPlaying(false), 800);

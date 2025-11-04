@@ -32,15 +32,12 @@ function getSynth() {
   return audioContext;
 }
 
-let isAudioInitialized = false;
-
 export async function initAudio(): Promise<void> {
-  if (!isAudioInitialized) {
+  if (Tone.context.state !== 'running') {
     await Tone.start();
-    getSynth(); // Inicializa o synth
-    isAudioInitialized = true;
     console.log("Áudio inicializado com sucesso");
   }
+  getSynth(); // Garante que o synth existe
 }
 
 export async function playChord(
@@ -48,12 +45,6 @@ export async function playChord(
   mode: "strum" | "block" = "strum"
 ): Promise<void> {
   try {
-    // Garantir que o Tone está iniciado
-    if (Tone.context.state !== 'running') {
-      await Tone.start();
-      console.log("Tone.js iniciado");
-    }
-    
     const synth = getSynth();
     const now = Tone.now();
     const strings: (1 | 2 | 3 | 4)[] = [4, 3, 2, 1];
