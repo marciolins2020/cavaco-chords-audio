@@ -1,10 +1,10 @@
 import React from "react";
+import { useApp } from "@/contexts/AppContext";
 
 type Props = {
   frets: [number, number, number, number];
   fingers?: [number | null, number | null, number | null, number | null];
   barre?: { fromString: 1 | 2 | 3 | 4; toString: 1 | 2 | 3 | 4; fret: number } | null;
-  leftHanded?: boolean;
   startFret?: number;
   label?: string;
 };
@@ -13,10 +13,10 @@ const ChordDiagram: React.FC<Props> = ({
   frets,
   fingers,
   barre,
-  leftHanded = false,
   startFret = 1,
   label
 }) => {
+  const { leftHanded } = useApp();
   const strings = leftHanded ? [1, 2, 3, 4] : [4, 3, 2, 1];
   const width = 160;
   const height = 200;

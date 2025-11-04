@@ -1,13 +1,28 @@
 import { useState, useMemo } from "react";
-import { Search, Music2, Guitar } from "lucide-react";
+import { Search, Music2, Guitar, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import ChordCard from "@/components/ChordCard";
+import Header from "@/components/Header";
 import { ChordEntry } from "@/types/chords";
-import chordsData from "@/data/chords.json";
+import { useApp } from "@/contexts/AppContext";
+import baseChords from "@/data/chords.json";
+import extendedChords from "@/data/chords-extended.json";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const chords = chordsData as ChordEntry[];
+  const [showFavorites, setShowFavorites] = useState(false);
+  const { favorites } = useApp();
+  
+  // Combine all chords
+  const allChords = [...baseChords, ...extendedChords] as ChordEntry[];
+  
+  const chords = useMemo(() => {
+    if (showFavorites) {
+      return allChords.filter(chord => favorites.includes(chord.id));
+    }
+    return allChords;
+  }, [showFavorites, favorites, allChords]);
 
   const filteredChords = useMemo(() => {
     if (!searchQuery.trim()) return chords;
@@ -22,8 +37,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
+      
       {/* Hero Section */}
-      <header className="border-b border-border bg-gradient-to-b from-background to-card">
+      <section className="border-b border-border bg-gradient-to-b from-background to-card">
         <div className="container mx-auto px-4 py-8 md:py-12">
           <div className="flex flex-col items-center text-center gap-6">
             <div className="flex items-center gap-3">
@@ -58,17 +75,30 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* Chords Grid */}
       <main className="container mx-auto px-4 py-8 md:py-12">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-2">
-            {searchQuery ? "Resultados da busca" : "Acordes disponíveis"}
-          </h2>
-          <p className="text-muted-foreground">
-            {filteredChords.length} {filteredChords.length === 1 ? "acorde encontrado" : "acordes encontrados"}
-          </p>
+        <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <h2 className="text-2xl font-bold mb-2">
+              {showFavorites ? "Meus Favoritos" : searchQuery ? "Resultados da busca" : "Acordes disponíveis"}
+            </h2>
+            <p className="text-muted-foreground">
+              {filteredChords.length} {filteredChords.length === 1 ? "acorde encontrado" : "acordes encontrados"}
+            </p>
+          </div>
+          
+          {favorites.length > 0 && (
+            <Button
+              variant={showFavorites ? "default" : "outline"}
+              onClick={() => setShowFavorites(!showFavorites)}
+              className="transition-all"
+            >
+              <Heart className={`w-4 h-4 mr-2 ${showFavorites ? "fill-current" : ""}`} />
+              {showFavorites ? "Ver todos" : `Favoritos (${favorites.length})`}
+            </Button>
+          )}
         </div>
 
         {filteredChords.length > 0 ? (

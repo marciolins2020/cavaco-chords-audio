@@ -5,21 +5,24 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ChordDiagram from "@/components/ChordDiagram";
+import Header from "@/components/Header";
 import { ChordEntry } from "@/types/chords";
 import { playChord } from "@/lib/audio";
 import { toast } from "sonner";
-import chordsData from "@/data/chords.json";
+import { useApp } from "@/contexts/AppContext";
+import baseChords from "@/data/chords.json";
+import extendedChords from "@/data/chords-extended.json";
 
 const ChordDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [chord, setChord] = useState<ChordEntry | null>(null);
   const [selectedVariation, setSelectedVariation] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { isFavorite, toggleFavorite } = useApp();
 
   useEffect(() => {
-    const chords = chordsData as ChordEntry[];
-    const foundChord = chords.find((c) => c.id === id);
+    const allChords = [...baseChords, ...extendedChords] as ChordEntry[];
+    const foundChord = allChords.find((c) => c.id === id);
     setChord(foundChord || null);
   }, [id]);
 
@@ -55,16 +58,22 @@ const ChordDetail = () => {
     }
   };
 
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    toast.success(isFavorite ? "Removido dos favoritos" : "Adicionado aos favoritos");
+  const handleToggleFavorite = () => {
+    if (chord) {
+      toggleFavorite(chord.id);
+      toast.success(isFavorite(chord.id) ? "Removido dos favoritos" : "Adicionado aos favoritos");
+    }
   };
+
+  const isChordFavorite = chord ? isFavorite(chord.id) : false;
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-6">
+      <Header />
+      
+      {/* Sub Header */}
+      <div className="border-b border-border bg-card">
+        <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/">
               <Button variant="ghost" size="sm">
@@ -76,14 +85,14 @@ const ChordDetail = () => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={toggleFavorite}
-              className={isFavorite ? "text-primary" : ""}
+              onClick={handleToggleFavorite}
+              className={isChordFavorite ? "text-primary" : ""}
             >
-              <Heart className={`w-5 h-5 ${isFavorite ? "fill-current" : ""}`} />
+              <Heart className={`w-5 h-5 ${isChordFavorite ? "fill-current" : ""}`} />
             </Button>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8 md:py-12">
