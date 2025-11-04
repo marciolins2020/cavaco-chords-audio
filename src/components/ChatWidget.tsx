@@ -100,10 +100,10 @@ export const ChatWidget = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg hover:scale-110 transition-transform z-50"
+          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg hover:scale-110 transition-transform z-50 p-0 overflow-hidden bg-white"
           size="icon"
         >
-          <MessageCircle className="h-6 w-6" />
+          <img src={rzdLogo} alt="RZD Assistant" className="h-full w-full object-contain p-2" />
         </Button>
       )}
 

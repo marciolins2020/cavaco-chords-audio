@@ -42,13 +42,23 @@ function getSynth() {
   return audioContext;
 }
 
+let isAudioInitialized = false;
+
+export async function initAudio(): Promise<void> {
+  if (!isAudioInitialized) {
+    await Tone.start();
+    getSynth(); // Inicializa o synth
+    isAudioInitialized = true;
+    console.log("Áudio inicializado com sucesso");
+  }
+}
+
 export async function playChord(
   frets: [number, number, number, number],
   mode: "strum" | "block" = "strum"
 ): Promise<void> {
   try {
-    // Importante: iniciar o contexto de áudio com interação do usuário
-    await Tone.start();
+    await initAudio();
     
     const synth = getSynth();
     const now = Tone.now();
