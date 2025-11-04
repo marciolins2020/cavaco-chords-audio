@@ -1,39 +1,28 @@
 import { useState, useMemo } from "react";
-import { Search, Music2, Guitar, Heart } from "lucide-react";
+import { Search, Music2, Guitar } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
 import { ChordEntry } from "@/types/chords";
-import { useApp } from "@/contexts/AppContext";
 import baseChords from "@/data/chords.json";
 import extendedChords from "@/data/chords-extended.json";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [showFavorites, setShowFavorites] = useState(false);
-  const { favorites } = useApp();
   
   // Combine all chords
   const allChords = [...baseChords, ...extendedChords] as ChordEntry[];
-  
-  const chords = useMemo(() => {
-    if (showFavorites) {
-      return allChords.filter(chord => favorites.includes(chord.id));
-    }
-    return allChords;
-  }, [showFavorites, favorites, allChords]);
 
   const filteredChords = useMemo(() => {
-    if (!searchQuery.trim()) return chords;
+    if (!searchQuery.trim()) return allChords;
     
     const query = searchQuery.toLowerCase();
-    return chords.filter((chord) => {
+    return allChords.filter((chord) => {
       const fullName = (chord.root + chord.quality).toLowerCase();
       const tags = chord.tags?.join(" ").toLowerCase() || "";
       return fullName.includes(query) || tags.includes(query);
     });
-  }, [searchQuery, chords]);
+  }, [searchQuery, allChords]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -79,26 +68,13 @@ const Index = () => {
 
       {/* Chords Grid */}
       <main className="container mx-auto px-4 py-8 md:py-12">
-        <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <h2 className="text-2xl font-bold mb-2">
-              {showFavorites ? "Meus Favoritos" : searchQuery ? "Resultados da busca" : "Acordes disponíveis"}
-            </h2>
-            <p className="text-muted-foreground">
-              {filteredChords.length} {filteredChords.length === 1 ? "acorde encontrado" : "acordes encontrados"}
-            </p>
-          </div>
-          
-          {favorites.length > 0 && (
-            <Button
-              variant={showFavorites ? "default" : "outline"}
-              onClick={() => setShowFavorites(!showFavorites)}
-              className="transition-all"
-            >
-              <Heart className={`w-4 h-4 mr-2 ${showFavorites ? "fill-current" : ""}`} />
-              {showFavorites ? "Ver todos" : `Favoritos (${favorites.length})`}
-            </Button>
-          )}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-2">
+            {searchQuery ? "Resultados da busca" : "Acordes disponíveis"}
+          </h2>
+          <p className="text-muted-foreground">
+            {filteredChords.length} {filteredChords.length === 1 ? "acorde encontrado" : "acordes encontrados"}
+          </p>
         </div>
 
         {filteredChords.length > 0 ? (
@@ -116,40 +92,6 @@ const Index = () => {
           </div>
         )}
       </main>
-
-      {/* Mentor Bio Section */}
-      <section className="border-t border-border bg-card mt-16">
-        <div className="container mx-auto px-4 py-12 md:py-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold mb-3">Mentoria Musical</h2>
-              <div className="flex items-center justify-center gap-2 text-primary">
-                <Music2 className="w-5 h-5" />
-                <span className="font-semibold">Juninho Rezende - RZD Music</span>
-              </div>
-            </div>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Músico cavaquinísta brasileiro, autor do dicionário "5000 acordes para cavaquinho". 
-              Com forte atuação no ensino do instrumento e presença digital consolidada através da 
-              RZD Music, Juninho valida os voicings, aprova o conteúdo técnico e assina a curadoria 
-              desta plataforma.
-            </p>
-            
-            <blockquote className="italic text-lg border-l-4 border-primary pl-6 py-2">
-              "Meu objetivo é levar o cavaquinho a todos, com clareza e prazer."
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border py-8">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2024 Dicionário de Acordes de Cavaquinho - RZD Music</p>
-          <p className="text-sm mt-2">Todos os direitos reservados</p>
-        </div>
-      </footer>
     </div>
   );
 };
