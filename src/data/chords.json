@@ -7,118 +7,78 @@
     "intervals": ["1", "3", "5"],
     "variations": [
       {
+        "frets": [0, 0, 0, 3],
+        "fingers": [null, null, null, 3],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
         "frets": [2, 0, 1, 0],
         "fingers": [2, null, 1, null],
         "barre": null,
-        "label": "Aberto"
+        "label": "Posição 2"
       },
       {
-        "frets": [5, 5, 5, 3],
-        "fingers": [3, 3, 3, 1],
-        "barre": { "fromString": 4, "toString": 2, "fret": 5 },
-        "label": "Pestana 5ª casa"
-      },
-      {
-        "frets": [7, 7, 8, 7],
-        "fingers": [1, 2, 4, 3],
+        "frets": [5, 4, 3, 3],
+        "fingers": [4, 3, 1, 2],
         "barre": null,
-        "label": "Posição alta"
+        "label": "5ª posição"
       }
     ],
     "tags": ["aberto", "básico"],
     "difficulty": 1
   },
   {
-    "id": "Am",
-    "root": "A",
-    "quality": "m",
-    "notes": ["A", "C", "E"],
-    "intervals": ["1", "b3", "5"],
-    "variations": [
-      {
-        "frets": [2, 2, 1, 0],
-        "fingers": [3, 4, 1, null],
-        "barre": null,
-        "label": "Aberto"
-      },
-      {
-        "frets": [7, 5, 5, 5],
-        "fingers": [4, 2, 3, 1],
-        "barre": { "fromString": 1, "toString": 3, "fret": 5 },
-        "label": "Pestana 5ª casa"
-      }
-    ],
-    "tags": ["aberto", "básico"],
-    "difficulty": 1
-  },
-  {
-    "id": "G7",
-    "root": "G",
-    "quality": "7",
-    "notes": ["G", "B", "D", "F"],
-    "intervals": ["1", "3", "5", "b7"],
-    "variations": [
-      {
-        "frets": [0, 2, 1, 2],
-        "fingers": [null, 3, 1, 2],
-        "barre": null,
-        "label": "Aberto"
-      },
-      {
-        "frets": [5, 4, 5, 3],
-        "fingers": [3, 2, 4, 1],
-        "barre": null,
-        "label": "Fechado"
-      }
-    ],
-    "tags": ["aberto", "dominante"],
-    "difficulty": 2
-  },
-  {
-    "id": "Dm",
+    "id": "D",
     "root": "D",
-    "quality": "m",
-    "notes": ["D", "F", "A"],
-    "intervals": ["1", "b3", "5"],
+    "quality": "",
+    "notes": ["D", "F#", "A"],
+    "intervals": ["1", "3", "5"],
     "variations": [
       {
-        "frets": [0, 2, 3, 1],
-        "fingers": [null, 2, 4, 1],
+        "frets": [0, 2, 2, 2],
+        "fingers": [null, 2, 3, 4],
         "barre": null,
         "label": "Aberto"
       },
       {
-        "frets": [5, 5, 6, 5],
-        "fingers": [1, 1, 3, 1],
-        "barre": { "fromString": 4, "toString": 1, "fret": 5 },
-        "label": "Pestana completa"
+        "frets": [2, 2, 2, 0],
+        "fingers": [2, 3, 4, null],
+        "barre": null,
+        "label": "Posição 2"
+      },
+      {
+        "frets": [7, 6, 5, 5],
+        "fingers": [4, 3, 1, 2],
+        "barre": null,
+        "label": "7ª posição"
       }
     ],
     "tags": ["aberto", "básico"],
     "difficulty": 1
   },
   {
-    "id": "Em",
+    "id": "E",
     "root": "E",
-    "quality": "m",
-    "notes": ["E", "G", "B"],
-    "intervals": ["1", "b3", "5"],
+    "quality": "",
+    "notes": ["E", "G#", "B"],
+    "intervals": ["1", "3", "5"],
     "variations": [
       {
-        "frets": [2, 4, 3, 2],
-        "fingers": [1, 4, 3, 2],
+        "frets": [2, 4, 4, 4],
+        "fingers": [1, 2, 3, 4],
         "barre": null,
-        "label": "Forma básica"
+        "label": "Básico"
       },
       {
-        "frets": [0, 0, 0, 2],
-        "fingers": [null, null, null, 2],
+        "frets": [4, 4, 4, 2],
+        "fingers": [3, 4, 2, 1],
         "barre": null,
-        "label": "Aberto"
+        "label": "4ª posição"
       }
     ],
-    "tags": ["aberto", "básico"],
-    "difficulty": 1
+    "tags": ["básico"],
+    "difficulty": 2
   },
   {
     "id": "F",
@@ -128,16 +88,16 @@
     "intervals": ["1", "3", "5"],
     "variations": [
       {
-        "frets": [3, 2, 1, 0],
-        "fingers": [4, 3, 1, null],
+        "frets": [3, 5, 5, 5],
+        "fingers": [1, 2, 3, 4],
         "barre": null,
-        "label": "Aberto"
+        "label": "Básico"
       },
       {
         "frets": [1, 0, 1, 3],
         "fingers": [2, null, 1, 4],
         "barre": null,
-        "label": "Alternativo"
+        "label": "1ª posição"
       }
     ],
     "tags": ["básico"],
@@ -151,19 +111,180 @@
     "intervals": ["1", "3", "5"],
     "variations": [
       {
-        "frets": [0, 2, 3, 2],
-        "fingers": [null, 2, 4, 3],
+        "frets": [0, 0, 0, 0],
+        "fingers": [null, null, null, null],
         "barre": null,
         "label": "Aberto"
       },
       {
-        "frets": [5, 4, 3, 2],
-        "fingers": [4, 3, 2, 1],
+        "frets": [5, 7, 7, 7],
+        "fingers": [1, 2, 3, 4],
         "barre": null,
-        "label": "Forma móvel"
+        "label": "5ª posição"
       }
     ],
     "tags": ["aberto", "básico"],
+    "difficulty": 1
+  },
+  {
+    "id": "A",
+    "root": "A",
+    "quality": "",
+    "notes": ["A", "C#", "E"],
+    "intervals": ["1", "3", "5"],
+    "variations": [
+      {
+        "frets": [2, 2, 2, 2],
+        "fingers": [1, 1, 1, 1],
+        "barre": { "fromString": 4, "toString": 1, "fret": 2 },
+        "label": "Pestana 2ª"
+      },
+      {
+        "frets": [2, 1, 0, 0],
+        "fingers": [2, 1, null, null],
+        "barre": null,
+        "label": "Aberto"
+      }
+    ],
+    "tags": ["pestana", "básico"],
+    "difficulty": 2
+  },
+  {
+    "id": "B",
+    "root": "B",
+    "quality": "",
+    "notes": ["B", "D#", "F#"],
+    "intervals": ["1", "3", "5"],
+    "variations": [
+      {
+        "frets": [4, 4, 4, 4],
+        "fingers": [1, 1, 1, 1],
+        "barre": { "fromString": 4, "toString": 1, "fret": 4 },
+        "label": "Pestana 4ª"
+      },
+      {
+        "frets": [4, 3, 2, 2],
+        "fingers": [4, 3, 1, 2],
+        "barre": null,
+        "label": "4ª posição"
+      }
+    ],
+    "tags": ["pestana", "básico"],
+    "difficulty": 2
+  },
+  {
+    "id": "Am",
+    "root": "A",
+    "quality": "m",
+    "notes": ["A", "C", "E"],
+    "intervals": ["1", "b3", "5"],
+    "variations": [
+      {
+        "frets": [2, 0, 0, 0],
+        "fingers": [2, null, null, null],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [2, 2, 1, 0],
+        "fingers": [3, 4, 1, null],
+        "barre": null,
+        "label": "Posição 2"
+      }
+    ],
+    "tags": ["aberto", "básico"],
+    "difficulty": 1
+  },
+  {
+    "id": "Dm",
+    "root": "D",
+    "quality": "m",
+    "notes": ["D", "F", "A"],
+    "intervals": ["1", "b3", "5"],
+    "variations": [
+      {
+        "frets": [0, 2, 2, 1],
+        "fingers": [null, 2, 3, 1],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [2, 2, 1, 0],
+        "fingers": [3, 4, 1, null],
+        "barre": null,
+        "label": "2ª posição"
+      }
+    ],
+    "tags": ["aberto", "básico"],
+    "difficulty": 1
+  },
+  {
+    "id": "Em",
+    "root": "E",
+    "quality": "m",
+    "notes": ["E", "G", "B"],
+    "intervals": ["1", "b3", "5"],
+    "variations": [
+      {
+        "frets": [0, 0, 0, 2],
+        "fingers": [null, null, null, 2],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [2, 4, 4, 3],
+        "fingers": [1, 3, 4, 2],
+        "barre": null,
+        "label": "2ª posição"
+      }
+    ],
+    "tags": ["aberto", "básico"],
+    "difficulty": 1
+  },
+  {
+    "id": "G7",
+    "root": "G",
+    "quality": "7",
+    "notes": ["G", "B", "D", "F"],
+    "intervals": ["1", "3", "5", "b7"],
+    "variations": [
+      {
+        "frets": [0, 0, 0, 1],
+        "fingers": [null, null, null, 1],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [0, 2, 1, 2],
+        "fingers": [null, 3, 1, 2],
+        "barre": null,
+        "label": "Alternativo"
+      }
+    ],
+    "tags": ["aberto", "dominante"],
+    "difficulty": 1
+  },
+  {
+    "id": "C7",
+    "root": "C",
+    "quality": "7",
+    "notes": ["C", "E", "G", "Bb"],
+    "intervals": ["1", "3", "5", "b7"],
+    "variations": [
+      {
+        "frets": [0, 0, 0, 1],
+        "fingers": [null, null, null, 1],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [3, 2, 3, 1],
+        "fingers": [3, 2, 4, 1],
+        "barre": null,
+        "label": "3ª posição"
+      }
+    ],
+    "tags": ["aberto", "dominante"],
     "difficulty": 1
   },
   {
@@ -174,8 +295,8 @@
     "intervals": ["1", "3", "5", "b7"],
     "variations": [
       {
-        "frets": [0, 2, 1, 0],
-        "fingers": [null, 2, 1, null],
+        "frets": [0, 2, 2, 3],
+        "fingers": [null, 2, 3, 4],
         "barre": null,
         "label": "Aberto"
       },
@@ -183,7 +304,53 @@
         "frets": [2, 2, 1, 2],
         "fingers": [3, 4, 1, 2],
         "barre": null,
-        "label": "Fechado"
+        "label": "2ª posição"
+      }
+    ],
+    "tags": ["aberto", "dominante"],
+    "difficulty": 2
+  },
+  {
+    "id": "A7",
+    "root": "A",
+    "quality": "7",
+    "notes": ["A", "C#", "E", "G"],
+    "intervals": ["1", "3", "5", "b7"],
+    "variations": [
+      {
+        "frets": [2, 0, 2, 0],
+        "fingers": [2, null, 3, null],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [0, 1, 0, 2],
+        "fingers": [null, 1, null, 2],
+        "barre": null,
+        "label": "Alternativo"
+      }
+    ],
+    "tags": ["aberto", "dominante"],
+    "difficulty": 2
+  },
+  {
+    "id": "E7",
+    "root": "E",
+    "quality": "7",
+    "notes": ["E", "G#", "B", "D"],
+    "intervals": ["1", "3", "5", "b7"],
+    "variations": [
+      {
+        "frets": [0, 1, 0, 2],
+        "fingers": [null, 1, null, 2],
+        "barre": null,
+        "label": "Aberto"
+      },
+      {
+        "frets": [2, 4, 3, 4],
+        "fingers": [1, 3, 2, 4],
+        "barre": null,
+        "label": "2ª posição"
       }
     ],
     "tags": ["aberto", "dominante"],
