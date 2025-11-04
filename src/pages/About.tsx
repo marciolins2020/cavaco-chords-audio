@@ -72,22 +72,46 @@ const About = () => {
             </div>
             
             <div className="mb-4">
-              <h3 className="text-xl font-semibold text-primary mb-2">
-                Juninho Rezende - RZD Music
+              <h3 className="text-2xl font-semibold text-primary mb-2">
+                Juninho Rezende
               </h3>
+              <p className="text-lg text-muted-foreground">
+                Músico Cavaquinista · Autor · Mentor
+              </p>
             </div>
             
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Músico cavaquinista brasileiro, autor do dicionário "5000 acordes para cavaquinho". 
-                Com forte atuação no ensino do instrumento e presença digital consolidada através da 
-                RZD Music, Juninho valida os voicings, aprova o conteúdo técnico e assina a curadoria 
-                desta plataforma.
+                <strong className="text-foreground">Juninho Rezende</strong> é músico cavaquinista brasileiro 
+                com vasta experiência no ensino do instrumento e presença digital consolidada através da 
+                <strong className="text-primary"> RZD Music</strong>.
               </p>
               
-              <blockquote className="border-l-4 border-primary pl-4 py-2 italic text-lg">
-                "Meu objetivo é levar o cavaquinho a todos, com clareza e prazer."
+              <p>
+                Autor do renomado dicionário <strong className="text-foreground">"5000 Acordes para Cavaquinho"</strong>, 
+                Juninho dedica sua carreira a tornar o aprendizado do cavaquinho acessível e prazeroso para músicos 
+                de todos os níveis.
+              </p>
+              
+              <p>
+                Neste projeto, ele valida os voicings, aprova o conteúdo técnico e assina a curadoria completa 
+                desta plataforma, garantindo a excelência e precisão de cada acorde apresentado.
+              </p>
+              
+              <blockquote className="border-l-4 border-primary bg-primary/5 px-6 py-4 my-6 rounded-r-lg">
+                <p className="italic text-lg text-foreground">
+                  "Meu objetivo é levar o cavaquinho a todos, com clareza, dedicação e muito prazer musical."
+                </p>
+                <footer className="text-sm mt-2">— Juninho Rezende</footer>
               </blockquote>
+
+              <div className="bg-card border border-border rounded-lg p-4 mt-6">
+                <h4 className="font-semibold text-foreground mb-2">Powered by RZD Music</h4>
+                <p className="text-sm">
+                  Plataforma educacional dedicada ao ensino de cavaquinho, violão e teoria musical, 
+                  com foco em samba, choro e música popular brasileira.
+                </p>
+              </div>
             </div>
           </Card>
         </section>
@@ -127,11 +151,21 @@ const About = () => {
 
         {/* Footer */}
         <footer className="text-center mt-16 py-8 border-t border-border">
+          <div className="flex flex-col items-center gap-2 mb-4">
+            <img 
+              src={rzdLogo} 
+              alt="RZD Music" 
+              className="w-12 h-12 opacity-80"
+            />
+            <p className="text-lg font-bold">
+              Powered by <span className="text-primary">RZD Music</span>
+            </p>
+          </div>
           <p className="text-muted-foreground">
-            © 2024 Dicionário de Acordes de Cavaquinho - RZD Music
+            © 2024 Dicionário de Acordes de Cavaquinho
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            Todos os direitos reservados
+            Mentoria: Juninho Rezende · Tecnologia: RedMaxx
           </p>
         </footer>
       </main>

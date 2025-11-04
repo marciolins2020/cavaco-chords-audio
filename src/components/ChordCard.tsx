@@ -45,7 +45,7 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
   
   return (
     <Link to={`/chord/${chord.id}`}>
-      <Card className="p-4 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-glow)] cursor-pointer group bg-card relative">
+      <Card className="p-4 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-glow)] hover:scale-[1.02] cursor-pointer group bg-card relative">
         <div className="flex flex-col items-center gap-3">
           {/* Header com nome e ações */}
           <div className="w-full flex items-center justify-between">
@@ -54,7 +54,7 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
                 {chord.root}
               </h3>
               {chord.quality && (
-                <span className="text-lg text-muted-foreground">{chord.quality}</span>
+                <span className="text-lg text-muted-foreground group-hover:text-foreground transition-colors">{chord.quality}</span>
               )}
             </div>
             
