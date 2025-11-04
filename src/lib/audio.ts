@@ -13,21 +13,38 @@ const fretToFreq = (stringIndex: 1 | 2 | 3 | 4, fret: number): number | null => 
 };
 
 let audioContext: Tone.PolySynth | null = null;
+let reverb: Tone.Reverb | null = null;
+let filter: Tone.Filter | null = null;
 
 function getSynth() {
   if (!audioContext) {
+    // Cria reverb para simular a caixa acústica do cavaquinho
+    reverb = new Tone.Reverb({
+      decay: 0.8,
+      preDelay: 0.01,
+      wet: 0.25
+    }).toDestination();
+    
+    // Filtro passa-alta para dar brilho metálico característico
+    filter = new Tone.Filter({
+      type: "highpass",
+      frequency: 400,
+      rolloff: -12
+    }).connect(reverb);
+    
+    // Synth configurado para soar como cordas de metal do cavaquinho
     audioContext = new Tone.PolySynth(Tone.Synth, {
-      volume: -6,
+      volume: -8,
       oscillator: { 
-        type: "triangle",
+        type: "triangle8", // Mais harmônicos para som metálico
       },
       envelope: { 
-        attack: 0.005, 
-        decay: 0.3, 
-        sustain: 0.1, 
-        release: 1.2 
+        attack: 0.002,      // Ataque muito rápido (cordas de metal)
+        decay: 0.4,         // Decay rápido
+        sustain: 0.05,      // Sustain curto
+        release: 0.8        // Release natural
       }
-    }).toDestination();
+    }).connect(filter);
   }
   return audioContext;
 }
@@ -59,11 +76,13 @@ export async function playChord(
     console.log("Tocando frequências:", freqs);
 
     if (mode === "block") {
-      synth.triggerAttackRelease(freqs, "4n", now);
+      // Modo simultâneo (blocos) - todas as notas juntas
+      synth.triggerAttackRelease(freqs, "8n", now);
     } else {
-      const delay = 0.06;
+      // Modo dedilhado (strum) - simula rasgueado rápido do cavaquinho
+      const delay = 0.04; // Delay mais rápido para simular rasgueado típico
       freqs.forEach((f, i) => {
-        synth.triggerAttackRelease(f, "4n", now + i * delay);
+        synth.triggerAttackRelease(f, "8n", now + i * delay);
       });
     }
   } catch (error) {
