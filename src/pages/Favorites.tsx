@@ -3,16 +3,14 @@ import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
 import { ChordEntry } from "@/types/chords";
 import { useApp } from "@/contexts/AppContext";
-import baseChords from "@/data/chords.json";
-import extendedChords from "@/data/chords-extended.json";
+import { convertedChords } from "@/lib/chordConverter";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Favorites = () => {
   const { favorites } = useApp();
   
-  const allChords = [...baseChords, ...extendedChords] as ChordEntry[];
-  const favoriteChords = allChords.filter(chord => favorites.includes(chord.id));
+  const favoriteChords = convertedChords.filter(chord => favorites.includes(chord.id));
 
   return (
     <div className="min-h-screen bg-background">

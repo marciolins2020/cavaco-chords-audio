@@ -10,8 +10,7 @@ import { ChordEntry } from "@/types/chords";
 import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
-import baseChords from "@/data/chords.json";
-import extendedChords from "@/data/chords-extended.json";
+import { convertedChords } from "@/lib/chordConverter";
 
 const ChordDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,8 +20,7 @@ const ChordDetail = () => {
   const { isFavorite, toggleFavorite } = useApp();
 
   useEffect(() => {
-    const allChords = [...baseChords, ...extendedChords] as ChordEntry[];
-    const foundChord = allChords.find((c) => c.id === id);
+    const foundChord = convertedChords.find((c) => c.id === id);
     setChord(foundChord || null);
   }, [id]);
 
