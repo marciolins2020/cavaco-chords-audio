@@ -19,25 +19,15 @@ function getSynth() {
     audioContext = new Tone.PolySynth(Tone.Synth, {
       volume: -6,
       oscillator: { 
-        type: "sine",
-        partialCount: 8
+        type: "triangle",
       },
       envelope: { 
-        attack: 0.002, 
-        decay: 0.4, 
+        attack: 0.005, 
+        decay: 0.3, 
         sustain: 0.1, 
-        release: 1.5 
+        release: 1.2 
       }
     }).toDestination();
-    
-    // Adicionar filtro para som mais brilhante (similar a cordas de aço)
-    const filter = new Tone.Filter({
-      type: "highpass",
-      frequency: 200,
-      rolloff: -12
-    }).toDestination();
-    
-    audioContext.connect(filter);
   }
   return audioContext;
 }
@@ -58,7 +48,11 @@ export async function playChord(
   mode: "strum" | "block" = "strum"
 ): Promise<void> {
   try {
-    await initAudio();
+    // Garantir que o Tone está iniciado
+    if (Tone.context.state !== 'running') {
+      await Tone.start();
+      console.log("Tone.js iniciado");
+    }
     
     const synth = getSynth();
     const now = Tone.now();
@@ -71,12 +65,14 @@ export async function playChord(
       throw new Error("Nenhuma nota válida para tocar");
     }
 
+    console.log("Tocando frequências:", freqs);
+
     if (mode === "block") {
-      synth.triggerAttackRelease(freqs, "8n", now);
+      synth.triggerAttackRelease(freqs, "4n", now);
     } else {
-      const delay = 0.05;
+      const delay = 0.06;
       freqs.forEach((f, i) => {
-        synth.triggerAttackRelease(f, "8n", now + i * delay);
+        synth.triggerAttackRelease(f, "4n", now + i * delay);
       });
     }
   } catch (error) {
