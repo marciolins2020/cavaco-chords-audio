@@ -1,6 +1,14 @@
 import { ChordEntry } from "@/types/chords";
 import cavaquinhoSource from "@/data/cavaquinho-source.json";
 
+// Sanitiza o suffix para ser usado em URLs
+function sanitizeSuffix(suffix: string): string {
+  return suffix
+    .replace(/\//g, '-')  // Substitui / por -
+    .replace(/#/g, 'sharp')  // Substitui # por sharp
+    .replace(/b/g, 'b');  // Mantém b
+}
+
 // Mapeamento de sufixos para qualidade e informações de intervalo
 const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; description: string }> = {
   "major": { quality: "", intervals: ["1", "3", "5"], description: "Maior" },
@@ -16,7 +24,7 @@ const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; descrip
   "sus4": { quality: "sus4", intervals: ["1", "4", "5"], description: "Suspenso 4" },
   "6": { quality: "6", intervals: ["1", "3", "5", "6"], description: "Sexta" },
   "m6": { quality: "m6", intervals: ["1", "b3", "5", "6"], description: "Menor com sexta" },
-  "6/9": { quality: "6/9", intervals: ["1", "3", "5", "6", "9"], description: "Sexta com nona" },
+  "6/9": { quality: "6-9", intervals: ["1", "3", "5", "6", "9"], description: "Sexta com nona" },
   "9": { quality: "9", intervals: ["1", "3", "5", "b7", "9"], description: "Nona" },
   "m9": { quality: "m9", intervals: ["1", "b3", "5", "b7", "9"], description: "Menor com nona" },
   "maj9": { quality: "maj9", intervals: ["1", "3", "5", "7", "9"], description: "Nona maior" },
@@ -29,14 +37,27 @@ const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; descrip
   "m13": { quality: "m13", intervals: ["1", "b3", "5", "b7", "9", "13"], description: "Menor com décima terceira" },
   "maj13": { quality: "maj13", intervals: ["1", "3", "5", "7", "9", "13"], description: "Décima terceira maior" },
   "7b5": { quality: "7b5", intervals: ["1", "3", "b5", "b7"], description: "Sétima com quinta bemol" },
-  "7#5": { quality: "7#5", intervals: ["1", "3", "#5", "b7"], description: "Sétima com quinta sustenida" },
+  "7#5": { quality: "7sharp5", intervals: ["1", "3", "#5", "b7"], description: "Sétima com quinta sustenida" },
   "7b9": { quality: "7b9", intervals: ["1", "3", "5", "b7", "b9"], description: "Sétima com nona bemol" },
-  "7#9": { quality: "7#9", intervals: ["1", "3", "5", "b7", "#9"], description: "Sétima com nona sustenida" },
+  "7#9": { quality: "7sharp9", intervals: ["1", "3", "5", "b7", "#9"], description: "Sétima com nona sustenida" },
+  "b9": { quality: "b9", intervals: ["1", "3", "5", "b7", "b9"], description: "Nona bemol" },
   "9b5": { quality: "9b5", intervals: ["1", "3", "b5", "b7", "9"], description: "Nona com quinta bemol" },
-  "9#5": { quality: "9#5", intervals: ["1", "3", "#5", "b7", "9"], description: "Nona com quinta sustenida" },
+  "9#5": { quality: "9sharp5", intervals: ["1", "3", "#5", "b7", "9"], description: "Nona com quinta sustenida" },
   "7sus4": { quality: "7sus4", intervals: ["1", "4", "5", "b7"], description: "Sétima suspensa 4" },
   "7sus2": { quality: "7sus2", intervals: ["1", "2", "5", "b7"], description: "Sétima suspensa 2" },
   "m7b5": { quality: "m7b5", intervals: ["1", "b3", "b5", "b7"], description: "Meio-diminuto" },
+  // Acordes complexos com barras no original
+  "b9/4/7": { quality: "b9-4-7", intervals: ["1", "3", "5", "b7", "b9"], description: "Sétima alterada" },
+  "9/7M": { quality: "9-7M", intervals: ["1", "3", "5", "7", "9"], description: "Nona com sétima maior" },
+  "9/4/7M": { quality: "9-4-7M", intervals: ["1", "3", "5", "7", "9"], description: "Nona alterada" },
+  "11/b5": { quality: "11-b5", intervals: ["1", "3", "b5", "b7", "11"], description: "Onze com quinta bemol" },
+  "11/7/b9": { quality: "11-7-b9", intervals: ["1", "3", "5", "b7", "b9", "11"], description: "Onze alterado" },
+  "7/11": { quality: "7-11", intervals: ["1", "3", "5", "b7", "11"], description: "Sétima com onze" },
+  "b13/6": { quality: "b13-6", intervals: ["1", "3", "5", "b7", "b13"], description: "Sétima com décima terceira bemol" },
+  "b13": { quality: "b13", intervals: ["1", "3", "5", "b7", "b13"], description: "Décima terceira bemol" },
+  "13/7": { quality: "13-7", intervals: ["1", "3", "5", "b7", "13"], description: "Décima terceira dominante" },
+  "13/9M": { quality: "13-9M", intervals: ["1", "3", "5", "7", "9", "13"], description: "Décima terceira maior" },
+  "13/#11": { quality: "13-sharp11", intervals: ["1", "3", "5", "b7", "#11", "13"], description: "Décima terceira com onze sustenida" },
 };
 
 // Calcula as notas do acorde baseado na tônica e intervalos
@@ -96,11 +117,12 @@ export function convertCavaquinhoChords(): ChordEntry[] {
   
   for (const chord of cavaquinhoSource.chords) {
     const suffixInfo = SUFFIX_MAP[chord.suffix] || {
-      quality: chord.suffix,
+      quality: sanitizeSuffix(chord.suffix),
       intervals: ["1", "3", "5"],
       description: chord.suffix
     };
     
+    // ID combina key + quality (já sanitizado no SUFFIX_MAP)
     const id = chord.key + suffixInfo.quality;
     const notes = calculateNotes(chord.key, suffixInfo.intervals);
     
