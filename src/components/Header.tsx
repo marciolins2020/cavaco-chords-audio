@@ -2,7 +2,7 @@ import { Hand, Heart, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { Link, useLocation } from "react-router-dom";
-import rzdLogo from "@/assets/rzd-logo-horizontal.png";
+import rzdLogo from "@/assets/rzd-logo-with-cavaquinho.png";
 
 const Header = () => {
   const { leftHanded, setLeftHanded, favorites } = useApp();
@@ -18,8 +18,8 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-4 group flex-shrink-0">
             <img 
               src={rzdLogo} 
-              alt="RZD Music - Cavaquinho" 
-              className="h-32 md:h-40 w-auto transition-transform group-hover:scale-105"
+              alt="RZD Music - Dicionário de Acordes para Cavaquinho" 
+              className="h-16 md:h-20 w-auto transition-transform group-hover:scale-105"
             />
             <div className="hidden lg:block">
               <h1 className="text-2xl font-bold leading-tight">
