@@ -19,7 +19,7 @@ const Header = () => {
             <img 
               src={rzdLogo} 
               alt="RZD Music - Dicionário de Acordes para Cavaquinho" 
-              className="h-16 md:h-20 w-auto transition-transform group-hover:scale-105"
+              className="h-10 md:h-12 w-auto transition-transform group-hover:scale-105"
             />
             <div className="hidden lg:block">
               <h1 className="text-2xl font-bold leading-tight">
