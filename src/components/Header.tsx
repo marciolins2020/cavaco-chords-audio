@@ -15,17 +15,17 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+          <Link to="/" className="flex items-center gap-4 group flex-shrink-0">
             <img 
               src={rzdLogo} 
               alt="RZD Music" 
-              className="h-10 w-auto transition-transform group-hover:scale-105"
+              className="h-14 md:h-16 w-auto transition-transform group-hover:scale-105"
             />
             <div className="hidden lg:block">
-              <h1 className="text-xl font-bold leading-tight">
+              <h1 className="text-2xl font-bold leading-tight">
                 Dicionário de Acordes
               </h1>
-              <p className="text-xs text-muted-foreground">Cavaquinho DGBD</p>
+              <p className="text-sm text-muted-foreground">Cavaquinho DGBD</p>
             </div>
           </Link>
 
