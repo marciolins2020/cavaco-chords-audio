@@ -12,6 +12,7 @@ import Header from "@/components/Header";
 import { DataExport } from "@/components/DataExport";
 import { ProgressEvolution } from "@/components/ProgressEvolution";
 import { GoalsManager } from "@/components/GoalsManager";
+import { ShareAchievements } from "@/components/ShareAchievements";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -230,10 +231,13 @@ export default function ProfilePage() {
 
         {/* Conquistas */}
         <Card className="p-6 mb-6">
-          <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-            <Award className="w-5 h-5" />
-            Conquistas ({unlockedAchievements.length}/{ACHIEVEMENTS.length})
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold flex items-center gap-2">
+              <Award className="w-5 h-5" />
+              Conquistas ({unlockedAchievements.length}/{ACHIEVEMENTS.length})
+            </h3>
+            <ShareAchievements stats={stats} />
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {ACHIEVEMENTS.map((achievement) => {
               const unlocked = stats.achievements.includes(achievement.id);
