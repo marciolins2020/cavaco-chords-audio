@@ -9,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { User, Trophy, Target, Calendar, Zap, Award, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import { DataExport } from "@/components/DataExport";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -87,6 +88,7 @@ export default function ProfilePage() {
                 </div>
               </div>
             </div>
+            <DataExport />
           </div>
 
           {/* Barra de Progresso do Nível */}
