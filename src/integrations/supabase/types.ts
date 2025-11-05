@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      daily_challenges: {
+        Row: {
+          challenge_type: string
+          completed: boolean
+          created_at: string
+          current_progress: number
+          date: string
+          description: string
+          icon: string
+          id: string
+          target_value: number
+          title: string
+          updated_at: string
+          user_id: string
+          xp_reward: number
+        }
+        Insert: {
+          challenge_type: string
+          completed?: boolean
+          created_at?: string
+          current_progress?: number
+          date: string
+          description: string
+          icon: string
+          id?: string
+          target_value: number
+          title: string
+          updated_at?: string
+          user_id: string
+          xp_reward: number
+        }
+        Update: {
+          challenge_type?: string
+          completed?: boolean
+          created_at?: string
+          current_progress?: number
+          date?: string
+          description?: string
+          icon?: string
+          id?: string
+          target_value?: number
+          title?: string
+          updated_at?: string
+          user_id?: string
+          xp_reward?: number
+        }
+        Relationships: []
+      }
       daily_practice_log: {
         Row: {
           chords_practiced: string[] | null
@@ -140,6 +188,7 @@ export type Database = {
           last_practice_date: string | null
           total_attempts: number | null
           total_successes: number | null
+          total_xp: number
           updated_at: string | null
           user_id: string
         }
@@ -154,6 +203,7 @@ export type Database = {
           last_practice_date?: string | null
           total_attempts?: number | null
           total_successes?: number | null
+          total_xp?: number
           updated_at?: string | null
           user_id: string
         }
@@ -168,6 +218,7 @@ export type Database = {
           last_practice_date?: string | null
           total_attempts?: number | null
           total_successes?: number | null
+          total_xp?: number
           updated_at?: string | null
           user_id?: string
         }

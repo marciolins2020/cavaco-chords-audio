@@ -68,7 +68,7 @@ export const useDailyChallenges = (userId: string | undefined) => {
 
       // Verificar se já existem desafios para hoje
       const { data: existingChallenges, error } = await supabase
-        .from("daily_challenges")
+        .from("daily_challenges" as any)
         .select("*")
         .eq("user_id", userId)
         .eq("date", today);
@@ -76,7 +76,7 @@ export const useDailyChallenges = (userId: string | undefined) => {
       if (error) throw error;
 
       if (existingChallenges && existingChallenges.length > 0) {
-        setChallenges(existingChallenges as DailyChallenge[]);
+        setChallenges(existingChallenges as any as DailyChallenge[]);
       } else {
         // Criar novos desafios para hoje
         await createDailyChallenges(today);
@@ -109,13 +109,13 @@ export const useDailyChallenges = (userId: string | undefined) => {
       }));
 
       const { data, error } = await supabase
-        .from("daily_challenges")
+        .from("daily_challenges" as any)
         .insert(newChallenges)
         .select();
 
       if (error) throw error;
 
-      setChallenges(data as DailyChallenge[]);
+      setChallenges(data as any as DailyChallenge[]);
       toast.success("🎮 Novos desafios diários disponíveis!");
     } catch (error) {
       console.error("Erro ao criar desafios:", error);
@@ -133,7 +133,7 @@ export const useDailyChallenges = (userId: string | undefined) => {
       const completed = progress >= challenge.target_value;
 
       const { error } = await supabase
-        .from("daily_challenges")
+        .from("daily_challenges" as any)
         .update({
           current_progress: progress,
           completed,

@@ -16,6 +16,7 @@ import { useStreak } from "@/hooks/useStreak";
 import { ReminderSettings } from "@/components/ReminderSettings";
 import { AchievementBadge } from "@/components/AchievementBadge";
 import { LevelProgress } from "@/components/LevelProgress";
+import { DailyChallenges } from "@/components/DailyChallenges";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -164,6 +165,11 @@ export default function ProfilePage() {
               </div>
             </div>
           </Card>
+        </div>
+
+        {/* Desafios Diários */}
+        <div className="mb-6">
+          <DailyChallenges />
         </div>
 
         {/* Metas de Prática e Lembretes */}
