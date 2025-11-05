@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useHistory, HistoryEntry } from "@/hooks/useHistory";
 
 interface AppContextType {
   leftHanded: boolean;
@@ -6,6 +7,10 @@ interface AppContextType {
   favorites: string[];
   toggleFavorite: (chordId: string) => void;
   isFavorite: (chordId: string) => boolean;
+  history: HistoryEntry[];
+  addToHistory: (chordId: string, context?: HistoryEntry["context"]) => void;
+  clearHistory: () => void;
+  getRecentChords: (limit?: number) => string[];
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -20,6 +25,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
   });
+
+  const { history, addToHistory, clearHistory, getRecentChords } = useHistory();
 
   useEffect(() => {
     localStorage.setItem("leftHanded", JSON.stringify(leftHanded));
@@ -41,7 +48,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   return (
     <AppContext.Provider
-      value={{ leftHanded, setLeftHanded, favorites, toggleFavorite, isFavorite }}
+      value={{
+        leftHanded,
+        setLeftHanded,
+        favorites,
+        toggleFavorite,
+        isFavorite,
+        history,
+        addToHistory,
+        clearHistory,
+        getRecentChords,
+      }}
     >
       {children}
     </AppContext.Provider>

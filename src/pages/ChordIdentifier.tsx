@@ -6,6 +6,8 @@ import { ChordEntry } from "@/types/chords";
 import { convertedChords } from "@/lib/chordConverter";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { calculateChordDistance, arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
+import { useApp } from "@/contexts/AppContext";
 
 interface Note {
   string: number;
@@ -23,6 +25,7 @@ export default function ChordIdentifier() {
   const [selectedNotes, setSelectedNotes] = useState<Note[]>([]);
   const [result, setResult] = useState<ChordMatch | null>(null);
   const navigate = useNavigate();
+  const { addToHistory } = useApp();
 
   // Convert notes to frets array
   const convertNotesToFrets = (notes: Note[]): [number, number, number, number] => {
@@ -31,14 +34,6 @@ export default function ChordIdentifier() {
       frets[4 - note.string] = note.fret;
     });
     return frets;
-  };
-
-  // Calculate minimum distance between two fret arrays
-  const calculateDistance = (frets1: number[], frets2: number[]): number => {
-    return frets1.reduce((sum, fret, i) => {
-      if (fret === -1 || frets2[i] === -1) return sum + 5;
-      return sum + Math.abs(fret - frets2[i]);
-    }, 0);
   };
 
   // Identify chord from selected notes
@@ -52,10 +47,9 @@ export default function ChordIdentifier() {
 
     // Look for exact match
     const exactMatch = convertedChords.find(chord =>
-      chord.variations.some(variation => {
-        const variationFrets = variation.frets;
-        return variationFrets.every((fret, i) => fret === userFrets[i]);
-      })
+      chord.variations.some(variation => 
+        arraysEqual(variation.frets, userFrets)
+      )
     );
 
     if (exactMatch) {
@@ -71,13 +65,14 @@ export default function ChordIdentifier() {
     const chordsWithDistance = convertedChords.map(chord => {
       const minDistance = Math.min(
         ...chord.variations.map(variation => 
-          calculateDistance(userFrets, variation.frets)
+          calculateChordDistance(userFrets, variation.frets)
         )
       );
       return { chord, distance: minDistance };
     });
 
     const similar = chordsWithDistance
+      .filter(item => item.distance <= 8) // Apenas acordes razoavelmente próximos
       .sort((a, b) => a.distance - b.distance)
       .slice(0, 5)
       .map(item => item.chord);
@@ -152,14 +147,17 @@ export default function ChordIdentifier() {
                       />
                     </div>
 
-                    <div className="flex-1 space-y-4">
+                     <div className="flex-1 space-y-4">
                       <div>
                         <h3 className="font-semibold mb-2">📊 Informações</h3>
-                        <div className="space-y-1 text-sm">
-                          <p>
-                            <span className="text-muted-foreground">Dificuldade:</span>{' '}
-                            {'⭐'.repeat(result.exact.difficulty || 1)}
-                          </p>
+                        <div className="space-y-2 text-sm">
+                          {result.exact.difficulty && (
+                            <div className="flex items-center gap-2">
+                              <span className="text-muted-foreground">Dificuldade:</span>
+                              <span>{getDifficultyInfo(result.exact.difficulty).emoji}</span>
+                              <span className="font-medium">{getDifficultyInfo(result.exact.difficulty).label}</span>
+                            </div>
+                          )}
                           <p>
                             <span className="text-muted-foreground">Intervalos:</span>{' '}
                             {result.exact.intervals.join(', ')}
@@ -174,7 +172,10 @@ export default function ChordIdentifier() {
                       </div>
 
                       <button
-                        onClick={() => navigate(`/chord/${result.exact!.id}`)}
+                        onClick={() => {
+                          addToHistory(result.exact!.id, "identifier");
+                          navigate(`/chord/${result.exact!.id}`);
+                        }}
                         className="w-full md:w-auto px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                       >
                         Ver Detalhes Completos
@@ -199,7 +200,10 @@ export default function ChordIdentifier() {
                     {result.similar.map(chord => (
                       <button
                         key={chord.id}
-                        onClick={() => navigate(`/chord/${chord.id}`)}
+                        onClick={() => {
+                          addToHistory(chord.id, "identifier");
+                          navigate(`/chord/${chord.id}`);
+                        }}
                         className="p-4 border-2 border-border rounded-lg hover:border-primary hover:bg-accent transition-all text-left"
                       >
                         <div className="flex items-center justify-between mb-2">

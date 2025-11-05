@@ -1,5 +1,6 @@
 import { ChordEntry } from "@/types/chords";
 import cavaquinhoSource from "@/data/cavaquinho-source.json";
+import { calculateDifficulty as calcDiff } from "@/utils/chordAnalysis";
 
 // Sanitiza o suffix para ser usado em URLs
 function sanitizeSuffix(suffix: string): string {
@@ -82,17 +83,13 @@ function calculateNotes(root: string, intervals: string[]): string[] {
 function calculateDifficulty(positions: any[]): 1 | 2 | 3 | 4 | 5 {
   if (!positions.length) return 3;
   
+  // Usar a primeira posição para calcular dificuldade
   const firstPos = positions[0];
-  const maxFret = Math.max(...firstPos.frets.filter((f: number) => f > 0));
-  const minFret = Math.min(...firstPos.frets.filter((f: number) => f > 0));
-  const openStrings = firstPos.frets.filter((f: number) => f === 0).length;
-  
-  // Acordes com muitas cordas soltas são mais fáceis
-  if (openStrings >= 2 && maxFret <= 3) return 1;
-  if (maxFret <= 3) return 2;
-  if (maxFret <= 5) return 3;
-  if (maxFret <= 8) return 4;
-  return 5;
+  return calcDiff({
+    frets: firstPos.frets as [number, number, number, number],
+    fingers: firstPos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+    barre: null,
+  });
 }
 
 // Define tags baseado no tipo de acorde e posição

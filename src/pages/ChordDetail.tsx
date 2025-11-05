@@ -17,12 +17,17 @@ const ChordDetail = () => {
   const [chord, setChord] = useState<ChordEntry | null>(null);
   const [selectedVariation, setSelectedVariation] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const { isFavorite, toggleFavorite } = useApp();
+  const { isFavorite, toggleFavorite, addToHistory } = useApp();
 
   useEffect(() => {
     const foundChord = convertedChords.find((c) => c.id === id);
     setChord(foundChord || null);
-  }, [id]);
+    
+    // Adicionar ao histórico quando visualizar um acorde
+    if (foundChord) {
+      addToHistory(foundChord.id, "browse");
+    }
+  }, [id, addToHistory]);
 
   if (!chord) {
     return (
