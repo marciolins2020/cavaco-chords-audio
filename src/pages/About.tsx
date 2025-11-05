@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import rzdLogo from "@/assets/logo-rzd-final.png";
 import juninhoPhoto from "@/assets/juninho-rezende.png";
+import { NotificationSettings } from "@/components/NotificationSettings";
 
 const About = () => {
   return (
@@ -156,6 +157,11 @@ const About = () => {
               </div>
             </div>
           </Card>
+        </section>
+
+        {/* Notification Settings */}
+        <section className="max-w-3xl mx-auto mb-16">
+          <NotificationSettings />
         </section>
 
         {/* Technical Info */}
