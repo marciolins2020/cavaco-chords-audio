@@ -17,6 +17,7 @@ import { ReminderSettings } from "@/components/ReminderSettings";
 import { AchievementBadge } from "@/components/AchievementBadge";
 import { LevelProgress } from "@/components/LevelProgress";
 import { DailyChallenges } from "@/components/DailyChallenges";
+import { XPHistory } from "@/components/XPHistory";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -47,6 +48,8 @@ export default function ProfilePage() {
   const successRate = stats.totalAttempts > 0 
     ? ((stats.totalSuccesses / stats.totalAttempts) * 100).toFixed(1)
     : "0";
+  
+  const totalXP = (stats as any).total_xp || 0;
 
   const unlockedAchievements = ACHIEVEMENTS.filter((a) =>
     stats.achievements.includes(a.id)
@@ -165,6 +168,11 @@ export default function ProfilePage() {
               </div>
             </div>
           </Card>
+        </div>
+
+        {/* Histórico de XP */}
+        <div className="mb-6">
+          <XPHistory userId={user.id} totalXP={totalXP} />
         </div>
 
         {/* Desafios Diários */}
