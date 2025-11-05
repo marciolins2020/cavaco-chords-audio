@@ -1,13 +1,62 @@
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { motion } from "framer-motion";
-import { Trophy, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Trophy, Zap, Sparkles } from "lucide-react";
 import { useDailyChallenges, DailyChallenge } from "@/hooks/useDailyChallenges";
 import { useAuth } from "@/contexts/AuthContext";
+import { useEffect, useState } from "react";
+
+const Confetti = () => {
+  const particles = Array.from({ length: 30 });
+  
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {particles.map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 rounded-full"
+          style={{
+            left: `${50 + (Math.random() - 0.5) * 20}%`,
+            top: "50%",
+            backgroundColor: [
+              "hsl(var(--primary))",
+              "hsl(var(--secondary))",
+              "#FFD700",
+              "#FF69B4",
+              "#00CED1",
+            ][Math.floor(Math.random() * 5)],
+          }}
+          initial={{ scale: 0, y: 0, x: 0 }}
+          animate={{
+            scale: [0, 1, 0],
+            y: [0, (Math.random() - 0.5) * 200],
+            x: [(Math.random() - 0.5) * 300],
+            rotate: [0, Math.random() * 360],
+          }}
+          transition={{
+            duration: 1.5,
+            delay: Math.random() * 0.3,
+            ease: "easeOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
   const progress = (challenge.current_progress / challenge.target_value) * 100;
+  const [justCompleted, setJustCompleted] = useState(false);
+  const [prevCompleted, setPrevCompleted] = useState(challenge.completed);
+
+  useEffect(() => {
+    if (challenge.completed && !prevCompleted) {
+      setJustCompleted(true);
+      setTimeout(() => setJustCompleted(false), 2000);
+    }
+    setPrevCompleted(challenge.completed);
+  }, [challenge.completed, prevCompleted]);
 
   return (
     <motion.div
@@ -16,12 +65,15 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
       className="relative"
     >
       <Card
-        className={`p-4 transition-all ${
+        className={`p-4 transition-all relative overflow-hidden ${
           challenge.completed
-            ? "bg-primary/5 border-primary/30"
+            ? "bg-primary/5 border-primary/30 shadow-lg"
             : "hover:shadow-md"
         }`}
       >
+        <AnimatePresence>
+          {justCompleted && <Confetti />}
+        </AnimatePresence>
         <div className="flex items-start gap-3">
           <motion.div
             className="text-4xl"
@@ -50,6 +102,15 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
                 <Badge variant="default" className="bg-primary">
                   ✓
                 </Badge>
+              )}
+              {challenge.completed && (
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  className="ml-2"
+                >
+                  <Sparkles className="w-4 h-4 text-primary fill-primary" />
+                </motion.div>
               )}
             </div>
 

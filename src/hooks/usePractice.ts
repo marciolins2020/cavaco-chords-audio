@@ -130,6 +130,88 @@ export function usePractice(userId?: string) {
   const recordAttempt = async (chordId: string, success: boolean, time?: number) => {
     const now = new Date();
     
+    // Atualizar desafios diários (se logado e sucesso)
+    if (userId && success) {
+      try {
+        const today = new Date().toISOString().split("T")[0];
+        
+        // Buscar desafios ativos de hoje
+        const { data: challenges } = await supabase
+          .from("daily_challenges" as any)
+          .select("*")
+          .eq("user_id", userId)
+          .eq("date", today)
+          .eq("completed", false);
+
+        if (challenges && challenges.length > 0) {
+          for (const challenge of challenges as any[]) {
+            let newProgress = challenge.current_progress;
+            let shouldUpdate = false;
+
+            // Atualizar progresso baseado no tipo de desafio
+            if (challenge.challenge_type === "practice_chords") {
+              // Contar acordes únicos praticados hoje
+              const { data: todayLog } = await supabase
+                .from("daily_practice_log")
+                .select("chords_practiced")
+                .eq("user_id", userId)
+                .eq("practice_date", today)
+                .single();
+
+              const uniqueChords = new Set(todayLog?.chords_practiced || []);
+              uniqueChords.add(chordId);
+              newProgress = uniqueChords.size;
+              shouldUpdate = true;
+            } else if (challenge.challenge_type === "new_chords") {
+              // Contar novos acordes aprendidos hoje
+              if (!stats.chordsLearned.includes(chordId)) {
+                newProgress = challenge.current_progress + 1;
+                shouldUpdate = true;
+              }
+            }
+
+            if (shouldUpdate && newProgress !== challenge.current_progress) {
+              const completed = newProgress >= challenge.target_value;
+              
+              await supabase
+                .from("daily_challenges" as any)
+                .update({
+                  current_progress: newProgress,
+                  completed,
+                })
+                .eq("id", challenge.id);
+
+              if (completed) {
+                toast.success(`🎉 Desafio concluído! +${challenge.xp_reward} XP`, {
+                  description: challenge.title,
+                  duration: 5000,
+                });
+
+                // Adicionar XP ao usuário
+                const { data: practiceStats } = await supabase
+                  .from("practice_stats")
+                  .select("*")
+                  .eq("user_id", userId)
+                  .single();
+
+                if (practiceStats) {
+                  const currentXP = (practiceStats as any).total_xp || 0;
+                  await supabase
+                    .from("practice_stats")
+                    .update({
+                      total_xp: currentXP + challenge.xp_reward,
+                    } as any)
+                    .eq("user_id", userId);
+                }
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Erro ao atualizar desafios:", error);
+      }
+    }
+    
     // Atualizar metas de prática (se logado)
     if (userId && success) {
       try {
