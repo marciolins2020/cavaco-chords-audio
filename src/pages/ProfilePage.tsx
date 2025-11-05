@@ -14,6 +14,7 @@ import { ProgressEvolution } from "@/components/ProgressEvolution";
 import { GoalsManager } from "@/components/GoalsManager";
 import { StreakCalendar } from "@/components/StreakCalendar";
 import { useStreak } from "@/hooks/useStreak";
+import { ReminderSettings } from "@/components/ReminderSettings";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -164,9 +165,10 @@ export default function ProfilePage() {
           </Card>
         </div>
 
-        {/* Metas de Prática */}
-        <div className="mb-6">
+        {/* Metas de Prática e Lembretes */}
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
           <GoalsManager />
+          <ReminderSettings />
         </div>
 
         {/* Streak Calendar */}
