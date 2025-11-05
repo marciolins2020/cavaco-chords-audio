@@ -1,4 +1,4 @@
-import { Hand, Heart, Info } from "lucide-react";
+import { Hand, Heart, Info, Music2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { Link, useLocation } from "react-router-dom";
@@ -9,6 +9,7 @@ const Header = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isFavorites = location.pathname === "/favoritos";
+  const isHarmonicField = location.pathname === "/campo-harmonico";
   const isAbout = location.pathname === "/sobre";
 
   return (
@@ -39,14 +40,24 @@ const Header = () => {
               </Button>
             </Link>
             
+            <Link to="/campo-harmonico">
+              <Button
+                variant={isHarmonicField ? "default" : "ghost"}
+                size="sm"
+              >
+                <Music2 className="w-4 h-4 mr-0 sm:mr-2" />
+                <span className="hidden sm:inline">Campo</span>
+              </Button>
+            </Link>
+            
             <Link to="/favoritos">
               <Button
                 variant={isFavorites ? "default" : "ghost"}
                 size="sm"
                 className="relative"
               >
-                <Heart className="w-4 h-4 mr-2" />
-                Favoritos
+                <Heart className="w-4 h-4 mr-0 sm:mr-2" />
+                <span className="hidden sm:inline">Favoritos</span>
                 {favorites.length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {favorites.length}
