@@ -1,11 +1,20 @@
-import { Hand, Heart, Info, Music2, Target } from "lucide-react";
+import { Hand, Heart, Info, Music2, Target, User, LogOut, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import rzdLogo from "@/assets/logo-rzd-final.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const { leftHanded, setLeftHanded, favorites } = useApp();
+  const { user, signOut } = useAuth();
   const location = useLocation();
   const isHome = location.pathname === "/";
   const isFavorites = location.pathname === "/favoritos";
@@ -86,6 +95,36 @@ const Header = () => {
                 <span className="hidden sm:inline">Sobre</span>
               </Button>
             </Link>
+
+            <div className="h-6 w-px bg-border mx-1" />
+            
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    <User className="w-4 h-4" />
+                    <span className="hidden sm:inline">Perfil</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <div className="px-2 py-2 text-sm">
+                    <p className="font-medium truncate">{user.email}</p>
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => signOut()}>
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sair
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link to="/auth">
+                <Button variant="default" size="sm" className="gap-2">
+                  <LogIn className="w-4 h-4" />
+                  <span className="hidden sm:inline">Entrar</span>
+                </Button>
+              </Link>
+            )}
 
             <div className="h-6 w-px bg-border mx-1" />
             
