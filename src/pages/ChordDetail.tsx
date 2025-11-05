@@ -27,7 +27,7 @@ const ChordDetail = () => {
     if (foundChord) {
       addToHistory(foundChord.id, "browse");
     }
-  }, [id, addToHistory]);
+  }, [id]); // Removido addToHistory das dependências para evitar loop infinito
 
   if (!chord) {
     return (
