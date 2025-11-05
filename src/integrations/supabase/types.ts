@@ -14,7 +14,162 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      practice_sessions: {
+        Row: {
+          attempts: number | null
+          best_time: number | null
+          chord_id: string
+          created_at: string | null
+          id: string
+          last_practiced: string | null
+          mastered: boolean | null
+          successes: number | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          attempts?: number | null
+          best_time?: number | null
+          chord_id: string
+          created_at?: string | null
+          id?: string
+          last_practiced?: string | null
+          mastered?: boolean | null
+          successes?: number | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          attempts?: number | null
+          best_time?: number | null
+          chord_id?: string
+          created_at?: string | null
+          id?: string
+          last_practiced?: string | null
+          mastered?: boolean | null
+          successes?: number | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      practice_stats: {
+        Row: {
+          achievements: string[] | null
+          chords_learned: string[] | null
+          chords_mastered: string[] | null
+          consecutive_days: number | null
+          created_at: string | null
+          fastest_transition: number | null
+          id: string
+          last_practice_date: string | null
+          total_attempts: number | null
+          total_successes: number | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          achievements?: string[] | null
+          chords_learned?: string[] | null
+          chords_mastered?: string[] | null
+          consecutive_days?: number | null
+          created_at?: string | null
+          fastest_transition?: number | null
+          id?: string
+          last_practice_date?: string | null
+          total_attempts?: number | null
+          total_successes?: number | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          achievements?: string[] | null
+          chords_learned?: string[] | null
+          chords_mastered?: string[] | null
+          consecutive_days?: number | null
+          created_at?: string | null
+          fastest_transition?: number | null
+          id?: string
+          last_practice_date?: string | null
+          total_attempts?: number | null
+          total_successes?: number | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_favorites: {
+        Row: {
+          chord_id: string
+          created_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          chord_id: string
+          created_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          chord_id?: string
+          created_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_history: {
+        Row: {
+          chord_id: string
+          context: string
+          created_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          chord_id: string
+          context: string
+          created_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          chord_id?: string
+          context?: string
+          created_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
