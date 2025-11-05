@@ -10,6 +10,7 @@ import { User, Trophy, Target, Calendar, Zap, Award, TrendingUp } from "lucide-r
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import { DataExport } from "@/components/DataExport";
+import { ProgressEvolution } from "@/components/ProgressEvolution";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -157,6 +158,11 @@ export default function ProfilePage() {
               </div>
             </div>
           </Card>
+        </div>
+
+        {/* Evolução Temporal */}
+        <div className="mb-6">
+          <ProgressEvolution sessions={sessions} />
         </div>
 
         {/* Gráficos */}
