@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      practice_goals: {
+        Row: {
+          completed: boolean | null
+          completed_at: string | null
+          created_at: string | null
+          current_value: number | null
+          end_date: string | null
+          goal_type: string
+          id: string
+          is_active: boolean | null
+          start_date: string
+          target_value: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          completed?: boolean | null
+          completed_at?: string | null
+          created_at?: string | null
+          current_value?: number | null
+          end_date?: string | null
+          goal_type: string
+          id?: string
+          is_active?: boolean | null
+          start_date?: string
+          target_value: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          completed?: boolean | null
+          completed_at?: string | null
+          created_at?: string | null
+          current_value?: number | null
+          end_date?: string | null
+          goal_type?: string
+          id?: string
+          is_active?: boolean | null
+          start_date?: string
+          target_value?: number
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       practice_sessions: {
         Row: {
           attempts: number | null

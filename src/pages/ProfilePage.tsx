@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import { DataExport } from "@/components/DataExport";
 import { ProgressEvolution } from "@/components/ProgressEvolution";
+import { GoalsManager } from "@/components/GoalsManager";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -158,6 +159,11 @@ export default function ProfilePage() {
               </div>
             </div>
           </Card>
+        </div>
+
+        {/* Metas de Prática */}
+        <div className="mb-6">
+          <GoalsManager />
         </div>
 
         {/* Evolução Temporal */}
