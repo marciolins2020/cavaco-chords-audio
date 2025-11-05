@@ -12,10 +12,13 @@ import Header from "@/components/Header";
 import { DataExport } from "@/components/DataExport";
 import { ProgressEvolution } from "@/components/ProgressEvolution";
 import { GoalsManager } from "@/components/GoalsManager";
+import { StreakCalendar } from "@/components/StreakCalendar";
+import { useStreak } from "@/hooks/useStreak";
 
 export default function ProfilePage() {
   const { user } = useAuth();
   const { stats, sessions } = usePractice(user?.id);
+  const { streak, dailyLogs, useStreakFreeze } = useStreak(user?.id);
 
   if (!user) {
     return (
@@ -165,6 +168,20 @@ export default function ProfilePage() {
         <div className="mb-6">
           <GoalsManager />
         </div>
+
+        {/* Streak Calendar */}
+        {streak && (
+          <div className="mb-6">
+            <StreakCalendar
+              currentStreak={streak.current_streak}
+              longestStreak={streak.longest_streak}
+              totalDays={streak.total_practice_days}
+              freezeCount={streak.streak_freeze_count}
+              dailyLogs={dailyLogs}
+              onUseFreeze={useStreakFreeze}
+            />
+          </div>
+        )}
 
         {/* Evolução Temporal */}
         <div className="mb-6">

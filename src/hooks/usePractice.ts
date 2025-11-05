@@ -129,6 +129,88 @@ export function usePractice(userId?: string) {
 
   const recordAttempt = async (chordId: string, success: boolean, time?: number) => {
     const now = new Date();
+    
+    // Registrar dia de prática no streak (se logado)
+    if (userId) {
+      try {
+        const today = new Date().toISOString().split("T")[0];
+        
+        // Verificar se já existe log para hoje
+        const { data: existingLog } = await supabase
+          .from("daily_practice_log")
+          .select("*")
+          .eq("user_id", userId)
+          .eq("practice_date", today)
+          .single();
+
+        if (existingLog) {
+          // Atualizar log existente
+          const updatedChords = [...new Set([...existingLog.chords_practiced, chordId])];
+          await supabase
+            .from("daily_practice_log")
+            .update({
+              sessions_count: existingLog.sessions_count + 1,
+              chords_practiced: updatedChords,
+              total_attempts: existingLog.total_attempts + 1,
+            })
+            .eq("id", existingLog.id);
+        } else {
+          // Criar novo log
+          await supabase
+            .from("daily_practice_log")
+            .insert({
+              user_id: userId,
+              practice_date: today,
+              chords_practiced: [chordId],
+              total_attempts: 1,
+            });
+          
+          // Atualizar streak
+          const { data: streakData } = await supabase
+            .from("practice_streaks")
+            .select("*")
+            .eq("user_id", userId)
+            .single();
+
+          if (streakData) {
+            const lastDate = streakData.last_practice_date;
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toISOString().split("T")[0];
+
+            let newStreak = 1;
+            let totalDays = streakData.total_practice_days + 1;
+
+            if (lastDate === yesterdayStr) {
+              newStreak = streakData.current_streak + 1;
+            }
+
+            const longestStreak = Math.max(newStreak, streakData.longest_streak);
+
+            await supabase
+              .from("practice_streaks")
+              .update({
+                current_streak: newStreak,
+                longest_streak: longestStreak,
+                last_practice_date: today,
+                total_practice_days: totalDays,
+              })
+              .eq("user_id", userId);
+
+            // Notificar milestones
+            const milestones = [7, 14, 30, 60, 100, 365];
+            if (milestones.includes(newStreak)) {
+              toast.success(`🔥 ${newStreak} dias consecutivos!`, {
+                description: `Badge de ${newStreak} dias desbloqueado!`,
+                duration: 5000,
+              });
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Erro ao atualizar streak:", error);
+      }
+    }
 
     // Atualizar sessão do acorde
     const session = sessions[chordId] || {

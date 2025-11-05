@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      daily_practice_log: {
+        Row: {
+          chords_practiced: string[] | null
+          created_at: string
+          id: string
+          practice_date: string
+          sessions_count: number
+          total_attempts: number
+          user_id: string
+        }
+        Insert: {
+          chords_practiced?: string[] | null
+          created_at?: string
+          id?: string
+          practice_date: string
+          sessions_count?: number
+          total_attempts?: number
+          user_id: string
+        }
+        Update: {
+          chords_practiced?: string[] | null
+          created_at?: string
+          id?: string
+          practice_date?: string
+          sessions_count?: number
+          total_attempts?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       practice_goals: {
         Row: {
           completed: boolean | null
@@ -139,6 +169,42 @@ export type Database = {
           total_attempts?: number | null
           total_successes?: number | null
           updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      practice_streaks: {
+        Row: {
+          created_at: string
+          current_streak: number
+          id: string
+          last_practice_date: string | null
+          longest_streak: number
+          streak_freeze_count: number
+          total_practice_days: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_streak?: number
+          id?: string
+          last_practice_date?: string | null
+          longest_streak?: number
+          streak_freeze_count?: number
+          total_practice_days?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_streak?: number
+          id?: string
+          last_practice_date?: string | null
+          longest_streak?: number
+          streak_freeze_count?: number
+          total_practice_days?: number
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
