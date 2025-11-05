@@ -130,6 +130,82 @@ export function usePractice(userId?: string) {
   const recordAttempt = async (chordId: string, success: boolean, time?: number) => {
     const now = new Date();
     
+    // Atualizar metas de prática (se logado)
+    if (userId && success) {
+      try {
+        // Buscar metas ativas
+        const { data: activeGoals } = await supabase
+          .from("practice_goals")
+          .select("*")
+          .eq("user_id", userId)
+          .eq("is_active", true)
+          .eq("completed", false);
+
+        if (activeGoals && activeGoals.length > 0) {
+          const today = new Date().toISOString().split("T")[0];
+          
+          for (const goal of activeGoals) {
+            let shouldUpdate = false;
+            let newValue = goal.current_value;
+
+            // Determinar se deve atualizar baseado no tipo de meta
+            if (goal.goal_type === "daily_chords") {
+              // Verificar se é um novo acorde hoje
+              const { data: todayLog } = await supabase
+                .from("daily_practice_log")
+                .select("chords_practiced")
+                .eq("user_id", userId)
+                .eq("practice_date", today)
+                .single();
+
+              if (todayLog && !todayLog.chords_practiced.includes(chordId)) {
+                newValue = (todayLog.chords_practiced?.length || 0) + 1;
+                shouldUpdate = true;
+              }
+            } else if (goal.goal_type === "weekly_chords") {
+              // Contar acordes únicos da semana
+              const weekAgo = new Date();
+              weekAgo.setDate(weekAgo.getDate() - 7);
+              
+              const { data: weekLogs } = await supabase
+                .from("daily_practice_log")
+                .select("chords_practiced")
+                .eq("user_id", userId)
+                .gte("practice_date", weekAgo.toISOString().split("T")[0]);
+
+              const uniqueChords = new Set<string>();
+              weekLogs?.forEach(log => {
+                log.chords_practiced?.forEach((c: string) => uniqueChords.add(c));
+              });
+              newValue = uniqueChords.size;
+              shouldUpdate = true;
+            }
+
+            if (shouldUpdate) {
+              const completed = newValue >= goal.target_value;
+              await supabase
+                .from("practice_goals")
+                .update({
+                  current_value: newValue,
+                  completed,
+                  completed_at: completed ? new Date().toISOString() : null,
+                })
+                .eq("id", goal.id);
+
+              if (completed && !goal.completed) {
+                toast.success("🎯 Meta concluída!", {
+                  description: `Você completou sua meta!`,
+                  duration: 5000,
+                });
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Erro ao atualizar metas:", error);
+      }
+    }
+    
     // Registrar dia de prática no streak (se logado)
     if (userId) {
       try {
