@@ -501,6 +501,39 @@ export function usePractice(userId?: string) {
               : currentStats?.fastest_transition,
             achievements: stats.achievements,
           });
+
+        // Atualizar leaderboard
+        const { data: streakData } = await supabase
+          .from("practice_streaks")
+          .select("*")
+          .eq("user_id", userId)
+          .single();
+
+        const { data: profileData } = await supabase
+          .from("profiles")
+          .select("full_name, email")
+          .eq("id", userId)
+          .single();
+
+        const username = profileData?.full_name || profileData?.email?.split("@")[0] || "Músico";
+        const totalXp = (currentStats as any)?.total_xp || 0;
+        
+        // Calcular XP semanal e mensal (simplificado - em produção seria mais preciso)
+        const weeklyXp = Math.min(totalXp, 500); // Placeholder
+        const monthlyXp = Math.min(totalXp, 2000); // Placeholder
+
+        await supabase.rpc("update_leaderboard_entry", {
+          p_user_id: userId,
+          p_username: username,
+          p_total_xp: totalXp,
+          p_current_streak: streakData?.current_streak || 0,
+          p_chords_mastered: session.mastered 
+            ? Array.from(new Set([...(currentStats?.chords_mastered || []), chordId])).length
+            : (currentStats?.chords_mastered || []).length,
+          p_total_practice_days: streakData?.total_practice_days || 0,
+          p_weekly_xp: weeklyXp,
+          p_monthly_xp: monthlyXp,
+        });
       } catch (error) {
         console.error("Erro ao sincronizar prática:", error);
       }

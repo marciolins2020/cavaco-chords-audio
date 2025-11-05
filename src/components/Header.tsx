@@ -1,4 +1,4 @@
-import { Hand, Heart, Info, Music2, Target, User, LogOut, LogIn, Menu, Moon, Sun } from "lucide-react";
+import { Hand, Heart, Info, Music2, Target, User, LogOut, LogIn, Menu, Moon, Sun, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -32,6 +32,7 @@ const Header = () => {
   const isHarmonicField = location.pathname === "/campo-harmonico";
   const isPractice = location.pathname === "/pratica";
   const isAbout = location.pathname === "/sobre";
+  const isRanking = location.pathname === "/ranking";
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
@@ -69,6 +70,16 @@ const Header = () => {
                   >
                     <Target className="w-4 h-4 mr-2" />
                     Modo Prática
+                  </Button>
+                </Link>
+                
+                <Link to="/ranking" onClick={() => setMobileMenuOpen(false)}>
+                  <Button
+                    variant={isRanking ? "default" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    <Trophy className="w-4 h-4 mr-2" />
+                    Ranking
                   </Button>
                 </Link>
                 
@@ -208,6 +219,16 @@ const Header = () => {
               >
                 <Target className="w-4 h-4 mr-2" />
                 Prática
+              </Button>
+            </Link>
+            
+            <Link to="/ranking">
+              <Button
+                variant={isRanking ? "default" : "ghost"}
+                size="sm"
+              >
+                <Trophy className="w-4 h-4 mr-2" />
+                Ranking
               </Button>
             </Link>
             

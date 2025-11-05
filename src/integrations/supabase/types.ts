@@ -92,6 +92,48 @@ export type Database = {
         }
         Relationships: []
       }
+      leaderboard_entries: {
+        Row: {
+          chords_mastered: number
+          created_at: string
+          current_streak: number
+          id: string
+          last_updated: string
+          monthly_xp: number
+          total_practice_days: number
+          total_xp: number
+          user_id: string
+          username: string
+          weekly_xp: number
+        }
+        Insert: {
+          chords_mastered?: number
+          created_at?: string
+          current_streak?: number
+          id?: string
+          last_updated?: string
+          monthly_xp?: number
+          total_practice_days?: number
+          total_xp?: number
+          user_id: string
+          username: string
+          weekly_xp?: number
+        }
+        Update: {
+          chords_mastered?: number
+          created_at?: string
+          current_streak?: number
+          id?: string
+          last_updated?: string
+          monthly_xp?: number
+          total_practice_days?: number
+          total_xp?: number
+          user_id?: string
+          username?: string
+          weekly_xp?: number
+        }
+        Relationships: []
+      }
       practice_goals: {
         Row: {
           completed: boolean | null
@@ -337,7 +379,19 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      update_leaderboard_entry: {
+        Args: {
+          p_chords_mastered: number
+          p_current_streak: number
+          p_monthly_xp: number
+          p_total_practice_days: number
+          p_total_xp: number
+          p_user_id: string
+          p_username: string
+          p_weekly_xp: number
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
