@@ -2,7 +2,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import { usePractice } from "@/hooks/usePractice";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
@@ -15,6 +14,8 @@ import { GoalsManager } from "@/components/GoalsManager";
 import { StreakCalendar } from "@/components/StreakCalendar";
 import { useStreak } from "@/hooks/useStreak";
 import { ReminderSettings } from "@/components/ReminderSettings";
+import { AchievementBadge } from "@/components/AchievementBadge";
+import { LevelProgress } from "@/components/LevelProgress";
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -97,18 +98,18 @@ export default function ProfilePage() {
             <DataExport />
           </div>
 
-          {/* Barra de Progresso do Nível */}
-          <div className="mt-6">
-            <div className="flex justify-between text-sm mb-2">
-              <span className="font-medium">Progresso de Nível</span>
-              <span className="text-muted-foreground">{levelInfo.progress.toFixed(0)}%</span>
-            </div>
-            <Progress value={levelInfo.progress} className="h-3" />
-            <p className="text-xs text-muted-foreground mt-1">
-              {levelInfo.nextMilestone}
-            </p>
-          </div>
         </Card>
+
+        {/* Progresso de Nível */}
+        <div className="mb-6">
+          <LevelProgress
+            level={levelInfo.level}
+            progress={levelInfo.progress}
+            nextMilestone={levelInfo.nextMilestone}
+            totalXP={stats.chordsMastered.length * 100 + stats.totalSuccesses * 10}
+            nextLevelXP={1000}
+          />
+        </div>
 
         {/* Estatísticas Principais */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -249,33 +250,39 @@ export default function ProfilePage() {
 
         {/* Conquistas */}
         <Card className="p-6 mb-6">
-          <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-            <Award className="w-5 h-5" />
-            Conquistas ({unlockedAchievements.length}/{ACHIEVEMENTS.length})
-          </h3>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-2">
+              <Award className="w-5 h-5 text-primary" />
+              <h3 className="text-lg font-semibold">
+                Conquistas
+              </h3>
+              <Badge variant="secondary">
+                {unlockedAchievements.length}/{ACHIEVEMENTS.length}
+              </Badge>
+            </div>
+            <div className="text-sm text-muted-foreground">
+              {((unlockedAchievements.length / ACHIEVEMENTS.length) * 100).toFixed(0)}% completo
+            </div>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {ACHIEVEMENTS.map((achievement) => {
               const unlocked = stats.achievements.includes(achievement.id);
               return (
-                <div
+                <AchievementBadge
                   key={achievement.id}
-                  className={`p-4 rounded-lg border text-center transition-all ${
-                    unlocked
-                      ? "bg-primary/5 border-primary/20"
-                      : "bg-muted/30 border-border opacity-50"
-                  }`}
-                >
-                  <div className="text-4xl mb-2">{achievement.icon}</div>
-                  <p className="font-semibold text-sm mb-1">{achievement.name}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {achievement.description}
-                  </p>
-                  {unlocked && (
-                    <Badge variant="secondary" className="mt-2 text-xs">
-                      Desbloqueado
-                    </Badge>
-                  )}
-                </div>
+                  id={achievement.id}
+                  name={achievement.name}
+                  description={achievement.description}
+                  icon={achievement.icon}
+                  unlocked={unlocked}
+                  rarity={
+                    achievement.id.includes("master") ? "legendary" :
+                    achievement.id.includes("streak_30") ? "epic" :
+                    achievement.id.includes("streak_7") ? "rare" :
+                    "common"
+                  }
+                  category="Prática"
+                />
               );
             })}
           </div>
