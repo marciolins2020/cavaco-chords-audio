@@ -1,4 +1,4 @@
-import { Hand, Heart, Info, Music2, Target, User, LogOut, LogIn, Menu } from "lucide-react";
+import { Hand, Heart, Info, Music2, Target, User, LogOut, LogIn, Menu, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -19,10 +19,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const { leftHanded, setLeftHanded, favorites } = useApp();
   const { user, signOut } = useAuth();
+  const { theme, setTheme } = useTheme();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isHome = location.pathname === "/";
@@ -117,6 +119,22 @@ const Header = () => {
                 >
                   <Hand className="w-4 h-4 mr-2" />
                   {leftHanded ? "Canhoto" : "Destro"}
+                </Button>
+
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setTheme(theme === "dark" ? "light" : "dark");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full justify-start"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="w-4 h-4 mr-2" />
+                  ) : (
+                    <Moon className="w-4 h-4 mr-2" />
+                  )}
+                  {theme === "dark" ? "Tema Claro" : "Tema Escuro"}
                 </Button>
 
                  {user ? (
@@ -275,6 +293,19 @@ const Header = () => {
               <span className="hidden lg:inline">
                 {leftHanded ? "Canhoto" : "Destro"}
               </span>
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="transition-all"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
             </Button>
           </nav>
 
