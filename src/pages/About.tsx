@@ -1,6 +1,8 @@
-import { Music2, Guitar, Zap, Heart } from "lucide-react";
+import { Music2, Guitar, Zap, Heart, Download } from "lucide-react";
 import Header from "@/components/Header";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import rzdLogo from "@/assets/logo-rzd-final.png";
 import juninhoPhoto from "@/assets/juninho-rezende.png";
 
@@ -61,6 +63,32 @@ const About = () => {
             <p className="text-muted-foreground">
               Acesso completo e ilimitado a todos os recursos, sem mensalidades ou compras dentro do app
             </p>
+          </Card>
+        </section>
+
+        {/* Install Card */}
+        <section className="max-w-4xl mx-auto mb-16">
+          <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <div className="p-4 rounded-full bg-primary/20">
+                  <Download className="w-12 h-12 text-primary" />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-2xl font-bold mb-2">Instale o App</h3>
+                <p className="text-muted-foreground mb-4">
+                  Adicione o RZD Acordes na sua tela inicial para acesso rápido e uso offline. 
+                  Funciona como um app nativo!
+                </p>
+                <Link to="/instalar">
+                  <Button size="lg">
+                    <Download className="w-5 h-5 mr-2" />
+                    Ver Como Instalar
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </Card>
         </section>
 
@@ -144,6 +172,7 @@ const About = () => {
               <div>
                 <h3 className="font-semibold mb-2">Recursos</h3>
                 <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                  <li>App instalável (PWA) - funciona offline</li>
                   <li>Diagramas interativos com dedilhado</li>
                   <li>Múltiplas variações por acorde</li>
                   <li>Modo canhoto/destro</li>
