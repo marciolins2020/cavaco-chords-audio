@@ -10,6 +10,7 @@ import ChordDetail from "./pages/ChordDetail";
 import ChordIdentifier from "./pages/ChordIdentifier";
 import Favorites from "./pages/Favorites";
 import HarmonicFieldPage from "./pages/HarmonicFieldPage";
+import PracticePage from "./pages/PracticePage";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/identifier" element={<ChordIdentifier />} />
             <Route path="/favoritos" element={<Favorites />} />
             <Route path="/campo-harmonico" element={<HarmonicFieldPage />} />
+            <Route path="/pratica" element={<PracticePage />} />
             <Route path="/sobre" element={<About />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

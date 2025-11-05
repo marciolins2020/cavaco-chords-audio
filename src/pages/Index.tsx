@@ -58,6 +58,12 @@ const Index = () => {
                 🎯 Identificar Acorde no Braço
               </button>
               <button
+                onClick={() => navigate("/pratica")}
+                className="px-6 py-3 bg-success text-success-foreground rounded-xl hover:bg-success/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold"
+              >
+                🎓 Modo Prática
+              </button>
+              <button
                 onClick={() => navigate("/campo-harmonico")}
                 className="px-6 py-3 bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold"
               >

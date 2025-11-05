@@ -1,4 +1,4 @@
-import { Hand, Heart, Info, Music2 } from "lucide-react";
+import { Hand, Heart, Info, Music2, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { Link, useLocation } from "react-router-dom";
@@ -10,6 +10,7 @@ const Header = () => {
   const isHome = location.pathname === "/";
   const isFavorites = location.pathname === "/favoritos";
   const isHarmonicField = location.pathname === "/campo-harmonico";
+  const isPractice = location.pathname === "/pratica";
   const isAbout = location.pathname === "/sobre";
 
   return (
@@ -37,6 +38,16 @@ const Header = () => {
                 size="sm"
               >
                 Acordes
+              </Button>
+            </Link>
+            
+            <Link to="/pratica">
+              <Button
+                variant={isPractice ? "default" : "ghost"}
+                size="sm"
+              >
+                <Target className="w-4 h-4 mr-0 sm:mr-2" />
+                <span className="hidden sm:inline">Prática</span>
               </Button>
             </Link>
             
