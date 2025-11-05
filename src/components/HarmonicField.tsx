@@ -169,7 +169,7 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
                         className={`font-mono font-bold px-2 py-1 rounded ${
                           playingChord === chordName
                             ? "bg-primary text-primary-foreground"
-                            : "bg-secondary"
+                            : "bg-secondary text-secondary-foreground"
                         }`}
                       >
                         {chordName}

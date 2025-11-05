@@ -11,6 +11,7 @@ import { usePractice } from "@/hooks/usePractice";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
 import { Trophy, Target, Award, Flame, RotateCcw, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 // Sequência pedagógica de acordes
 const LEARNING_SEQUENCE = [
@@ -20,7 +21,8 @@ const LEARNING_SEQUENCE = [
 ];
 
 export default function PracticePage() {
-  const { stats, sessions, recordAttempt, resetStats } = usePractice();
+  const { user } = useAuth();
+  const { stats, sessions, recordAttempt, resetStats } = usePractice(user?.id);
   const [currentChord, setCurrentChord] = useState<ChordEntry | null>(null);
   const [showAchievements, setShowAchievements] = useState(false);
   const navigate = useNavigate();

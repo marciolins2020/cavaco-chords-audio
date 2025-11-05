@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 
 export interface HistoryEntry {
@@ -10,8 +9,7 @@ export interface HistoryEntry {
 
 const MAX_HISTORY_ITEMS = 50;
 
-export function useHistory() {
-  const { user } = useAuth();
+export function useHistory(userId?: string) {
   const [history, setHistory] = useState<HistoryEntry[]>(() => {
     const saved = localStorage.getItem("rzd_history");
     if (saved) {
@@ -30,17 +28,18 @@ export function useHistory() {
 
   // Carregar histórico do Supabase quando o usuário faz login
   useEffect(() => {
-    if (user) {
+    if (userId) {
       loadHistoryFromSupabase();
     }
-  }, [user]);
+  }, [userId]);
 
   const loadHistoryFromSupabase = async () => {
+    if (!userId) return;
     try {
       const { data, error } = await supabase
         .from("user_history")
         .select("*")
-        .eq("user_id", user!.id)
+        .eq("user_id", userId)
         .order("created_at", { ascending: false })
         .limit(MAX_HISTORY_ITEMS);
 
@@ -60,10 +59,10 @@ export function useHistory() {
 
   // Salvar no localStorage apenas quando não logado
   useEffect(() => {
-    if (!user) {
+    if (!userId) {
       localStorage.setItem("rzd_history", JSON.stringify(history));
     }
-  }, [history, user]);
+  }, [history, userId]);
 
   const addToHistory = async (
     chordId: string,
@@ -78,18 +77,18 @@ export function useHistory() {
     });
 
     // Se logado, salvar no Supabase
-    if (user) {
+    if (userId) {
       try {
         // Deletar entrada anterior do mesmo acorde
         await supabase
           .from("user_history")
           .delete()
-          .eq("user_id", user.id)
+          .eq("user_id", userId)
           .eq("chord_id", chordId);
 
         // Inserir nova entrada
         await supabase.from("user_history").insert({
-          user_id: user.id,
+          user_id: userId,
           chord_id: chordId,
           context,
         });
@@ -104,12 +103,12 @@ export function useHistory() {
     localStorage.removeItem("rzd_history");
 
     // Se logado, limpar do Supabase também
-    if (user) {
+    if (userId) {
       try {
         await supabase
           .from("user_history")
           .delete()
-          .eq("user_id", user.id);
+          .eq("user_id", userId);
       } catch (error) {
         console.error("Erro ao limpar histórico:", error);
       }

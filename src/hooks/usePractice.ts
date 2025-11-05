@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 import { PracticeSession, PracticeStats } from "@/types/practice";
 import { checkAchievements } from "@/utils/achievements";
 import { toast } from "sonner";
-import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 
 const STORAGE_KEY = "rzd_practice_stats";
 const SESSIONS_KEY = "rzd_practice_sessions";
 
-export function usePractice() {
-  const { user } = useAuth();
+export function usePractice(userId?: string) {
   const [stats, setStats] = useState<PracticeStats>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -46,18 +44,19 @@ export function usePractice() {
 
   // Carregar dados do Supabase quando o usuário faz login
   useEffect(() => {
-    if (user) {
+    if (userId) {
       loadPracticeDataFromSupabase();
     }
-  }, [user]);
+  }, [userId]);
 
   const loadPracticeDataFromSupabase = async () => {
+    if (!userId) return;
     try {
       // Carregar estatísticas
       const { data: statsData, error: statsError } = await supabase
         .from("practice_stats")
         .select("*")
-        .eq("user_id", user!.id)
+        .eq("user_id", userId)
         .single();
 
       if (statsError && statsError.code !== "PGRST116") throw statsError;
@@ -81,7 +80,7 @@ export function usePractice() {
       const { data: sessionsData, error: sessionsError } = await supabase
         .from("practice_sessions")
         .select("*")
-        .eq("user_id", user!.id);
+        .eq("user_id", userId);
 
       if (sessionsError) throw sessionsError;
 
@@ -106,16 +105,16 @@ export function usePractice() {
 
   // Salvar no localStorage apenas quando não logado
   useEffect(() => {
-    if (!user) {
+    if (!userId) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
     }
-  }, [stats, user]);
+  }, [stats, userId]);
 
   useEffect(() => {
-    if (!user) {
+    if (!userId) {
       localStorage.setItem(SESSIONS_KEY, JSON.stringify(sessions));
     }
-  }, [sessions, user]);
+  }, [sessions, userId]);
 
   function getInitialStats(): PracticeStats {
     return {
@@ -223,13 +222,13 @@ export function usePractice() {
     });
 
     // Sincronizar com Supabase se logado
-    if (user) {
+    if (userId) {
       try {
         // Atualizar ou inserir sessão
         await supabase
           .from("practice_sessions")
           .upsert({
-            user_id: user.id,
+            user_id: userId,
             chord_id: chordId,
             attempts: session.attempts,
             successes: session.successes,
@@ -242,13 +241,13 @@ export function usePractice() {
         const { data: currentStats } = await supabase
           .from("practice_stats")
           .select("*")
-          .eq("user_id", user.id)
+          .eq("user_id", userId)
           .single();
 
         await supabase
           .from("practice_stats")
           .upsert({
-            user_id: user.id,
+            user_id: userId,
             total_attempts: (currentStats?.total_attempts || 0) + 1,
             total_successes: (currentStats?.total_successes || 0) + (success ? 1 : 0),
             chords_learned: Array.from(new Set([...(currentStats?.chords_learned || []), ...(success ? [chordId] : [])])),
@@ -279,12 +278,12 @@ export function usePractice() {
     localStorage.removeItem(SESSIONS_KEY);
 
     // Se logado, resetar no Supabase também
-    if (user) {
+    if (userId) {
       try {
         await supabase
           .from("practice_sessions")
           .delete()
-          .eq("user_id", user.id);
+          .eq("user_id", userId);
 
         await supabase
           .from("practice_stats")
@@ -298,7 +297,7 @@ export function usePractice() {
             achievements: [],
             last_practice_date: null,
           })
-          .eq("user_id", user.id);
+          .eq("user_id", userId);
       } catch (error) {
         console.error("Erro ao resetar estatísticas:", error);
       }

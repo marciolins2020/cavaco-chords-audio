@@ -77,7 +77,7 @@ const Index = () => {
                 <button
                   key={chord}
                   onClick={() => setSearchQuery(chord)}
-                  className="px-3 py-1 bg-accent hover:bg-accent/80 rounded-full transition-colors"
+                  className="px-3 py-1 bg-accent text-accent-foreground hover:bg-accent/90 rounded-full transition-colors font-semibold"
                 >
                   {chord}
                 </button>

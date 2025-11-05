@@ -30,7 +30,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const { user } = useAuth();
-  const { history, addToHistory, clearHistory, getRecentChords } = useHistory();
+  const { history, addToHistory, clearHistory, getRecentChords } = useHistory(user?.id);
 
   useEffect(() => {
     localStorage.setItem("leftHanded", JSON.stringify(leftHanded));
