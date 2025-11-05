@@ -126,7 +126,7 @@ export function convertCavaquinhoChords(): ChordEntry[] {
     const variations = chord.positions.map((pos: any, idx: number) => ({
       frets: pos.frets as [number, number, number, number],
       fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
-      barre: null, // TODO: Detectar pestanas automaticamente se necessário
+      barre: pos.barre || null,
       label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
     }));
     

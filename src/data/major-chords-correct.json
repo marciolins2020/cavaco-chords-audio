@@ -1,0 +1,79 @@
+{
+  "description": "Acordes maiores corretos baseados na imagem de referência Só Cifras Gospel",
+  "tuning": "D-G-B-D (cordas 4-3-2-1)",
+  "chords": [
+    {
+      "key": "A",
+      "suffix": "major",
+      "positions": [{
+        "frets": [2, 2, 2, 2],
+        "fingers": [1, 1, 1, 1],
+        "baseFret": 1,
+        "barre": {
+          "fromString": 1,
+          "toString": 4,
+          "fret": 2
+        }
+      }]
+    },
+    {
+      "key": "B",
+      "suffix": "major",
+      "positions": [{
+        "frets": [4, 4, 4, 4],
+        "fingers": [1, 1, 1, 1],
+        "baseFret": 1,
+        "barre": {
+          "fromString": 1,
+          "toString": 4,
+          "fret": 4
+        }
+      }]
+    },
+    {
+      "key": "C",
+      "suffix": "major",
+      "positions": [{
+        "frets": [3, 2, 0, 3],
+        "fingers": [2, 1, 0, 3],
+        "baseFret": 1
+      }]
+    },
+    {
+      "key": "D",
+      "suffix": "major",
+      "positions": [{
+        "frets": [2, 2, 2, 0],
+        "fingers": [1, 2, 3, 0],
+        "baseFret": 1
+      }]
+    },
+    {
+      "key": "E",
+      "suffix": "major",
+      "positions": [{
+        "frets": [4, 4, 4, 0],
+        "fingers": [1, 2, 3, 0],
+        "baseFret": 1
+      }]
+    },
+    {
+      "key": "F",
+      "suffix": "major",
+      "positions": [{
+        "frets": [2, 0, 1, 0],
+        "fingers": [2, 0, 1, 0],
+        "baseFret": 1
+      }]
+    },
+    {
+      "key": "G",
+      "suffix": "major",
+      "positions": [{
+        "frets": [0, 2, 3, 2],
+        "fingers": [0, 1, 3, 2],
+        "baseFret": 1
+      }]
+    }
+  ]
+}
