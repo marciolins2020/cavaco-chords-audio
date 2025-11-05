@@ -7,6 +7,7 @@ import { AppProvider } from "./contexts/AppContext";
 import { ChatWidget } from "./components/ChatWidget";
 import Index from "./pages/Index";
 import ChordDetail from "./pages/ChordDetail";
+import ChordIdentifier from "./pages/ChordIdentifier";
 import Favorites from "./pages/Favorites";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/chord/:id" element={<ChordDetail />} />
+            <Route path="/identifier" element={<ChordIdentifier />} />
             <Route path="/favoritos" element={<Favorites />} />
             <Route path="/sobre" element={<About />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

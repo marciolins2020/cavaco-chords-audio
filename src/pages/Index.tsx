@@ -1,13 +1,14 @@
 import { useState, useMemo } from "react";
-import { Search, Music2, Guitar } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Music2, Guitar } from "lucide-react";
 import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
-import { ChordEntry } from "@/types/chords";
+import { SearchBar } from "@/components/SearchBar";
 import { convertedChords } from "@/lib/chordConverter";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
   
   // Use converted chords from cavaquinho-source.json
   const allChords = convertedChords;
@@ -28,38 +29,47 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="border-b border-border bg-gradient-to-b from-background to-card">
-        <div className="container mx-auto px-4 py-8 md:py-12">
-          <div className="flex flex-col items-center text-center gap-6">
-            <div className="flex items-center gap-3">
-              <Guitar className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-              <h1 className="text-3xl md:text-5xl font-bold">
-                Dicionário de Acordes
-              </h1>
+      <section className="relative py-20 px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="container mx-auto relative z-10">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-sm text-primary border border-primary/20">
+              <span className="animate-pulse">🎸</span>
+              <span>Por Professor Juninho Rezende</span>
             </div>
             
-            <div className="flex flex-col items-center gap-2">
-              <p className="text-lg md:text-xl text-muted-foreground">
-                Cavaquinho DGBD
-              </p>
-              <div className="flex items-center gap-2 text-primary font-semibold">
-                <Music2 className="w-5 h-5" />
-                <span>Powered by RZD Music</span>
-              </div>
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent leading-tight">
+              Dicionário de Acordes
+            </h1>
+            
+            <p className="text-xl text-muted-foreground">
+              Aprenda todos os acordes de cavaquinho com diagramas profissionais,
+              áudio e múltiplas posições
+            </p>
+
+            {/* Search Bar with Autocomplete */}
+            <SearchBar onSearch={setSearchQuery} className="max-w-2xl mx-auto" />
+
+            <div className="flex flex-wrap justify-center gap-2 text-sm">
+              <button
+                onClick={() => navigate("/identifier")}
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold"
+              >
+                🎯 Identificar Acorde no Braço
+              </button>
             </div>
 
-            {/* Search */}
-            <div className="w-full max-w-xl mt-4">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Buscar acorde (ex: C, Am, G7)..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 h-14 text-lg bg-background border-2 focus:border-primary transition-colors"
-                />
-              </div>
+            <div className="flex flex-wrap justify-center gap-2 text-sm text-muted-foreground">
+              <span>Ou busque rápido:</span>
+              {["C", "Dm", "G7", "Am", "F#m"].map((chord) => (
+                <button
+                  key={chord}
+                  onClick={() => setSearchQuery(chord)}
+                  className="px-3 py-1 bg-accent hover:bg-accent/80 rounded-full transition-colors"
+                >
+                  {chord}
+                </button>
+              ))}
             </div>
           </div>
         </div>
