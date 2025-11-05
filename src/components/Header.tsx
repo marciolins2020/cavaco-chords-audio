@@ -119,12 +119,18 @@ const Header = () => {
                   {leftHanded ? "Canhoto" : "Destro"}
                 </Button>
 
-                {user ? (
+                 {user ? (
                   <>
                     <div className="my-4 border-t" />
                     <div className="px-3 py-2 text-sm text-muted-foreground">
                       <p className="font-medium truncate">{user.email}</p>
                     </div>
+                    <Link to="/perfil" onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="ghost" className="w-full justify-start">
+                        <User className="w-4 h-4 mr-2" />
+                        Meu Perfil
+                      </Button>
+                    </Link>
                     <Button
                       variant="ghost"
                       onClick={() => {
@@ -238,6 +244,12 @@ const Header = () => {
                     <p className="font-medium truncate">{user.email}</p>
                   </div>
                   <DropdownMenuSeparator />
+                  <Link to="/perfil">
+                    <DropdownMenuItem>
+                      <User className="w-4 h-4 mr-2" />
+                      Meu Perfil
+                    </DropdownMenuItem>
+                  </Link>
                   <DropdownMenuItem onClick={() => signOut()}>
                     <LogOut className="w-4 h-4 mr-2" />
                     Sair
@@ -284,7 +296,7 @@ const Header = () => {
             </Link>
 
             {user ? (
-              <Link to="/auth">
+              <Link to="/perfil">
                 <Button variant="ghost" size="sm" className="px-2">
                   <User className="w-4 h-4" />
                 </Button>
