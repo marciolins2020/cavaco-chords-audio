@@ -23,16 +23,16 @@ const Header = () => {
   const isAbout = location.pathname === "/sobre";
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="container mx-auto px-4 py-2">
-        <div className="flex items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
+      <div className="container mx-auto px-2 sm:px-4 py-2">
+        <div className="flex items-center justify-between gap-2">
+          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
             <img 
               src={rzdLogo} 
               alt="RZD Music - Dicionário de Acordes para Cavaquinho" 
-              className="h-13 md:h-16 w-auto transition-transform group-hover:scale-105"
+              className="h-10 sm:h-13 md:h-16 w-auto transition-transform group-hover:scale-105"
             />
-            <div className="hidden sm:block">
+            <div className="hidden md:block">
               <h1 className="text-xl md:text-2xl font-bold leading-tight">
                 Dicionário de Acordes
               </h1>
@@ -40,8 +40,8 @@ const Header = () => {
             </div>
           </Link>
 
-          <nav className="flex items-center gap-2">
-            <Link to="/">
+          <nav className="flex items-center gap-1 sm:gap-2 flex-wrap justify-end">
+            <Link to="/" className="hidden sm:inline-block">
               <Button
                 variant={isHome ? "default" : "ghost"}
                 size="sm"
@@ -54,8 +54,9 @@ const Header = () => {
               <Button
                 variant={isPractice ? "default" : "ghost"}
                 size="sm"
+                className="px-2 sm:px-3"
               >
-                <Target className="w-4 h-4 mr-0 sm:mr-2" />
+                <Target className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">Prática</span>
               </Button>
             </Link>
@@ -64,8 +65,9 @@ const Header = () => {
               <Button
                 variant={isHarmonicField ? "default" : "ghost"}
                 size="sm"
+                className="px-2 sm:px-3"
               >
-                <Music2 className="w-4 h-4 mr-0 sm:mr-2" />
+                <Music2 className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">Campo</span>
               </Button>
             </Link>
@@ -74,9 +76,9 @@ const Header = () => {
               <Button
                 variant={isFavorites ? "default" : "ghost"}
                 size="sm"
-                className="relative"
+                className="relative px-2 sm:px-3"
               >
-                <Heart className="w-4 h-4 mr-0 sm:mr-2" />
+                <Heart className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:inline">Favoritos</span>
                 {favorites.length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -86,24 +88,24 @@ const Header = () => {
               </Button>
             </Link>
             
-            <Link to="/sobre">
+            <Link to="/sobre" className="hidden md:inline-block">
               <Button
                 variant={isAbout ? "default" : "ghost"}
                 size="sm"
               >
-                <Info className="w-4 h-4 mr-2 sm:mr-0" />
+                <Info className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Sobre</span>
               </Button>
             </Link>
 
-            <div className="h-6 w-px bg-border mx-1" />
+            <div className="h-6 w-px bg-border mx-1 hidden sm:block" />
             
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="gap-2">
+                  <Button variant="ghost" size="sm" className="gap-2 px-2 sm:px-3">
                     <User className="w-4 h-4" />
-                    <span className="hidden sm:inline">Perfil</span>
+                    <span className="hidden lg:inline">Perfil</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
@@ -119,23 +121,21 @@ const Header = () => {
               </DropdownMenu>
             ) : (
               <Link to="/auth">
-                <Button variant="default" size="sm" className="gap-2">
+                <Button variant="default" size="sm" className="gap-2 px-2 sm:px-3">
                   <LogIn className="w-4 h-4" />
-                  <span className="hidden sm:inline">Entrar</span>
+                  <span className="hidden lg:inline">Entrar</span>
                 </Button>
               </Link>
             )}
 
-            <div className="h-6 w-px bg-border mx-1" />
-            
             <Button
               variant={leftHanded ? "default" : "outline"}
               size="sm"
               onClick={() => setLeftHanded(!leftHanded)}
-              className="transition-all"
+              className="transition-all px-2 sm:px-3 hidden sm:inline-flex"
             >
-              <Hand className="w-4 h-4 sm:mr-2" />
-              <span className="hidden sm:inline">
+              <Hand className="w-4 h-4 lg:mr-2" />
+              <span className="hidden lg:inline">
                 {leftHanded ? "Canhoto" : "Destro"}
               </span>
             </Button>

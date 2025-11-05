@@ -100,7 +100,7 @@ export const ChatWidget = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg hover:scale-110 transition-transform z-50 p-0 overflow-hidden bg-white"
+          className="fixed bottom-4 right-4 h-14 w-14 sm:h-16 sm:w-16 sm:bottom-6 sm:right-6 rounded-full shadow-lg hover:scale-110 transition-transform z-50 p-0 overflow-hidden bg-white"
           size="icon"
         >
           <img src={rzdLogo} alt="RZD Assistant" className="h-full w-full object-contain p-2" />
@@ -109,9 +109,9 @@ export const ChatWidget = () => {
 
       {/* Widget de chat */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 h-[500px] bg-background border border-border rounded-lg shadow-2xl flex flex-col z-50">
+        <div className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 w-full sm:w-96 h-[70vh] sm:h-[500px] bg-background border-t sm:border border-border sm:rounded-lg shadow-2xl flex flex-col z-50">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border">
+          <div className="flex items-center justify-between p-4 border-b border-border bg-background">
             <div className="flex items-center gap-3">
               <img src={rzdLogo} alt="RZD" className="h-8 w-auto" />
               <div>
@@ -165,7 +165,7 @@ export const ChatWidget = () => {
           </ScrollArea>
 
           {/* Input */}
-          <div className="p-4 border-t border-border">
+          <div className="p-4 border-t border-border bg-background">
             <div className="flex gap-2">
               <Input
                 value={input}

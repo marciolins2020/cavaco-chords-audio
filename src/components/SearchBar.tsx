@@ -142,7 +142,7 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
             onFocus={() => query && setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
             placeholder="Digite o acorde (ex: C, Dm7, G/B, A#m)"
-            className="w-full pl-12 pr-4 py-4 text-lg rounded-xl border-2 border-border bg-background focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none transition-all"
+            className="w-full pl-12 pr-4 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-2 border-border bg-background focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none transition-all"
           />
         </div>
       </form>
