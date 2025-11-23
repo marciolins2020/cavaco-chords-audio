@@ -4,6 +4,7 @@ import { useApp } from "@/contexts/AppContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import rzdLogo from "@/assets/logo-rzd-final.png";
+import { JSONImporter } from "@/components/JSONImporter";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,7 +23,7 @@ import { useState } from "react";
 import { useTheme } from "next-themes";
 
 const Header = () => {
-  const { leftHanded, setLeftHanded, favorites } = useApp();
+  const { leftHanded, setLeftHanded, favorites, importChordDatabase } = useApp();
   const { user, signOut } = useAuth();
   const { theme, setTheme } = useTheme();
   const location = useLocation();
@@ -203,6 +204,8 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
+            <JSONImporter onImport={importChordDatabase} />
+            
             <Link to="/">
               <Button
                 variant={isHome ? "default" : "ghost"}

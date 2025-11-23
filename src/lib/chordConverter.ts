@@ -10,8 +10,8 @@ function sanitizeSuffix(suffix: string): string {
     .replace(/b/g, 'b');  // Mantém b
 }
 
-// Mapeamento de sufixos para qualidade e informações de intervalo
-const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; description: string }> = {
+// Exporta o SUFFIX_MAP para uso em outros arquivos
+export const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; description: string }> = {
   "major": { quality: "", intervals: ["1", "3", "5"], description: "Maior" },
   "minor": { quality: "m", intervals: ["1", "b3", "5"], description: "Menor" },
   "7": { quality: "7", intervals: ["1", "3", "5", "b7"], description: "Sétima" },

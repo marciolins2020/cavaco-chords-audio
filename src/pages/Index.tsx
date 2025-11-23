@@ -3,15 +3,42 @@ import { Music2, Guitar } from "lucide-react";
 import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
-import { convertedChords } from "@/lib/chordConverter";
 import { useNavigate } from "react-router-dom";
+import { useApp } from "@/contexts/AppContext";
+import { ChordEntry } from "@/types/chords";
+import { SUFFIX_MAP } from "@/lib/chordConverter";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const { chordDatabase } = useApp();
   
-  // Use converted chords from cavaquinho-source.json
-  const allChords = convertedChords;
+  // Converte o banco de dados para o formato ChordEntry
+  const allChords = useMemo(() => {
+    return chordDatabase.chords.map((chord): ChordEntry => {
+      const suffixInfo = SUFFIX_MAP[chord.suffix] || {
+        quality: chord.suffix,
+        intervals: ["1", "3", "5"],
+        description: chord.suffix
+      };
+      
+      return {
+        id: chord.key + suffixInfo.quality,
+        root: chord.key,
+        quality: suffixInfo.quality,
+        notes: [], // Calculado dinamicamente se necessário
+        intervals: suffixInfo.intervals,
+        variations: chord.positions.map((pos, idx) => ({
+          frets: pos.frets as [number, number, number, number],
+          fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+          barre: null, // Simplificado por enquanto
+          label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
+        })),
+        tags: [],
+        difficulty: 3 as 1 | 2 | 3 | 4 | 5
+      };
+    });
+  }, [chordDatabase]);
 
   const filteredChords = useMemo(() => {
     if (!searchQuery.trim()) return allChords;

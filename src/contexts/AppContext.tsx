@@ -3,6 +3,7 @@ import { useHistory, HistoryEntry } from "@/hooks/useHistory";
 import { useAuth } from "./AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { ChordDatabase, DEFAULT_DB, mergeChordDatabases } from "@/constants/chordDatabase";
 
 interface AppContextType {
   leftHanded: boolean;
@@ -14,6 +15,9 @@ interface AppContextType {
   addToHistory: (chordId: string, context?: HistoryEntry["context"]) => void;
   clearHistory: () => void;
   getRecentChords: (limit?: number) => string[];
+  chordDatabase: ChordDatabase;
+  importChordDatabase: (database: ChordDatabase) => void;
+  resetChordDatabase: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -27,6 +31,21 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [favorites, setFavorites] = useState<string[]>(() => {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
+  });
+
+  // Gerenciamento do banco de dados de acordes
+  const [chordDatabase, setChordDatabase] = useState<ChordDatabase>(() => {
+    const saved = localStorage.getItem("customChordDatabase");
+    if (saved) {
+      try {
+        const customDB = JSON.parse(saved);
+        return mergeChordDatabases(DEFAULT_DB, customDB);
+      } catch (error) {
+        console.error("Erro ao carregar banco customizado:", error);
+        return DEFAULT_DB;
+      }
+    }
+    return DEFAULT_DB;
   });
 
   const { user } = useAuth();
@@ -117,6 +136,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const isFavorite = (chordId: string) => favorites.includes(chordId);
 
+  // Importa um banco de dados de acordes customizado
+  const importChordDatabase = (customDB: ChordDatabase) => {
+    const merged = mergeChordDatabases(DEFAULT_DB, customDB);
+    setChordDatabase(merged);
+    localStorage.setItem("customChordDatabase", JSON.stringify(customDB));
+    toast.success("Banco de acordes atualizado!", {
+      description: `${customDB.chords.length} acordes importados`,
+    });
+  };
+
+  // Reseta para o banco de dados padrão
+  const resetChordDatabase = () => {
+    setChordDatabase(DEFAULT_DB);
+    localStorage.removeItem("customChordDatabase");
+    toast.success("Banco de acordes restaurado para o padrão");
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -129,6 +165,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         addToHistory,
         clearHistory,
         getRecentChords,
+        chordDatabase,
+        importChordDatabase,
+        resetChordDatabase,
       }}
     >
       {children}
