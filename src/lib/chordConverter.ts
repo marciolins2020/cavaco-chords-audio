@@ -190,12 +190,19 @@ export function convertCavaquinhoChords(): ChordEntry[] {
           barre: template.barre || null,
           label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
         }))
-      : chord.positions.map((pos: any, idx: number) => ({
-          frets: pos.frets as [number, number, number, number],
-          fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
-          barre: pos.barre || null,
-          label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
-        }));
+      : chord.positions.map((pos: any, idx: number) => {
+          // CORREÇÃO: baseFret indica que os frets são RELATIVOS ao baseFret
+          // Precisamos somar o baseFret aos frets para obter as posições absolutas
+          const baseFret = pos.baseFret || 0;
+          const absoluteFrets = pos.frets.map((f: number) => f === 0 ? baseFret : f + baseFret);
+          
+          return {
+            frets: absoluteFrets as [number, number, number, number],
+            fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+            barre: pos.barre || null,
+            label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
+          };
+        });
     
     // Calcula as notas REAIS da primeira posição (principal)
     const notes = variations.length > 0
