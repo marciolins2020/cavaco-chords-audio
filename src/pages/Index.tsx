@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useApp } from "@/contexts/AppContext";
 import { ChordEntry } from "@/types/chords";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
+import juninhoBg from "@/assets/juninho-header-bg.jpg";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,8 +57,14 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden">
+        {/* Background image with fade */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: `url(${juninhoBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-background/80" />
+        
         <div className="container mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
             <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 rounded-full text-xs sm:text-sm text-primary border border-primary/20">
