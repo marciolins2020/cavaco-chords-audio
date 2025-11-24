@@ -184,22 +184,34 @@ export function convertCavaquinhoChords(): ChordEntry[] {
     const correctTemplates = getCorrectTemplates(chord.key, chord.suffix);
     
     const variations = correctTemplates 
-      ? correctTemplates.map((template, idx) => ({
-          frets: template.frets as [number, number, number, number],
-          fingers: template.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
-          barre: template.barre || null,
-          label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
-        }))
+      ? correctTemplates.map((template, idx) => {
+          const activeFrets = template.frets.filter((f: number) => f > 0);
+          const minFret = activeFrets.length > 0 ? Math.min(...activeFrets) : 0;
+          const startFret = minFret > 3 ? minFret - 1 : 1;
+          
+          return {
+            frets: template.frets as [number, number, number, number],
+            fingers: template.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+            barre: template.barre || null,
+            startFret,
+            label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
+          };
+        })
       : chord.positions.map((pos: any, idx: number) => {
           // CORREÇÃO: baseFret indica que os frets são RELATIVOS ao baseFret
           // Precisamos somar o baseFret aos frets para obter as posições absolutas
           const baseFret = pos.baseFret || 0;
           const absoluteFrets = pos.frets.map((f: number) => f === 0 ? baseFret : f + baseFret);
           
+          const activeFrets = absoluteFrets.filter((f: number) => f > 0);
+          const minFret = activeFrets.length > 0 ? Math.min(...activeFrets) : 0;
+          const startFret = minFret > 3 ? minFret - 1 : 1;
+          
           return {
             frets: absoluteFrets as [number, number, number, number],
             fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
             barre: pos.barre || null,
+            startFret,
             label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
           };
         });
