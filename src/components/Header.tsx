@@ -4,6 +4,7 @@ import { useApp } from "@/contexts/AppContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import rzdLogo from "@/assets/logo-rzd-final.png";
+import headerBg from "@/assets/juninho-header-bg.jpg";
 import { JSONImporter } from "@/components/JSONImporter";
 import {
   DropdownMenu,
@@ -36,8 +37,16 @@ const Header = () => {
   const isRanking = location.pathname === "/ranking";
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
-      <div className="container mx-auto px-2 sm:px-4 py-2">
+    <header className="sticky top-0 z-50 border-b relative overflow-hidden">
+      {/* Background image with fade */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-20"
+        style={{ backgroundImage: `url(${headerBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background" />
+      
+      {/* Content */}
+      <div className="relative container mx-auto px-2 sm:px-4 py-2">
         <div className="flex items-center justify-between gap-2">
           {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -191,14 +200,11 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
             <img 
               src={rzdLogo} 
-              alt="RZD Music - Dicionário de Acordes para Cavaquinho" 
+              alt="RZD Music" 
               className="h-10 sm:h-13 md:h-16 w-auto transition-transform group-hover:scale-105"
             />
             <div className="hidden md:block">
-              <h1 className="text-xl md:text-2xl font-bold leading-tight">
-                Dicionário de Acordes
-              </h1>
-              <p className="text-xs md:text-sm text-muted-foreground">Cavaquinho DGBD</p>
+              <p className="text-lg md:text-xl font-semibold">Cavaquinho DGBD</p>
             </div>
           </Link>
 
