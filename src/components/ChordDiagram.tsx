@@ -180,9 +180,24 @@ const ChordDiagram: React.FC<Props> = ({
             </g>
           );
         })}
+        {/* Indicador de traste inicial quando startFret > 1 */}
+        {startFret > 1 && (
+          <text
+            x={margin - 15}
+            y={rowY(1)}
+            textAnchor="middle"
+            fontSize="11"
+            fill="currentColor"
+            opacity={0.6}
+            fontWeight="600"
+            style={textAnchorStyle}
+          >
+            {startFret}fr
+          </text>
+        )}
       </svg>
       {label && (
-        <span className="text-sm text-muted-foreground font-medium">{label}</span>
+        <div className="text-sm text-muted-foreground font-medium mt-1">{label}</div>
       )}
     </div>
   );

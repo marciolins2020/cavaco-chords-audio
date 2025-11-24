@@ -44,12 +44,12 @@ class AudioService {
 
     const attack = 0.01;
     const decay = isBlock ? 0.1 : 0.3;
-    const sustain = isBlock ? 0.0 : 0.4;
+    const sustain = isBlock ? 0.1 : 0.4; // NUNCA pode ser 0 no exponentialRamp
     const release = isBlock ? 0.05 : 0.8;
     const peakGain = 0.5;
 
-    gain.gain.setValueAtTime(0, startTime);
-    gain.gain.linearRampToValueAtTime(peakGain, startTime + attack);
+    gain.gain.setValueAtTime(0.001, startTime); // Começa acima de 0 para exponentialRamp
+    gain.gain.exponentialRampToValueAtTime(peakGain, startTime + attack);
     gain.gain.exponentialRampToValueAtTime(sustain * peakGain, startTime + attack + decay);
     gain.gain.exponentialRampToValueAtTime(0.001, startTime + attack + decay + duration + release);
 
