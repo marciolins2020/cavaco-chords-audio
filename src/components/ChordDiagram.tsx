@@ -21,7 +21,14 @@ const ChordDiagram: React.FC<Props> = ({
   const width = 160;
   const height = 200;
   const margin = 30;
-  const fretCount = 5;
+  
+  // Calcular número de trastes dinamicamente baseado nas posições dos dedos
+  const activeFrets = frets.filter(f => f > 0);
+  const maxFret = activeFrets.length > 0 ? Math.max(...activeFrets) : startFret;
+  const minFret = startFret;
+  
+  // Número de trastes a mostrar: mínimo 4, máximo 5, ou o suficiente para cobrir todos os dedos
+  const fretCount = Math.min(5, Math.max(4, maxFret - minFret + 2));
   
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
