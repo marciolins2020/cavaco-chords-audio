@@ -1,147 +1,90 @@
-// Afinação padrão do Cavaquinho: D-G-B-D (da mais grave para mais aguda)
-const BASE_FREQ: Record<1 | 2 | 3 | 4, number> = {
-  4: 293.66, // D4 (corda mais grave)
-  3: 392.00, // G4
-  2: 493.88, // B4
-  1: 587.33  // D5 (corda mais aguda)
-};
+import { TUNING_FREQUENCIES } from '@/constants/chordDatabase';
 
-// Calcula a frequência de uma nota em uma determinada casa
-// Fórmula: f = f0 * (2 ^ (casa / 12))
-const fretToFreq = (stringIndex: 1 | 2 | 3 | 4, fret: number): number | null => {
-  if (fret < 0) return null; // -1 = abafado
-  return BASE_FREQ[stringIndex] * Math.pow(2, fret / 12);
-};
+class AudioService {
+  private ctx: AudioContext | null = null;
+  private masterGain: GainNode | null = null;
 
-let audioContext: AudioContext | null = null;
-let masterGain: GainNode | null = null;
+  constructor() {}
 
-function getAudioContext(): AudioContext {
-  if (!audioContext) {
-    // Suporte para Safari e outros navegadores
-    audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-    
-    // Cria um GainNode master para controlar o volume geral
-    masterGain = audioContext.createGain();
-    masterGain.connect(audioContext.destination);
-    masterGain.gain.value = 0.4; // 40% do volume máximo
-    
-    console.log("AudioContext criado:", audioContext.sampleRate, "Hz");
+  private init() {
+    if (!this.ctx) {
+      // Robust initialization for all browsers
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      if (AudioContextClass) {
+        this.ctx = new AudioContextClass();
+        this.masterGain = this.ctx.createGain();
+        this.masterGain.connect(this.ctx.destination);
+        this.masterGain.gain.value = 0.4;
+      }
+    }
+    // CRITICAL FIX: Always try to resume context on user interaction
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(e => console.error("Audio resume failed", e));
+    }
   }
-  return audioContext;
+
+  private getFrequency(stringIndex: number, fret: number): number {
+    const openFreq = TUNING_FREQUENCIES[stringIndex];
+    if (fret < 0) return 0;
+    return openFreq * Math.pow(2, fret / 12);
+  }
+
+  private playTone(freq: number, startTime: number, duration: number, isBlock: boolean) {
+    if (!this.ctx || !this.masterGain) return;
+    if (freq === 0) return;
+
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(freq, startTime);
+
+    gain.connect(this.masterGain);
+    osc.connect(gain);
+
+    const attack = 0.01;
+    const decay = isBlock ? 0.1 : 0.3;
+    const sustain = isBlock ? 0.0 : 0.4;
+    const release = isBlock ? 0.05 : 0.8;
+    const peakGain = 0.5;
+
+    gain.gain.setValueAtTime(0, startTime);
+    gain.gain.linearRampToValueAtTime(peakGain, startTime + attack);
+    gain.gain.exponentialRampToValueAtTime(sustain * peakGain, startTime + attack + decay);
+    gain.gain.exponentialRampToValueAtTime(0.001, startTime + attack + decay + duration + release);
+
+    osc.start(startTime);
+    osc.stop(startTime + attack + decay + duration + release + 0.1);
+  }
+
+  public playChord(frets: number[], mode: 'strum' | 'block') {
+    this.init(); // Initialize checks state inside
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    const isBlock = mode === 'block';
+    const strumSpeed = isBlock ? 0.005 : 0.04; 
+
+    frets.forEach((fret, stringIndex) => {
+      const freq = this.getFrequency(stringIndex, fret);
+      if (fret >= 0) {
+          const delay = stringIndex * strumSpeed;
+          this.playTone(freq, now + delay, isBlock ? 0.1 : 1.0, isBlock);
+      }
+    });
+  }
 }
 
-// Cria um oscilador com envelope ADSR aprimorado para simular a beliscada na corda
-function playNote(
-  ctx: AudioContext,
-  frequency: number,
-  startTime: number,
-  duration: number,
-  isBlock: boolean
-): void {
-  if (!masterGain) return;
-  
-  // Oscilador com onda triangular (simula cordas de nylon)
-  const oscillator = ctx.createOscillator();
-  oscillator.type = 'triangle';
-  oscillator.frequency.setValueAtTime(frequency, startTime);
+export const audioService = new AudioService();
 
-  // GainNode para controlar o envelope (ADSR)
-  const gainNode = ctx.createGain();
-  
-  // Envelope ADSR aprimorado:
-  // Attack: 0.01s (sobe rápido - ataque da beliscada)
-  // Decay: variável (mais curto para modo block)
-  // Sustain: variável (mais curto para modo block)
-  // Release: variável (decaimento natural)
-  
-  const attackTime = 0.01;
-  const decayTime = isBlock ? 0.1 : 0.3;
-  const sustainLevel = isBlock ? 0.0 : 0.4;
-  const releaseTime = isBlock ? 0.05 : 0.8;
-  const peakGain = 0.5; // 50% de volume por nota
-  
-  // Curva de envelope mais natural usando exponentialRamp
-  gainNode.gain.setValueAtTime(0, startTime);
-  gainNode.gain.linearRampToValueAtTime(peakGain, startTime + attackTime);
-  
-  // Usa exponential ramp para decay e release (mais natural)
-  gainNode.gain.exponentialRampToValueAtTime(
-    Math.max(sustainLevel * peakGain, 0.001), 
-    startTime + attackTime + decayTime
-  );
-  gainNode.gain.exponentialRampToValueAtTime(
-    0.001, 
-    startTime + attackTime + decayTime + duration + releaseTime
-  );
-
-  // Conecta oscilador -> gain -> master gain -> destino
-  oscillator.connect(gainNode);
-  gainNode.connect(masterGain);
-
-  // Agenda o início e fim
-  oscillator.start(startTime);
-  oscillator.stop(startTime + attackTime + decayTime + duration + releaseTime + 0.1);
-
-  console.log(`Nota: ${frequency.toFixed(2)} Hz em ${startTime.toFixed(3)}s (${isBlock ? 'block' : 'strum'})`);
-}
-
+// Legacy functions for compatibility
 export async function initAudio(): Promise<void> {
-  const ctx = getAudioContext();
-  
-  // Resume o contexto se estiver suspenso (política do browser)
-  if (ctx.state === 'suspended') {
-    await ctx.resume();
-    console.log("AudioContext retomado");
-  }
-  
-  console.log("Áudio inicializado com sucesso");
+  // No-op, audioService handles initialization automatically
 }
 
 export async function playChord(
   frets: [number, number, number, number],
   mode: "strum" | "block" = "strum"
 ): Promise<void> {
-  try {
-    const ctx = getAudioContext();
-    
-    // Resume o contexto se necessário
-    if (ctx.state === 'suspended') {
-      await ctx.resume();
-    }
-
-    const now = ctx.currentTime;
-    const strings: (1 | 2 | 3 | 4)[] = [4, 3, 2, 1];
-    const isBlock = mode === "block";
-    
-    // Velocidade do dedilhado (mais rápido no modo block)
-    const strumDelay = isBlock ? 0.005 : 0.04;
-    
-    // Duração da nota (mais curta no modo block)
-    const noteDuration = isBlock ? 0.1 : 1.0;
-    
-    // Calcula as frequências de cada corda
-    const frequencies = strings
-      .map((stringIndex, i) => ({
-        freq: fretToFreq(stringIndex, frets[i]),
-        stringIndex,
-        fret: frets[i]
-      }))
-      .filter((note) => note.freq !== null) as { freq: number; stringIndex: number; fret: number }[];
-
-    if (frequencies.length === 0) {
-      throw new Error("Nenhuma nota válida para tocar");
-    }
-
-    console.log(`Tocando acorde (${mode}):`, frequencies.map(n => `${n.freq.toFixed(2)}Hz`).join(", "));
-
-    // Toca cada corda com o delay apropriado
-    frequencies.forEach(({ freq }, index) => {
-      const delay = index * strumDelay;
-      playNote(ctx, freq, now + delay, noteDuration, isBlock);
-    });
-  } catch (error) {
-    console.error("Erro ao tocar acorde:", error);
-    throw error;
-  }
+  audioService.playChord(frets, mode);
 }

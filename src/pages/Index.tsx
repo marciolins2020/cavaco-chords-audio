@@ -23,15 +23,15 @@ const Index = () => {
       };
       
       return {
-        id: chord.key + suffixInfo.quality,
-        root: chord.key,
+        id: chord.root + suffixInfo.quality,
+        root: chord.root,
         quality: suffixInfo.quality,
         notes: [], // Calculado dinamicamente se necessário
         intervals: suffixInfo.intervals,
-        variations: chord.positions.map((pos, idx) => ({
-          frets: pos.frets as [number, number, number, number],
-          fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
-          barre: null, // Simplificado por enquanto
+        variations: chord.variations.map((variation, idx) => ({
+          frets: variation.frets,
+          fingers: variation.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+          barre: variation.barre,
           label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
         })),
         tags: [],

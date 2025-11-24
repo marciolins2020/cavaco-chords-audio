@@ -26,9 +26,20 @@ const ChordDiagram: React.FC<Props> = ({
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
 
+  // Transform logic specifically for TEXT elements to un-mirror them
+  const textAnchorStyle: React.CSSProperties = leftHanded ? {
+    transformBox: "fill-box",
+    transformOrigin: "center",
+    transform: "scaleX(-1)"
+  } : {};
+
   return (
     <div className="flex flex-col items-center gap-2">
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto text-foreground">
+      <svg 
+        viewBox={`0 0 ${width} ${height}`} 
+        className="w-full h-auto text-foreground"
+        style={leftHanded ? { transform: "scaleX(-1)" } : undefined}
+      >
         {/* Trastes */}
         {Array.from({ length: fretCount + 1 }).map((_, i) => (
           <line
@@ -57,7 +68,7 @@ const ChordDiagram: React.FC<Props> = ({
           />
         ))}
         
-        {/* Indicadores de corda (4 3 2 1) */}
+        {/* Indicadores de corda (4 3 2 1) - FIXED: un-mirrored in left-handed mode */}
         {strings.map((s, i) => (
           <text
             key={`string-${s}`}
@@ -68,12 +79,13 @@ const ChordDiagram: React.FC<Props> = ({
             fill="currentColor"
             opacity={0.5}
             fontWeight="600"
+            style={textAnchorStyle}
           >
             {s}
           </text>
         ))}
         
-        {/* X/O marcadores */}
+        {/* X/O marcadores - FIXED: un-mirrored in left-handed mode */}
         {strings.map((s, i) => {
           const f = frets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
           if (f < 0) {
@@ -86,6 +98,7 @@ const ChordDiagram: React.FC<Props> = ({
                 fontSize="16"
                 fontWeight="bold"
                 fill="currentColor"
+                style={textAnchorStyle}
               >
                 ×
               </text>
@@ -120,7 +133,7 @@ const ChordDiagram: React.FC<Props> = ({
           />
         )}
         
-        {/* Dedos */}
+        {/* Dedos - FIXED: un-mirrored finger numbers in left-handed mode */}
         {strings.map((s, i) => {
           const f = frets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
           if (f <= 0) return null;
@@ -146,6 +159,7 @@ const ChordDiagram: React.FC<Props> = ({
                   fontWeight="bold"
                   textAnchor="middle"
                   fill="white"
+                  style={textAnchorStyle}
                 >
                   {finger}
                 </text>
