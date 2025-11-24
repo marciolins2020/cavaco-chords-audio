@@ -26,6 +26,13 @@ const ChordDiagram: React.FC<Props> = ({
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
 
+  // Ajustar frets para serem relativos ao startFret
+  const relativeFrets: [number, number, number, number] = frets.map(f => {
+    if (f < 0) return f; // Mute (X)
+    if (f === 0) return 0; // Open string
+    return f - startFret + 1; // Ajusta para posição relativa
+  }) as [number, number, number, number];
+
   // Transform logic specifically for TEXT elements to un-mirror them
   const textAnchorStyle: React.CSSProperties = leftHanded ? {
     transformBox: "fill-box",
@@ -85,9 +92,9 @@ const ChordDiagram: React.FC<Props> = ({
           </text>
         ))}
         
-        {/* X/O marcadores - FIXED: un-mirrored in left-handed mode */}
+        {/* X/O marcadores */}
         {strings.map((s, i) => {
-          const f = frets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
+          const f = relativeFrets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
           if (f < 0) {
             return (
               <text
@@ -121,21 +128,27 @@ const ChordDiagram: React.FC<Props> = ({
         })}
         
         {/* Pestana */}
-        {barre && (
-          <rect
-            x={colX(strings.indexOf(barre.fromString)) - 8}
-            y={rowY(barre.fret) - (rowY(barre.fret) - rowY(barre.fret - 1)) / 2 - 7}
-            width={colX(strings.indexOf(barre.toString)) - colX(strings.indexOf(barre.fromString)) + 16}
-            height={14}
-            rx={7}
-            fill="hsl(var(--primary))"
-            opacity={0.9}
-          />
-        )}
+        {barre && (() => {
+          const relativeBarre = barre.fret - startFret + 1;
+          if (relativeBarre > 0 && relativeBarre <= fretCount) {
+            return (
+              <rect
+                x={colX(strings.indexOf(barre.fromString)) - 8}
+                y={rowY(relativeBarre) - (rowY(relativeBarre) - rowY(relativeBarre - 1)) / 2 - 7}
+                width={colX(strings.indexOf(barre.toString)) - colX(strings.indexOf(barre.fromString)) + 16}
+                height={14}
+                rx={7}
+                fill="hsl(var(--primary))"
+                opacity={0.9}
+              />
+            );
+          }
+          return null;
+        })()}
         
-        {/* Dedos - FIXED: un-mirrored finger numbers in left-handed mode */}
+        {/* Dedos */}
         {strings.map((s, i) => {
-          const f = frets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
+          const f = relativeFrets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
           if (f <= 0) return null;
           
           const cx = colX(i);
