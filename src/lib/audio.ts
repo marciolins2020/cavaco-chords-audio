@@ -63,7 +63,7 @@ class AudioService {
 
     const now = this.ctx.currentTime;
     const isBlock = mode === 'block';
-    const strumSpeed = isBlock ? 0.005 : 0.04; 
+    const strumSpeed = isBlock ? 0 : 0.08;
 
     frets.forEach((fret, stringIndex) => {
       const freq = this.getFrequency(stringIndex, fret);
