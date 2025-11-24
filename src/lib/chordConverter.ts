@@ -63,15 +63,38 @@ export const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; 
 
 // Calcula as notas do acorde baseado na tônica e intervalos
 function calculateNotes(root: string, intervals: string[]): string[] {
-  const CHROMATIC = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+  // Escala cromática que mistura bemóis e sustenidos (notação musical padrão)
+  const CHROMATIC = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+  
+  // Mapa de equivalências para normalizar bemóis e sustenidos
+  const NOTE_TO_INDEX: Record<string, number> = {
+    'C': 0,
+    'C#': 1, 'Db': 1,
+    'D': 2,
+    'D#': 3, 'Eb': 3,
+    'E': 4,
+    'F': 5,
+    'F#': 6, 'Gb': 6,
+    'G': 7,
+    'G#': 8, 'Ab': 8,
+    'A': 9,
+    'A#': 10, 'Bb': 10,
+    'B': 11
+  };
+  
   const INTERVAL_SEMITONES: Record<string, number> = {
     "1": 0, "b2": 1, "2": 2, "b3": 3, "3": 4, "4": 5, "b5": 6, "5": 7,
     "#5": 8, "b6": 8, "6": 9, "bb7": 9, "b7": 10, "7": 11, "b9": 13, "9": 14, "#9": 15, "11": 17, "13": 21
   };
   
-  const rootIndex = CHROMATIC.indexOf(root.replace('b', '#'));
-  if (rootIndex === -1) return [root];
+  // Busca o índice da nota tônica usando o mapa de equivalências
+  const rootIndex = NOTE_TO_INDEX[root];
+  if (rootIndex === undefined) {
+    console.warn(`Nota tônica não reconhecida: ${root}`);
+    return [root];
+  }
   
+  // Calcula cada nota do acorde baseado nos intervalos
   return intervals.map(interval => {
     const semitones = INTERVAL_SEMITONES[interval] || 0;
     const noteIndex = (rootIndex + semitones) % 12;
