@@ -1,6 +1,7 @@
 import { ChordEntry } from "@/types/chords";
 import cavaquinhoSource from "@/data/cavaquinho-source.json";
 import { calculateDifficulty as calcDiff } from "@/utils/chordAnalysis";
+import { getCorrectTemplates } from "./correctChordTemplates";
 
 // Sanitiza o suffix para ser usado em URLs
 function sanitizeSuffix(suffix: string): string {
@@ -179,19 +180,31 @@ export function convertCavaquinhoChords(): ChordEntry[] {
     // ID combina key + quality (já sanitizado no SUFFIX_MAP)
     const id = chord.key + suffixInfo.quality;
     
+    // Tenta obter templates corretos do GitHub primeiro
+    const correctTemplates = getCorrectTemplates(chord.key, chord.suffix);
+    
+    const variations = correctTemplates 
+      ? correctTemplates.map((template, idx) => ({
+          frets: template.frets as [number, number, number, number],
+          fingers: template.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+          barre: template.barre || null,
+          label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
+        }))
+      : chord.positions.map((pos: any, idx: number) => ({
+          frets: pos.frets as [number, number, number, number],
+          fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+          barre: pos.barre || null,
+          label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
+        }));
+    
     // Calcula as notas REAIS da primeira posição (principal)
-    const notes = chord.positions.length > 0 
-      ? calculateActualNotes(chord.positions[0].frets)
+    const notes = variations.length > 0
+      ? calculateActualNotes(variations[0].frets)
       : calculateNotes(chord.key, suffixInfo.intervals);
     
-    const variations = chord.positions.map((pos: any, idx: number) => ({
-      frets: pos.frets as [number, number, number, number],
-      fingers: pos.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
-      barre: pos.barre || null,
-      label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
-    }));
-    
-    const difficulty = calculateDifficulty(chord.positions);
+    const difficulty = calculateDifficulty(
+      correctTemplates || chord.positions
+    );
     const tags = generateTags(chord.suffix, chord.positions);
     
     chords.push({
