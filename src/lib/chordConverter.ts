@@ -102,6 +102,40 @@ function calculateNotes(root: string, intervals: string[]): string[] {
   });
 }
 
+// Calcula as notas REAIS que soam quando você toca a posição específica no cavaquinho
+function calculateActualNotes(frets: number[]): string[] {
+  const CHROMATIC = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+  
+  // Afinação padrão do cavaquinho: D-G-B-D
+  const OPEN_STRINGS = ["D", "G", "B", "D"]; // índices 0,1,2,3 = D(grave), G, B, D(aguda)
+  
+  const NOTE_TO_INDEX: Record<string, number> = {
+    'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3, 'E': 4,
+    'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8, 'Ab': 8,
+    'A': 9, 'A#': 10, 'Bb': 10, 'B': 11
+  };
+  
+  const notes: string[] = [];
+  const notesSet = new Set<string>(); // Para evitar duplicatas
+  
+  // Mapeia frets[0,1,2,3] para as cordas D(grave), G, B, D(aguda)
+  frets.forEach((fret, stringIndex) => {
+    if (fret >= 0) { // Ignora cordas abafadas (-1)
+      const openNote = OPEN_STRINGS[stringIndex];
+      const openIndex = NOTE_TO_INDEX[openNote];
+      const noteIndex = (openIndex + fret) % 12;
+      const noteName = CHROMATIC[noteIndex];
+      
+      if (!notesSet.has(noteName)) {
+        notes.push(noteName);
+        notesSet.add(noteName);
+      }
+    }
+  });
+  
+  return notes;
+}
+
 // Calcula dificuldade baseado em frets e dedilhado
 function calculateDifficulty(positions: any[]): 1 | 2 | 3 | 4 | 5 {
   if (!positions.length) return 3;
@@ -144,7 +178,11 @@ export function convertCavaquinhoChords(): ChordEntry[] {
     
     // ID combina key + quality (já sanitizado no SUFFIX_MAP)
     const id = chord.key + suffixInfo.quality;
-    const notes = calculateNotes(chord.key, suffixInfo.intervals);
+    
+    // Calcula as notas REAIS da primeira posição (principal)
+    const notes = chord.positions.length > 0 
+      ? calculateActualNotes(chord.positions[0].frets)
+      : calculateNotes(chord.key, suffixInfo.intervals);
     
     const variations = chord.positions.map((pos: any, idx: number) => ({
       frets: pos.frets as [number, number, number, number],
