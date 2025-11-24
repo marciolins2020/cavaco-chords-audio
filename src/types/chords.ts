@@ -5,6 +5,7 @@ export interface Fingering {
   frets: [Fret, Fret, Fret, Fret]; // ordem: cordas 4-3-2-1
   fingers?: [number|null, number|null, number|null, number|null]; // dedos 1..4 ou null
   barre?: { fromString: StringIndex; toString: StringIndex; fret: Fret } | null;
+  startFret?: number; // Casa inicial para o diagrama
   label?: string; // "aberto", "pestana 5", etc
 }
 

@@ -144,6 +144,7 @@ const ChordDetail = () => {
                     frets={currentVariation.frets}
                     fingers={currentVariation.fingers}
                     barre={currentVariation.barre}
+                    startFret={currentVariation.startFret}
                     label={currentVariation.label}
                   />
                 </div>
@@ -218,6 +219,7 @@ const ChordDetail = () => {
                       frets={variation.frets}
                       fingers={variation.fingers}
                       barre={variation.barre}
+                      startFret={variation.startFret}
                       label={variation.label}
                     />
                   </Card>
