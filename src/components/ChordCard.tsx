@@ -85,6 +85,7 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
               frets={mainVariation.frets}
               fingers={mainVariation.fingers}
               barre={mainVariation.barre}
+              startFret={mainVariation.startFret}
             />
           </div>
           

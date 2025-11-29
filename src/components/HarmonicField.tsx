@@ -113,7 +113,7 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
                       frets={chord.variations[0].frets}
                       fingers={chord.variations[0].fingers}
                       barre={chord.variations[0].barre}
-                      startFret={0}
+                      startFret={chord.variations[0].startFret}
                     />
                   </div>
                 </div>
