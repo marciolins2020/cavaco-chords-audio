@@ -66,6 +66,8 @@ export function InteractiveFretboard({
   const width = frets.length * fretWidth + 60;
   const height = strings.length * stringSpacing + 60;
 
+  const getFretX = (index: number) => index * fretWidth + 40;
+
   return (
     <div className={`flex flex-col gap-4 ${className}`}>
       <div className="overflow-x-auto bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 rounded-lg p-6 shadow-lg">
@@ -78,9 +80,9 @@ export function InteractiveFretboard({
           {frets.map((fret, i) => (
             <line
               key={`fret-${fret}`}
-              x1={i * fretWidth + 40}
+              x1={getFretX(i)}
               y1={20}
-              x2={i * fretWidth + 40}
+              x2={getFretX(i)}
               y2={height - 20}
               stroke={fret === 0 ? "#000" : "#8B4513"}
               strokeWidth={fret === 0 ? 4 : 2}
@@ -120,7 +122,7 @@ export function InteractiveFretboard({
           {frets.map((fret, i) => (
             <text
               key={`fret-num-${fret}`}
-              x={i * fretWidth + 40}
+              x={getFretX(i)}
               y={15}
               fontSize="12"
               textAnchor="middle"
@@ -132,9 +134,9 @@ export function InteractiveFretboard({
           ))}
 
           {/* Inlay markers */}
-          {frets.filter(f => [3, 5, 7, 9, 12, 15, 17, 19, 21, 24].includes(f)).map((fret, _) => {
+          {frets.filter(f => [3, 5, 7, 9, 12, 15, 17, 19, 21, 24].includes(f)).map((fret) => {
             const fretIndex = frets.indexOf(fret);
-            const centerX = (fretIndex * fretWidth + (fretIndex + 1) * fretWidth) / 2 + 20;
+            const centerX = (getFretX(fretIndex) + getFretX(fretIndex + 1)) / 2;
             const centerY = height / 2;
             const isDoubleDot = fret === 12 || fret === 24;
             
@@ -174,7 +176,10 @@ export function InteractiveFretboard({
           {/* Interactive points */}
           {frets.map((fret, fretIndex) =>
             strings.map((stringNum, stringIndex) => {
-              const x = fretIndex * fretWidth + (fret === 0 ? 40 : (fretIndex * fretWidth + (fretIndex + 1) * fretWidth) / 2 + 20);
+              const isOpenString = fret === 0;
+              const x = isOpenString
+                ? getFretX(0)
+                : (getFretX(fretIndex) + getFretX(fretIndex + 1)) / 2;
               const y = stringIndex * stringSpacing + 40;
               const isSelected = isNoteSelected(stringNum, fret);
               const isHovered = isNoteHovered(stringNum, fret);
