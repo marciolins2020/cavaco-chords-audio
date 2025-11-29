@@ -100,16 +100,16 @@ const ChordDiagram: React.FC<Props> = ({
                 <circle
                   cx={cx - 15}
                   cy={cy}
-                  r={3}
+                  r={5}
                   fill="hsl(var(--muted-foreground))"
-                  opacity={0.3}
+                  opacity={0.5}
                 />
                 <circle
                   cx={cx + 15}
                   cy={cy}
-                  r={3}
+                  r={5}
                   fill="hsl(var(--muted-foreground))"
-                  opacity={0.3}
+                  opacity={0.5}
                 />
               </g>
             );
@@ -121,9 +121,9 @@ const ChordDiagram: React.FC<Props> = ({
               key={`marker-${i}`}
               cx={cx}
               cy={cy}
-              r={3}
+              r={5}
               fill="hsl(var(--muted-foreground))"
-              opacity={0.3}
+              opacity={0.5}
             />
           );
         })}
