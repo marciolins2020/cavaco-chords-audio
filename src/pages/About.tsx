@@ -1,5 +1,6 @@
 import { Music2, Guitar, Zap, Heart, Download } from "lucide-react";
 import Header from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -198,26 +199,9 @@ const About = () => {
           </Card>
         </section>
 
-        {/* Footer */}
-        <footer className="text-center mt-16 py-8 border-t border-border">
-          <div className="flex flex-col items-center gap-2 mb-4">
-            <img 
-              src={rzdLogo} 
-              alt="RZD Music" 
-              className="w-14 h-14 object-contain opacity-90"
-            />
-            <p className="text-lg font-bold">
-              Powered by <span className="text-primary">RZD Music</span>
-            </p>
-          </div>
-          <p className="text-muted-foreground">
-            © 2024 Dicionário de Acordes de Cavaquinho
-          </p>
-          <p className="text-sm text-muted-foreground mt-2">
-            Mentoria: Juninho Rezende · Tecnologia: RedMaxx
-          </p>
-        </footer>
       </main>
+      
+      <Footer />
     </div>
   );
 };

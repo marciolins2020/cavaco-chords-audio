@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ChordDiagram from "@/components/ChordDiagram";
 import Header from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { ChordEntry } from "@/types/chords";
 import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
@@ -229,6 +230,8 @@ const ChordDetail = () => {
           )}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };
