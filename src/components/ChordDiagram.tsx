@@ -54,6 +54,20 @@ const ChordDiagram: React.FC<Props> = ({
         className="w-full h-auto text-foreground"
         style={leftHanded ? { transform: "scaleX(-1)" } : undefined}
       >
+        {/* Sombreamento das casas */}
+        {Array.from({ length: fretCount }).map((_, i) => (
+          <rect
+            key={`shadow-${i}`}
+            x={margin}
+            y={rowY(i)}
+            width={width - 2 * margin}
+            height={rowY(i + 1) - rowY(i)}
+            fill="hsl(var(--muted))"
+            opacity={i % 2 === 0 ? 0.03 : 0.06}
+            stroke="none"
+          />
+        ))}
+
         {/* Trastes */}
         {Array.from({ length: fretCount + 1 }).map((_, i) => (
           <line
