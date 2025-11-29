@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { Music2, Guitar } from "lucide-react";
 import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { SearchBar } from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "@/contexts/AppContext";
@@ -147,6 +148,8 @@ const Index = () => {
           </div>
         )}
       </main>
+
+      <Footer />
     </div>
   );
 };
