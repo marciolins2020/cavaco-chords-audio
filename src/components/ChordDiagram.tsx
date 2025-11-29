@@ -82,6 +82,52 @@ const ChordDiagram: React.FC<Props> = ({
           />
         ))}
         
+        {/* Marcadores de casas (dots) nas casas 3, 5, 7, 9, 12 */}
+        {Array.from({ length: fretCount }).map((_, i) => {
+          const actualFret = startFret + i;
+          const markerFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
+          if (!markerFrets.includes(actualFret)) return null;
+          
+          // Posição vertical: entre dois trastes
+          const cy = (rowY(i + 1) + rowY(i)) / 2;
+          const cx = width / 2; // Centro horizontal
+          const isDoubleDot = actualFret === 12 || actualFret === 24;
+          
+          if (isDoubleDot) {
+            // Dois pontos para casa 12 e 24
+            return (
+              <g key={`marker-${i}`}>
+                <circle
+                  cx={cx - 15}
+                  cy={cy}
+                  r={3}
+                  fill="hsl(var(--muted-foreground))"
+                  opacity={0.3}
+                />
+                <circle
+                  cx={cx + 15}
+                  cy={cy}
+                  r={3}
+                  fill="hsl(var(--muted-foreground))"
+                  opacity={0.3}
+                />
+              </g>
+            );
+          }
+          
+          // Um ponto para outras casas
+          return (
+            <circle
+              key={`marker-${i}`}
+              cx={cx}
+              cy={cy}
+              r={3}
+              fill="hsl(var(--muted-foreground))"
+              opacity={0.3}
+            />
+          );
+        })}
+        
         {/* Indicadores de corda (4 3 2 1) - FIXED: un-mirrored in left-handed mode */}
         {strings.map((s, i) => (
           <text
