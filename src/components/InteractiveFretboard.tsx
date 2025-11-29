@@ -134,14 +134,39 @@ export function InteractiveFretboard({
           {/* Inlay markers */}
           {frets.filter(f => [3, 5, 7, 9, 12, 15, 17, 19, 21, 24].includes(f)).map((fret, _) => {
             const fretIndex = frets.indexOf(fret);
+            const centerX = (fretIndex * fretWidth + (fretIndex + 1) * fretWidth) / 2 + 20;
+            const centerY = height / 2;
+            const isDoubleDot = fret === 12 || fret === 24;
+            
+            if (isDoubleDot) {
+              return (
+                <g key={`marker-${fret}`}>
+                  <circle
+                    cx={centerX}
+                    cy={centerY - 25}
+                    r={8}
+                    fill="#D2691E"
+                    opacity={0.6}
+                  />
+                  <circle
+                    cx={centerX}
+                    cy={centerY + 25}
+                    r={8}
+                    fill="#D2691E"
+                    opacity={0.6}
+                  />
+                </g>
+              );
+            }
+            
             return (
               <circle
                 key={`marker-${fret}`}
-                cx={(fretIndex * fretWidth + (fretIndex + 1) * fretWidth) / 2 + 20}
-                cy={height / 2}
-                r={fret === 12 || fret === 24 ? 6 : 4}
+                cx={centerX}
+                cy={centerY}
+                r={8}
                 fill="#D2691E"
-                opacity={0.3}
+                opacity={0.6}
               />
             );
           })}
