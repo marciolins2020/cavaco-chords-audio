@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { InteractiveFretboard } from "@/components/InteractiveFretboard";
 import ChordDiagram from "@/components/ChordDiagram";
 import { ChordEntry } from "@/types/chords";
@@ -250,6 +251,8 @@ export default function ChordIdentifier() {
           )}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
