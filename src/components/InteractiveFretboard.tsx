@@ -76,6 +76,19 @@ export function InteractiveFretboard({
           height={height}
           className="mx-auto"
         >
+          {/* Grade/Sombreamento das casas */}
+          {frets.slice(0, -1).map((fret, i) => (
+            <rect
+              key={`fret-shadow-${fret}`}
+              x={getFretX(i)}
+              y={20}
+              width={fretWidth}
+              height={height - 40}
+              fill={i % 2 === 0 ? "rgba(139, 69, 19, 0.03)" : "rgba(139, 69, 19, 0.06)"}
+              stroke="none"
+            />
+          ))}
+
           {/* Frets */}
           {frets.map((fret, i) => (
             <line
