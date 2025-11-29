@@ -217,7 +217,7 @@ export function PracticeMode({
               frets={targetVariation.frets}
               fingers={targetVariation.fingers}
               barre={targetVariation.barre}
-              startFret={0}
+              startFret={targetVariation.startFret}
             />
           </div>
         </Card>
