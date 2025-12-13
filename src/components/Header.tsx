@@ -1,4 +1,4 @@
-import { Hand, Heart, Info, Music2, Target, User, LogOut, LogIn, Menu, Moon, Sun, Trophy } from "lucide-react";
+import { Hand, Heart, Info, Music2, Target, User, LogOut, LogIn, Menu, Moon, Sun, Trophy, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -34,6 +34,7 @@ const Header = () => {
   const isPractice = location.pathname === "/pratica";
   const isAbout = location.pathname === "/sobre";
   const isRanking = location.pathname === "/ranking";
+  const isTuner = location.pathname === "/afinador";
 
   return (
     <header className="sticky top-0 z-50 border-b relative overflow-hidden">
@@ -89,6 +90,16 @@ const Header = () => {
                   >
                     <Trophy className="w-4 h-4 mr-2" />
                     Ranking
+                  </Button>
+                </Link>
+                
+                <Link to="/afinador" onClick={() => setMobileMenuOpen(false)}>
+                  <Button
+                    variant={isTuner ? "default" : "ghost"}
+                    className="w-full justify-start"
+                  >
+                    <Radio className="w-4 h-4 mr-2" />
+                    Afinador
                   </Button>
                 </Link>
                 
@@ -235,6 +246,16 @@ const Header = () => {
               >
                 <Trophy className="w-4 h-4 mr-2" />
                 Ranking
+              </Button>
+            </Link>
+            
+            <Link to="/afinador">
+              <Button
+                variant={isTuner ? "default" : "ghost"}
+                size="sm"
+              >
+                <Radio className="w-4 h-4 mr-2" />
+                Afinador
               </Button>
             </Link>
             

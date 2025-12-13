@@ -186,6 +186,14 @@ class AudioService {
     });
   }
 
+  public playReferenceNote(frequency: number) {
+    this.init();
+    if (!this.ctx) return;
+    
+    const now = this.ctx.currentTime;
+    this.playTone(frequency, now, 2.0, 0.5);
+  }
+
   public playNote(stringIndex: number, fret: number) {
     this.init();
     if (!this.ctx) return;
