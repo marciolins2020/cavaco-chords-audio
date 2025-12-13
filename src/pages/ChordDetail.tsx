@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Volume2, Play, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,24 +11,57 @@ import { ChordEntry } from "@/types/chords";
 import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
-import { convertedChords } from "@/lib/chordConverter";
+import { SUFFIX_MAP } from "@/lib/chordConverter";
 
 const ChordDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [chord, setChord] = useState<ChordEntry | null>(null);
   const [selectedVariation, setSelectedVariation] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const { isFavorite, toggleFavorite, addToHistory } = useApp();
+  const { isFavorite, toggleFavorite, addToHistory, chordDatabase } = useApp();
+
+  // Converte o banco de dados para o formato ChordEntry e encontra o acorde
+  const chord = useMemo(() => {
+    if (!id) return null;
+    
+    // Procura o acorde pelo ID no banco de dados do contexto
+    for (const chordDef of chordDatabase.chords) {
+      const suffixInfo = SUFFIX_MAP[chordDef.suffix] || {
+        quality: chordDef.suffix,
+        intervals: ["1", "3", "5"],
+        description: chordDef.suffix
+      };
+      
+      const chordId = chordDef.root + suffixInfo.quality;
+      
+      if (chordId === id) {
+        return {
+          id: chordId,
+          root: chordDef.root,
+          quality: suffixInfo.quality,
+          notes: [],
+          intervals: suffixInfo.intervals,
+          variations: chordDef.variations.map((variation, idx) => ({
+            frets: variation.frets,
+            fingers: variation.fingers.map((f: number) => f === 0 ? null : f) as [number|null, number|null, number|null, number|null],
+            barre: variation.barre,
+            startFret: variation.startFret,
+            label: idx === 0 ? "Principal" : `Posição ${idx + 1}`
+          })),
+          tags: [],
+          difficulty: 3 as 1 | 2 | 3 | 4 | 5
+        } as ChordEntry;
+      }
+    }
+    
+    return null;
+  }, [id, chordDatabase]);
 
   useEffect(() => {
-    const foundChord = convertedChords.find((c) => c.id === id);
-    setChord(foundChord || null);
-    
     // Adicionar ao histórico quando visualizar um acorde
-    if (foundChord) {
-      addToHistory(foundChord.id, "browse");
+    if (chord) {
+      addToHistory(chord.id, "browse");
     }
-  }, [id]); // Removido addToHistory das dependências para evitar loop infinito
+  }, [chord?.id]);
 
   if (!chord) {
     return (
