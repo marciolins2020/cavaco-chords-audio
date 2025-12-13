@@ -36,31 +36,84 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
     return null;
   };
 
+  // Normaliza sufixos de acordes para o formato interno
+  const normalizeSuffix = (suffix: string): string => {
+    const map: Record<string, string> = {
+      'major': '', 'maj': '', 'maior': '', 'M': '',
+      'minor': 'm', 'min': 'm', 'menor': 'm', '-': 'm',
+      'dom7': '7', 'dominant7': '7',
+      'min7': 'm7', 'minor7': 'm7', 'menor7': 'm7', '-7': 'm7',
+      'major7': 'maj7', 'maior7': 'maj7',
+      'dim7': 'dim', 'diminuto': 'dim', 'º': 'dim', 'o': 'dim',
+      'half-dim': 'm7b5', 'ø': 'm7b5', 'm7-5': 'm7b5', 'm7(b5)': 'm7b5',
+      'aug': '5+', 'aumentado': '5+', '+': '5+', '#5': '5+',
+      'sus': 'sus4',
+      '9th': '9', 'nona': '9',
+      'add9': 'add9', 'add2': 'add9',
+    };
+    
+    const lower = suffix.toLowerCase().replace(/[()]/g, '');
+    return map[lower] ?? suffix;
+  };
+
   // Smart search with normalization
   const smartSearch = (searchQuery: string): ChordEntry[] => {
     if (!searchQuery) return [];
 
     // Normalize input
-    const normalized = searchQuery
-      .replace(/maior/i, '')
-      .replace(/menor/i, 'm')
-      .replace(/bemol/i, 'b')
-      .replace(/sustenido/i, '#')
+    let normalized = searchQuery
+      .replace(/maior/gi, '')
+      .replace(/menor/gi, 'm')
+      .replace(/bemol/gi, 'b')
+      .replace(/sustenido/gi, '#')
+      .replace(/\s+/g, '')
       .trim();
 
-    // Direct search
+    // Extrai root e suffix do input
+    // Exemplo: "Dm7b5" -> root="D", suffix="m7b5"
+    // Exemplo: "F#m" -> root="F#", suffix="m"
+    const rootMatch = normalized.match(/^([A-Ga-g])([#b])?/);
+    if (!rootMatch) return [];
+    
+    const inputRoot = rootMatch[0].charAt(0).toUpperCase() + (rootMatch[0].slice(1) || '');
+    const inputSuffix = normalizeSuffix(normalized.slice(rootMatch[0].length) || '');
+
+    // Busca exata primeiro
     let results = convertedChords.filter(chord => {
-      const fullName = (chord.root + chord.quality).toLowerCase();
-      return fullName.includes(normalized.toLowerCase());
+      const chordRoot = chord.root.toUpperCase();
+      const chordSuffix = (chord.quality || '').toLowerCase();
+      return chordRoot === inputRoot.toUpperCase() && 
+             chordSuffix === inputSuffix.toLowerCase();
     });
 
-    // If no results, try enharmonic equivalent
+    // Se não encontrou exato, busca parcial
     if (results.length === 0) {
-      const enharmonic = getEnharmonicEquivalent(normalized);
+      results = convertedChords.filter(chord => {
+        const fullName = (chord.root + chord.quality).toLowerCase();
+        return fullName.includes(normalized.toLowerCase());
+      });
+    }
+
+    // Se ainda não encontrou, tenta enarmônico
+    if (results.length === 0) {
+      const enharmonic = getEnharmonicEquivalent(inputRoot);
       if (enharmonic) {
-        results = smartSearch(enharmonic);
+        const altQuery = enharmonic + inputSuffix;
+        results = convertedChords.filter(chord => {
+          const fullName = (chord.root + chord.quality).toLowerCase();
+          return fullName === altQuery.toLowerCase();
+        });
       }
     }
+
+    // Ordena: exatos primeiro, depois parciais
+    results.sort((a, b) => {
+      const aExact = (a.root + a.quality).toLowerCase() === normalized.toLowerCase();
+      const bExact = (b.root + b.quality).toLowerCase() === normalized.toLowerCase();
+      if (aExact && !bExact) return -1;
+      if (!aExact && bExact) return 1;
+      return 0;
+    });
 
     return results.slice(0, 10);
   };
