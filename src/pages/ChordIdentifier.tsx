@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { InteractiveFretboard } from "@/components/InteractiveFretboard";
@@ -6,9 +6,10 @@ import ChordDiagram from "@/components/ChordDiagram";
 import { ChordEntry } from "@/types/chords";
 import { convertedChords } from "@/lib/chordConverter";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Volume2 } from "lucide-react";
 import { calculateChordDistance, arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
 import { useApp } from "@/contexts/AppContext";
+import { audioService } from "@/lib/audio";
 
 interface Note {
   string: number;
@@ -29,10 +30,14 @@ export default function ChordIdentifier() {
   const { addToHistory } = useApp();
 
   // Convert notes to frets array
+  // Cordas no InteractiveFretboard: 1=D(agudo), 2=B, 3=G, 4=D(grave)
+  // Frets array no banco: [D-grave, G, B, D-agudo] = índices [0, 1, 2, 3]
+  // Mapeamento: string 4 -> index 0, string 3 -> index 1, string 2 -> index 2, string 1 -> index 3
   const convertNotesToFrets = (notes: Note[]): [number, number, number, number] => {
-    const frets: [number, number, number, number] = [0, 0, 0, 0];
+    const frets: [number, number, number, number] = [-1, -1, -1, -1]; // -1 = muted by default
     notes.forEach(note => {
-      frets[4 - note.string] = note.fret;
+      const index = 4 - note.string; // string 4->0, 3->1, 2->2, 1->3
+      frets[index] = note.fret;
     });
     return frets;
   };
@@ -59,10 +64,12 @@ export default function ChordIdentifier() {
         similar: [],
         confidence: 100
       });
+      // Play the chord automatically
+      playChord(userFrets);
       return;
     }
 
-    // Find similar chords (fuzzy matching)
+    // Find similar chords (fuzzy matching based on notes played)
     const chordsWithDistance = convertedChords.map(chord => {
       const minDistance = Math.min(
         ...chord.variations.map(variation => 
@@ -73,9 +80,9 @@ export default function ChordIdentifier() {
     });
 
     const similar = chordsWithDistance
-      .filter(item => item.distance <= 8) // Apenas acordes razoavelmente próximos
+      .filter(item => item.distance <= 12) // Acordes mais próximos
       .sort((a, b) => a.distance - b.distance)
-      .slice(0, 5)
+      .slice(0, 6)
       .map(item => item.chord);
 
     const bestDistance = chordsWithDistance[0]?.distance || 10;
@@ -85,6 +92,14 @@ export default function ChordIdentifier() {
       similar,
       confidence
     });
+  };
+
+  const playChord = (frets: number[]) => {
+    try {
+      audioService.playChord(frets, 'strum');
+    } catch (error) {
+      console.error('Erro ao tocar acorde:', error);
+    }
   };
 
   const handleNotesChange = (notes: Note[]) => {
