@@ -13,6 +13,40 @@ import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 
+// Calcula as notas REAIS que soam quando você toca a posição específica no cavaquinho
+function calculateActualNotes(frets: number[]): string[] {
+  const CHROMATIC = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+  
+  // Afinação padrão do cavaquinho: D-G-B-D
+  const OPEN_STRINGS = ["D", "G", "B", "D"]; // índices 0,1,2,3 = D(grave), G, B, D(aguda)
+  
+  const NOTE_TO_INDEX: Record<string, number> = {
+    'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3, 'E': 4,
+    'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8, 'Ab': 8,
+    'A': 9, 'A#': 10, 'Bb': 10, 'B': 11
+  };
+  
+  const notes: string[] = [];
+  const notesSet = new Set<string>(); // Para evitar duplicatas
+  
+  // Mapeia frets[0,1,2,3] para as cordas D(grave), G, B, D(aguda)
+  frets.forEach((fret, stringIndex) => {
+    if (fret >= 0) { // Ignora cordas abafadas (-1)
+      const openNote = OPEN_STRINGS[stringIndex];
+      const openIndex = NOTE_TO_INDEX[openNote];
+      const noteIndex = (openIndex + fret) % 12;
+      const noteName = CHROMATIC[noteIndex];
+      
+      if (!notesSet.has(noteName)) {
+        notes.push(noteName);
+        notesSet.add(noteName);
+      }
+    }
+  });
+  
+  return notes;
+}
+
 const ChordDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [selectedVariation, setSelectedVariation] = useState(0);
@@ -34,11 +68,15 @@ const ChordDetail = () => {
       const chordId = chordDef.root + suffixInfo.quality;
       
       if (chordId === id) {
+        // Calcula as notas reais da primeira variação
+        const firstVariationFrets = chordDef.variations[0]?.frets || [0, 0, 0, 0];
+        const actualNotes = calculateActualNotes(firstVariationFrets);
+        
         return {
           id: chordId,
           root: chordDef.root,
           quality: suffixInfo.quality,
-          notes: [],
+          notes: actualNotes,
           intervals: suffixInfo.intervals,
           variations: chordDef.variations.map((variation, idx) => ({
             frets: variation.frets,
@@ -55,6 +93,12 @@ const ChordDetail = () => {
     
     return null;
   }, [id, chordDatabase]);
+
+  // Calcula as notas da variação selecionada
+  const currentVariationNotes = useMemo(() => {
+    if (!chord || !chord.variations[selectedVariation]) return [];
+    return calculateActualNotes(chord.variations[selectedVariation].frets);
+  }, [chord, selectedVariation]);
 
   useEffect(() => {
     // Adicionar ao histórico quando visualizar um acorde
@@ -150,8 +194,15 @@ const ChordDetail = () => {
             </div>
             
             <div className="flex flex-wrap items-center justify-center gap-4 text-muted-foreground">
-              <div>
-                <span className="font-semibold">Notas:</span> {chord.notes.join(" - ")}
+              <div className="flex items-center gap-2">
+                <span className="font-semibold">Notas:</span>
+                <div className="flex gap-1">
+                  {currentVariationNotes.map((note, idx) => (
+                    <span key={idx} className="px-2 py-0.5 bg-primary/10 text-primary rounded font-medium">
+                      {note}
+                    </span>
+                  ))}
+                </div>
               </div>
               <div>
                 <span className="font-semibold">Intervalos:</span> {chord.intervals.join(" - ")}
