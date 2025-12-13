@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { Music2, Guitar } from "lucide-react";
 import ChordCard from "@/components/ChordCard";
+import ChordExplorer from "@/components/ChordExplorer";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SearchBar } from "@/components/SearchBar";
@@ -122,11 +123,16 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Chord Explorer - Interface Interativa */}
+      <section className="container mx-auto px-4 py-8 md:py-12">
+        <ChordExplorer />
+      </section>
+
       {/* Chords Grid */}
       <main className="container mx-auto px-4 py-8 md:py-12">
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-2">
-            {searchQuery ? "Resultados da busca" : "Acordes disponíveis"}
+            {searchQuery ? "Resultados da busca" : "Todos os Acordes"}
           </h2>
           <p className="text-muted-foreground">
             {filteredChords.length} {filteredChords.length === 1 ? "acorde encontrado" : "acordes encontrados"}
