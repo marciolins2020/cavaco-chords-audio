@@ -38,6 +38,15 @@ const ChordDiagram: React.FC<Props> = ({
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
 
+  // Ajuste horizontal para garantir que as notas das cordas extremas fiquem dentro do quadrado
+  const fingerColX = (i: number) => {
+    const base = colX(i);
+    const offset = 8; // metade aproximada do raio do círculo do dedo
+    if (i === 0) return base + offset; // corda mais à esquerda
+    if (i === strings.length - 1) return base - offset; // corda mais à direita
+    return base;
+  };
+
   // Ajustar frets para serem relativos ao effectiveStartFret
   const relativeFrets: [number, number, number, number] = frets.map(f => {
     if (f < 0) return f; // Mute (X)
@@ -167,11 +176,12 @@ const ChordDiagram: React.FC<Props> = ({
         {/* X/O marcadores */}
         {strings.map((s, i) => {
           const f = relativeFrets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
+          const cx = fingerColX(i);
           if (f < 0) {
             return (
               <text
                 key={`x-${s}`}
-                x={colX(i)}
+                x={cx}
                 y={rowY(0) - 10}
                 textAnchor="middle"
                 fontSize="16"
@@ -187,7 +197,7 @@ const ChordDiagram: React.FC<Props> = ({
             return (
               <circle
                 key={`o-${s}`}
-                cx={colX(i)}
+                cx={cx}
                 cy={rowY(0) - 10}
                 r={6}
                 stroke="currentColor"
@@ -198,7 +208,7 @@ const ChordDiagram: React.FC<Props> = ({
           }
           return null;
         })}
-        
+
         {/* Pestana */}
         {barre && (() => {
           const relativeBarre = barre.fret - effectiveStartFret + 1;
@@ -223,7 +233,7 @@ const ChordDiagram: React.FC<Props> = ({
           const f = relativeFrets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
           if (f <= 0) return null;
           
-          const cx = colX(i);
+          const cx = fingerColX(i);
           const cy = rowY(f) - (rowY(f) - rowY(f - 1)) / 2;
           const finger = fingers?.[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3] ?? null;
           
