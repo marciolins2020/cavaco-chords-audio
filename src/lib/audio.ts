@@ -1,12 +1,13 @@
 import { TUNING_FREQUENCIES } from '@/constants/chordDatabase';
 
-// Audio Service avançado baseado no RZD Music
-// Usa sawtooth + filtros de corpo/ressonância para som mais realista de cavaquinho
+// Audio Service otimizado para timbre de CAVAQUINHO
+// Som brilhante, agudo, metálico - característico do instrumento
 
 class AudioService {
   private ctx: AudioContext | null = null;
   private masterGain: GainNode | null = null;
-  private bodyFilter: BiquadFilterNode | null = null;
+  private bodyResonance: BiquadFilterNode | null = null;
+  private brightnessBoost: BiquadFilterNode | null = null;
 
   constructor() {}
 
@@ -16,95 +17,138 @@ class AudioService {
       if (AudioContextClass) {
         this.ctx = new AudioContextClass();
         
-        // Master Gain - previne clipping com polifonia
+        // Master Gain
         this.masterGain = this.ctx.createGain();
-        this.masterGain.gain.value = 0.4;
+        this.masterGain.gain.value = 0.35;
 
-        // Simulação de Ressonância do Corpo (O som da "madeira")
-        // Cavaquinho é pequeno, ressonância em torno de 400-600Hz
-        this.bodyFilter = this.ctx.createBiquadFilter();
-        this.bodyFilter.type = 'peaking';
-        this.bodyFilter.frequency.value = 550;
-        this.bodyFilter.Q.value = 1.5;
-        this.bodyFilter.gain.value = 6; // Boost nas frequências do corpo
+        // CAVAQUINHO: Corpo pequeno = ressonância mais alta (~800-1200Hz)
+        this.bodyResonance = this.ctx.createBiquadFilter();
+        this.bodyResonance.type = 'peaking';
+        this.bodyResonance.frequency.value = 1000; // Mais alto que violão
+        this.bodyResonance.Q.value = 2;
+        this.bodyResonance.gain.value = 8;
 
-        // High Shelf para domar agudos digitais
-        const highShelf = this.ctx.createBiquadFilter();
-        highShelf.type = 'highshelf';
-        highShelf.frequency.value = 5000;
-        highShelf.gain.value = -10;
+        // BRILHO: Boost nos agudos para som metálico das cordas de aço
+        this.brightnessBoost = this.ctx.createBiquadFilter();
+        this.brightnessBoost.type = 'highshelf';
+        this.brightnessBoost.frequency.value = 3000;
+        this.brightnessBoost.gain.value = 6; // Boost em vez de corte!
 
-        // Compressor de Dinâmica
+        // Presença: realça a "mordida" do ataque
+        const presence = this.ctx.createBiquadFilter();
+        presence.type = 'peaking';
+        presence.frequency.value = 2500;
+        presence.Q.value = 1.5;
+        presence.gain.value = 4;
+
+        // Compressor suave
         const compressor = this.ctx.createDynamicsCompressor();
-        compressor.threshold.value = -20;
-        compressor.ratio.value = 8;
-        compressor.attack.value = 0.005;
-        compressor.release.value = 0.1;
+        compressor.threshold.value = -15;
+        compressor.ratio.value = 4;
+        compressor.attack.value = 0.003;
+        compressor.release.value = 0.15;
 
-        // Cadeia: Sources -> BodyFilter -> HighShelf -> MasterGain -> Compressor -> Dest
-        this.bodyFilter.connect(highShelf);
-        highShelf.connect(this.masterGain);
+        // Cadeia: Sources -> BodyResonance -> Brightness -> Presence -> Master -> Compressor -> Dest
+        this.bodyResonance.connect(this.brightnessBoost);
+        this.brightnessBoost.connect(presence);
+        presence.connect(this.masterGain);
         this.masterGain.connect(compressor);
         compressor.connect(this.ctx.destination);
       }
     }
     
-    // CRÍTICO: Sempre tenta resumir contexto na interação do usuário
     if (this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume().catch(e => console.error("Audio resume failed", e));
     }
   }
 
   private getFrequency(stringIndex: number, fret: number): number {
+    // Cavaquinho uma oitava acima para som mais agudo
     const openFreq = TUNING_FREQUENCIES[stringIndex];
     if (fret < 0) return 0;
-    // Temperamento igual
     return openFreq * Math.pow(2, fret / 12);
   }
 
   private playTone(freq: number, startTime: number, duration: number, velocity: number) {
-    if (!this.ctx || !this.bodyFilter) return;
+    if (!this.ctx || !this.bodyResonance) return;
     if (freq === 0) return;
 
-    // 1. Oscilador fonte (Sawtooth para harmônicos de corda de aço)
-    const osc = this.ctx.createOscillator();
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(freq, startTime);
-    
-    // Detune leve para realismo (sensação orgânica)
-    const randomDetune = (Math.random() - 0.5) * 15; // +/- 7 cents
-    osc.detune.setValueAtTime(randomDetune, startTime);
+    // === OSCILADOR PRINCIPAL (fundamental) ===
+    const osc1 = this.ctx.createOscillator();
+    osc1.type = 'sawtooth'; // Rico em harmônicos
+    osc1.frequency.setValueAtTime(freq, startTime);
+    osc1.detune.setValueAtTime((Math.random() - 0.5) * 10, startTime);
 
-    // 2. Filtro de Corda (Simula perda de energia dos harmônicos altos)
+    // === OSCILADOR HARMÔNICO (oitava acima - brilho) ===
+    const osc2 = this.ctx.createOscillator();
+    osc2.type = 'triangle'; // Mais suave para harmônico
+    osc2.frequency.setValueAtTime(freq * 2, startTime); // Oitava
+    osc2.detune.setValueAtTime((Math.random() - 0.5) * 8, startTime);
+
+    // === OSCILADOR DE ATAQUE (ruído metálico inicial) ===
+    const osc3 = this.ctx.createOscillator();
+    osc3.type = 'square';
+    osc3.frequency.setValueAtTime(freq * 3, startTime); // 3ª harmônica
+    
+    // Mixer para os osciladores
+    const oscMix = this.ctx.createGain();
+    const osc2Gain = this.ctx.createGain();
+    const osc3Gain = this.ctx.createGain();
+    
+    osc2Gain.gain.value = 0.3; // Harmônico mais baixo
+    osc3Gain.gain.value = 0.15; // Ataque metálico sutil
+    
+    // Envelope do ataque metálico (decai rápido)
+    osc3Gain.gain.setValueAtTime(0.2, startTime);
+    osc3Gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.05);
+
+    // === FILTRO DE CORDA (simula a corda de aço) ===
     const stringFilter = this.ctx.createBiquadFilter();
     stringFilter.type = 'lowpass';
-    stringFilter.Q.value = 0.5; // Sem pico de ressonância, apenas amortecimento
+    stringFilter.Q.value = 2; // Leve ressonância para "zing"
+    
+    // Envelope do filtro: começa MUITO brilhante, decai para médios
+    const attackBrightness = 12000; // Muito brilhante no ataque
+    stringFilter.frequency.setValueAtTime(attackBrightness, startTime);
+    stringFilter.frequency.exponentialRampToValueAtTime(2000, startTime + 0.08); // Decay rápido
+    stringFilter.frequency.exponentialRampToValueAtTime(800, startTime + duration);
 
-    // Envelope do Filtro (Efeito de palhetada)
-    // Começa brilhante, rapidamente fica abafado
-    const brightness = 6000 * velocity;
-    stringFilter.frequency.setValueAtTime(brightness, startTime);
-    stringFilter.frequency.exponentialRampToValueAtTime(300, startTime + 0.15); // O "zing" dura 150ms
-
-    // 3. Envelope de Amplitude
+    // === ENVELOPE DE AMPLITUDE ===
     const amp = this.ctx.createGain();
     amp.gain.setValueAtTime(0, startTime);
-    amp.gain.linearRampToValueAtTime(velocity, startTime + 0.005); // Attack rápido
-    amp.gain.exponentialRampToValueAtTime(0.001, startTime + duration); // Decay natural
+    amp.gain.linearRampToValueAtTime(velocity, startTime + 0.002); // Attack MUITO rápido
+    amp.gain.setValueAtTime(velocity * 0.9, startTime + 0.01); // Pequeno decay inicial
+    amp.gain.exponentialRampToValueAtTime(velocity * 0.4, startTime + 0.15); // Sustain curto
+    amp.gain.exponentialRampToValueAtTime(0.001, startTime + duration); // Release
 
-    // Conexões
-    osc.connect(stringFilter);
+    // === CONEXÕES ===
+    osc1.connect(oscMix);
+    osc2.connect(osc2Gain);
+    osc2Gain.connect(oscMix);
+    osc3.connect(osc3Gain);
+    osc3Gain.connect(oscMix);
+    
+    oscMix.connect(stringFilter);
     stringFilter.connect(amp);
-    amp.connect(this.bodyFilter); // Conecta à simulação do "Corpo"
+    amp.connect(this.bodyResonance);
 
     // Start/Stop
-    osc.start(startTime);
-    osc.stop(startTime + duration + 0.1);
+    osc1.start(startTime);
+    osc2.start(startTime);
+    osc3.start(startTime);
+    osc1.stop(startTime + duration + 0.1);
+    osc2.stop(startTime + duration + 0.1);
+    osc3.stop(startTime + 0.1); // Ataque curto
 
     // Cleanup
     setTimeout(() => {
       try {
-        osc.disconnect();
+        osc1.disconnect();
+        osc2.disconnect();
+        osc3.disconnect();
+        osc2Gain.disconnect();
+        osc3Gain.disconnect();
+        oscMix.disconnect();
         stringFilter.disconnect();
         amp.disconnect();
       } catch (e) {
@@ -119,33 +163,24 @@ class AudioService {
 
     const now = this.ctx.currentTime;
     
-    // Parâmetros de strum
-    // "strum" = ~40-60ms entre cordas (strum rápido)
-    // "block" = ~5-10ms (quase simultâneo mas não robótico)
-    const strumSpeed = mode === 'strum' ? 0.06 : 0.01;
+    // Strum mais rápido para cavaquinho (instrumento pequeno)
+    const strumSpeed = mode === 'strum' ? 0.04 : 0.008;
 
-    // Filtra cordas abafadas (-1)
     const activeNotes = frets
       .map((fret, stringIndex) => ({ fret, stringIndex }))
       .filter(n => n.fret >= 0);
 
-    activeNotes.forEach((note, i) => {
+    activeNotes.forEach((note) => {
       const freq = this.getFrequency(note.stringIndex, note.fret);
       
-      // Timing
-      // Adiciona aleatoriedade leve ao timing (+/- 5ms) para soar humano
-      const humanize = Math.random() * 0.01;
-      // Direção (Downstroke é padrão, cordas graves para agudas)
+      const humanize = Math.random() * 0.008;
       const noteTime = now + (note.stringIndex * strumSpeed) + humanize;
 
-      // Velocity (Volume)
-      // Cordas agudas geralmente soam um pouco mais; acentos no beat?
-      // Vamos randomizar levemente.
-      const velocity = 0.5 + (Math.random() * 0.2);
+      // Velocity com variação natural
+      const velocity = 0.6 + (Math.random() * 0.15);
       
-      // Duration
-      // Deixa as notas soarem. Sustain do cavaquinho é curto mas não zero.
-      const sustain = 1.5;
+      // Sustain curto - característico do cavaquinho
+      const sustain = 0.8;
 
       this.playTone(freq, noteTime, sustain, velocity);
     });
@@ -157,14 +192,13 @@ class AudioService {
 
     const freq = this.getFrequency(stringIndex, fret);
     if (freq > 0) {
-      this.playTone(freq, this.ctx.currentTime, 1.5, 0.7);
+      this.playTone(freq, this.ctx.currentTime, 1.0, 0.7);
     }
   }
 }
 
 export const audioService = new AudioService();
 
-// Funções legado para compatibilidade
 export async function initAudio(): Promise<void> {
   // No-op, audioService inicializa automaticamente
 }
