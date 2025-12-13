@@ -31,9 +31,8 @@ const ChordDiagram: React.FC<Props> = ({
   // Senão, ajusta o startFret para mostrar todas as notas
   const effectiveStartFret = minActiveFret <= 4 ? 1 : minActiveFret - 1;
   
-  // Número de trastes a mostrar: mínimo 4, máximo 5
-  const fretSpan = maxActiveFret - effectiveStartFret + 1;
-  const fretCount = Math.max(4, Math.min(5, fretSpan + 1));
+  // Número de trastes a mostrar: fixo em 6
+  const fretCount = 6;
   
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
