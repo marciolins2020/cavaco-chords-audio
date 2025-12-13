@@ -8,57 +8,84 @@ class AudioService {
   private masterGain: GainNode | null = null;
   private bodyResonance: BiquadFilterNode | null = null;
   private brightnessBoost: BiquadFilterNode | null = null;
+  private isInitialized = false;
 
   constructor() {}
 
-  private init() {
-    if (!this.ctx) {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-      if (AudioContextClass) {
-        this.ctx = new AudioContextClass();
-        
-        // Master Gain
-        this.masterGain = this.ctx.createGain();
-        this.masterGain.gain.value = 0.35;
-
-        // CAVAQUINHO: Corpo pequeno = ressonância mais alta (~800-1200Hz)
-        this.bodyResonance = this.ctx.createBiquadFilter();
-        this.bodyResonance.type = 'peaking';
-        this.bodyResonance.frequency.value = 1000; // Mais alto que violão
-        this.bodyResonance.Q.value = 2;
-        this.bodyResonance.gain.value = 8;
-
-        // BRILHO: Boost nos agudos para som metálico das cordas de aço
-        this.brightnessBoost = this.ctx.createBiquadFilter();
-        this.brightnessBoost.type = 'highshelf';
-        this.brightnessBoost.frequency.value = 3000;
-        this.brightnessBoost.gain.value = 6; // Boost em vez de corte!
-
-        // Presença: realça a "mordida" do ataque
-        const presence = this.ctx.createBiquadFilter();
-        presence.type = 'peaking';
-        presence.frequency.value = 2500;
-        presence.Q.value = 1.5;
-        presence.gain.value = 4;
-
-        // Compressor suave
-        const compressor = this.ctx.createDynamicsCompressor();
-        compressor.threshold.value = -15;
-        compressor.ratio.value = 4;
-        compressor.attack.value = 0.003;
-        compressor.release.value = 0.15;
-
-        // Cadeia: Sources -> BodyResonance -> Brightness -> Presence -> Master -> Compressor -> Dest
-        this.bodyResonance.connect(this.brightnessBoost);
-        this.brightnessBoost.connect(presence);
-        presence.connect(this.masterGain);
-        this.masterGain.connect(compressor);
-        compressor.connect(this.ctx.destination);
+  private async init(): Promise<boolean> {
+    // Sempre tentar resumir se estiver suspenso
+    if (this.ctx && this.ctx.state === 'suspended') {
+      try {
+        await this.ctx.resume();
+        console.log('AudioContext resumed successfully');
+      } catch (e) {
+        console.error("Audio resume failed", e);
+        return false;
       }
     }
-    
-    if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume().catch(e => console.error("Audio resume failed", e));
+
+    if (this.isInitialized && this.ctx) {
+      return true;
+    }
+
+    try {
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioContextClass) {
+        console.error('AudioContext not supported');
+        return false;
+      }
+
+      this.ctx = new AudioContextClass();
+      
+      // Tentar resumir imediatamente
+      if (this.ctx.state === 'suspended') {
+        await this.ctx.resume();
+      }
+      
+      // Master Gain
+      this.masterGain = this.ctx.createGain();
+      this.masterGain.gain.value = 0.35;
+
+      // CAVAQUINHO: Corpo pequeno = ressonância mais alta (~800-1200Hz)
+      this.bodyResonance = this.ctx.createBiquadFilter();
+      this.bodyResonance.type = 'peaking';
+      this.bodyResonance.frequency.value = 1000;
+      this.bodyResonance.Q.value = 2;
+      this.bodyResonance.gain.value = 8;
+
+      // BRILHO: Boost nos agudos para som metálico das cordas de aço
+      this.brightnessBoost = this.ctx.createBiquadFilter();
+      this.brightnessBoost.type = 'highshelf';
+      this.brightnessBoost.frequency.value = 3000;
+      this.brightnessBoost.gain.value = 6;
+
+      // Presença: realça a "mordida" do ataque
+      const presence = this.ctx.createBiquadFilter();
+      presence.type = 'peaking';
+      presence.frequency.value = 2500;
+      presence.Q.value = 1.5;
+      presence.gain.value = 4;
+
+      // Compressor suave
+      const compressor = this.ctx.createDynamicsCompressor();
+      compressor.threshold.value = -15;
+      compressor.ratio.value = 4;
+      compressor.attack.value = 0.003;
+      compressor.release.value = 0.15;
+
+      // Cadeia: Sources -> BodyResonance -> Brightness -> Presence -> Master -> Compressor -> Dest
+      this.bodyResonance.connect(this.brightnessBoost);
+      this.brightnessBoost.connect(presence);
+      presence.connect(this.masterGain);
+      this.masterGain.connect(compressor);
+      compressor.connect(this.ctx.destination);
+
+      this.isInitialized = true;
+      console.log('AudioService initialized, state:', this.ctx.state);
+      return true;
+    } catch (e) {
+      console.error('Failed to initialize AudioService:', e);
+      return false;
     }
   }
 
@@ -157,9 +184,12 @@ class AudioService {
     }, (duration + 0.5) * 1000);
   }
 
-  public playChord(frets: number[], mode: 'strum' | 'block') {
-    this.init();
-    if (!this.ctx) return;
+  public async playChord(frets: number[], mode: 'strum' | 'block') {
+    const ready = await this.init();
+    if (!ready || !this.ctx) {
+      console.error('AudioService not ready');
+      return;
+    }
 
     const now = this.ctx.currentTime;
     
@@ -169,6 +199,8 @@ class AudioService {
     const activeNotes = frets
       .map((fret, stringIndex) => ({ fret, stringIndex }))
       .filter(n => n.fret >= 0);
+
+    console.log('Playing chord:', frets, 'active notes:', activeNotes.length);
 
     activeNotes.forEach((note) => {
       const freq = this.getFrequency(note.stringIndex, note.fret);
@@ -186,17 +218,17 @@ class AudioService {
     });
   }
 
-  public playReferenceNote(frequency: number) {
-    this.init();
-    if (!this.ctx) return;
+  public async playReferenceNote(frequency: number) {
+    const ready = await this.init();
+    if (!ready || !this.ctx) return;
     
     const now = this.ctx.currentTime;
     this.playTone(frequency, now, 2.0, 0.5);
   }
 
-  public playNote(stringIndex: number, fret: number) {
-    this.init();
-    if (!this.ctx) return;
+  public async playNote(stringIndex: number, fret: number) {
+    const ready = await this.init();
+    if (!ready || !this.ctx) return;
 
     const freq = this.getFrequency(stringIndex, fret);
     if (freq > 0) {
