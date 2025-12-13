@@ -1,23 +1,55 @@
 import { TUNING_FREQUENCIES } from '@/constants/chordDatabase';
 
+// Audio Service avançado baseado no RZD Music
+// Usa sawtooth + filtros de corpo/ressonância para som mais realista de cavaquinho
+
 class AudioService {
   private ctx: AudioContext | null = null;
   private masterGain: GainNode | null = null;
+  private bodyFilter: BiquadFilterNode | null = null;
 
   constructor() {}
 
   private init() {
     if (!this.ctx) {
-      // Robust initialization for all browsers
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
       if (AudioContextClass) {
         this.ctx = new AudioContextClass();
+        
+        // Master Gain - previne clipping com polifonia
         this.masterGain = this.ctx.createGain();
-        this.masterGain.connect(this.ctx.destination);
         this.masterGain.gain.value = 0.4;
+
+        // Simulação de Ressonância do Corpo (O som da "madeira")
+        // Cavaquinho é pequeno, ressonância em torno de 400-600Hz
+        this.bodyFilter = this.ctx.createBiquadFilter();
+        this.bodyFilter.type = 'peaking';
+        this.bodyFilter.frequency.value = 550;
+        this.bodyFilter.Q.value = 1.5;
+        this.bodyFilter.gain.value = 6; // Boost nas frequências do corpo
+
+        // High Shelf para domar agudos digitais
+        const highShelf = this.ctx.createBiquadFilter();
+        highShelf.type = 'highshelf';
+        highShelf.frequency.value = 5000;
+        highShelf.gain.value = -10;
+
+        // Compressor de Dinâmica
+        const compressor = this.ctx.createDynamicsCompressor();
+        compressor.threshold.value = -20;
+        compressor.ratio.value = 8;
+        compressor.attack.value = 0.005;
+        compressor.release.value = 0.1;
+
+        // Cadeia: Sources -> BodyFilter -> HighShelf -> MasterGain -> Compressor -> Dest
+        this.bodyFilter.connect(highShelf);
+        highShelf.connect(this.masterGain);
+        this.masterGain.connect(compressor);
+        compressor.connect(this.ctx.destination);
       }
     }
-    // CRITICAL FIX: Always try to resume context on user interaction
+    
+    // CRÍTICO: Sempre tenta resumir contexto na interação do usuário
     if (this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume().catch(e => console.error("Audio resume failed", e));
     }
@@ -26,60 +58,115 @@ class AudioService {
   private getFrequency(stringIndex: number, fret: number): number {
     const openFreq = TUNING_FREQUENCIES[stringIndex];
     if (fret < 0) return 0;
+    // Temperamento igual
     return openFreq * Math.pow(2, fret / 12);
   }
 
-  private playTone(freq: number, startTime: number, duration: number, isBlock: boolean) {
-    if (!this.ctx || !this.masterGain) return;
+  private playTone(freq: number, startTime: number, duration: number, velocity: number) {
+    if (!this.ctx || !this.bodyFilter) return;
     if (freq === 0) return;
 
+    // 1. Oscilador fonte (Sawtooth para harmônicos de corda de aço)
     const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'triangle';
+    osc.type = 'sawtooth';
     osc.frequency.setValueAtTime(freq, startTime);
+    
+    // Detune leve para realismo (sensação orgânica)
+    const randomDetune = (Math.random() - 0.5) * 15; // +/- 7 cents
+    osc.detune.setValueAtTime(randomDetune, startTime);
 
-    gain.connect(this.masterGain);
-    osc.connect(gain);
+    // 2. Filtro de Corda (Simula perda de energia dos harmônicos altos)
+    const stringFilter = this.ctx.createBiquadFilter();
+    stringFilter.type = 'lowpass';
+    stringFilter.Q.value = 0.5; // Sem pico de ressonância, apenas amortecimento
 
-    const attack = 0.01;
-    const decay = isBlock ? 0.1 : 0.3;
-    const sustain = isBlock ? 0.1 : 0.4; // NUNCA pode ser 0 no exponentialRamp
-    const release = isBlock ? 0.05 : 0.8;
-    const peakGain = 0.5;
+    // Envelope do Filtro (Efeito de palhetada)
+    // Começa brilhante, rapidamente fica abafado
+    const brightness = 6000 * velocity;
+    stringFilter.frequency.setValueAtTime(brightness, startTime);
+    stringFilter.frequency.exponentialRampToValueAtTime(300, startTime + 0.15); // O "zing" dura 150ms
 
-    gain.gain.setValueAtTime(0.001, startTime); // Começa acima de 0 para exponentialRamp
-    gain.gain.exponentialRampToValueAtTime(peakGain, startTime + attack);
-    gain.gain.exponentialRampToValueAtTime(sustain * peakGain, startTime + attack + decay);
-    gain.gain.exponentialRampToValueAtTime(0.001, startTime + attack + decay + duration + release);
+    // 3. Envelope de Amplitude
+    const amp = this.ctx.createGain();
+    amp.gain.setValueAtTime(0, startTime);
+    amp.gain.linearRampToValueAtTime(velocity, startTime + 0.005); // Attack rápido
+    amp.gain.exponentialRampToValueAtTime(0.001, startTime + duration); // Decay natural
 
+    // Conexões
+    osc.connect(stringFilter);
+    stringFilter.connect(amp);
+    amp.connect(this.bodyFilter); // Conecta à simulação do "Corpo"
+
+    // Start/Stop
     osc.start(startTime);
-    osc.stop(startTime + attack + decay + duration + release + 0.1);
+    osc.stop(startTime + duration + 0.1);
+
+    // Cleanup
+    setTimeout(() => {
+      try {
+        osc.disconnect();
+        stringFilter.disconnect();
+        amp.disconnect();
+      } catch (e) {
+        // Ignore disconnect errors
+      }
+    }, (duration + 0.5) * 1000);
   }
 
   public playChord(frets: number[], mode: 'strum' | 'block') {
-    this.init(); // Initialize checks state inside
+    this.init();
     if (!this.ctx) return;
 
     const now = this.ctx.currentTime;
-    const isBlock = mode === 'block';
-    const strumSpeed = isBlock ? 0 : 0.08;
+    
+    // Parâmetros de strum
+    // "strum" = ~40-60ms entre cordas (strum rápido)
+    // "block" = ~5-10ms (quase simultâneo mas não robótico)
+    const strumSpeed = mode === 'strum' ? 0.06 : 0.01;
 
-    frets.forEach((fret, stringIndex) => {
-      const freq = this.getFrequency(stringIndex, fret);
-      if (fret >= 0) {
-          const delay = stringIndex * strumSpeed;
-          this.playTone(freq, now + delay, isBlock ? 0.1 : 1.0, isBlock);
-      }
+    // Filtra cordas abafadas (-1)
+    const activeNotes = frets
+      .map((fret, stringIndex) => ({ fret, stringIndex }))
+      .filter(n => n.fret >= 0);
+
+    activeNotes.forEach((note, i) => {
+      const freq = this.getFrequency(note.stringIndex, note.fret);
+      
+      // Timing
+      // Adiciona aleatoriedade leve ao timing (+/- 5ms) para soar humano
+      const humanize = Math.random() * 0.01;
+      // Direção (Downstroke é padrão, cordas graves para agudas)
+      const noteTime = now + (note.stringIndex * strumSpeed) + humanize;
+
+      // Velocity (Volume)
+      // Cordas agudas geralmente soam um pouco mais; acentos no beat?
+      // Vamos randomizar levemente.
+      const velocity = 0.5 + (Math.random() * 0.2);
+      
+      // Duration
+      // Deixa as notas soarem. Sustain do cavaquinho é curto mas não zero.
+      const sustain = 1.5;
+
+      this.playTone(freq, noteTime, sustain, velocity);
     });
+  }
+
+  public playNote(stringIndex: number, fret: number) {
+    this.init();
+    if (!this.ctx) return;
+
+    const freq = this.getFrequency(stringIndex, fret);
+    if (freq > 0) {
+      this.playTone(freq, this.ctx.currentTime, 1.5, 0.7);
+    }
   }
 }
 
 export const audioService = new AudioService();
 
-// Legacy functions for compatibility
+// Funções legado para compatibilidade
 export async function initAudio(): Promise<void> {
-  // No-op, audioService handles initialization automatically
+  // No-op, audioService inicializa automaticamente
 }
 
 export async function playChord(
