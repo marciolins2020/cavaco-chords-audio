@@ -21,7 +21,44 @@ interface ChordMatch {
   exact?: ChordEntry;
   similar: ChordEntry[];
   confidence: number;
+  enharmonicNames?: string[]; // Nomes enarmônicos equivalentes para acordes simétricos
 }
+
+// Função para obter nomes enarmônicos de acordes aumentados
+const getAugmentedEnharmonics = (root: string): string[] => {
+  // Acordes aumentados são simétricos (3 notas, 4 semitons cada)
+  // Cada nota pode ser a fundamental
+  const augmentedGroups: string[][] = [
+    ['C', 'E', 'G#'],
+    ['C#', 'F', 'A'],
+    ['D', 'F#', 'A#'],
+    ['D#', 'G', 'B'],
+  ];
+  
+  // Mapeamento de enarmônicos
+  const enharmonicMap: Record<string, string> = {
+    'C#': 'Db', 'Db': 'C#',
+    'D#': 'Eb', 'Eb': 'D#',
+    'F#': 'Gb', 'Gb': 'F#',
+    'G#': 'Ab', 'Ab': 'G#',
+    'A#': 'Bb', 'Bb': 'A#',
+  };
+  
+  // Encontrar o grupo do acorde
+  const normalizedRoot = root.replace('b', '#').replace('Db', 'C#').replace('Eb', 'D#').replace('Gb', 'F#').replace('Ab', 'G#').replace('Bb', 'A#');
+  
+  for (const group of augmentedGroups) {
+    if (group.includes(root) || group.includes(normalizedRoot)) {
+      // Retornar todas as notas do grupo como possíveis nomes
+      return group.map(note => {
+        const enharmonic = enharmonicMap[note];
+        return enharmonic ? `${note}aug / ${enharmonic}aug` : `${note}aug`;
+      });
+    }
+  }
+  
+  return [];
+};
 
 export default function ChordIdentifier() {
   const [selectedNotes, setSelectedNotes] = useState<Note[]>([]);
@@ -59,10 +96,15 @@ export default function ChordIdentifier() {
     );
 
     if (exactMatch) {
+      // Verificar se é um acorde aumentado para mostrar enarmônicos
+      const isAugmented = exactMatch.quality === 'aug' || exactMatch.quality === '+' || exactMatch.quality === '5+';
+      const enharmonicNames = isAugmented ? getAugmentedEnharmonics(exactMatch.root) : undefined;
+      
       setResult({
         exact: exactMatch,
         similar: [],
-        confidence: 100
+        confidence: 100,
+        enharmonicNames
       });
       // Play the chord automatically
       playChord(userFrets);
@@ -149,6 +191,17 @@ export default function ChordIdentifier() {
                       <p className="text-muted-foreground">
                         Notas: {result.exact.notes.join(', ')}
                       </p>
+                      {result.enharmonicNames && result.enharmonicNames.length > 0 && (
+                        <div className="mt-2 p-2 bg-accent/50 rounded-lg">
+                          <p className="text-sm text-muted-foreground">
+                            <span className="font-medium">🔄 Nomes equivalentes:</span>{' '}
+                            {result.enharmonicNames.join(' = ')}
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            Acordes aumentados são simétricos - todas as notas podem ser a fundamental.
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
 
