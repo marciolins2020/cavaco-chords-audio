@@ -22,18 +22,32 @@ const ChordDiagram: React.FC<Props> = ({
   const height = 200;
   const margin = 30;
   
-  // Calcular a casa inicial real baseada nas notas (não no startFret passado)
+  // Calcular casas ativas reais baseado nas notas
   const activeFrets = frets.filter(f => f > 0);
   const minActiveFret = activeFrets.length > 0 ? Math.min(...activeFrets) : 1;
   const maxActiveFret = activeFrets.length > 0 ? Math.max(...activeFrets) : 1;
-  
-  // Se todas as notas cabem nas primeiras 4 casas, mostra desde casa 1
-  // Senão, ajusta o startFret para mostrar todas as notas
-  const effectiveStartFret = minActiveFret <= 4 ? 1 : minActiveFret - 1;
-  
-  // Número de trastes a mostrar: fixo em 6
+
+  // Número de trastes visíveis no diagrama
   const fretCount = 6;
-  
+
+  // Define uma casa inicial "de desejo":
+  // - se o startFret foi passado, usa ele
+  // - senão, se o acorde não está em pestana baixa, começa uma casa antes
+  // - senão, começa na 1ª casa
+  const desiredStart = startFret
+    ? startFret
+    : minActiveFret <= 2
+      ? 1
+      : minActiveFret - 1;
+
+  // Ajuste final da casa inicial garantindo que TODAS as notas
+  // caibam dentro do grid de 6 casas
+  let effectiveStartFret = desiredStart;
+  const spanFromDesired = maxActiveFret - effectiveStartFret + 1;
+  if (spanFromDesired > fretCount) {
+    effectiveStartFret = Math.max(1, maxActiveFret - fretCount + 1);
+  }
+
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
 
