@@ -18,6 +18,7 @@ import About from "./pages/About";
 import InstallPage from "./pages/InstallPage";
 import ProfilePage from "./pages/ProfilePage";
 import LeaderboardPage from "./pages/LeaderboardPage";
+import TunerPage from "./pages/TunerPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/instalar" element={<InstallPage />} />
               <Route path="/perfil" element={<ProfilePage />} />
               <Route path="/ranking" element={<LeaderboardPage />} />
+              <Route path="/afinador" element={<TunerPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
