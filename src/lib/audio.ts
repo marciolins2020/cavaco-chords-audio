@@ -163,8 +163,8 @@ class AudioService {
 
     const now = this.ctx.currentTime;
     
-    // Strum mais rápido para cavaquinho (instrumento pequeno)
-    const strumSpeed = mode === 'strum' ? 0.04 : 0.008;
+    // Strum com velocidade natural - delay entre cordas
+    const strumSpeed = mode === 'strum' ? 0.08 : 0.015;
 
     const activeNotes = frets
       .map((fret, stringIndex) => ({ fret, stringIndex }))
