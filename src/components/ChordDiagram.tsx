@@ -22,22 +22,27 @@ const ChordDiagram: React.FC<Props> = ({
   const height = 200;
   const margin = 30;
   
-  // Calcular número de trastes dinamicamente baseado nas posições dos dedos
+  // Calcular a casa inicial real baseada nas notas (não no startFret passado)
   const activeFrets = frets.filter(f => f > 0);
-  const maxFret = activeFrets.length > 0 ? Math.max(...activeFrets) : startFret;
-  const minFret = startFret;
+  const minActiveFret = activeFrets.length > 0 ? Math.min(...activeFrets) : 1;
+  const maxActiveFret = activeFrets.length > 0 ? Math.max(...activeFrets) : 1;
   
-  // Número de trastes a mostrar: mínimo 4, máximo 5, ou o suficiente para cobrir todos os dedos
-  const fretCount = Math.min(5, Math.max(4, maxFret - minFret + 2));
+  // Se todas as notas cabem nas primeiras 4 casas, mostra desde casa 1
+  // Senão, ajusta o startFret para mostrar todas as notas
+  const effectiveStartFret = minActiveFret <= 4 ? 1 : minActiveFret - 1;
+  
+  // Número de trastes a mostrar: mínimo 4, máximo 5
+  const fretSpan = maxActiveFret - effectiveStartFret + 1;
+  const fretCount = Math.max(4, Math.min(5, fretSpan + 1));
   
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
 
-  // Ajustar frets para serem relativos ao startFret
+  // Ajustar frets para serem relativos ao effectiveStartFret
   const relativeFrets: [number, number, number, number] = frets.map(f => {
     if (f < 0) return f; // Mute (X)
     if (f === 0) return 0; // Open string
-    return f - startFret + 1; // Ajusta para posição relativa
+    return f - effectiveStartFret + 1; // Ajusta para posição relativa
   }) as [number, number, number, number];
 
   // Transform logic specifically for TEXT elements to un-mirror them
@@ -98,7 +103,7 @@ const ChordDiagram: React.FC<Props> = ({
         
         {/* Marcadores de casas (dots) nas casas 3, 5, 7, 9, 12 */}
         {Array.from({ length: fretCount }).map((_, i) => {
-          const actualFret = startFret + i;
+          const actualFret = effectiveStartFret + i;
           const markerFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
           if (!markerFrets.includes(actualFret)) return null;
           
@@ -196,7 +201,7 @@ const ChordDiagram: React.FC<Props> = ({
         
         {/* Pestana */}
         {barre && (() => {
-          const relativeBarre = barre.fret - startFret + 1;
+          const relativeBarre = barre.fret - effectiveStartFret + 1;
           if (relativeBarre > 0 && relativeBarre <= fretCount) {
             return (
               <rect
@@ -247,8 +252,8 @@ const ChordDiagram: React.FC<Props> = ({
             </g>
           );
         })}
-        {/* Indicador de traste inicial quando startFret > 1 */}
-        {startFret > 1 && (
+        {/* Indicador de traste inicial quando effectiveStartFret > 1 */}
+        {effectiveStartFret > 1 && (
           <text
             x={margin - 15}
             y={rowY(1)}
@@ -259,7 +264,7 @@ const ChordDiagram: React.FC<Props> = ({
             fontWeight="600"
             style={textAnchorStyle}
           >
-            {startFret}fr
+            {effectiveStartFret}fr
           </text>
         )}
       </svg>
