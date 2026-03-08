@@ -158,6 +158,9 @@ export const useDailyChallenges = (userId: string | undefined) => {
           duration: 5000,
         });
 
+        // Som de sucesso
+        import("@/lib/audio").then(({ audioService }) => audioService.playSuccess());
+
         // Adicionar XP ao usuário
         await addXPReward(challenge.xp_reward);
       }

@@ -109,6 +109,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       isFav ? prev.filter((id) => id !== chordId) : [...prev, chordId]
     );
 
+    // Som de feedback
+    if (!isFav) {
+      import("@/lib/audio").then(({ audioService }) => audioService.playFavorite());
+    }
+
     // Se logado, sincronizar com Supabase
     if (user) {
       try {
