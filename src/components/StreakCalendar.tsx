@@ -77,7 +77,7 @@ export const StreakCalendar = ({
         <div className="flex items-start justify-between">
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <Flame className="w-5 h-5 text-orange-500" />
+              <span className="text-orange-500">🔥</span>
               Sequência de Prática
             </h3>
             
