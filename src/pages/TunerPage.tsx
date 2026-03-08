@@ -179,19 +179,8 @@ const TunerPage = () => {
                   onClick={isListening ? stopListening : startListening}
                   size="lg"
                   variant={isListening ? "destructive" : "default"}
-                  className="gap-2"
                 >
-                  {isListening ? (
-                    <>
-                      <MicOff className="w-5 h-5" />
-                      Parar
-                    </>
-                  ) : (
-                    <>
-                      <Mic className="w-5 h-5" />
-                      Iniciar Afinador
-                    </>
-                  )}
+                  {isListening ? "Parar" : "Iniciar Afinador"}
                 </Button>
               </div>
             </CardContent>
