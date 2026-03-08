@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useApp } from "@/contexts/AppContext";
+import { audioService } from "@/lib/audio";
 
 type Props = {
   frets: [number, number, number, number];
@@ -7,6 +8,7 @@ type Props = {
   barre?: { fromString: 1 | 2 | 3 | 4; toString: 1 | 2 | 3 | 4; fret: number } | null;
   startFret?: number;
   label?: string;
+  interactive?: boolean;
 };
 
 const ChordDiagram: React.FC<Props> = ({
@@ -14,7 +16,8 @@ const ChordDiagram: React.FC<Props> = ({
   fingers,
   barre,
   startFret = 1,
-  label
+  label,
+  interactive = true,
 }) => {
   const { leftHanded } = useApp();
   const strings = leftHanded ? [1, 2, 3, 4] : [4, 3, 2, 1];
@@ -22,26 +25,17 @@ const ChordDiagram: React.FC<Props> = ({
   const height = 200;
   const margin = 30;
   
-  // Calcular casas ativas reais baseado nas notas
   const activeFrets = frets.filter(f => f > 0);
   const minActiveFret = activeFrets.length > 0 ? Math.min(...activeFrets) : 1;
   const maxActiveFret = activeFrets.length > 0 ? Math.max(...activeFrets) : 1;
-
-  // Número de trastes visíveis no diagrama
   const fretCount = 6;
 
-  // Define uma casa inicial "de desejo":
-  // - se o startFret foi passado, usa ele
-  // - senão, se o acorde não está em pestana baixa, começa uma casa antes
-  // - senão, começa na 1ª casa
   const desiredStart = startFret
     ? startFret
     : minActiveFret <= 2
       ? 1
       : minActiveFret - 1;
 
-  // Ajuste final da casa inicial garantindo que TODAS as notas
-  // caibam dentro do grid de 6 casas
   let effectiveStartFret = desiredStart;
   const spanFromDesired = maxActiveFret - effectiveStartFret + 1;
   if (spanFromDesired > fretCount) {
@@ -51,28 +45,59 @@ const ChordDiagram: React.FC<Props> = ({
   const colX = (i: number) => margin + (i * (width - 2 * margin)) / (strings.length - 1);
   const rowY = (i: number) => margin + (i * (height - 2 * margin - 20)) / fretCount;
 
-  // Ajuste horizontal para garantir que as notas das cordas extremas fiquem dentro do quadrado
   const fingerColX = (i: number) => {
     const base = colX(i);
-    const offset = 8; // metade aproximada do raio do círculo do dedo
-    if (i === 0) return base + offset; // corda mais à esquerda
-    if (i === strings.length - 1) return base - offset; // corda mais à direita
+    const offset = 8;
+    if (i === 0) return base + offset;
+    if (i === strings.length - 1) return base - offset;
     return base;
   };
 
-  // Ajustar frets para serem relativos ao effectiveStartFret
   const relativeFrets: [number, number, number, number] = frets.map(f => {
-    if (f < 0) return f; // Mute (X)
-    if (f === 0) return 0; // Open string
-    return f - effectiveStartFret + 1; // Ajusta para posição relativa
+    if (f < 0) return f;
+    if (f === 0) return 0;
+    return f - effectiveStartFret + 1;
   }) as [number, number, number, number];
 
-  // Transform logic specifically for TEXT elements to un-mirror them
   const textAnchorStyle: React.CSSProperties = leftHanded ? {
     transformBox: "fill-box",
     transformOrigin: "center",
     transform: "scaleX(-1)"
   } : {};
+
+  // Map visual string index to actual string index (0-3)
+  const getStringIndex = (visualS: number) => visualS === 4 ? 0 : visualS === 3 ? 1 : visualS === 2 ? 2 : 3;
+
+  const handleStringClick = useCallback((stringNum: number) => {
+    if (!interactive) return;
+    const stringIndex = getStringIndex(stringNum);
+    const fret = frets[stringIndex];
+    if (fret < 0) return; // muted string
+    audioService.playNote(stringIndex, fret);
+  }, [frets, interactive]);
+
+  // Clickable zone per string — covers full height
+  const stringHitArea = (s: number, i: number) => {
+    if (!interactive) return null;
+    const fret = frets[getStringIndex(s)];
+    if (fret < 0) return null;
+    const x = colX(i);
+    const hitWidth = (width - 2 * margin) / (strings.length - 1);
+    return (
+      <rect
+        key={`hit-${s}`}
+        x={x - hitWidth / 2}
+        y={rowY(0) - 18}
+        width={hitWidth}
+        height={rowY(fretCount) - rowY(0) + 36}
+        fill="transparent"
+        className="cursor-pointer"
+        onClick={() => handleStringClick(s)}
+      >
+        <title>Corda {s}</title>
+      </rect>
+    );
+  };
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -123,53 +148,31 @@ const ChordDiagram: React.FC<Props> = ({
           />
         ))}
         
-        {/* Marcadores de casas (dots) nas casas 3, 5, 7, 9, 12 */}
+        {/* Marcadores de casas */}
         {Array.from({ length: fretCount }).map((_, i) => {
           const actualFret = effectiveStartFret + i;
           const markerFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
           if (!markerFrets.includes(actualFret)) return null;
           
-          // Posição vertical: entre dois trastes
           const cy = (rowY(i + 1) + rowY(i)) / 2;
-          const cx = width / 2; // Centro horizontal
+          const cx = width / 2;
           const isDoubleDot = actualFret === 12 || actualFret === 24;
           
           if (isDoubleDot) {
-            // Dois pontos para casa 12 e 24
             return (
               <g key={`marker-${i}`}>
-                <circle
-                  cx={cx - 15}
-                  cy={cy}
-                  r={5}
-                  fill="hsl(var(--muted-foreground))"
-                  opacity={0.5}
-                />
-                <circle
-                  cx={cx + 15}
-                  cy={cy}
-                  r={5}
-                  fill="hsl(var(--muted-foreground))"
-                  opacity={0.5}
-                />
+                <circle cx={cx - 15} cy={cy} r={5} fill="hsl(var(--muted-foreground))" opacity={0.5} />
+                <circle cx={cx + 15} cy={cy} r={5} fill="hsl(var(--muted-foreground))" opacity={0.5} />
               </g>
             );
           }
           
-          // Um ponto para outras casas
           return (
-            <circle
-              key={`marker-${i}`}
-              cx={cx}
-              cy={cy}
-              r={5}
-              fill="hsl(var(--muted-foreground))"
-              opacity={0.5}
-            />
+            <circle key={`marker-${i}`} cx={cx} cy={cy} r={5} fill="hsl(var(--muted-foreground))" opacity={0.5} />
           );
         })}
         
-        {/* Indicadores de corda (4 3 2 1) - FIXED: un-mirrored in left-handed mode */}
+        {/* Indicadores de corda */}
         {strings.map((s, i) => (
           <text
             key={`string-${s}`}
@@ -188,7 +191,7 @@ const ChordDiagram: React.FC<Props> = ({
         
         {/* X/O marcadores */}
         {strings.map((s, i) => {
-          const f = relativeFrets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
+          const f = relativeFrets[getStringIndex(s)];
           const cx = fingerColX(i);
           if (f < 0) {
             return (
@@ -243,12 +246,13 @@ const ChordDiagram: React.FC<Props> = ({
         
         {/* Dedos */}
         {strings.map((s, i) => {
-          const f = relativeFrets[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3];
+          const si = getStringIndex(s);
+          const f = relativeFrets[si];
           if (f <= 0) return null;
           
           const cx = fingerColX(i);
           const cy = rowY(f) - (rowY(f) - rowY(f - 1)) / 2;
-          const finger = fingers?.[s === 4 ? 0 : s === 3 ? 1 : s === 2 ? 2 : 3] ?? null;
+          const finger = fingers?.[si] ?? null;
           
           return (
             <g key={`dot-${s}`}>
@@ -275,7 +279,8 @@ const ChordDiagram: React.FC<Props> = ({
             </g>
           );
         })}
-        {/* Indicador de traste inicial quando effectiveStartFret > 1 */}
+
+        {/* Indicador de traste inicial */}
         {effectiveStartFret > 1 && (
           <text
             x={margin - 15}
@@ -290,6 +295,9 @@ const ChordDiagram: React.FC<Props> = ({
             {effectiveStartFret}fr
           </text>
         )}
+
+        {/* Hit areas for individual string playback — rendered last for top z-order */}
+        {strings.map((s, i) => stringHitArea(s, i))}
       </svg>
       {label && (
         <div className="text-sm text-muted-foreground font-medium mt-1">{label}</div>
