@@ -40,7 +40,7 @@ export default function HarmonicFieldPage() {
                   <p className="text-xs">Afastamento suave</p>
                 </div>
                 <div className="p-3 bg-background rounded-lg">
-                  <div className="font-bold text-foreground mb-1">🔴 Dominante (V)</div>
+                  <div className="font-bold text-foreground mb-1">Dominante (V)</div>
                   <p className="text-xs">Tensão e resolução</p>
                 </div>
                 <div className="p-3 bg-background rounded-lg">
