@@ -92,9 +92,7 @@ export default function PracticePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Trophy className="w-6 h-6 text-primary" />
-                    </div>
+                    <div className="p-2 bg-primary/10 rounded-lg text-primary font-bold">♛</div>
                     <div>
                       <div className="text-2xl font-bold">{stats.chordsMastered.length}</div>
                       <div className="text-xs text-muted-foreground">Acordes Dominados</div>
