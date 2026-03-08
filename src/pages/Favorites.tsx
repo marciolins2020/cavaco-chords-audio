@@ -54,7 +54,6 @@ const Favorites = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Heart className="w-8 h-8 text-primary fill-current" />
               <h1 className="text-3xl md:text-4xl font-bold">Meus Favoritos</h1>
             </div>
           </div>
