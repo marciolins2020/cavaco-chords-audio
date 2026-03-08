@@ -90,7 +90,7 @@ const Index = () => {
         <OnboardingTour />
         
         {/* Hero Section */}
-        <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden">
+        <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden max-w-full">
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-15"
             style={{ backgroundImage: `url(${juninhoBg})` }}
