@@ -83,8 +83,7 @@ export const DataExport = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm">
-          <Download className="w-4 h-4 mr-2" />
-          Exportar Dados
+          ⬇ Exportar Dados
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
