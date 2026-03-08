@@ -32,7 +32,7 @@ export default function HarmonicFieldPage() {
               </p>
               <div className="grid md:grid-cols-4 gap-3 mt-4">
                 <div className="p-3 bg-background rounded-lg">
-                  <div className="font-bold text-foreground mb-1">🎯 Tônica (I)</div>
+                  <div className="font-bold text-foreground mb-1">Tônica (I)</div>
                   <p className="text-xs">Repouso e estabilidade</p>
                 </div>
                 <div className="p-3 bg-background rounded-lg">
