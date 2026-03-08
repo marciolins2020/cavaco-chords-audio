@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { PracticeSession } from "@/types/practice";
-import { TrendingUp } from "lucide-react";
+
 
 import { format, subDays, subWeeks, startOfWeek, endOfWeek, eachDayOfInterval, eachWeekOfInterval } from "date-fns";
 import { ptBR } from "date-fns/locale";
