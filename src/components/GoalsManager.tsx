@@ -158,7 +158,7 @@ export const GoalsManager = () => {
 
       {activeGoals.length === 0 && completedGoals.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
-          <Target className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <span className="text-5xl block mx-auto mb-3 opacity-50">🎯</span>
           <p>Nenhuma meta criada ainda</p>
           <p className="text-sm mt-1">Crie uma meta para começar a acompanhar seu progresso</p>
         </div>
