@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, Play, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ChordDiagram from "./ChordDiagram";
@@ -63,7 +62,6 @@ export const ChordOfTheDay = () => {
         {/* Left: badge + diagram */}
         <div className="flex flex-col items-center gap-3 shrink-0">
           <div className="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full text-xs font-semibold text-primary border border-primary/20">
-            <Sparkles className="h-3.5 w-3.5" />
             Acorde do Dia
           </div>
           <div className="w-36 sm:w-40">
@@ -78,9 +76,7 @@ export const ChordOfTheDay = () => {
             size="sm"
             onClick={handlePlay}
             disabled={isPlaying}
-            className="gap-2"
           >
-            <Play className={`h-4 w-4 ${isPlaying ? "animate-pulse" : ""}`} />
             Ouvir
           </Button>
         </div>
@@ -102,14 +98,13 @@ export const ChordOfTheDay = () => {
           </p>
 
           <div className="p-3 rounded-xl bg-muted/50 border border-border/50">
-            <p className="text-xs font-semibold text-primary mb-1">💡 DICA DO DIA</p>
+            <p className="text-xs font-semibold text-primary mb-1">DICA DO DIA</p>
             <p className="text-sm text-muted-foreground">{tip}</p>
           </div>
 
           <Link to={`/chord/${chordId}`}>
-            <Button variant="outline" size="sm" className="gap-2 mt-2">
+            <Button variant="outline" size="sm" className="mt-2">
               Ver detalhes
-              <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
         </div>

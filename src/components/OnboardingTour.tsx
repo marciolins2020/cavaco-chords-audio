@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Music2, Target, Heart, Radio, Sparkles, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -8,34 +7,24 @@ const STORAGE_KEY = "rzd-onboarding-done";
 
 const STEPS = [
   {
-    icon: Sparkles,
     title: "Bem-vindo ao RZD Music!",
     description: "Seu dicionário completo de acordes de cavaquinho, com diagramas profissionais, áudio e inteligência artificial.",
-    color: "hsl(var(--primary))",
   },
   {
-    icon: Music2,
     title: "Explore os Acordes",
     description: "Navegue por tônicas e variações. Toque cada acorde em modo Strum ou Block direto no navegador.",
-    color: "hsl(var(--primary))",
   },
   {
-    icon: Target,
     title: "Modo Prática",
     description: "Treine transições de acordes, ganhe XP e suba no ranking. Desafios diários mantêm sua evolução.",
-    color: "hsl(142 76% 36%)",
   },
   {
-    icon: Radio,
     title: "Afinador Integrado",
     description: "Afine seu cavaquinho usando o microfone do celular. Detecção precisa em tempo real.",
-    color: "hsl(38 92% 50%)",
   },
   {
-    icon: Heart,
     title: "Favoritos e RedData A.I.",
     description: "Salve seus acordes favoritos e pergunte qualquer dúvida ao assistente RedData no canto da tela.",
-    color: "hsl(0 84% 60%)",
   },
 ];
 
@@ -66,7 +55,6 @@ export const OnboardingTour = () => {
   };
 
   const current = STEPS[step];
-  const Icon = current.icon;
   const progress = ((step + 1) / STEPS.length) * 100;
 
   return (
@@ -90,9 +78,9 @@ export const OnboardingTour = () => {
             {/* Close */}
             <button
               onClick={finish}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors text-sm font-bold"
             >
-              <X className="h-5 w-5" />
+              ✕
             </button>
 
             {/* Progress bar */}
@@ -105,16 +93,15 @@ export const OnboardingTour = () => {
               />
             </div>
 
-            {/* Icon */}
+            {/* Step number */}
             <div className="flex justify-center mb-6">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", delay: 0.1 }}
-                className="h-20 w-20 rounded-2xl flex items-center justify-center"
-                style={{ background: `${current.color}15`, border: `2px solid ${current.color}30` }}
+                className="h-16 w-16 rounded-2xl flex items-center justify-center bg-primary/10 border-2 border-primary/20"
               >
-                <Icon className="h-10 w-10" style={{ color: current.color }} />
+                <span className="text-2xl font-bold text-primary">{step + 1}</span>
               </motion.div>
             </div>
 
@@ -151,9 +138,8 @@ export const OnboardingTour = () => {
               >
                 Pular tour
               </button>
-              <Button onClick={next} className="gap-2">
+              <Button onClick={next}>
                 {step === STEPS.length - 1 ? "Começar!" : "Próximo"}
-                <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
           </motion.div>
