@@ -14,6 +14,13 @@ import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
+// Helper to display chord names nicely (CM→C, Fsm→F#m, etc.)
+function displayChordName(id: string): string {
+  return id
+    .replace(/^([A-G])M$/, "$1")
+    .replace(/s/, "#");
+}
+
 // Sequência pedagógica de acordes (IDs usam makeChordId: root + suffix sanitizado)
 const LEARNING_SEQUENCE = [
   { level: "Iniciante", chords: ["CM", "GM", "Am", "FM", "Dm", "Em", "DM"] },
