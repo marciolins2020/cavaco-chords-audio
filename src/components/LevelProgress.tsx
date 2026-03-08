@@ -71,7 +71,7 @@ export const LevelProgress = ({
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                  <span className="text-yellow-500">⭐</span>
                   <span>{totalXP} XP</span>
                 </div>
                 <span>•</span>
