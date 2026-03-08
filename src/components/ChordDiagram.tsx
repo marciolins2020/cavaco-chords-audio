@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useApp } from "@/contexts/AppContext";
 import { audioService } from "@/lib/audio";
 
@@ -65,18 +65,20 @@ const ChordDiagram: React.FC<Props> = ({
     transform: "scaleX(-1)"
   } : {};
 
-  // Map visual string index to actual string index (0-3)
+  const [pluckedString, setPluckedString] = useState<number | null>(null);
+
   const getStringIndex = (visualS: number) => visualS === 4 ? 0 : visualS === 3 ? 1 : visualS === 2 ? 2 : 3;
 
   const handleStringClick = useCallback((stringNum: number) => {
     if (!interactive) return;
     const stringIndex = getStringIndex(stringNum);
     const fret = frets[stringIndex];
-    if (fret < 0) return; // muted string
+    if (fret < 0) return;
+    setPluckedString(stringNum);
     audioService.playNote(stringIndex, fret);
+    setTimeout(() => setPluckedString(null), 400);
   }, [frets, interactive]);
 
-  // Clickable zone per string — covers full height
   const stringHitArea = (s: number, i: number) => {
     if (!interactive) return null;
     const fret = frets[getStringIndex(s)];
@@ -135,18 +137,36 @@ const ChordDiagram: React.FC<Props> = ({
         ))}
         
         {/* Cordas */}
-        {strings.map((s, i) => (
-          <line
-            key={s}
-            x1={colX(i)}
-            x2={colX(i)}
-            y1={rowY(0)}
-            y2={rowY(fretCount)}
-            stroke="currentColor"
-            strokeWidth={1.5}
-            opacity={0.8}
-          />
-        ))}
+        {strings.map((s, i) => {
+          const isPlucked = pluckedString === s;
+          return (
+            <g key={s}>
+              {/* Glow behind string when plucked */}
+              {isPlucked && (
+                <line
+                  x1={colX(i)}
+                  x2={colX(i)}
+                  y1={rowY(0)}
+                  y2={rowY(fretCount)}
+                  stroke="hsl(var(--primary))"
+                  strokeWidth={6}
+                  opacity={0.3}
+                  className="animate-[pulse_0.4s_ease-out]"
+                />
+              )}
+              <line
+                x1={colX(i)}
+                x2={colX(i)}
+                y1={rowY(0)}
+                y2={rowY(fretCount)}
+                stroke={isPlucked ? "hsl(var(--primary))" : "currentColor"}
+                strokeWidth={isPlucked ? 2.5 : 1.5}
+                opacity={isPlucked ? 1 : 0.8}
+                style={isPlucked ? { transition: "all 0.1s ease-out" } : undefined}
+              />
+            </g>
+          );
+        })}
         
         {/* Marcadores de casas */}
         {Array.from({ length: fretCount }).map((_, i) => {
