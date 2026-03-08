@@ -184,7 +184,7 @@ export const DailyChallenges = () => {
         </div>
         {totalXP > 0 && (
           <div className="flex items-center gap-1 text-yellow-600 font-semibold">
-            <Zap className="w-5 h-5 fill-yellow-600" />
+            <span className="text-yellow-600">⚡</span>
             <span>+{totalXP} XP</span>
           </div>
         )}
