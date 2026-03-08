@@ -195,7 +195,7 @@ export function PracticeMode({
           variant="outline"
           size="lg"
         >
-          {showDiagram ? "🙈 Ocultar" : "👁 Ver"} Resposta
+          {showDiagram ? "Ocultar" : "Ver"} Resposta
         </Button>
 
         {feedback === "incorrect" && (
