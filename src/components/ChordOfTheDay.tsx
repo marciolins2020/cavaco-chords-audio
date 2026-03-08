@@ -99,7 +99,7 @@ export const ChordOfTheDay = () => {
           </p>
 
           <div className="p-3 rounded-xl bg-muted/50 border border-border/50">
-            <p className="text-xs font-semibold text-primary mb-1">💡 DICA DO DIA</p>
+            <p className="text-xs font-semibold text-primary mb-1">DICA DO DIA</p>
             <p className="text-sm text-muted-foreground">{tip}</p>
           </div>
 
