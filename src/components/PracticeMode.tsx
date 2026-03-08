@@ -42,14 +42,13 @@ export function PracticeMode({
   const targetVariation = chord.variations[0];
   const successRate = currentAttempts > 0 ? (currentSuccesses / currentAttempts) * 100 : 0;
 
-  // Iniciar timer ao começar
+  // Iniciar timer ao montar
   useEffect(() => {
-    setStartTime(Date.now());
+    const start = Date.now();
+    setStartTime(start);
     
     timerRef.current = setInterval(() => {
-      if (startTime) {
-        setElapsedTime(Date.now() - startTime);
-      }
+      setElapsedTime(Date.now() - start);
     }, 100);
 
     return () => {
@@ -57,7 +56,7 @@ export function PracticeMode({
         clearInterval(timerRef.current);
       }
     };
-  }, [startTime]);
+  }, []);
 
   const convertNotesToFrets = (notes: Note[]): number[] => {
     const frets = [0, 0, 0, 0];
