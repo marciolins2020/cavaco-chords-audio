@@ -218,7 +218,7 @@ export default function ChordIdentifier() {
 
                      <div className="flex-1 space-y-4">
                       <div>
-                        <h3 className="font-semibold mb-2">📊 Informações</h3>
+                        <h3 className="font-semibold mb-2">Informações</h3>
                         <div className="space-y-2 text-sm">
                           {result.exact.difficulty && (
                             <div className="flex items-center gap-2">
