@@ -45,21 +45,9 @@ export default function InstallPage() {
   };
 
   const features = [
-    {
-      icon: "📶",
-      title: "Funciona Offline",
-      description: "Acesse todos os acordes mesmo sem internet",
-    },
-    {
-      icon: "⚡",
-      title: "Rápido e Leve",
-      description: "Carrega instantaneamente, como um app nativo",
-    },
-    {
-      icon: "📱",
-      title: "Na Tela Inicial",
-      description: "Acesso direto da sua tela inicial",
-    },
+    { icon: "W", title: "Funciona Offline", description: "Acesse todos os acordes mesmo sem internet" },
+    { icon: "R", title: "Rápido e Leve", description: "Carrega instantaneamente, como um app nativo" },
+    { icon: "M", title: "Na Tela Inicial", description: "Acesso direto da sua tela inicial" },
   ];
 
   return (
