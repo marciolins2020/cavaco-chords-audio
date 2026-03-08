@@ -1,0 +1,5329 @@
+[
+  {
+    "task_id": "task-0001",
+    "target_chord": "C6(7M/9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "A",
+      "B",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5",
+      "6M",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "C6(7M/9)",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C6(7M/9)",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C6(7M/9)",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C67M9_ok.pdf"
+  },
+  {
+    "task_id": "task-0002",
+    "target_chord": "C6(7M)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "A",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5",
+      "6M",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "C6(7M)",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C6(7M)",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C6(7M)",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C67M_ok.pdf"
+  },
+  {
+    "task_id": "task-0003",
+    "target_chord": "C6(9/#11)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "A",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5",
+      "6M",
+      "9M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "C6(9/#11)",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C6(9/#11)",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C6(9/#11)",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C69_11_ok.pdf"
+  },
+  {
+    "task_id": "task-0004",
+    "target_chord": "C6(9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "A",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5",
+      "6M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "C6(9)",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C6(9)",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C6(9)",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C69_ok.pdf"
+  },
+  {
+    "task_id": "task-0005",
+    "target_chord": "C6(#11)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "A",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5",
+      "6M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "C6(#11)",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C6(#11)",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C6(#11)",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C6_11_ok.pdf"
+  },
+  {
+    "task_id": "task-0006",
+    "target_chord": "C7(9/13)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "b7",
+      "13"
+    ],
+    "progressions": [
+      [
+        "C7(9/13)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(9/13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(9/13)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7913.pdf"
+  },
+  {
+    "task_id": "task-0007",
+    "target_chord": "C7(9/#11)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5",
+      "b7",
+      "9M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "C7(9/#11)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(9/#11)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(9/#11)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C79_11_.pdf"
+  },
+  {
+    "task_id": "task-0008",
+    "target_chord": "C7(#11)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "C7(#11)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(#11)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(#11)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7_11.pdf"
+  },
+  {
+    "task_id": "task-0009",
+    "target_chord": "C7(#11/13)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "F#",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "#11",
+      "13"
+    ],
+    "progressions": [
+      [
+        "C7(#11/13)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(#11/13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(#11/13)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7_11_13_.pdf"
+  },
+  {
+    "task_id": "task-0010",
+    "target_chord": "C7(13)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "b7",
+      "13"
+    ],
+    "progressions": [
+      [
+        "C7(13)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(13)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7_13.pdf"
+  },
+  {
+    "task_id": "task-0011",
+    "target_chord": "C7(#5/#9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G#",
+      "Bb",
+      "D#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "#5",
+      "b7",
+      "#9"
+    ],
+    "progressions": [
+      [
+        "C7(#5/#9)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(#5/#9)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(#5/#9)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7_5_9.pdf"
+  },
+  {
+    "task_id": "task-0012",
+    "target_chord": "C7(#9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "D#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "9#"
+    ],
+    "progressions": [
+      [
+        "C7(#9)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(#9)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(#9)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7_9.pdf"
+  },
+  {
+    "task_id": "task-0013",
+    "target_chord": "C7(#9/13)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "D#",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "#9",
+      "13"
+    ],
+    "progressions": [
+      [
+        "C7(#9/13)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(#9/13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(#9/13)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7_9_13.pdf"
+  },
+  {
+    "task_id": "task-0014",
+    "target_chord": "C7(b5/#9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "Gb",
+      "Bb",
+      "D#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "b5",
+      "b7",
+      "#9"
+    ],
+    "progressions": [
+      [
+        "C7(b5/#9)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(b5/#9)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(b5/#9)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7_9b5.pdf"
+  },
+  {
+    "task_id": "task-0015",
+    "target_chord": "C7(b13)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "Ab"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "b7",
+      "b13"
+    ],
+    "progressions": [
+      [
+        "C7(b13)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(b13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(b13)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7b13.pdf"
+  },
+  {
+    "task_id": "task-0016",
+    "target_chord": "C7(b5/b9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "Gb",
+      "Bb",
+      "Db"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "b5",
+      "b7",
+      "b9"
+    ],
+    "progressions": [
+      [
+        "C7(b5/b9)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(b5/b9)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(b5/b9)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7b5b9.pdf"
+  },
+  {
+    "task_id": "task-0017",
+    "target_chord": "C7(b9/13)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "Db",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "b9",
+      "13"
+    ],
+    "progressions": [
+      [
+        "C7(b9/13)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(b9/13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(b9)/13",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7b913.pdf"
+  },
+  {
+    "task_id": "task-0018",
+    "target_chord": "C7(b9/b13)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb",
+      "Ab"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "b7",
+      "b13"
+    ],
+    "progressions": [
+      [
+        "C7(b9/b13)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(b9/b13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(b9/b13)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "c7b9b13.pdf"
+  },
+  {
+    "task_id": "task-0019",
+    "target_chord": "C7M(9/#11)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "B",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5",
+      "7M",
+      "9M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "C7M(9/#11)",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C7M(9/#11)",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C7M(9/#11)",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7M9_11_ok.pdf"
+  },
+  {
+    "task_id": "task-0020",
+    "target_chord": "C7M/9",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "B",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "C7M/9",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C7M/9",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C7M/9",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7M9_ok.pdf"
+  },
+  {
+    "task_id": "task-0021",
+    "target_chord": "C7M(#11)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "B",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "7M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "C7M/#11",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C7M/#11",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C7M/#11",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7M_11_ok.pdf"
+  },
+  {
+    "task_id": "task-0022",
+    "target_chord": "C7M(#5/9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G#",
+      "B",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "#5",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "C7M(#5/9)",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C7M(#5/9)",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C7M(#5/9)",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7M_59_ok.pdf"
+  },
+  {
+    "task_id": "task-0023",
+    "target_chord": "C7M",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "C7M",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C7M",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C7M",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7M_ok.pdf"
+  },
+  {
+    "task_id": "task-0024",
+    "target_chord": "C7M(sus2)",
+    "expected_notes": [
+      "C",
+      "D",
+      "E",
+      "G",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "2M",
+      "3M",
+      "5J",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "C7M/sus2",
+        "Gadd9",
+        "Dmadd11",
+        "Am7",
+        "G(b5)"
+      ],
+      [
+        "Bbadd9",
+        "C7M/sus2",
+        "Dadd9",
+        "Badd9",
+        "Em7/9",
+        "Abadd9"
+      ],
+      [
+        "F7M",
+        "Em7",
+        "Dm7",
+        "G7/13",
+        "C7M/sus2",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "C7Msus2_ok.pdf"
+  },
+  {
+    "task_id": "task-0025",
+    "target_chord": "Cdim(11)",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cdim(11)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "Cdim(11)"
+      ],
+      [
+        "C6/9",
+        "Cdim(11)",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cdim11_ok.pdf"
+  },
+  {
+    "task_id": "task-0026",
+    "target_chord": "Cdim(7M)",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cdim(7M)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "Cdim(7M)"
+      ],
+      [
+        "C6/9",
+        "Cdim(7M)",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cdim7M_ok.pdf"
+  },
+  {
+    "task_id": "task-0027",
+    "target_chord": "Cdim(9)",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7",
+      "9"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cdim(9)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "Cdim(9)"
+      ],
+      [
+        "C6/9",
+        "Cdim(9)",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cdim9_ok.pdf"
+  },
+  {
+    "task_id": "task-0028",
+    "target_chord": "Cdim(b13)",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb",
+      "Ab"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7",
+      "b13"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cdim(b13)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "Cdim(b13)"
+      ],
+      [
+        "C6/9",
+        "Cdim(b13)",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cdim_b13_ok.pdf"
+  },
+  {
+    "task_id": "task-0029",
+    "target_chord": "Cdim",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cdim",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "Cdim"
+      ],
+      [
+        "C6/9",
+        "Cdim",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cdim_ok.pdf"
+  },
+  {
+    "task_id": "task-0030",
+    "target_chord": "Cm6",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5j",
+      "6"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cm6",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "Cm6"
+      ],
+      [
+        "C6/9",
+        "Cm6",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm6.pdf"
+  },
+  {
+    "task_id": "task-0031",
+    "target_chord": "Cm6/11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "A",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "6M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Cm6(11)",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm6(11)",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm6(11)",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm611_ok.pdf"
+  },
+  {
+    "task_id": "task-0032",
+    "target_chord": "Cm6/7M",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "A",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "6M",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "Cm6(7M)",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm6(7M)",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm6(7M)",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm67M_ok.pdf"
+  },
+  {
+    "task_id": "task-0033",
+    "target_chord": "Cm6/9/11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "A",
+      "D",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "6M",
+      "9M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Cm6(9/11)",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm6(9/11)",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm6(9/11)",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm6911_ok.pdf"
+  },
+  {
+    "task_id": "task-0034",
+    "target_chord": "Cm6/9",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "A",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "6M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Cm6(9)",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm6(9)",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm6(9)",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm69_ok.pdf"
+  },
+  {
+    "task_id": "task-0035",
+    "target_chord": "Cm7/11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "Bb",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "b7",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Cm7(11)",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm7(11)",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm7(11)",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm711_ok.pdf"
+  },
+  {
+    "task_id": "task-0036",
+    "target_chord": "Cm7/9/11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "Bb",
+      "D",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "b7",
+      "9M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Cm7(9/11)",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm7(9/11)",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm7(9/11)",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7911_ok.pdf"
+  },
+  {
+    "task_id": "task-0037",
+    "target_chord": "Cm7/9",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "Bb",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "b7",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Cm7(9)",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm7(9)",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm7(9)",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm79_ok.pdf"
+  },
+  {
+    "task_id": "task-0038",
+    "target_chord": "Cm7",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "Bb"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "b7"
+    ],
+    "progressions": [
+      [
+        "Cm7",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm7",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm7",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7_ok.pdf"
+  },
+  {
+    "task_id": "task-0039",
+    "target_chord": "CØ(11)",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cm7(b5)(11)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "CØ(11)"
+      ],
+      [
+        "C6/9",
+        "CØ(11)",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7b511_ok.pdf"
+  },
+  {
+    "task_id": "task-0040",
+    "target_chord": "CØ(9)",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cm7(b5)(9)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "CØ(9)"
+      ],
+      [
+        "C6/9",
+        "CØ(9)",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7b59_ok.pdf"
+  },
+  {
+    "task_id": "task-0041",
+    "target_chord": "CØ",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cm7(b5)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "CØ"
+      ],
+      [
+        "C6/9",
+        "CØ",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7b5_ok.pdf"
+  },
+  {
+    "task_id": "task-0042",
+    "target_chord": "CØ(b13)",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "Gb",
+      "Bb",
+      "Ab"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "b5",
+      "b7",
+      "b13"
+    ],
+    "progressions": [
+      [
+        "Eadd9",
+        "C#7(b13)",
+        "F#madd9",
+        "B7(13)",
+        "Cm7(b5)(b13)",
+        "C#m7",
+        "Bm7",
+        "E7",
+        "A7M",
+        "Bsus4"
+      ],
+      [
+        "Bbm7(9/11)",
+        "Dbadd9",
+        "Ab7M/9",
+        "Gm7(11)",
+        "CØ(b13)"
+      ],
+      [
+        "C6/9",
+        "CØ(b13)",
+        "Bbm7/9",
+        "Ebsus",
+        "Ab7M",
+        "Bbadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7b5b13_ok.pdf"
+  },
+  {
+    "task_id": "task-0043",
+    "target_chord": "Cm7M/11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "B",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "7M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Cm7M/11",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm7M/11",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm7M/11",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7M11_ok.pdf"
+  },
+  {
+    "task_id": "task-0044",
+    "target_chord": "Cm7M/9/11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "B",
+      "D",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "7M",
+      "9M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Cm7M/9/11",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm7M/9/11",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm7M/9/11",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7M911_ok.pdf"
+  },
+  {
+    "task_id": "task-0045",
+    "target_chord": "Cm7M/9",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "B",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Cm7M/9",
+        "C7(b13)",
+        "Fmadd9",
+        "Bb7",
+        "Eb7M",
+        "G7(b13)"
+      ],
+      [
+        "Cm7M/9",
+        "Dmadd9",
+        "G7/9",
+        "Cmadd11",
+        "G7(13)"
+      ],
+      [
+        "Ab7M",
+        "Bb7M",
+        "Cm7M/9",
+        "Dm7",
+        "G7",
+        "Ebadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Cm7M9_ok.pdf"
+  },
+  {
+    "task_id": "task-0046",
+    "target_chord": "Csus",
+    "expected_notes": [
+      "C",
+      "F",
+      "G",
+      "Bb",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4J",
+      "5J",
+      "b7",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Csus",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7/4(9)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "Csus",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "CSUS.pdf"
+  },
+  {
+    "task_id": "task-0047",
+    "target_chord": "Csus13",
+    "expected_notes": [
+      "C",
+      "F",
+      "G",
+      "Bb",
+      "D",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4J",
+      "5J",
+      "b7",
+      "9M",
+      "13"
+    ],
+    "progressions": [
+      [
+        "Csus13",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7/4(9/13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "Csus13",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "CSUS13.pdf"
+  },
+  {
+    "task_id": "task-0048",
+    "target_chord": "C7sus4/13",
+    "expected_notes": [
+      "C",
+      "F",
+      "G",
+      "Bb",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4J",
+      "5J",
+      "b7",
+      "13"
+    ],
+    "progressions": [
+      [
+        "Csus4/13",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "Csus4/13)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "Csus4/13",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "CSUS413.pdf"
+  },
+  {
+    "task_id": "task-0049",
+    "target_chord": "E6/7M",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "C#",
+      "D#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "6M",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "E67M",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E6(7M)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E6/7M",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E67M.pdf"
+  },
+  {
+    "task_id": "task-0050",
+    "target_chord": "E6/7M/9",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "C#",
+      "D#",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "6M",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "E67M/9",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E6(7M/9)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E6/7M/9",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E67M9.pdf"
+  },
+  {
+    "task_id": "task-0051",
+    "target_chord": "E6/9",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "C#",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "6M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "E69",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E6(9add9)",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E6/9",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E69.pdf"
+  },
+  {
+    "task_id": "task-0052",
+    "target_chord": "E6/9/#11",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "C#",
+      "F#",
+      "A#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "6M",
+      "9M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "E69/#11",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E6(9/#11)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E6/9/#11",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E69_11.pdf"
+  },
+  {
+    "task_id": "task-0053",
+    "target_chord": "E6/#11",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "C#",
+      "A#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "6M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "E6#11",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E6(#11)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E6/#11",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E6_11.pdf"
+  },
+  {
+    "task_id": "task-0054",
+    "target_chord": "E7",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7"
+    ],
+    "progressions": [
+      [
+        "E7",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7.pdf"
+  },
+  {
+    "task_id": "task-0055",
+    "target_chord": "E7/13",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "13"
+    ],
+    "progressions": [
+      [
+        "E7(13)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7/13",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E713",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E713.pdf"
+  },
+  {
+    "task_id": "task-0056",
+    "target_chord": "E7(9)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "9"
+    ],
+    "progressions": [
+      [
+        "E7(9)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(9)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7(9)",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E79.pdf"
+  },
+  {
+    "task_id": "task-0057",
+    "target_chord": "E79/13",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F#",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "9M",
+      "13"
+    ],
+    "progressions": [
+      [
+        "E79(13)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E79/13",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/9/13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7913.pdf"
+  },
+  {
+    "task_id": "task-0058",
+    "target_chord": "E79(#11)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F#",
+      "A#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "9M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "E79(#11)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7/9(#11)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/9/#11",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E79_11.pdf"
+  },
+  {
+    "task_id": "task-0059",
+    "target_chord": "E79(#5)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B#",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "#5",
+      "b7",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "E7(9)(#5)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(9/#5)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/9/#5",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E79_5_.pdf"
+  },
+  {
+    "task_id": "task-0060",
+    "target_chord": "E7(#11)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "A#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "E7(#11)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(#11)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/#11",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7_11.pdf"
+  },
+  {
+    "task_id": "task-0061",
+    "target_chord": "E7#11/13",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "A#",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "#11",
+      "13"
+    ],
+    "progressions": [
+      [
+        "E7#11(13)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7/#11(13)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/#11/13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7_1113.pdf"
+  },
+  {
+    "task_id": "task-0062",
+    "target_chord": "E7(#9)(#5)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B#",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "#5",
+      "b7",
+      "#9"
+    ],
+    "progressions": [
+      [
+        "E7(#9)(#5)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(#9/#5)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/#9/#5",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7_5_9_7.pdf"
+  },
+  {
+    "task_id": "task-0063",
+    "target_chord": "E7(#9)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "#9"
+    ],
+    "progressions": [
+      [
+        "E7(#9)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(#9)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7(#9)",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7_9.pdf"
+  },
+  {
+    "task_id": "task-0064",
+    "target_chord": "E7#9/13",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F#",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "#9",
+      "13"
+    ],
+    "progressions": [
+      [
+        "E7#9(13)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7/#9(13)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/#9/13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7_913.pdf"
+  },
+  {
+    "task_id": "task-0065",
+    "target_chord": "E7(#9)(b5)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "Bb",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "b5",
+      "b7",
+      "#9"
+    ],
+    "progressions": [
+      [
+        "E7(#9)(b5)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(#9/b5)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7(#9)/b5)",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7_9b5_7pdf.pdf"
+  },
+  {
+    "task_id": "task-0066",
+    "target_chord": "E7/b13",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "C"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "b13"
+    ],
+    "progressions": [
+      [
+        "E7(b13)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7/b13",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7b13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7b13.pdf"
+  },
+  {
+    "task_id": "task-0067",
+    "target_chord": "E7(b9)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "b9"
+    ],
+    "progressions": [
+      [
+        "E7(b9)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(b9)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7(b9)",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7b9.pdf"
+  },
+  {
+    "task_id": "task-0068",
+    "target_chord": "E7(b9)(13)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "b9",
+      "13"
+    ],
+    "progressions": [
+      [
+        "E7(b9)(13)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(b9/13)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/b9/13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7b913_.pdf"
+  },
+  {
+    "task_id": "task-0069",
+    "target_chord": "E7(b9)(b13)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D",
+      "F",
+      "C"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "b7",
+      "b9",
+      "b13"
+    ],
+    "progressions": [
+      [
+        "E7(b9)(b13)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7(b9/b13)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7/b9/b13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7b9b13_.pdf"
+  },
+  {
+    "task_id": "task-0070",
+    "target_chord": "E79(b5)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "Bb",
+      "D",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "b5",
+      "b7",
+      "b9"
+    ],
+    "progressions": [
+      [
+        "E79(b5)",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E7/9(b5)",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7(9/b5)",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7b9b5.pdf"
+  },
+  {
+    "task_id": "task-0071",
+    "target_chord": "E7M",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "E7M",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E7M",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E7M",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7M.pdf"
+  },
+  {
+    "task_id": "task-0072",
+    "target_chord": "E7M/9",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D#",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "E7M/9",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E7M(9)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E7M9",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7M9.pdf"
+  },
+  {
+    "task_id": "task-0073",
+    "target_chord": "E7M9(#11)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D#",
+      "F#",
+      "A#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "7M",
+      "9M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "E7M9/#11",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E7M9(#11)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E7M/9/#11",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7M9_11.pdf"
+  },
+  {
+    "task_id": "task-0074",
+    "target_chord": "E7M9(#5)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B#",
+      "D#",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "#5",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "E7M9/#5",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E7M9(#5)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E7M/9/#5",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7M9_5.pdf"
+  },
+  {
+    "task_id": "task-0075",
+    "target_chord": "E7M(#11)",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B",
+      "D#",
+      "A#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "7M",
+      "#11"
+    ],
+    "progressions": [
+      [
+        "E7M#11",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E7M(#11)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E7M/#11",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7M_11.pdf"
+  },
+  {
+    "task_id": "task-0076",
+    "target_chord": "E7Msus2",
+    "expected_notes": [
+      "E",
+      "F#",
+      "B",
+      "D#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "2M",
+      "5J",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "E7Msus2",
+        "Badd9",
+        "F#madd11",
+        "C#m",
+        "B(b5)"
+      ],
+      [
+        "E7M(sus2)",
+        "Dadd9",
+        "Eadd9",
+        "G#m",
+        "F#m",
+        "B"
+      ],
+      [
+        "E7M/sus2",
+        "Bsus4",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E7Msus2.pdf"
+  },
+  {
+    "task_id": "task-0077",
+    "target_chord": "E",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "#5"
+    ],
+    "progressions": [
+      [
+        "E",
+        "E(#5)",
+        "E",
+        "F#",
+        "Am",
+        "B"
+      ],
+      [
+        "E(#5)",
+        "G#",
+        "A#",
+        "B"
+      ],
+      [
+        "E(#5)",
+        "D#",
+        "G#m",
+        "F",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E_5pdf.pdf"
+  },
+  {
+    "task_id": "task-0078",
+    "target_chord": "E",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J"
+    ],
+    "progressions": [
+      [
+        "E",
+        "F#",
+        "A",
+        "B"
+      ],
+      [
+        "E",
+        "G#",
+        "A#",
+        "B"
+      ],
+      [
+        "E",
+        "C#",
+        "G#",
+        "D#",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E_Maior.pdf"
+  },
+  {
+    "task_id": "task-0079",
+    "target_chord": "E",
+    "expected_notes": [
+      "E",
+      "G",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J"
+    ],
+    "progressions": [
+      [
+        "Em",
+        "F#",
+        "Am",
+        "B"
+      ],
+      [
+        "Em",
+        "G#",
+        "A#",
+        "B"
+      ],
+      [
+        "Em",
+        "D#",
+        "G#m",
+        "F",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "E_Menorr.pdf"
+  },
+  {
+    "task_id": "task-0080",
+    "target_chord": "Eadd9",
+    "expected_notes": [
+      "E",
+      "G#",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "E",
+        "Eadd9",
+        "E",
+        "F#",
+        "Am",
+        "B"
+      ],
+      [
+        "Eadd9",
+        "G#",
+        "A#",
+        "B"
+      ],
+      [
+        "Eadd9",
+        "D#",
+        "G#m",
+        "F",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Eadd9.pdf"
+  },
+  {
+    "task_id": "task-0081",
+    "target_chord": "E",
+    "expected_notes": [
+      "E",
+      "G#",
+      "Bb"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "b5"
+    ],
+    "progressions": [
+      [
+        "E",
+        "E(b5)",
+        "E",
+        "F#",
+        "Am",
+        "B"
+      ],
+      [
+        "E(b5)",
+        "G#",
+        "A#",
+        "B"
+      ],
+      [
+        "E(b5)",
+        "D#",
+        "G#m",
+        "F",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Eb5.pdf"
+  },
+  {
+    "task_id": "task-0082",
+    "target_chord": "Em6",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "6M"
+    ],
+    "progressions": [
+      [
+        "Em6",
+        "E7(13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7(b13)"
+      ],
+      [
+        "Em6",
+        "F#madd11",
+        "B713",
+        "Emadd11",
+        "B79"
+      ],
+      [
+        "C7M",
+        "D7M",
+        "Em6",
+        "F#m7",
+        "B7",
+        "B7sus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em6.pdf"
+  },
+  {
+    "task_id": "task-0083",
+    "target_chord": "Em6/11",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "C#",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "6M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Em611",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em6/11",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em6(11)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em611.pdf"
+  },
+  {
+    "task_id": "task-0084",
+    "target_chord": "Em6/7M",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "C#",
+      "D#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "6M",
+      "7M"
+    ],
+    "progressions": [
+      [
+        "Em67M",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em6/7M",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em6(7M)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em67M.pdf"
+  },
+  {
+    "task_id": "task-0085",
+    "target_chord": "Em69",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "C#",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "6M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Em69",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em6/9",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em6(9)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em69.pdf"
+  },
+  {
+    "task_id": "task-0086",
+    "target_chord": "Em7",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "b7"
+    ],
+    "progressions": [
+      [
+        "Em7",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em7",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em7",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em7.pdf"
+  },
+  {
+    "task_id": "task-0087",
+    "target_chord": "Em7/11",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "D",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "b7",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Em711",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em7/11",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em7(11)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em711.pdf"
+  },
+  {
+    "task_id": "task-0088",
+    "target_chord": "Em79",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "b7",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Em79",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em7/9",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em7(9)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em79.pdf"
+  },
+  {
+    "task_id": "task-0089",
+    "target_chord": "Em79/11",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "D",
+      "F#",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "b7",
+      "9M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Em79/11",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em7/9/11",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em7/9(11)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em7911.pdf"
+  },
+  {
+    "task_id": "task-0090",
+    "target_chord": "Em7M/11",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "D#",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "7M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Em7M11",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em7M/11",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em7M(11)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em7M11.pdf"
+  },
+  {
+    "task_id": "task-0091",
+    "target_chord": "Em7M/9",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "D#",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "7M",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Em7M9",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em7M/9",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em7M(9)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em7M9.pdf"
+  },
+  {
+    "task_id": "task-0092",
+    "target_chord": "Em7M9/11",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "D#",
+      "F#",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "7M",
+      "9M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Em7M9/11",
+        "E7(b13)",
+        "Amadd11",
+        "D7",
+        "G7M",
+        "B7/b13"
+      ],
+      [
+        "Em7M/9/11",
+        "F#madd9",
+        "B7/9",
+        "Emadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "Em7M/9(11)",
+        "F#m7",
+        "Bmadd9",
+        "C#m",
+        "A7M",
+        "B(#5)"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Em7M911.pdf"
+  },
+  {
+    "task_id": "task-0093",
+    "target_chord": "Emadd11",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Em",
+        "Emadd11",
+        "E",
+        "Am",
+        "B"
+      ],
+      [
+        "Emadd11",
+        "F#",
+        "Bm",
+        "E",
+        "Am",
+        "G",
+        "B"
+      ],
+      [
+        "Emadd11",
+        "D#",
+        "G#m",
+        "F",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Emadd11.pdf"
+  },
+  {
+    "task_id": "task-0094",
+    "target_chord": "Emadd9",
+    "expected_notes": [
+      "E",
+      "G",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Em",
+        "Emadd9",
+        "E",
+        "Am",
+        "B"
+      ],
+      [
+        "Emadd9",
+        "F#",
+        "Bm",
+        "E",
+        "Am",
+        "G",
+        "B"
+      ],
+      [
+        "Emadd9",
+        "D#",
+        "G#m",
+        "F",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Emadd9.pdf"
+  },
+  {
+    "task_id": "task-0095",
+    "target_chord": "Emadd9/11",
+    "expected_notes": [
+      "E",
+      "G",
+      "B",
+      "F#",
+      "A"
+    ],
+    "expected_intervals": [
+      "1J",
+      "b3",
+      "5J",
+      "9M",
+      "11"
+    ],
+    "progressions": [
+      [
+        "Em",
+        "Emadd9/11",
+        "E",
+        "Am",
+        "B"
+      ],
+      [
+        "Emadd9/11",
+        "F#",
+        "Bm",
+        "E",
+        "Am",
+        "G",
+        "B"
+      ],
+      [
+        "Emadd9/11",
+        "D#",
+        "G#m",
+        "F",
+        "A#",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Emadd911.pdf"
+  },
+  {
+    "task_id": "task-0096",
+    "target_chord": "E7sus4/9",
+    "expected_notes": [
+      "E",
+      "A",
+      "B",
+      "D",
+      "F#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4J",
+      "5J",
+      "b7",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Esus",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E74/9",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7sus4/9",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Esus.pdf"
+  },
+  {
+    "task_id": "task-0097",
+    "target_chord": "E7sus4/9/13",
+    "expected_notes": [
+      "E",
+      "A",
+      "B",
+      "D",
+      "F#",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4J",
+      "5J",
+      "b7",
+      "9M",
+      "13"
+    ],
+    "progressions": [
+      [
+        "Esus13",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E74/9/13",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7sus4/9/13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Esus13.pdf"
+  },
+  {
+    "task_id": "task-0098",
+    "target_chord": "E",
+    "expected_notes": [
+      "E",
+      "F#",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "2M",
+      "5J"
+    ],
+    "progressions": [
+      [
+        "Esus2",
+        "E",
+        "Bm",
+        "B"
+      ],
+      [
+        "Esus2",
+        "E",
+        "A",
+        "Am"
+      ],
+      [
+        "Esus2",
+        "C#",
+        "F#m",
+        "F#7",
+        "Bm",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Esus2.pdf"
+  },
+  {
+    "task_id": "task-0099",
+    "target_chord": "E",
+    "expected_notes": [
+      "E",
+      "A",
+      "B"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4J",
+      "5J"
+    ],
+    "progressions": [
+      [
+        "Esus4",
+        "E",
+        "Bm",
+        "B"
+      ],
+      [
+        "Esus4",
+        "E",
+        "A",
+        "Am"
+      ],
+      [
+        "Esus4",
+        "C#",
+        "F#m",
+        "F#7",
+        "Bm",
+        "B"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Esus4.pdf"
+  },
+  {
+    "task_id": "task-0100",
+    "target_chord": "E7sus4/13",
+    "expected_notes": [
+      "E",
+      "A",
+      "B",
+      "D",
+      "C#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4J",
+      "5J",
+      "b7",
+      "13"
+    ],
+    "progressions": [
+      [
+        "Esus13",
+        "Amadd9",
+        "Bmadd11",
+        "Dm",
+        "B(b5)"
+      ],
+      [
+        "E74/13",
+        "Aadd9",
+        "Amadd9",
+        "Bsus4",
+        "B"
+      ],
+      [
+        "E7sus4/13",
+        "Dadd9",
+        "Bmadd9",
+        "C#m",
+        "Esus4",
+        "Aadd9"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Esus413_sem_nona.pdf"
+  },
+  {
+    "task_id": "task-0101",
+    "target_chord": "C7/9",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "C7/9",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7/9",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7/9",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "tetradde_dominante_c79.pdf"
+  },
+  {
+    "task_id": "task-0102",
+    "target_chord": "C7(b9)",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Db"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "9m"
+    ],
+    "progressions": [
+      [
+        "C7(b9)",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7(b9)",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7(b9)",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tetrade_dominante_C7b9.pdf"
+  },
+  {
+    "task_id": "task-0103",
+    "target_chord": "C7",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "Bb"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa",
+      "b7"
+    ],
+    "progressions": [
+      [
+        "C7",
+        "Fmadd9",
+        "Fmadd11",
+        "Bbm",
+        "G(b5)"
+      ],
+      [
+        "C7",
+        "Fadd9",
+        "Fmadd9",
+        "Gsus4"
+      ],
+      [
+        "C7",
+        "Bbadd9",
+        "Gmadd9",
+        "Am",
+        "Bsus4",
+        "Gsus4"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "tetrade_dominante_maior_C7.pdf"
+  },
+  {
+    "task_id": "task-0104",
+    "target_chord": "C",
+    "expected_notes": [
+      "C",
+      "E",
+      "G#"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "#5"
+    ],
+    "progressions": [
+      [
+        "C(#5)",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "C(#5)",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "C(#5)",
+        "Am",
+        "Em",
+        "B",
+        "D",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_5.pdf"
+  },
+  {
+    "task_id": "task-0105",
+    "target_chord": "C",
+    "expected_notes": [
+      "C",
+      "E",
+      "Gb"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "b5"
+    ],
+    "progressions": [
+      [
+        "C(b5)",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "C(b5)",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "C(b5)",
+        "Am",
+        "Em",
+        "B",
+        "D",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_b5.pdf"
+  },
+  {
+    "task_id": "task-0106",
+    "target_chord": "C",
+    "expected_notes": [
+      "C",
+      "E",
+      "G"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5Justa"
+    ],
+    "progressions": [
+      [
+        "C",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "C",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "C",
+        "A",
+        "E",
+        "B",
+        "F",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_Maior.pdf"
+  },
+  {
+    "task_id": "task-0107",
+    "target_chord": "ADD9",
+    "expected_notes": [
+      "C",
+      "E",
+      "G",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3M",
+      "5J",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Cadd9",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "Cadd9",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "Cadd9",
+        "Am",
+        "Em",
+        "B",
+        "D",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_Maior_add9.pdf"
+  },
+  {
+    "task_id": "task-0108",
+    "target_chord": "C",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3m",
+      "5Justa"
+    ],
+    "progressions": [
+      [
+        "Cm",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "Cm",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "Cm",
+        "Am",
+        "Em",
+        "B",
+        "D",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_Menor.pdf"
+  },
+  {
+    "task_id": "task-0109",
+    "target_chord": "ADD11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3m",
+      "5J",
+      "11M"
+    ],
+    "progressions": [
+      [
+        "Cmadd11",
+        "Cmadd9",
+        "Fmadd11",
+        "G(b5)"
+      ],
+      [
+        "Cmadd11",
+        "Ebadd9",
+        "Fadd9",
+        "G(#5)"
+      ],
+      [
+        "Cmadd11",
+        "Amadd11",
+        "Emadd9",
+        "Bsus4",
+        "Dsus2"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_Menor_add11.pdf"
+  },
+  {
+    "task_id": "task-0110",
+    "target_chord": "ADD9",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "D"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3m",
+      "5J",
+      "9M"
+    ],
+    "progressions": [
+      [
+        "Cmadd9",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "Cmadd9",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "Cmadd9",
+        "Am",
+        "Em",
+        "B",
+        "D",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_Menor_add9.pdf"
+  },
+  {
+    "task_id": "task-0111",
+    "target_chord": "ADD9/11",
+    "expected_notes": [
+      "C",
+      "Eb",
+      "G",
+      "D",
+      "F"
+    ],
+    "expected_intervals": [
+      "1J",
+      "3m",
+      "5J",
+      "9M",
+      "11M"
+    ],
+    "progressions": [
+      [
+        "Cmadd9/11",
+        "Cmadd9",
+        "Fmadd11",
+        "G(b5)"
+      ],
+      [
+        "Cmadd9/11",
+        "Ebadd9",
+        "Fadd9",
+        "G(#5)"
+      ],
+      [
+        "Cmadd9/11",
+        "Amadd11",
+        "Emadd9",
+        "Bsus4",
+        "Dsus2"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_menor_add911.pdf"
+  },
+  {
+    "task_id": "task-0112",
+    "target_chord": "C",
+    "expected_notes": [
+      "C",
+      "D",
+      "G"
+    ],
+    "expected_intervals": [
+      "1J",
+      "2M",
+      "5Justa"
+    ],
+    "progressions": [
+      [
+        "Csus2",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "Csus2",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "Csus2",
+        "Am",
+        "Em",
+        "B",
+        "D",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_sus2.pdf"
+  },
+  {
+    "task_id": "task-0113",
+    "target_chord": "C",
+    "expected_notes": [
+      "C",
+      "F",
+      "G"
+    ],
+    "expected_intervals": [
+      "1J",
+      "4Justa",
+      "5Justa"
+    ],
+    "progressions": [
+      [
+        "Csus4",
+        "D",
+        "F",
+        "G"
+      ],
+      [
+        "Csus4",
+        "Eb",
+        "F",
+        "G"
+      ],
+      [
+        "Csus4",
+        "Am",
+        "Em",
+        "B",
+        "D",
+        "G"
+      ]
+    ],
+    "playback_hint": {
+      "tempo_bpm": 72,
+      "beats_per_chord": 4
+    },
+    "source_file": "Tri_ade_sus4.pdf"
+  }
+]
