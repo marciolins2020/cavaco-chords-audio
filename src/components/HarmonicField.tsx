@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button";
 import ChordDiagram from "@/components/ChordDiagram";
 import { getHarmonicField, getAvailableKeys, FUNCTION_INFO, HarmonicFunction } from "@/utils/harmonicField";
 import { useNavigate } from "react-router-dom";
-
-
 import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
+import { useChordList } from "@/hooks/useChordList";
 
 interface HarmonicFieldProps {
   selectedKey?: string;
@@ -20,8 +19,9 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   const [playingChord, setPlayingChord] = useState<string | null>(null);
   const navigate = useNavigate();
   const { addToHistory } = useApp();
+  const allChords = useChordList();
 
-  const field = getHarmonicField(currentKey);
+  const field = getHarmonicField(currentKey, allChords);
   const availableKeys = getAvailableKeys();
 
   if (!field) return null;

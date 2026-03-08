@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { convertedChords } from "@/lib/chordConverter";
+import { useChordList } from "@/hooks/useChordList";
 import { ChordEntry } from "@/types/chords";
 import { usePractice } from "@/hooks/usePractice";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
@@ -27,6 +27,7 @@ export default function PracticePage() {
   const [currentChord, setCurrentChord] = useState<ChordEntry | null>(null);
   const [showAchievements, setShowAchievements] = useState(false);
   const navigate = useNavigate();
+  const allChords = useChordList();
 
   const levelInfo = getLevelInfo(stats);
   const unlockedAchievements = ACHIEVEMENTS.filter((a) =>
@@ -44,14 +45,13 @@ export default function PracticePage() {
     if (unmasteredChords.length > 0) {
       // Pegar o primeiro acorde não dominado
       const nextChordName = unmasteredChords[0];
-      const chord = convertedChords.find((c) => c.id === nextChordName);
+      const chord = allChords.find((c) => c.id === nextChordName);
       if (chord) {
         setCurrentChord(chord);
       }
     } else {
-      // Se dominou todos, escolher aleatório
       const randomChord =
-        convertedChords[Math.floor(Math.random() * convertedChords.length)];
+        allChords[Math.floor(Math.random() * allChords.length)];
       setCurrentChord(randomChord);
     }
   };
@@ -152,7 +152,7 @@ export default function PracticePage() {
                               variant={isMastered ? "default" : isLearned ? "secondary" : "outline"}
                               className="cursor-pointer"
                               onClick={() => {
-                                const chord = convertedChords.find((c) => c.id === chordName);
+                                const chord = allChords.find((c) => c.id === chordName);
                                 if (chord) navigate(`/chord/${chord.id}`);
                               }}
                             >

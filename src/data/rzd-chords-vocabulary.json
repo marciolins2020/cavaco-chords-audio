@@ -1,0 +1,1142 @@
+[
+  {
+    "chord": "B",
+    "occurrences": 77
+  },
+  {
+    "chord": "Bsus4",
+    "occurrences": 72
+  },
+  {
+    "chord": "C#m",
+    "occurrences": 52
+  },
+  {
+    "chord": "Aadd9",
+    "occurrences": 51
+  },
+  {
+    "chord": "Fmadd9",
+    "occurrences": 49
+  },
+  {
+    "chord": "Gsus4",
+    "occurrences": 49
+  },
+  {
+    "chord": "Bmadd9",
+    "occurrences": 41
+  },
+  {
+    "chord": "Dadd9",
+    "occurrences": 41
+  },
+  {
+    "chord": "Amadd9",
+    "occurrences": 40
+  },
+  {
+    "chord": "Bbadd9",
+    "occurrences": 40
+  },
+  {
+    "chord": "Am",
+    "occurrences": 38
+  },
+  {
+    "chord": "Esus4",
+    "occurrences": 34
+  },
+  {
+    "chord": "G(b5)",
+    "occurrences": 32
+  },
+  {
+    "chord": "B(b5)",
+    "occurrences": 31
+  },
+  {
+    "chord": "G",
+    "occurrences": 27
+  },
+  {
+    "chord": "E",
+    "occurrences": 26
+  },
+  {
+    "chord": "Eadd9",
+    "occurrences": 25
+  },
+  {
+    "chord": "F",
+    "occurrences": 24
+  },
+  {
+    "chord": "Badd9",
+    "occurrences": 22
+  },
+  {
+    "chord": "Dm7",
+    "occurrences": 22
+  },
+  {
+    "chord": "Ab7M",
+    "occurrences": 21
+  },
+  {
+    "chord": "Fadd9",
+    "occurrences": 21
+  },
+  {
+    "chord": "Fmadd11",
+    "occurrences": 21
+  },
+  {
+    "chord": "A7M",
+    "occurrences": 20
+  },
+  {
+    "chord": "Bmadd11",
+    "occurrences": 20
+  },
+  {
+    "chord": "Dm",
+    "occurrences": 20
+  },
+  {
+    "chord": "F#madd9",
+    "occurrences": 20
+  },
+  {
+    "chord": "Bbm",
+    "occurrences": 19
+  },
+  {
+    "chord": "Gmadd9",
+    "occurrences": 19
+  },
+  {
+    "chord": "G#m",
+    "occurrences": 18
+  },
+  {
+    "chord": "Emadd9",
+    "occurrences": 16
+  },
+  {
+    "chord": "C7(b13)",
+    "occurrences": 15
+  },
+  {
+    "chord": "D",
+    "occurrences": 15
+  },
+  {
+    "chord": "Em7",
+    "occurrences": 15
+  },
+  {
+    "chord": "Cmadd11",
+    "occurrences": 14
+  },
+  {
+    "chord": "E7",
+    "occurrences": 14
+  },
+  {
+    "chord": "A#",
+    "occurrences": 13
+  },
+  {
+    "chord": "Amadd11",
+    "occurrences": 13
+  },
+  {
+    "chord": "Ebadd9",
+    "occurrences": 13
+  },
+  {
+    "chord": "Em",
+    "occurrences": 13
+  },
+  {
+    "chord": "F#m",
+    "occurrences": 13
+  },
+  {
+    "chord": "Em7/9",
+    "occurrences": 12
+  },
+  {
+    "chord": "F#madd11",
+    "occurrences": 12
+  },
+  {
+    "chord": "Abadd9",
+    "occurrences": 11
+  },
+  {
+    "chord": "Am7",
+    "occurrences": 11
+  },
+  {
+    "chord": "Bb7",
+    "occurrences": 11
+  },
+  {
+    "chord": "Bb7M",
+    "occurrences": 11
+  },
+  {
+    "chord": "D7",
+    "occurrences": 11
+  },
+  {
+    "chord": "Dmadd11",
+    "occurrences": 11
+  },
+  {
+    "chord": "Dmadd9",
+    "occurrences": 11
+  },
+  {
+    "chord": "E7(b13)",
+    "occurrences": 11
+  },
+  {
+    "chord": "Eb7M",
+    "occurrences": 11
+  },
+  {
+    "chord": "F#m7",
+    "occurrences": 11
+  },
+  {
+    "chord": "F7M",
+    "occurrences": 11
+  },
+  {
+    "chord": "G7",
+    "occurrences": 11
+  },
+  {
+    "chord": "G7(13)",
+    "occurrences": 11
+  },
+  {
+    "chord": "G7(b13)",
+    "occurrences": 11
+  },
+  {
+    "chord": "G7/13",
+    "occurrences": 11
+  },
+  {
+    "chord": "G7/9",
+    "occurrences": 11
+  },
+  {
+    "chord": "G7M",
+    "occurrences": 11
+  },
+  {
+    "chord": "Gadd9",
+    "occurrences": 11
+  },
+  {
+    "chord": "Ab7M/9",
+    "occurrences": 10
+  },
+  {
+    "chord": "B(#5)",
+    "occurrences": 10
+  },
+  {
+    "chord": "B7(13)",
+    "occurrences": 10
+  },
+  {
+    "chord": "B7/9",
+    "occurrences": 10
+  },
+  {
+    "chord": "B7/b13",
+    "occurrences": 10
+  },
+  {
+    "chord": "Bbm7(9/11)",
+    "occurrences": 10
+  },
+  {
+    "chord": "Bbm7/9",
+    "occurrences": 10
+  },
+  {
+    "chord": "Bm7",
+    "occurrences": 10
+  },
+  {
+    "chord": "C#7(b13)",
+    "occurrences": 10
+  },
+  {
+    "chord": "C#m7",
+    "occurrences": 10
+  },
+  {
+    "chord": "C6/9",
+    "occurrences": 10
+  },
+  {
+    "chord": "Dbadd9",
+    "occurrences": 10
+  },
+  {
+    "chord": "Ebsus",
+    "occurrences": 10
+  },
+  {
+    "chord": "Gm7(11)",
+    "occurrences": 10
+  },
+  {
+    "chord": "C",
+    "occurrences": 9
+  },
+  {
+    "chord": "D#",
+    "occurrences": 8
+  },
+  {
+    "chord": "Eb",
+    "occurrences": 8
+  },
+  {
+    "chord": "F#",
+    "occurrences": 8
+  },
+  {
+    "chord": "Bm",
+    "occurrences": 7
+  },
+  {
+    "chord": "G#",
+    "occurrences": 6
+  },
+  {
+    "chord": "C7M",
+    "occurrences": 5
+  },
+  {
+    "chord": "Cmadd9",
+    "occurrences": 5
+  },
+  {
+    "chord": "Emadd11",
+    "occurrences": 5
+  },
+  {
+    "chord": "A",
+    "occurrences": 4
+  },
+  {
+    "chord": "C6(#11)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C6(7M)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C6(7M/9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C6(9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C6(9/#11)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(#11)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(#11/13)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(#5/#9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(#9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(#9/13)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(13)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(9/#11)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(9/13)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(b5/#9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(b5/b9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(b9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7(b9/b13)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7/9",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7M(#5/9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7M(9/#11)",
+    "occurrences": 4
+  },
+  {
+    "chord": "C7M/9",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cdim",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cdim(11)",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cdim(7M)",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cdim(9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cdim(b13)",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cm6",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cm7",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cm7M/11",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cm7M/9",
+    "occurrences": 4
+  },
+  {
+    "chord": "Cm7M/9/11",
+    "occurrences": 4
+  },
+  {
+    "chord": "E7(#9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "E7(9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "E7(b9)",
+    "occurrences": 4
+  },
+  {
+    "chord": "E7M",
+    "occurrences": 4
+  },
+  {
+    "chord": "Em6",
+    "occurrences": 4
+  },
+  {
+    "chord": "Emadd9/11",
+    "occurrences": 4
+  },
+  {
+    "chord": "C#",
+    "occurrences": 3
+  },
+  {
+    "chord": "C(#5)",
+    "occurrences": 3
+  },
+  {
+    "chord": "C(b5)",
+    "occurrences": 3
+  },
+  {
+    "chord": "C7(b9/13)",
+    "occurrences": 3
+  },
+  {
+    "chord": "C7M/#11",
+    "occurrences": 3
+  },
+  {
+    "chord": "C7M/sus2",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cadd9",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm6(11)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm6(7M)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm6(9)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm6(9/11)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm7(11)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm7(9)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cm7(9/11)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Cmadd9/11",
+    "occurrences": 3
+  },
+  {
+    "chord": "Csus",
+    "occurrences": 3
+  },
+  {
+    "chord": "Csus13",
+    "occurrences": 3
+  },
+  {
+    "chord": "Csus2",
+    "occurrences": 3
+  },
+  {
+    "chord": "Csus4",
+    "occurrences": 3
+  },
+  {
+    "chord": "CØ",
+    "occurrences": 3
+  },
+  {
+    "chord": "CØ(11)",
+    "occurrences": 3
+  },
+  {
+    "chord": "CØ(9)",
+    "occurrences": 3
+  },
+  {
+    "chord": "CØ(b13)",
+    "occurrences": 3
+  },
+  {
+    "chord": "E(#5)",
+    "occurrences": 3
+  },
+  {
+    "chord": "E(b5)",
+    "occurrences": 3
+  },
+  {
+    "chord": "E7(#11)",
+    "occurrences": 3
+  },
+  {
+    "chord": "Esus2",
+    "occurrences": 3
+  },
+  {
+    "chord": "ADD9",
+    "occurrences": 2
+  },
+  {
+    "chord": "Csus4/13",
+    "occurrences": 2
+  },
+  {
+    "chord": "Dsus2",
+    "occurrences": 2
+  },
+  {
+    "chord": "E6/#11",
+    "occurrences": 2
+  },
+  {
+    "chord": "E6/7M",
+    "occurrences": 2
+  },
+  {
+    "chord": "E6/7M/9",
+    "occurrences": 2
+  },
+  {
+    "chord": "E6/9",
+    "occurrences": 2
+  },
+  {
+    "chord": "E6/9/#11",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7(#9)(#5)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7(#9)(b5)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7(13)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7(b9)(13)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7(b9)(b13)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7/13",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7/b13",
+    "occurrences": 2
+  },
+  {
+    "chord": "E79(#11)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E79(b5)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E79/13",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7M(#11)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7M/9",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7M9(#11)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7M9(#5)",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7Msus2",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7sus4/13",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7sus4/9",
+    "occurrences": 2
+  },
+  {
+    "chord": "E7sus4/9/13",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em6/11",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em6/7M",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em69",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em7/11",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em79",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em79/11",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em7M/11",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em7M/9",
+    "occurrences": 2
+  },
+  {
+    "chord": "Em7M9/11",
+    "occurrences": 2
+  },
+  {
+    "chord": "Esus13",
+    "occurrences": 2
+  },
+  {
+    "chord": "F#7",
+    "occurrences": 2
+  },
+  {
+    "chord": "G(#5)",
+    "occurrences": 2
+  },
+  {
+    "chord": "ADD11",
+    "occurrences": 1
+  },
+  {
+    "chord": "ADD9/11",
+    "occurrences": 1
+  },
+  {
+    "chord": "B7",
+    "occurrences": 1
+  },
+  {
+    "chord": "B7(b13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "B713",
+    "occurrences": 1
+  },
+  {
+    "chord": "B79",
+    "occurrences": 1
+  },
+  {
+    "chord": "B7sus4",
+    "occurrences": 1
+  },
+  {
+    "chord": "C7(b9)/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "C7/4(9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "C7/4(9/13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "C7M(#11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "C7M(sus2)",
+    "occurrences": 1
+  },
+  {
+    "chord": "C7sus4/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm6/11",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm6/7M",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm6/9",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm6/9/11",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm7(b5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm7(b5)(11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm7(b5)(9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm7(b5)(b13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm7/11",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm7/9",
+    "occurrences": 1
+  },
+  {
+    "chord": "Cm7/9/11",
+    "occurrences": 1
+  },
+  {
+    "chord": "Csus4/13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "D7M",
+    "occurrences": 1
+  },
+  {
+    "chord": "E6#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E6(#11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E6(7M)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E6(7M/9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E6(9/#11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E6(9add9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E67M",
+    "occurrences": 1
+  },
+  {
+    "chord": "E67M/9",
+    "occurrences": 1
+  },
+  {
+    "chord": "E69",
+    "occurrences": 1
+  },
+  {
+    "chord": "E69/#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7#11(13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7#11/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7#9(13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7#9/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(#9)/b5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(#9/#5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(#9/b5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(9)(#5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(9/#5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(9/b5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(b9/13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7(b9/b13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/#11(13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/#11/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/#9(13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/#9/#5",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/#9/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/9(#11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/9(b5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/9/#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/9/#5",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/9/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/b9/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7/b9/b13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E713",
+    "occurrences": 1
+  },
+  {
+    "chord": "E74/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E74/9",
+    "occurrences": 1
+  },
+  {
+    "chord": "E74/9/13",
+    "occurrences": 1
+  },
+  {
+    "chord": "E79(#5)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E79(13)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M(9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M(sus2)",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M/#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M/9/#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M/9/#5",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M/sus2",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M9",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M9/#11",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7M9/#5",
+    "occurrences": 1
+  },
+  {
+    "chord": "E7b13",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em6(11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em6(7M)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em6(9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em6/9",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em611",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em67M",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7(11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7(9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7/9(11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7/9/11",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em711",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7M(11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7M(9)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7M/9(11)",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7M/9/11",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7M11",
+    "occurrences": 1
+  },
+  {
+    "chord": "Em7M9",
+    "occurrences": 1
+  },
+  {
+    "chord": "Esus",
+    "occurrences": 1
+  }
+]

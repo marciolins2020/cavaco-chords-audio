@@ -2,6 +2,7 @@
 // Todas as formas são verificadas para produzir as notas corretas na afinação DGBD
 
 import { validateChordDiagram, getExpectedChordNotes } from '@/lib/chordValidator';
+import rzdCourseData from '@/data/rzd-course-chords.json';
 
 export interface ChordVariation {
   id: string;
@@ -31,9 +32,14 @@ export const TUNING_FREQUENCIES = [293.66, 392.00, 493.88, 587.33];
 export const ROOT_NOTES = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 
 export const CHORD_TYPES = [
-  'M', 'm', '7', 'm7', 'maj7', 
-  '6', 'm6', 'dim', 'm7b5', 
-  '5+', 'sus4', '9', 'add9'
+  'M', 'm', '7', 'm7', '7M', 
+  '6', 'add9', 'madd9', 'madd11', 'sus4',
+  '(b5)', '(#5)', 'm7(b5)',
+  '7(9)', '7(13)', '7(b13)', '7(b9)', '7(b5)', '7(#9)', '7(#11)',
+  '6(9)', '6(7M)', '6(7M/9)', '6(#11)', '6(9/#11)',
+  '7M(9)', '7M(#11)', '7M(9/#11)',
+  'm7(9)', 'm7(11)', 'm7(9/11)',
+  '7(b9/13)', '7(#11/13)', '7(#5/#9)',
 ];
 
 const ROOT_INDICES: Record<string, number> = {
@@ -311,7 +317,16 @@ function generateFullDatabase(): ChordDatabase {
   return { version: "6.0-validated", chords };
 }
 
-export const DEFAULT_DB: ChordDatabase = generateFullDatabase();
+const GENERATED_DB: ChordDatabase = generateFullDatabase();
+
+// Merge course chords (priority) with generated chords (fallback)
+function buildDefaultDB(): ChordDatabase {
+  const courseDB = rzdCourseData as unknown as ChordDatabase;
+  // Course chords override generated ones
+  return mergeChordDatabases(GENERATED_DB, courseDB);
+}
+
+export const DEFAULT_DB: ChordDatabase = buildDefaultDB();
 
 export function validateChordDatabase(data: any): data is ChordDatabase {
   if (!data || typeof data !== "object") return false;

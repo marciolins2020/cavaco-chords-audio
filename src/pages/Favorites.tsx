@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ChordEntry } from "@/types/chords";
 import { useApp } from "@/contexts/AppContext";
-import { convertedChords } from "@/lib/chordConverter";
+import { useChordList } from "@/hooks/useChordList";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -14,10 +14,11 @@ import { getDifficultyInfo } from "@/utils/chordAnalysis";
 
 const Favorites = () => {
   const { favorites } = useApp();
+  const allChords = useChordList();
   const [difficultyFilter, setDifficultyFilter] = useState<number | null>(null);
   const [tagFilter, setTagFilter] = useState<string | null>(null);
   
-  const favoriteChords = convertedChords.filter(chord => favorites.includes(chord.id));
+  const favoriteChords = allChords.filter(chord => favorites.includes(chord.id));
 
   // Filtrar por dificuldade e tag
   const filteredChords = favoriteChords.filter(chord => {

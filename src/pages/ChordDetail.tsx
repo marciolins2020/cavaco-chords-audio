@@ -12,6 +12,7 @@ import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
+import { makeChordId } from "@/lib/chordIds";
 
 // Calcula as notas REAIS que soam quando você toca a posição específica no cavaquinho
 function calculateActualNotes(frets: number[]): string[] {
@@ -65,7 +66,7 @@ const ChordDetail = () => {
         description: chordDef.suffix
       };
       
-      const chordId = chordDef.root + suffixInfo.quality;
+      const chordId = makeChordId(chordDef.root, chordDef.suffix);
       
       if (chordId === id) {
         // Calcula as notas reais da primeira variação

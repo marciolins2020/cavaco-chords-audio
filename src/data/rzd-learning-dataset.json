@@ -1,0 +1,5561 @@
+{
+  "generated_at": "2026-03-08T16:30:23.248944+00:00",
+  "source_file": "/Users/marciolins/Documents/New project/audit/hotmart_pdfs/run-1772978114583/json/pdfs_for_app.json",
+  "total_lessons": 113,
+  "total_unique_chords": 285,
+  "lessons": [
+    {
+      "id": "pdf-0001",
+      "file_name": "C67M9_ok.pdf",
+      "title": "C67M9_ok",
+      "target_chord": "C6(7M/9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5",
+          "6M",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "A",
+          "B",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5 - G / 6M - A / 7M- B / 9M - D"
+      },
+      "progressions": [
+        [
+          "C6(7M/9)",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C6(7M/9)",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C6(7M/9)",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    6/7M/9   C6(7M/9) Estrutura : 1 Justo - C / 3M  - E / 5 - G /  6M - A / 7M- B / 9M - D\nProgressões :||: C6(7M/9)| Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C6(7M/9)| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C6(7M/9) | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0002",
+      "file_name": "C67M_ok.pdf",
+      "title": "C67M_ok",
+      "target_chord": "C6(7M)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5",
+          "6M",
+          "7M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "A",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5 - G / 6M - A / 7M- B"
+      },
+      "progressions": [
+        [
+          "C6(7M)",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C6(7M)",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C6(7M)",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    6/7M   C6(7M Estrutura : 1 Justo - C / 3M  - E / 5 - G /  6M - A / 7M- B\nProgressões :||: C6(7M)| Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C6(7M)| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C6(7M) | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0003",
+      "file_name": "C69_11_ok.pdf",
+      "title": "C69_11_ok",
+      "target_chord": "C6(9/#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5",
+          "6M",
+          "9M",
+          "#11"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "A",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5 - G / 6M - A / 9M - D / #11 - F#"
+      },
+      "progressions": [
+        [
+          "C6(9/#11)",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C6(9/#11)",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C6(9/#11)",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    6/9/#11   C6(9/#11) Estrutura : 1 Justo - C / 3M  - E / 5 - G /  6M - A  / 9M - D / #11 - F#\nProgressões :||: C6(9/#11)| Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C6(9/#11)| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C6(9/#11) | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0004",
+      "file_name": "C69_ok.pdf",
+      "title": "C69_ok",
+      "target_chord": "C6(9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5",
+          "6M",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "A",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5 - G / 6M - A / 9M - D"
+      },
+      "progressions": [
+        [
+          "C6(9)",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C6(9)",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C6(9)",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    6/9   C6(9) Estrutura : 1 Justo - C / 3M  - E / 5 - G /  6M - A  / 9M - D\nProgressões :||: C6(9)| Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C6(9)| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C6(9) | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0005",
+      "file_name": "C6_11_ok.pdf",
+      "title": "C6_11_ok",
+      "target_chord": "C6(#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5",
+          "6M",
+          "#11"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "A",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5 - G / 6M - A /#11 - F#"
+      },
+      "progressions": [
+        [
+          "C6(#11)",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C6(#11)",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C6(#11)",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    6/#11  C6(#11) Estrutura : 1 Justo - C / 3M  - E / 5 - G /  6M - A /#11 - F#\nProgressões :||: C6(#11)| Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C6(#11)| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C6(#11) | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0006",
+      "file_name": "C7913.pdf",
+      "title": "C7913",
+      "target_chord": "C7(9/13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "b7",
+          "13"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "A"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb 9 - D / 13- A"
+      },
+      "progressions": [
+        [
+          "C7(9/13)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(9/13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(9/13)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ 9 / 13 - C7(9/13) Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb\n9 - D / 13- A\nProgressões :||: C7(9/13)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(9/13)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(9/13) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0007",
+      "file_name": "C79_11_.pdf",
+      "title": "C79_11_",
+      "target_chord": "C7(9/#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5",
+          "b7",
+          "9M",
+          "#11"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5 - G / b7 - Bb / 9M - D / #11 - F#"
+      },
+      "progressions": [
+        [
+          "C7(9/#11)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(9/#11)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(9/#11)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ 9/ #11   C7(9/#11) Estrutura : 1Justo - C / 3 maior - E / 5 - G /  b7 - Bb / 9M  - D / #11 - F#\nProgressões :||: C7(9/#11)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(9/#11)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(9/#11) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0008",
+      "file_name": "C7_11.pdf",
+      "title": "C7_11",
+      "target_chord": "C7(#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "#11"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "F#"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5J - G / b7 - Bb / #11 - F#"
+      },
+      "progressions": [
+        [
+          "C7(#11)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(#11)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(#11)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ #11  C7(#11) Estrutura : 1Justo - C / 3 maior - E / 5J - G /  b7 - Bb / #11 - F#\nProgressões :||: C7(#11)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(#11)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(#11) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0009",
+      "file_name": "C7_11_13_.pdf",
+      "title": "C7_11_13_",
+      "target_chord": "C7(#11/13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "#11",
+          "13"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "F#",
+          "A"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5J - G / b7 - Bb / #11 - F# / 13 -A"
+      },
+      "progressions": [
+        [
+          "C7(#11/13)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(#11/13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(#11/13)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ #11 / 13   C7(#11/13) Estrutura : 1Justo - C / 3 maior - E / 5J - G /  b7 - Bb / #11 - F# / 13 -A\nProgressões :||: C7(#11/13)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(#11/13)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(#11/13) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0010",
+      "file_name": "C7_13.pdf",
+      "title": "C7_13",
+      "target_chord": "C7(13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "b7",
+          "13"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "A"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb / 13- A"
+      },
+      "progressions": [
+        [
+          "C7(13)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(13)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7  e 13 - C7(13) Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb / 13- A\nProgressões :||: C7(13) | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(13)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(13) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0011",
+      "file_name": "C7_5_9.pdf",
+      "title": "C7_5_9",
+      "target_chord": "C7(#5/#9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "#5",
+          "b7",
+          "#9"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G#",
+          "Bb",
+          "D#"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / #5 - G# / b7 - Bb / #9 - D#"
+      },
+      "progressions": [
+        [
+          "C7(#5/#9)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(#5/#9)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(#5/#9)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ #5 / #9 - C7(#5/#9) Estrutura : 1Justo - C / 3 maior - E / #5 - G#  /  b7 - Bb / #9 - D#\nProgressões :||: C7(#5/#9)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(#5/#9)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(#5/#9) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0012",
+      "file_name": "C7_9.pdf",
+      "title": "C7_9",
+      "target_chord": "C7(#9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "9#"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "D#"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G b7 - Bb / 9 aumentada - D#"
+      },
+      "progressions": [
+        [
+          "C7(#9)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(#9)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(#9)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  Sétima e Nona aumentada- C7(#9) Estrutura : 1Justo - C / 3 maior - E / 5Justa- G\nb7 - Bb / 9 aumentada - D#\nProgressões :||: C7(#9) | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(#9)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(#9) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0013",
+      "file_name": "C7_9_13.pdf",
+      "title": "C7_9_13",
+      "target_chord": "C7(#9/13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "#9",
+          "13"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "D#",
+          "A"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5J - G / b7 - Bb / #9 - D# / 13 -A"
+      },
+      "progressions": [
+        [
+          "C7(#9/13)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(#9/13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(#9/13)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ #9 / 13   C7(#9/13) Estrutura : 1Justo - C / 3 maior - E / 5J - G /  b7 - Bb / #9 - D# / 13 -A\nProgressões :||: C7(#9/13)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(#9/13)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(#9/13) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0014",
+      "file_name": "C7_9b5.pdf",
+      "title": "C7_9b5",
+      "target_chord": "C7(b5/#9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "b5",
+          "b7",
+          "#9"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "Gb",
+          "Bb",
+          "D#"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / b5 - Gb / b7 - Bb / #9 - D#"
+      },
+      "progressions": [
+        [
+          "C7(b5/#9)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(b5/#9)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(b5/#9)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ b5 / #9 - C7(b5/#9) Estrutura : 1Justo - C / 3 maior - E / b5 - Gb  /  b7 - Bb / #9 - D#\nProgressões :||: C7(b5/#9)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(b5/#9)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(b5/#9) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0015",
+      "file_name": "C7b13.pdf",
+      "title": "C7b13",
+      "target_chord": "C7(b13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "b7",
+          "b13"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "Ab"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb / b13- Ab"
+      },
+      "progressions": [
+        [
+          "C7(b13)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(b13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(b13)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7  e b13 - C7(b13) Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb / b13- Ab\nProgressões :||: C7(b13) | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(b13)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(b13) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0016",
+      "file_name": "C7b5b9.pdf",
+      "title": "C7b5b9",
+      "target_chord": "C7(b5/b9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "b5",
+          "b7",
+          "b9"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "Gb",
+          "Bb",
+          "Db"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / b5 - Gb / b7 - Bb /b9 - Db"
+      },
+      "progressions": [
+        [
+          "C7(b5/b9)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(b5/b9)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(b5/b9)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ b5 / b9   C7(b5/b9) Estrutura : 1Justo - C / 3 maior - E / b5 - Gb /  b7 - Bb /b9  - Db\nProgressões :||: C7(b5/b9)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(b5/b9)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(b5/b9) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0017",
+      "file_name": "C7b913.pdf",
+      "title": "C7b913",
+      "target_chord": "C7(b9/13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "b9",
+          "13"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "Db",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5J - G / b7 - Bb / b9 - Db / 13 -A"
+      },
+      "progressions": [
+        [
+          "C7(b9/13)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(b9/13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(b9)/13",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante 7 / b9 / 13   C7(b9/13) Estrutura : 1 Justo - C / 3M  - E / 5J - G /  b7 - Bb  / b9 - Db / 13 -A\nProgressões :||: C7(b9/13) | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(b9/13) | Fadd9 | Fmadd9 | Gsus4 :||||: C7(b9)/13 | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0018",
+      "file_name": "c7b9b13.pdf",
+      "title": "c7b9b13",
+      "target_chord": "C7(b9/b13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "b7",
+          "b13"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb",
+          "Ab"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb b9 - Db / b13- Ab"
+      },
+      "progressions": [
+        [
+          "C7(b9/b13)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(b9/b13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(b9/b13)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  7/ b9 / b13 - C7(b9/b13) Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb\nb9 - Db / b13- Ab\nProgressões :||: C7(b9/b13)| Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(b9/b13)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(b9/b13) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0019",
+      "file_name": "C7M9_11_ok.pdf",
+      "title": "C7M9_11_ok",
+      "target_chord": "C7M(9/#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5",
+          "7M",
+          "9M",
+          "#11"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "B",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5 - G / 7M - B / 9M - D /#11 - F#"
+      },
+      "progressions": [
+        [
+          "C7M(9/#11)",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C7M(9/#11)",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C7M(9/#11)",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    7M/9/#11  C7M(9/#11) Estrutura : 1 Justo - C / 3M  - E / 5 - G /  7M - B / 9M - D /#11 - F#\nProgressões :||: C7M(9/#11)| Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C7M(9/#11)| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C7M(9/#11) | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0020",
+      "file_name": "C7M9_ok.pdf",
+      "title": "C7M9_ok",
+      "target_chord": "C7M/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "B",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5J - G / 7M - B / 9M - D"
+      },
+      "progressions": [
+        [
+          "C7M/9",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C7M/9",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C7M/9",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    7M/9      C7M/9 Estrutura : 1 Justo - C / 3M  - E / 5J - G /  7M - B / 9M - D\nProgressões :||: C7M/9 | Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C7M/9 | Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C7M/9 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0021",
+      "file_name": "C7M_11_ok.pdf",
+      "title": "C7M_11_ok",
+      "target_chord": "C7M(#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "7M",
+          "#11"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "B",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5J - G / 7M - B / #11 - F#"
+      },
+      "progressions": [
+        [
+          "C7M/#11",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C7M/#11",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C7M/#11",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    7M/#11  C7M(#11) Estrutura : 1 Justo - C / 3M  - E / 5J - G /  7M - B / #11 - F#\nProgressões :||: C7M/#11 | Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C7M/#11| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C7M/#11 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0022",
+      "file_name": "C7M_59_ok.pdf",
+      "title": "C7M_59_ok",
+      "target_chord": "C7M(#5/9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "#5",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G#",
+          "B",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / #5 - G# / 7M - B / 9M - D"
+      },
+      "progressions": [
+        [
+          "C7M(#5/9)",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C7M(#5/9)",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C7M(#5/9)",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    7M/#5/9  C7M(#5/9) Estrutura : 1 Justo - C / 3M  - E / #5 - G# /  7M - B / 9M - D\nProgressões :||: C7M(#5/9)| Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C7M(#5/9)| Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C7M(#5/9) | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0023",
+      "file_name": "C7M_ok.pdf",
+      "title": "C7M_ok",
+      "target_chord": "C7M",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "7M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 3M - E / 5J - G / 7M - B"
+      },
+      "progressions": [
+        [
+          "C7M",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C7M",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C7M",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    7M      C7M Estrutura : 1 Justo - C / 3M  - E / 5J - G /  7M - B\nProgressões :||: C7M | Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C7M | Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C7M | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0024",
+      "file_name": "C7Msus2_ok.pdf",
+      "title": "C7Msus2_ok",
+      "target_chord": "C7M(sus2)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "2M",
+          "3M",
+          "5J",
+          "7M"
+        ],
+        "notes": [
+          "C",
+          "D",
+          "E",
+          "G",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - C / 2M - D / 3M - E / 5J - G / 7M - B"
+      },
+      "progressions": [
+        [
+          "C7M/sus2",
+          "Gadd9",
+          "Dmadd11",
+          "Am7",
+          "G(b5)"
+        ],
+        [
+          "Bbadd9",
+          "C7M/sus2",
+          "Dadd9",
+          "Badd9",
+          "Em7/9",
+          "Abadd9"
+        ],
+        [
+          "F7M",
+          "Em7",
+          "Dm7",
+          "G7/13",
+          "C7M/sus2",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrades Maiores com Tensão    7M/sus2   C7M(sus2) Estrutura : 1 Justo - C / 2M - D / 3M  - E / 5J - G /  7M - B\nProgressões :||: C7M/sus2 | Gadd9 | Dmadd11 | Am7 | G(b5):||||: Bbaddd9 | C7M/sus2 | Dadd9 | Badd9 | Em7/9 | Abadd9 :||||: F7M | Em7 | Dm7 | G7/13 | C7M/sus2 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0025",
+      "file_name": "Cdim11_ok.pdf",
+      "title": "Cdim11_ok",
+      "target_chord": "Cdim(11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ bb7 - Bbb / 11 - F"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cdim(11)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "Cdim(11)"
+        ],
+        [
+          "C6/9",
+          "Cdim(11)",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades diminutas   dim(11)  /  Cdim(11)  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ bb7 - Bbb  / 11 - F\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cdim(11) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | Cdim(11) :||||: C6/9 | Cdim(11) | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0026",
+      "file_name": "Cdim7M_ok.pdf",
+      "title": "Cdim7M_ok",
+      "target_chord": "Cdim(7M)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7",
+          "7M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ bb7 - Bbb / 7M -B"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cdim(7M)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "Cdim(7M)"
+        ],
+        [
+          "C6/9",
+          "Cdim(7M)",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades diminutas   dim(7M)  /  Cdim(7M)  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ bb7 - Bbb  / 7M -B\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cdim(7M) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | Cdim(7M) :||||: C6/9 | Cdim(7M) | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0027",
+      "file_name": "Cdim9_ok.pdf",
+      "title": "Cdim9_ok",
+      "target_chord": "Cdim(9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7",
+          "9"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ bb7 - Bbb / 9 - D"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cdim(9)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "Cdim(9)"
+        ],
+        [
+          "C6/9",
+          "Cdim(9)",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades diminutas   dim(9)  /  Cdim(9)  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ bb7 - Bbb  / 9 - D\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cdim(9) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | Cdim(9) :||||: C6/9 | Cdim(9) | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0028",
+      "file_name": "Cdim_b13_ok.pdf",
+      "title": "Cdim_b13_ok",
+      "target_chord": "Cdim(b13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7",
+          "b13"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb",
+          "Ab"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ bb7 - Bbb / b13 - Ab"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cdim(b13)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "Cdim(b13)"
+        ],
+        [
+          "C6/9",
+          "Cdim(b13)",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades diminutas   dim(b13)  /  Cdim(b13)  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ bb7 - Bbb  / b13 - Ab\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cdim(b13) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | Cdim(b13) :||||: C6/9 | Cdim(b13) | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0029",
+      "file_name": "Cdim_ok.pdf",
+      "title": "Cdim_ok",
+      "target_chord": "Cdim",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ bb7 - Bbb"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cdim",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "Cdim"
+        ],
+        [
+          "C6/9",
+          "Cdim",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades diminutas   dim  /  Cdim  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ bb7 - Bbb\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cdim | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | Cdim :||||: C6/9 | Cdim | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0030",
+      "file_name": "Cm6.pdf",
+      "title": "Cm6",
+      "target_chord": "Cm6",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5j",
+          "6"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5j - G/ 6 - A /"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cm6",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "Cm6"
+        ],
+        [
+          "C6/9",
+          "Cm6",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétradee menor com 6    /  Cm6  Estrutura : 1 Justo - C / b3  - Eb / 5j - G/ 6 - A  /\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cm6 | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | Cm6 :||\n||: C6/9 | Cm6 | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0031",
+      "file_name": "Cm611_ok.pdf",
+      "title": "Cm611_ok",
+      "target_chord": "Cm6/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "6M",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "A",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / 6M - A / 11 - F /"
+      },
+      "progressions": [
+        [
+          "Cm6(11)",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm6(11)",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm6(11)",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m6/11  Cm6/11 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / 6M - A / 11 - F /\nProgressões :||: Cm6(11) | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm6(11) | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm6(11) | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0032",
+      "file_name": "Cm67M_ok.pdf",
+      "title": "Cm67M_ok",
+      "target_chord": "Cm6/7M",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "6M",
+          "7M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "A",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G /6M - A / 7M - B /"
+      },
+      "progressions": [
+        [
+          "Cm6(7M)",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm6(7M)",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm6(7M)",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m6/7M   Cm6/7M Estrutura : 1 Justo - C / b3  - Eb / 5 - G /6M - A / 7M - B /\nProgressões :||: Cm6(7M) | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm6(7M) | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm6(7M) | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0033",
+      "file_name": "Cm6911_ok.pdf",
+      "title": "Cm6911_ok",
+      "target_chord": "Cm6/9/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "6M",
+          "9M",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "A",
+          "D",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / 6M - A / 9M - D /11 - F"
+      },
+      "progressions": [
+        [
+          "Cm6(9/11)",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm6(9/11)",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm6(9/11)",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m6/9/11  Cm6/9/11 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / 6M - A / 9M - D /11 - F\nProgressões :||: Cm6(9/11) | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm6(9/11) | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm6(9/11) | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0034",
+      "file_name": "Cm69_ok.pdf",
+      "title": "Cm69_ok",
+      "target_chord": "Cm6/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "6M",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "A",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G /6M - A / 9M - D /"
+      },
+      "progressions": [
+        [
+          "Cm6(9)",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm6(9)",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm6(9)",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m6/9   Cm6/9 Estrutura : 1 Justo - C / b3  - Eb / 5 - G /6M - A / 9M - D /\nProgressões :||: Cm6(9) | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm6(9) | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm6(9) | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0035",
+      "file_name": "Cm711_ok.pdf",
+      "title": "Cm711_ok",
+      "target_chord": "Cm7/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "b7",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "Bb",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / b7 - Bb /11 - F"
+      },
+      "progressions": [
+        [
+          "Cm7(11)",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm7(11)",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm7(11)",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m7/11  Cm7/11 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / b7 - Bb /11 - F\nProgressões :||: Cm7(11) | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm7(11) | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm7(11) | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0036",
+      "file_name": "Cm7911_ok.pdf",
+      "title": "Cm7911_ok",
+      "target_chord": "Cm7/9/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "b7",
+          "9M",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "Bb",
+          "D",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / b7 - Bb / 9M - D / 11 - F"
+      },
+      "progressions": [
+        [
+          "Cm7(9/11)",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm7(9/11)",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm7(9/11)",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m7/9/11  Cm7/9/11 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / b7 - Bb / 9M - D / 11 - F\nProgressões :||: Cm7(9/11) | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm7(9/11) | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm7(9/11) | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0037",
+      "file_name": "Cm79_ok.pdf",
+      "title": "Cm79_ok",
+      "target_chord": "Cm7/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "b7",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "Bb",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / b7 - Bb / 9M - D /"
+      },
+      "progressions": [
+        [
+          "Cm7(9)",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm7(9)",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm7(9)",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m7/9   Cm7/9 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / b7 - Bb / 9M - D /\nProgressões :||: Cm7(9) | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm7(9) | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm7(9) | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0038",
+      "file_name": "Cm7_ok.pdf",
+      "title": "Cm7_ok",
+      "target_chord": "Cm7",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "b7"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "Bb"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / b7 - Bb"
+      },
+      "progressions": [
+        [
+          "Cm7",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm7",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm7",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    7    Cm7 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / b7 - Bb\nProgressões :||: Cm7 | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm7 | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm7 | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0039",
+      "file_name": "Cm7b511_ok.pdf",
+      "title": "Cm7b511_ok",
+      "target_chord": "CØ(11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ b7 - Bb / 11- F"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cm7(b5)(11)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "CØ(11)"
+        ],
+        [
+          "C6/9",
+          "CØ(11)",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades meio diminutas   meio dim(11)  /  Cm7(b5)(11)  CØ(11)  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ b7 - Bb  / 11- F\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cm7(b5)(11) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | CØ(11) :||||: C6/9 | CØ(11) | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0040",
+      "file_name": "Cm7b59_ok.pdf",
+      "title": "Cm7b59_ok",
+      "target_chord": "CØ(9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ b7 - Bb / 9M - D"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cm7(b5)(9)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "CØ(9)"
+        ],
+        [
+          "C6/9",
+          "CØ(9)",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades meio diminutas   meio dim(9)  /  Cm7(b5)(9)  CØ(9)  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ b7 - Bb  / 9M - D\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cm7(b5)(9) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | CØ(9) :||||: C6/9 | CØ(9) | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0041",
+      "file_name": "Cm7b5_ok.pdf",
+      "title": "Cm7b5_ok",
+      "target_chord": "CØ",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ b7 - Bb /"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cm7(b5)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "CØ"
+        ],
+        [
+          "C6/9",
+          "CØ",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades meio diminutas   meio dim  /  Cm7(b5) /  CØ  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ b7 - Bb  /\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cm7(b5) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | CØ :||||: C6/9 | CØ | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0042",
+      "file_name": "Cm7b5b13_ok.pdf",
+      "title": "Cm7b5b13_ok",
+      "target_chord": "CØ(b13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "b5",
+          "b7",
+          "b13"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "Gb",
+          "Bb",
+          "Ab"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / b5 - Gb/ b7 - Bb / b13- Ab"
+      },
+      "progressions": [
+        [
+          "Eadd9",
+          "C#7(b13)",
+          "F#madd9",
+          "B7(13)",
+          "Cm7(b5)(b13)",
+          "C#m7",
+          "Bm7",
+          "E7",
+          "A7M",
+          "Bsus4"
+        ],
+        [
+          "Bbm7(9/11)",
+          "Dbadd9",
+          "Ab7M/9",
+          "Gm7(11)",
+          "CØ(b13)"
+        ],
+        [
+          "C6/9",
+          "CØ(b13)",
+          "Bbm7/9",
+          "Ebsus",
+          "Ab7M",
+          "Bbadd9"
+        ]
+      ],
+      "raw_text": "Tétrades meio diminutas   meio dim(b13)  /  Cm7(b5)(b13)  CØ(b13)  Estrutura : 1 Justo - C / b3  - Eb / b5 - Gb/ b7 - Bb  / b13- Ab\nProgressões :||: Eadd9  | C#7(b13) | F#madd9 | B7(13) | Cm7(b5)(b13) | C#m7 | Bm7 | E7 | A7M | Bsus4 :||\n||: Bbm7(9/11) | Dbadd9 | Ab7M/9 | Gm7(11) | CØ(b13) :||||: C6/9 | CØ(b13) | Bbm7/9 | Ebsus | Ab7M | Bbadd9 :||"
+    },
+    {
+      "id": "pdf-0043",
+      "file_name": "Cm7M11_ok.pdf",
+      "title": "Cm7M11_ok",
+      "target_chord": "Cm7M/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "7M",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "B",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / 7M - B / 11 - F"
+      },
+      "progressions": [
+        [
+          "Cm7M/11",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm7M/11",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm7M/11",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m7M/11    Cm7M/11 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / 7M - B / 11 - F\nProgressões :||: Cm7M/11 | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm7M/11 | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm7M/11 | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0044",
+      "file_name": "Cm7M911_ok.pdf",
+      "title": "Cm7M911_ok",
+      "target_chord": "Cm7M/9/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "7M",
+          "9M",
+          "11"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "B",
+          "D",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / 7M - B / 9M - D / 11 - F"
+      },
+      "progressions": [
+        [
+          "Cm7M/9/11",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm7M/9/11",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm7M/9/11",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m7M/9/11    Cm7M/9/11 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / 7M - B / 9M - D / 11 - F\nProgressões :||: Cm7M/9/11 | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm7M/9/11 | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm7M/9/11 | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0045",
+      "file_name": "Cm7M9_ok.pdf",
+      "title": "Cm7M9_ok",
+      "target_chord": "Cm7M/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "B",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - C / b3 - Eb / 5 - G / 7M - B / 9M - D"
+      },
+      "progressions": [
+        [
+          "Cm7M/9",
+          "C7(b13)",
+          "Fmadd9",
+          "Bb7",
+          "Eb7M",
+          "G7(b13)"
+        ],
+        [
+          "Cm7M/9",
+          "Dmadd9",
+          "G7/9",
+          "Cmadd11",
+          "G7(13)"
+        ],
+        [
+          "Ab7M",
+          "Bb7M",
+          "Cm7M/9",
+          "Dm7",
+          "G7",
+          "Ebadd9"
+        ]
+      ],
+      "raw_text": "Tétrades Menores com Tensão    m7M/9    Cm7M/9 Estrutura : 1 Justo - C / b3  - Eb / 5 - G / 7M - B / 9M - D\nProgressões :||: Cm7M/9 | C7(b13) | Fmadd9 | Bb7 | Eb7M | G7(b13) :||||: Cm7M/9 | Dmadd9 | G7/9 | Cmadd11 | G7(13) :||||: Ab7M | Bb7M | Cm7M/9 | Dm7 | G7 | Ebadd9 :||"
+    },
+    {
+      "id": "pdf-0046",
+      "file_name": "CSUS.pdf",
+      "title": "CSUS",
+      "target_chord": "Csus",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4J",
+          "5J",
+          "b7",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "F",
+          "G",
+          "Bb",
+          "D"
+        ],
+        "raw": "Estrutura : 1Justo - C / 4J - F / 5J - G / b7 - Bb / 9M - D /"
+      },
+      "progressions": [
+        [
+          "Csus",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7/4(9)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "Csus",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante SUS  7/ 4/ 9/   C7/4(9) / Csus Estrutura : 1Justo - C / 4J  - F / 5J - G /  b7 - Bb / 9M  - D /\nProgressões :||: Csus | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7/4(9) | Fadd9 | Fmadd9 | Gsus4 :||||: Csus | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0047",
+      "file_name": "CSUS13.pdf",
+      "title": "CSUS13",
+      "target_chord": "Csus13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4J",
+          "5J",
+          "b7",
+          "9M",
+          "13"
+        ],
+        "notes": [
+          "C",
+          "F",
+          "G",
+          "Bb",
+          "D",
+          "A"
+        ],
+        "raw": "Estrutura : 1Justo - C / 4J - F / 5J - G / b7 - Bb / 9M - D / 13 -A"
+      },
+      "progressions": [
+        [
+          "Csus13",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7/4(9/13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "Csus13",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante SUS  7/ 4/ 9/ 13   C7/4(9/13) / Csus13 Estrutura : 1Justo - C / 4J  - F / 5J - G /  b7 - Bb / 9M  - D / 13 -A\nProgressões :||: Csus13 | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7/4(9/13) | Fadd9 | Fmadd9 | Gsus4 :||||: Csus13 | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0048",
+      "file_name": "CSUS413.pdf",
+      "title": "CSUS413",
+      "target_chord": "C7sus4/13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4J",
+          "5J",
+          "b7",
+          "13"
+        ],
+        "notes": [
+          "C",
+          "F",
+          "G",
+          "Bb",
+          "A"
+        ],
+        "raw": "Estrutura : 1Justo - C / 4J - F / 5J - G / b7 - Bb / 13 -A"
+      },
+      "progressions": [
+        [
+          "Csus4/13",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "Csus4/13)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "Csus4/13",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante SUS4/13  7/ 4 / 13   C7sus4/13 Estrutura : 1Justo - C / 4J  - F / 5J - G /  b7 - Bb  / 13 -A\nProgressões :||: Csus4/13 | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: Csus4/13) | Fadd9 | Fmadd9 | Gsus4 :||||: Csus4/13 | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0049",
+      "file_name": "E67M.pdf",
+      "title": "E67M",
+      "target_chord": "E6/7M",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "6M",
+          "7M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "C#",
+          "D#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 6M - C# / 7M - D#"
+      },
+      "progressions": [
+        [
+          "E67M",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E6(7M)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E6/7M",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E67M | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E6(7M) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E6/7M | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 6 e 7M  - E6/7M\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 6M - C# / 7M - D#"
+    },
+    {
+      "id": "pdf-0050",
+      "file_name": "E67M9.pdf",
+      "title": "E67M9",
+      "target_chord": "E6/7M/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "6M",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "C#",
+          "D#",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 6M - C# / 7M - D# / 9M -F#"
+      },
+      "progressions": [
+        [
+          "E67M/9",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E6(7M/9)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E6/7M/9",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E67M/9 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E6(7M/9) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E6/7M/9 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com Sexta 7M e nona maior e 9 - E6/7M/9\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 6M - C# / 7M - D# / 9M -F#"
+    },
+    {
+      "id": "pdf-0051",
+      "file_name": "E69.pdf",
+      "title": "E69",
+      "target_chord": "E6/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "6M",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "C#",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 6M - C# / 9M - F#"
+      },
+      "progressions": [
+        [
+          "E69",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E6(9add9)",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E6/9",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E69 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E6(9add9 | Eadd9 | G#m | F#m | B :||\n||: E6/9| Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 6 nona maior  - E6/9\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 6M - C# / 9M - F#"
+    },
+    {
+      "id": "pdf-0052",
+      "file_name": "E69_11.pdf",
+      "title": "E69_11",
+      "target_chord": "E6/9/#11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "6M",
+          "9M",
+          "#11"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "C#",
+          "F#",
+          "A#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 6M - C# / 9M -F# / #11- A#"
+      },
+      "progressions": [
+        [
+          "E69/#11",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E6(9/#11)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E6/9/#11",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E69/#11 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E6(9/#11 | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E6/9/#11 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com Sexta nona maior e #11 - E6/9/#11\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 6M - C# / 9M -F# / #11- A#"
+    },
+    {
+      "id": "pdf-0053",
+      "file_name": "E6_11.pdf",
+      "title": "E6_11",
+      "target_chord": "E6/#11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "6M",
+          "#11"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "C#",
+          "A#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 6M - C# / #11 - A#"
+      },
+      "progressions": [
+        [
+          "E6#11",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E6(#11)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E6/#11",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E6#11 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E6(#11) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E6/#11 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 6 e #11  - E6/#11\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 6M - C# / #11 - A#"
+    },
+    {
+      "id": "pdf-0054",
+      "file_name": "E7.pdf",
+      "title": "E7",
+      "target_chord": "E7",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D"
+      },
+      "progressions": [
+        [
+          "E7",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7 | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7 | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima E7\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D"
+    },
+    {
+      "id": "pdf-0055",
+      "file_name": "E713.pdf",
+      "title": "E713",
+      "target_chord": "E7/13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "13"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / 13 - C#"
+      },
+      "progressions": [
+        [
+          "E7(13)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7/13",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E713",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(13) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7/13 | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E713 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e 13 E7/13\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / 13 - C#"
+    },
+    {
+      "id": "pdf-0056",
+      "file_name": "E79.pdf",
+      "title": "E79",
+      "target_chord": "E7(9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "9"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / 9 - F#"
+      },
+      "progressions": [
+        [
+          "E7(9)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(9)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7(9)",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(9) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(9)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7(9)| Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e nona maior E7(9)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / 9 - F#"
+    },
+    {
+      "id": "pdf-0057",
+      "file_name": "E7913.pdf",
+      "title": "E7913",
+      "target_chord": "E79/13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "9M",
+          "13"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F#",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / 9M - F# / 13 - C#"
+      },
+      "progressions": [
+        [
+          "E79(13)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E79/13",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/9/13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E79(13) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E79/13 | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/9/13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima nona maior e 13 E79/13\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / 9M - F# / 13 - C#"
+    },
+    {
+      "id": "pdf-0058",
+      "file_name": "E79_11.pdf",
+      "title": "E79_11",
+      "target_chord": "E79(#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "9M",
+          "#11"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F#",
+          "A#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / 9M - F# / #11 - A#"
+      },
+      "progressions": [
+        [
+          "E79(#11)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7/9(#11)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/9/#11",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E79(#11) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7/9(#11) | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/9/#11 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima nona maior e #11  E79(#11)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D /  9M - F# / #11 - A#"
+    },
+    {
+      "id": "pdf-0059",
+      "file_name": "E79_5_.pdf",
+      "title": "E79_5_",
+      "target_chord": "E79(#5)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "#5",
+          "b7",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B#",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / #5 - B# / b7 - D / 9M - F#"
+      },
+      "progressions": [
+        [
+          "E7(9)(#5)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(9/#5)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/9/#5",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(9)(#5) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(9/#5)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/9/#5 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima nona maior e quinta aumentada E79(#5)\n\nEstrutura : 1 Justo - E  / 3M - G#  / #5 - B# / b7 - D / 9M - F#"
+    },
+    {
+      "id": "pdf-0060",
+      "file_name": "E7_11.pdf",
+      "title": "E7_11",
+      "target_chord": "E7(#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "#11"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "A#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / #11 - A#"
+      },
+      "progressions": [
+        [
+          "E7(#11)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(#11)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/#11",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(#11) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(#11) | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/#11 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e #11 E7(#11)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D /  #11 - A#"
+    },
+    {
+      "id": "pdf-0061",
+      "file_name": "E7_1113.pdf",
+      "title": "E7_1113",
+      "target_chord": "E7#11/13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "#11",
+          "13"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "A#",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / #11 - A# / 13 - C#"
+      },
+      "progressions": [
+        [
+          "E7#11(13)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7/#11(13)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/#11/13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7#11(13) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7/#11(13) | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/#11/13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima #11 e 13 E7#11/13\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D /  #11 - A# / 13 - C#"
+    },
+    {
+      "id": "pdf-0062",
+      "file_name": "E7_5_9_7.pdf",
+      "title": "E7_5_9_7",
+      "target_chord": "E7(#9)(#5)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "#5",
+          "b7",
+          "#9"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B#",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / #5 - B# / b7 - D / #9 - F##"
+      },
+      "progressions": [
+        [
+          "E7(#9)(#5)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(#9/#5)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/#9/#5",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(#9)(#5) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(#9/#5)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/#9/#5 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e quinta aumentada e nona aumentada E7(#9)(#5)\n\nEstrutura : 1 Justo - E  / 3M - G#  / #5 - B# / b7 - D / #9 - F##"
+    },
+    {
+      "id": "pdf-0063",
+      "file_name": "E7_9.pdf",
+      "title": "E7_9",
+      "target_chord": "E7(#9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "#9"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / #9 - F##"
+      },
+      "progressions": [
+        [
+          "E7(#9)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(#9)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7(#9)",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(#9) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(#9)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7(#9)| Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e nona aumentada E7(#9)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / #9 - F##"
+    },
+    {
+      "id": "pdf-0064",
+      "file_name": "E7_913.pdf",
+      "title": "E7_913",
+      "target_chord": "E7#9/13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "#9",
+          "13"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F#",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / #9 - F## / 13 - C#"
+      },
+      "progressions": [
+        [
+          "E7#9(13)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7/#9(13)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/#9/13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7#9(13) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7/#9(13) | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/#9/13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima nona aumentada e 13 E7#9/13\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D /  #9 - F## / 13 - C#"
+    },
+    {
+      "id": "pdf-0065",
+      "file_name": "E7_9b5_7pdf.pdf",
+      "title": "E7_9b5_7pdf",
+      "target_chord": "E7(#9)(b5)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "b5",
+          "b7",
+          "#9"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "Bb",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / b5 - Bb / b7 - D / #9 - F##"
+      },
+      "progressions": [
+        [
+          "E7(#9)(b5)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(#9/b5)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7(#9)/b5)",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(#9)(b5) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(#9/b5)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7(#9)/b5)| Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e quinta menor nona aumentada E7(#9)(b5)\n\nEstrutura : 1 Justo - E  / 3M - G#  / b5 - Bb / b7 - D / #9 - F##"
+    },
+    {
+      "id": "pdf-0066",
+      "file_name": "E7b13.pdf",
+      "title": "E7b13",
+      "target_chord": "E7/b13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "b13"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "C"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / b13 - C"
+      },
+      "progressions": [
+        [
+          "E7(b13)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7/b13",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7b13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(b13) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7/b13 | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7b13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e b13 E7/b13\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / b13 - C"
+    },
+    {
+      "id": "pdf-0067",
+      "file_name": "E7b9.pdf",
+      "title": "E7b9",
+      "target_chord": "E7(b9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "b9"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / b9 - F"
+      },
+      "progressions": [
+        [
+          "E7(b9)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(b9)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7(b9)",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(b9) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(b9)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7(b9)| Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e nona menor E7(b9)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / b9 - F"
+    },
+    {
+      "id": "pdf-0068",
+      "file_name": "E7b913_.pdf",
+      "title": "E7b913_",
+      "target_chord": "E7(b9)(13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "b9",
+          "13"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / b9 - F / 13 - C#"
+      },
+      "progressions": [
+        [
+          "E7(b9)(13)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(b9/13)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/b9/13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(b9)(13) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(b9/13)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/b9/13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima nona menor e 13 maior E7(b9)(13)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / b9 - F / 13 - C#"
+    },
+    {
+      "id": "pdf-0069",
+      "file_name": "E7b9b13_.pdf",
+      "title": "E7b9b13_",
+      "target_chord": "E7(b9)(b13)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "b7",
+          "b9",
+          "b13"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D",
+          "F",
+          "C"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / b7 - D / b9 - F / b13 - C"
+      },
+      "progressions": [
+        [
+          "E7(b9)(b13)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7(b9/b13)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7/b9/b13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7(b9)(b13) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7(b9/b13)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7/b9/b13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima nona menor e 13 menor E7(b9)(b13)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / b7 - D / b9 - F / b13 - C"
+    },
+    {
+      "id": "pdf-0070",
+      "file_name": "E7b9b5.pdf",
+      "title": "E7b9b5",
+      "target_chord": "E79(b5)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "b5",
+          "b7",
+          "b9"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "Bb",
+          "D",
+          "F"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / b5 - Bb / b7 - D / b9 - F"
+      },
+      "progressions": [
+        [
+          "E79(b5)",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E7/9(b5)",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7(9/b5)",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E79(b5) | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E7/9(b5)| Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7(9/b5)| Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima e quinta menor nona menor E79(b5)\n\nEstrutura : 1 Justo - E  / 3M - G#  / b5 - Bb / b7 - D / b9 - F"
+    },
+    {
+      "id": "pdf-0071",
+      "file_name": "E7M.pdf",
+      "title": "E7M",
+      "target_chord": "E7M",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "7M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 7M - D#"
+      },
+      "progressions": [
+        [
+          "E7M",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E7M",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E7M",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7M | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E7M | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E7M | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 7M - E7M\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 7M - D#"
+    },
+    {
+      "id": "pdf-0072",
+      "file_name": "E7M9.pdf",
+      "title": "E7M9",
+      "target_chord": "E7M/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D#",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 7M - D# / 9M - F#"
+      },
+      "progressions": [
+        [
+          "E7M/9",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E7M(9)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E7M9",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7M/9 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E7M(9) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E7M9 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 7M e nona maior- E7M/9\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 7M - D#  / 9M - F#"
+    },
+    {
+      "id": "pdf-0073",
+      "file_name": "E7M9_11.pdf",
+      "title": "E7M9_11",
+      "target_chord": "E7M9(#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "7M",
+          "9M",
+          "#11"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D#",
+          "F#",
+          "A#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 7M - D# /9M - F#/ #11 - A#"
+      },
+      "progressions": [
+        [
+          "E7M9/#11",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E7M9(#11)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E7M/9/#11",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7M9/#11 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E7M9(#11) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E7M/9/#11 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 7M nona maior e #11 - E7M9(#11)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 7M - D# /9M - F#/ #11 - A#"
+    },
+    {
+      "id": "pdf-0074",
+      "file_name": "E7M9_5.pdf",
+      "title": "E7M9_5",
+      "target_chord": "E7M9(#5)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "#5",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B#",
+          "D#",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / #5 - B# / 7M - D# / 9M - F#"
+      },
+      "progressions": [
+        [
+          "E7M9/#5",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E7M9(#5)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E7M/9/#5",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7M9/#5 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E7M9(#5) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E7M/9/#5 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 7M nona maior e #5 - E7M9(#5)\n\nEstrutura : 1 Justo - E  / 3M - G#  / #5 - B# / 7M - D# / 9M - F#"
+    },
+    {
+      "id": "pdf-0075",
+      "file_name": "E7M_11.pdf",
+      "title": "E7M_11",
+      "target_chord": "E7M(#11)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "7M",
+          "#11"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B",
+          "D#",
+          "A#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B / 7M - D# / #11 - A#"
+      },
+      "progressions": [
+        [
+          "E7M#11",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E7M(#11)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E7M/#11",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7M#11 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E7M(#11) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E7M/#11 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 7M e #11 - E7M(#11)\n\nEstrutura : 1 Justo - E  / 3M - G#  / 5J - B / 7M - D# / #11 - A#"
+    },
+    {
+      "id": "pdf-0076",
+      "file_name": "E7Msus2.pdf",
+      "title": "E7Msus2",
+      "target_chord": "E7Msus2",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "2M",
+          "5J",
+          "7M"
+        ],
+        "notes": [
+          "E",
+          "F#",
+          "B",
+          "D#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 2M - F# / 5J - B / 7M - D#"
+      },
+      "progressions": [
+        [
+          "E7Msus2",
+          "Badd9",
+          "F#madd11",
+          "C#m",
+          "B(b5)"
+        ],
+        [
+          "E7M(sus2)",
+          "Dadd9",
+          "Eadd9",
+          "G#m",
+          "F#m",
+          "B"
+        ],
+        [
+          "E7M/sus2",
+          "Bsus4",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E7Msus2 | Badd9 | F#madd11 | C#m | B(b5) :||\n||: E7M(sus2) | Dadd9 | Eadd9 | G#m | F#m | B :||\n||: E7M/sus2 | Bsus4 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade Maior com 7M e segunda suspensa - E7Msus2\n\nEstrutura : 1 Justo - E  / 2M - F#  / 5J - B / 7M - D#"
+    },
+    {
+      "id": "pdf-0077",
+      "file_name": "E_5pdf.pdf",
+      "title": "E_5pdf",
+      "target_chord": "E",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "#5"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M- G# / #5 - B#"
+      },
+      "progressions": [
+        [
+          "E",
+          "E(#5)",
+          "E",
+          "F#",
+          "Am",
+          "B"
+        ],
+        [
+          "E(#5)",
+          "G#",
+          "A#",
+          "B"
+        ],
+        [
+          "E(#5)",
+          "D#",
+          "G#m",
+          "F",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E | E(#5) | E | F#| Am | B :||\n||: E(#5) | G# | A# | B :||\n||: E(#5) | D# | G#m | F | A# | B :||\nTríade Maior com #5 Estrutura : 1 Justo - E  / 3M- G# / #5 -  B#"
+    },
+    {
+      "id": "pdf-0078",
+      "file_name": "E_Maior.pdf",
+      "title": "E_Maior",
+      "target_chord": "E",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M - G# / 5J - B"
+      },
+      "progressions": [
+        [
+          "E",
+          "F#",
+          "A",
+          "B"
+        ],
+        [
+          "E",
+          "G#",
+          "A#",
+          "B"
+        ],
+        [
+          "E",
+          "C#",
+          "G#",
+          "D#",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||:E | F#| A | B :||\n||:E  | G# | A# | B :||\n||: E | C# | G# |  D# | A# | B :||\nTríade Maior Estrutura : 1 Justo - E  / 3M - G# / 5J -  B"
+    },
+    {
+      "id": "pdf-0079",
+      "file_name": "E_Menorr.pdf",
+      "title": "E_Menorr",
+      "target_chord": "E",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B"
+      },
+      "progressions": [
+        [
+          "Em",
+          "F#",
+          "Am",
+          "B"
+        ],
+        [
+          "Em",
+          "G#",
+          "A#",
+          "B"
+        ],
+        [
+          "Em",
+          "D#",
+          "G#m",
+          "F",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||:Em | F#| Am | B :||\n||:Em | G# | A# | B :||\n||: Em | D# | G#m | F | A# | B :||\nTríade Menor Estrutura : 1 Justo - E  / b3 - G / 5J -  B"
+    },
+    {
+      "id": "pdf-0080",
+      "file_name": "Eadd9.pdf",
+      "title": "Eadd9",
+      "target_chord": "Eadd9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M- G# / 5J - B / 9M - E"
+      },
+      "progressions": [
+        [
+          "E",
+          "Eadd9",
+          "E",
+          "F#",
+          "Am",
+          "B"
+        ],
+        [
+          "Eadd9",
+          "G#",
+          "A#",
+          "B"
+        ],
+        [
+          "Eadd9",
+          "D#",
+          "G#m",
+          "F",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E | Eadd9 | E | F#| Am | B :||\n||: Eadd9 | G# | A# | B :||\n||: Eadd9 | D# | G#m | F | A# | B :||\nTríade Maior com nona adicionada Eadd9 Estrutura : 1 Justo - E  / 3M- G# / 5J -  B / 9M - E"
+    },
+    {
+      "id": "pdf-0081",
+      "file_name": "Eb5.pdf",
+      "title": "Eb5",
+      "target_chord": "E",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "b5"
+        ],
+        "notes": [
+          "E",
+          "G#",
+          "Bb"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 3M- G# / b5 - Bb"
+      },
+      "progressions": [
+        [
+          "E",
+          "E(b5)",
+          "E",
+          "F#",
+          "Am",
+          "B"
+        ],
+        [
+          "E(b5)",
+          "G#",
+          "A#",
+          "B"
+        ],
+        [
+          "E(b5)",
+          "D#",
+          "G#m",
+          "F",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: E | E(b5) | E | F#| Am | B :||\n||: E(b5) | G# | A# | B :||\n||: E(b5) | D# | G#m | F | A# | B :||\nTríade Maior com b5 Estrutura : 1 Justo - E  / 3M- G# / b5 -  Bb"
+    },
+    {
+      "id": "pdf-0082",
+      "file_name": "Em6.pdf",
+      "title": "Em6",
+      "target_chord": "Em6",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "6M"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3- G / 5J - B / 6M - C#"
+      },
+      "progressions": [
+        [
+          "Em6",
+          "E7(13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7(b13)"
+        ],
+        [
+          "Em6",
+          "F#madd11",
+          "B713",
+          "Emadd11",
+          "B79"
+        ],
+        [
+          "C7M",
+          "D7M",
+          "Em6",
+          "F#m7",
+          "B7",
+          "B7sus4"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em6 | E7(13) | Amadd11 | D7 | G7M | B7(b13) :||\n||: Em6 | F#madd11 | B713 | Emadd11 | B79 :||\n||: C7M | D7M | Em6 | F#m7 | B7 | B7sus4 :||\nTétrades menores m6   -  Em6 Estrutura : 1 Justo - E  / b3- G / 5J - B / 6M - C#"
+    },
+    {
+      "id": "pdf-0083",
+      "file_name": "Em611.pdf",
+      "title": "Em611",
+      "target_chord": "Em6/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "6M",
+          "11"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "C#",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / 6M - C# / 11 - A"
+      },
+      "progressions": [
+        [
+          "Em611",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em6/11",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em6(11)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em611 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em6/11 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em6(11)| F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com 6M e   11  - Em6/11\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / 6M - C# /  11 - A"
+    },
+    {
+      "id": "pdf-0084",
+      "file_name": "Em67M.pdf",
+      "title": "Em67M",
+      "target_chord": "Em6/7M",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "6M",
+          "7M"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "C#",
+          "D#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / 6M - C# / 7M - D#"
+      },
+      "progressions": [
+        [
+          "Em67M",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em6/7M",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em6(7M)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em67M | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em6/7M | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em6(7M)| F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com 6M e  7M  - Em6/7M\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / 6M - C# /  7M - D#"
+    },
+    {
+      "id": "pdf-0085",
+      "file_name": "Em69.pdf",
+      "title": "Em69",
+      "target_chord": "Em69",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "6M",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "C#",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / 6M - C# / 9M - F#"
+      },
+      "progressions": [
+        [
+          "Em69",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em6/9",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em6(9)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em69 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em6/9 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em6(9)| F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com 6M e nona maior  - Em69\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / 6M - C# / 9M - F#"
+    },
+    {
+      "id": "pdf-0086",
+      "file_name": "Em7.pdf",
+      "title": "Em7",
+      "target_chord": "Em7",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "b7"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "D"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / b7 - D"
+      },
+      "progressions": [
+        [
+          "Em7",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em7",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em7",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em7 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em7 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em7 | F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com sétima - Em7\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / b7 - D"
+    },
+    {
+      "id": "pdf-0087",
+      "file_name": "Em711.pdf",
+      "title": "Em711",
+      "target_chord": "Em7/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "b7",
+          "11"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "D",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / b7 - D / 11 - A"
+      },
+      "progressions": [
+        [
+          "Em711",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em7/11",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em7(11)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em711 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em7/11 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em7(11) | F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com b7 e 11 - Em7/11\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / b7 - D / 11 - A"
+    },
+    {
+      "id": "pdf-0088",
+      "file_name": "Em79.pdf",
+      "title": "Em79",
+      "target_chord": "Em79",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "b7",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / b7 - D / 9M - F#"
+      },
+      "progressions": [
+        [
+          "Em79",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em7/9",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em7(9)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em79 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em7/9 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em7(9) | F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com sétima e nona maior - Em79\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / b7 - D / 9M - F#"
+    },
+    {
+      "id": "pdf-0089",
+      "file_name": "Em7911.pdf",
+      "title": "Em7911",
+      "target_chord": "Em79/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "b7",
+          "9M",
+          "11"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "D",
+          "F#",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / b7- D / 9M - F# / 11 - A"
+      },
+      "progressions": [
+        [
+          "Em79/11",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em7/9/11",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em7/9(11)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em79/11 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em7/9/11 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em7/9(11) | F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com b7 e nona maior e 11 - Em79/11\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / b7- D / 9M - F# / 11 - A"
+    },
+    {
+      "id": "pdf-0090",
+      "file_name": "Em7M11.pdf",
+      "title": "Em7M11",
+      "target_chord": "Em7M/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "7M",
+          "11"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "D#",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / 7M - D# / 11 - A"
+      },
+      "progressions": [
+        [
+          "Em7M11",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em7M/11",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em7M(11)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em7M11 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em7M/11 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em7M(11) | F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com 7M e 11 - Em7M/11\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / 7M - D# / 11 - A"
+    },
+    {
+      "id": "pdf-0091",
+      "file_name": "Em7M9.pdf",
+      "title": "Em7M9",
+      "target_chord": "Em7M/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "7M",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "D#",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / 7M - D# / 9M - F#"
+      },
+      "progressions": [
+        [
+          "Em7M9",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em7M/9",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em7M(9)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em7M9 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em7M/9 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em7M(9) | F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com 7M e nona maior - Em7M/9\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / 7M - D# / 9M - F#"
+    },
+    {
+      "id": "pdf-0092",
+      "file_name": "Em7M911.pdf",
+      "title": "Em7M911",
+      "target_chord": "Em7M9/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "7M",
+          "9M",
+          "11"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "D#",
+          "F#",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3 - G / 5J - B / 7M- D# / 9M - F# / 11 - A"
+      },
+      "progressions": [
+        [
+          "Em7M9/11",
+          "E7(b13)",
+          "Amadd11",
+          "D7",
+          "G7M",
+          "B7/b13"
+        ],
+        [
+          "Em7M/9/11",
+          "F#madd9",
+          "B7/9",
+          "Emadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "Em7M/9(11)",
+          "F#m7",
+          "Bmadd9",
+          "C#m",
+          "A7M",
+          "B(#5)"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em7M9/11 | E7(b13) | Amadd11 | D7 | G7M | B7/b13 :||\n||: Em7M/9/11 | F#madd9 | B7/9 | Emadd9 | Bsus4 | B :||\n||: Em7M/9(11) | F#m7  | Bmadd9 | C#m | A7M | B(#5) :||\nTétrade Menor com 7M e nona maior e 11 - Em7M9/11\n\nEstrutura : 1 Justo - E  / b3 - G  / 5J - B / 7M- D# / 9M - F# / 11 - A"
+    },
+    {
+      "id": "pdf-0093",
+      "file_name": "Emadd11.pdf",
+      "title": "Emadd11",
+      "target_chord": "Emadd11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "11"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3- G / 5J - B / 11 - A"
+      },
+      "progressions": [
+        [
+          "Em",
+          "Emadd11",
+          "E",
+          "Am",
+          "B"
+        ],
+        [
+          "Emadd11",
+          "F#",
+          "Bm",
+          "E",
+          "Am",
+          "G",
+          "B"
+        ],
+        [
+          "Emadd11",
+          "D#",
+          "G#m",
+          "F",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em | Emadd11 | E  | Am | B :||\n||: Emadd11 | F# | Bm | E | Am | G | B :||\n||: Emadd11 | D# | G#m | F | A# | B :||\nTríade Menor com onze adicionada Emadd11 Estrutura : 1 Justo - E  / b3- G / 5J -  B / 11 - A"
+    },
+    {
+      "id": "pdf-0094",
+      "file_name": "Emadd9.pdf",
+      "title": "Emadd9",
+      "target_chord": "Emadd9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3- G / 5J - B / 9M - E"
+      },
+      "progressions": [
+        [
+          "Em",
+          "Emadd9",
+          "E",
+          "Am",
+          "B"
+        ],
+        [
+          "Emadd9",
+          "F#",
+          "Bm",
+          "E",
+          "Am",
+          "G",
+          "B"
+        ],
+        [
+          "Emadd9",
+          "D#",
+          "G#m",
+          "F",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em | Emadd9 | E  | Am | B :||\n||: Emadd9 | F# | Bm | E | Am | G | B :||\n||: Emadd9 | D# | G#m | F | A# | B :||\nTríade Menor com nona adicionada Emadd9 Estrutura : 1 Justo - E  / b3- G / 5J -  B / 9M - E"
+    },
+    {
+      "id": "pdf-0095",
+      "file_name": "Emadd911.pdf",
+      "title": "Emadd911",
+      "target_chord": "Emadd9/11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "b3",
+          "5J",
+          "9M",
+          "11"
+        ],
+        "notes": [
+          "E",
+          "G",
+          "B",
+          "F#",
+          "A"
+        ],
+        "raw": "Estrutura : 1 Justo - E / b3- G / 5J - B / 9M - F# / 11- A"
+      },
+      "progressions": [
+        [
+          "Em",
+          "Emadd9/11",
+          "E",
+          "Am",
+          "B"
+        ],
+        [
+          "Emadd9/11",
+          "F#",
+          "Bm",
+          "E",
+          "Am",
+          "G",
+          "B"
+        ],
+        [
+          "Emadd9/11",
+          "D#",
+          "G#m",
+          "F",
+          "A#",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Em | Emadd9/11 | E  | Am | B :||\n||: Emadd9/11 | F# | Bm | E | Am | G | B :||\n||: Emadd9/11 | D# | G#m | F | A# | B :||\nTríade Menor com nove e onze adicionada Emadd9/11 Estrutura : 1 Justo - E  / b3- G / 5J -  B / 9M - F# / 11- A"
+    },
+    {
+      "id": "pdf-0096",
+      "file_name": "Esus.pdf",
+      "title": "Esus",
+      "target_chord": "E7sus4/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4J",
+          "5J",
+          "b7",
+          "9M"
+        ],
+        "notes": [
+          "E",
+          "A",
+          "B",
+          "D",
+          "F#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 4J- A / 5J - B / b7 - D / 9M - F#"
+      },
+      "progressions": [
+        [
+          "Esus",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E74/9",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7sus4/9",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Esus | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E74/9 | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7sus4/9 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima 4 nona maior E7sus4/9\n\nEstrutura : 1 Justo - E  / 4J- A  / 5J - B / b7 - D / 9M - F#"
+    },
+    {
+      "id": "pdf-0097",
+      "file_name": "Esus13.pdf",
+      "title": "Esus13",
+      "target_chord": "E7sus4/9/13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4J",
+          "5J",
+          "b7",
+          "9M",
+          "13"
+        ],
+        "notes": [
+          "E",
+          "A",
+          "B",
+          "D",
+          "F#",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 4J- A / 5J - B / b7 - D / 9M - F# / 13-C#"
+      },
+      "progressions": [
+        [
+          "Esus13",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E74/9/13",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7sus4/9/13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Esus13 | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E74/9/13 | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7sus4/9/13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima 4 nona maior e 13 E7sus4/9/13\n\nEstrutura : 1 Justo - E  / 4J- A  / 5J - B / b7 - D / 9M - F# / 13-C#"
+    },
+    {
+      "id": "pdf-0098",
+      "file_name": "Esus2.pdf",
+      "title": "Esus2",
+      "target_chord": "E",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "2M",
+          "5J"
+        ],
+        "notes": [
+          "E",
+          "F#",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 2M - F# / 5J - B"
+      },
+      "progressions": [
+        [
+          "Esus2",
+          "E",
+          "Bm",
+          "B"
+        ],
+        [
+          "Esus2",
+          "E",
+          "A",
+          "Am"
+        ],
+        [
+          "Esus2",
+          "C#",
+          "F#m",
+          "F#7",
+          "Bm",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Esus2 | E | Bm | B :||\n||: Esus2 | E | A | Am :||\n||: Esus2 | C# | F#m | F#7 | Bm | B :||\nTríade SUS 2\n\nEstrutura : 1 Justo - E  / 2M - F#  / 5J - B"
+    },
+    {
+      "id": "pdf-0099",
+      "file_name": "Esus4.pdf",
+      "title": "Esus4",
+      "target_chord": "E",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4J",
+          "5J"
+        ],
+        "notes": [
+          "E",
+          "A",
+          "B"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 4J - A / 5J - B"
+      },
+      "progressions": [
+        [
+          "Esus4",
+          "E",
+          "Bm",
+          "B"
+        ],
+        [
+          "Esus4",
+          "E",
+          "A",
+          "Am"
+        ],
+        [
+          "Esus4",
+          "C#",
+          "F#m",
+          "F#7",
+          "Bm",
+          "B"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Esus4 | E | Bm | B :||\n||: Esus4 | E | A | Am :||\n||: Esus4 | C# | F#m | F#7 | Bm | B :||\nTríade SUS 4\n\nEstrutura : 1 Justo - E  / 4J - A  / 5J - B"
+    },
+    {
+      "id": "pdf-0100",
+      "file_name": "Esus413_sem_nona.pdf",
+      "title": "Esus413_sem_nona",
+      "target_chord": "E7sus4/13",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4J",
+          "5J",
+          "b7",
+          "13"
+        ],
+        "notes": [
+          "E",
+          "A",
+          "B",
+          "D",
+          "C#"
+        ],
+        "raw": "Estrutura : 1 Justo - E / 4J- A / 5J - B / b7 - D / 13-C#"
+      },
+      "progressions": [
+        [
+          "Esus13",
+          "Amadd9",
+          "Bmadd11",
+          "Dm",
+          "B(b5)"
+        ],
+        [
+          "E74/13",
+          "Aadd9",
+          "Amadd9",
+          "Bsus4",
+          "B"
+        ],
+        [
+          "E7sus4/13",
+          "Dadd9",
+          "Bmadd9",
+          "C#m",
+          "Esus4",
+          "Aadd9"
+        ]
+      ],
+      "raw_text": "Progressões :\n||: Esus13 | Amadd9 | Bmadd11 | Dm | B(b5) :||\n||: E74/13 | Aadd9 | Amadd9 | Bsus4 | B :||\n||: E7sus4/13 | Dadd9 | Bmadd9| C#m | Esus4 | Aadd9 :||\nTétrade dominante com sétima 4  e 13 E7sus4/13\n\nEstrutura : 1 Justo - E  / 4J- A  / 5J - B / b7 - D /  13-C#"
+    },
+    {
+      "id": "pdf-0101",
+      "file_name": "tetradde_dominante_c79.pdf",
+      "title": "tetradde_dominante_c79",
+      "target_chord": "C7/9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "D"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G b7 - Bb / 9 maior - D"
+      },
+      "progressions": [
+        [
+          "C7/9",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7/9",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7/9",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  Sétima e Nona  - C7/9 Estrutura : 1Justo - C / 3 maior - E / 5Justa- G\nb7 - Bb / 9 maior - D\nProgressões :||: C7/9 | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7/9 | Fadd9 | Fmadd9 | Gsus4 :||||: C7/9 | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0102",
+      "file_name": "Tetrade_dominante_C7b9.pdf",
+      "title": "Tetrade_dominante_C7b9",
+      "target_chord": "C7(b9)",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "9m"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Db"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G b7 - Bb / 9 menor - Db"
+      },
+      "progressions": [
+        [
+          "C7(b9)",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7(b9)",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7(b9)",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  Sétima e Nona menor  - C7(b9) Estrutura : 1Justo - C / 3 maior - E / 5Justa- G\nb7 - Bb / 9 menor - Db\nProgressões :||: C7(b9) | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7(b9)| Fadd9 | Fmadd9 | Gsus4 :||||: C7(b9) | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0103",
+      "file_name": "tetrade_dominante_maior_C7.pdf",
+      "title": "tetrade_dominante_maior_C7",
+      "target_chord": "C7",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa",
+          "b7"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "Bb"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb"
+      },
+      "progressions": [
+        [
+          "C7",
+          "Fmadd9",
+          "Fmadd11",
+          "Bbm",
+          "G(b5)"
+        ],
+        [
+          "C7",
+          "Fadd9",
+          "Fmadd9",
+          "Gsus4"
+        ],
+        [
+          "C7",
+          "Bbadd9",
+          "Gmadd9",
+          "Am",
+          "Bsus4",
+          "Gsus4"
+        ]
+      ],
+      "raw_text": "Tétrade dominante  com  Sétima  - C7 Estrutura : 1Justo - C / 3 maior - E / 5Justa- G / b7 - Bb\nProgressões :||: C7 | Fmadd9 | Fmadd11 | Bbm | G(b5):||||: C7 | Fadd9 | Fmadd9 | Gsus4 :||||: C7 | Bbadd9 | Gmadd9 | Am | Bsus4 | Gsus4 :||"
+    },
+    {
+      "id": "pdf-0104",
+      "file_name": "Tri_ade_5.pdf",
+      "title": "Tri_ade_5",
+      "target_chord": "C",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "#5"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G#"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / #5 - G#"
+      },
+      "progressions": [
+        [
+          "C(#5)",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "C(#5)",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "C(#5)",
+          "Am",
+          "Em",
+          "B",
+          "D",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade com quinta aumentada Estrutura : 1Justo - C / 3 maior - E / #5 - G#\nProgressões :||: C(#5) | D | F | G :||||: C(#5) | Eb | F | G :||||: C(#5) | Am | Em | B | D | G :||"
+    },
+    {
+      "id": "pdf-0105",
+      "file_name": "Tri_ade_b5.pdf",
+      "title": "Tri_ade_b5",
+      "target_chord": "C",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "b5"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "Gb"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / b5 - Gb"
+      },
+      "progressions": [
+        [
+          "C(b5)",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "C(b5)",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "C(b5)",
+          "Am",
+          "Em",
+          "B",
+          "D",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade com quinta diminuta Estrutura : 1Justo - C / 3 maior - E / b5 - Gb\nProgressões :||: C(b5) | D | F | G :||||: C(b5) | Eb | F | G :||||: C(b5) | Am | Em | B | D | G :||"
+    },
+    {
+      "id": "pdf-0106",
+      "file_name": "Tri_ade_Maior.pdf",
+      "title": "Tri_ade_Maior",
+      "target_chord": "C",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5Justa"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3Maior - E / 5 Justa- G"
+      },
+      "progressions": [
+        [
+          "C",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "C",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "C",
+          "A",
+          "E",
+          "B",
+          "F",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade Maior Estrutura : 1Justo - C / 3Maior - E / 5 Justa- G\nProgressões :\n||: C | D | F | G :||\n||: C | Eb | F | G :||\n||: C |A| E | B |F | G :||"
+    },
+    {
+      "id": "pdf-0107",
+      "file_name": "Tri_ade_Maior_add9.pdf",
+      "title": "Tri_ade_Maior_add9",
+      "target_chord": "ADD9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3M",
+          "5J",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "E",
+          "G",
+          "D"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 maior - E / 5J - G / 9 maior - D"
+      },
+      "progressions": [
+        [
+          "Cadd9",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "Cadd9",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "Cadd9",
+          "Am",
+          "Em",
+          "B",
+          "D",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade maior com Nona adicionada ADD9 Estrutura : 1Justo - C / 3 maior - E / 5J - G / 9 maior - D\nProgressões :||: Cadd9| D | F | G :||||: Cadd9 | Eb | F | G :||||: Cadd9 | Am | Em | B | D | G :||"
+    },
+    {
+      "id": "pdf-0108",
+      "file_name": "Tri_ade_Menor.pdf",
+      "title": "Tri_ade_Menor",
+      "target_chord": "C",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3m",
+          "5Justa"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 menor - Eb / 5 Justa- G"
+      },
+      "progressions": [
+        [
+          "Cm",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "Cm",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "Cm",
+          "Am",
+          "Em",
+          "B",
+          "D",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade Menor Estrutura : 1Justo - C / 3 menor - Eb / 5 Justa- G\nProgressões :\n||: Cm| D | F | G :||\n||: Cm | Eb | F | G :||\n||: Cm | Am | Em | B | D | G :||"
+    },
+    {
+      "id": "pdf-0109",
+      "file_name": "Tri_ade_Menor_add11.pdf",
+      "title": "Tri_ade_Menor_add11",
+      "target_chord": "ADD11",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3m",
+          "5J",
+          "11M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "F"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 menor - Eb / 5J - G / 11 maior - F"
+      },
+      "progressions": [
+        [
+          "Cmadd11",
+          "Cmadd9",
+          "Fmadd11",
+          "G(b5)"
+        ],
+        [
+          "Cmadd11",
+          "Ebadd9",
+          "Fadd9",
+          "G(#5)"
+        ],
+        [
+          "Cmadd11",
+          "Amadd11",
+          "Emadd9",
+          "Bsus4",
+          "Dsus2"
+        ]
+      ],
+      "raw_text": "Tríade menor com 11 adicionada mADD11 Estrutura : 1Justo - C / 3 menor - Eb / 5J - G / 11 maior - F\nProgressões :||: Cmadd11| Cmadd9 | Fmadd11 | G(b5) :||||: Cmadd11 | Ebadd9 | Fadd9 | G(#5) :||||: Cmadd11 | Amadd11 | Emadd9 | Bsus4 | Dsus2 | Gsu4 :||"
+    },
+    {
+      "id": "pdf-0110",
+      "file_name": "Tri_ade_Menor_add9.pdf",
+      "title": "Tri_ade_Menor_add9",
+      "target_chord": "ADD9",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3m",
+          "5J",
+          "9M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "D"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 menor - Eb / 5J - G / 9 maior - D"
+      },
+      "progressions": [
+        [
+          "Cmadd9",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "Cmadd9",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "Cmadd9",
+          "Am",
+          "Em",
+          "B",
+          "D",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade menor com Nona adicionada mADD9 Estrutura : 1Justo - C / 3 menor - Eb / 5J - G / 9 maior - D\nProgressões :||: Cmadd9| D | F | G :||||: Cmadd9 | Eb | F | G :||||: Cmadd9 | Am | Em | B | D | G :||"
+    },
+    {
+      "id": "pdf-0111",
+      "file_name": "Tri_ade_menor_add911.pdf",
+      "title": "Tri_ade_menor_add911",
+      "target_chord": "ADD9/11",
+      "page_count": 2,
+      "structure": {
+        "intervals": [
+          "1J",
+          "3m",
+          "5J",
+          "9M",
+          "11M"
+        ],
+        "notes": [
+          "C",
+          "Eb",
+          "G",
+          "D",
+          "F"
+        ],
+        "raw": "Estrutura : 1Justo - C / 3 menor - Eb / 5J - G / 9 maior - D / 11 maior - F"
+      },
+      "progressions": [
+        [
+          "Cmadd9/11",
+          "Cmadd9",
+          "Fmadd11",
+          "G(b5)"
+        ],
+        [
+          "Cmadd9/11",
+          "Ebadd9",
+          "Fadd9",
+          "G(#5)"
+        ],
+        [
+          "Cmadd9/11",
+          "Amadd11",
+          "Emadd9",
+          "Bsus4",
+          "Dsus2"
+        ]
+      ],
+      "raw_text": "Tríade menor com 9 e  11 adicionada mADD9/11 Estrutura : 1Justo - C / 3 menor - Eb / 5J - G / 9 maior - D / 11 maior - F\nProgressões :||: Cmadd9/11| Cmadd9 | Fmadd11 | G(b5) :||||: Cmadd9/11 | Ebadd9 | Fadd9 | G(#5) :||||: Cmadd9/11 | Amadd11 | Emadd9 | Bsus4 | Dsus2 | Gsu4 :||\n5 Justa sai!"
+    },
+    {
+      "id": "pdf-0112",
+      "file_name": "Tri_ade_sus2.pdf",
+      "title": "Tri_ade_sus2",
+      "target_chord": "C",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "2M",
+          "5Justa"
+        ],
+        "notes": [
+          "C",
+          "D",
+          "G"
+        ],
+        "raw": "Estrutura : 1Justo - C / 2 maior- D / 5 Justa- G"
+      },
+      "progressions": [
+        [
+          "Csus2",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "Csus2",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "Csus2",
+          "Am",
+          "Em",
+          "B",
+          "D",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade sus 2 Estrutura : 1Justo - C / 2 maior- D / 5 Justa- G\nProgressões :\n||: Csus2 | D | F | G :||\n||: Csus2 | Eb | F | G :||\n||: Csus2 | Am | Em | B | D | G :||"
+    },
+    {
+      "id": "pdf-0113",
+      "file_name": "Tri_ade_sus4.pdf",
+      "title": "Tri_ade_sus4",
+      "target_chord": "C",
+      "page_count": 1,
+      "structure": {
+        "intervals": [
+          "1J",
+          "4Justa",
+          "5Justa"
+        ],
+        "notes": [
+          "C",
+          "F",
+          "G"
+        ],
+        "raw": "Estrutura : 1Justo - C / 4 Justa - F / 5 Justa- G"
+      },
+      "progressions": [
+        [
+          "Csus4",
+          "D",
+          "F",
+          "G"
+        ],
+        [
+          "Csus4",
+          "Eb",
+          "F",
+          "G"
+        ],
+        [
+          "Csus4",
+          "Am",
+          "Em",
+          "B",
+          "D",
+          "G"
+        ]
+      ],
+      "raw_text": "Tríade sus 4 Estrutura : 1Justo - C / 4 Justa - F / 5 Justa- G\nProgressões :||: Csus4 | D | F | G :||||: Csus4 | Eb | F | G :||||: Csus4 | Am | Em | B | D | G :||"
+    }
+  ]
+}

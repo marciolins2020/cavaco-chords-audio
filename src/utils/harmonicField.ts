@@ -1,5 +1,4 @@
 import { ChordEntry } from "@/types/chords";
-import { convertedChords } from "@/lib/chordConverter";
 
 export type HarmonicFunction = "tonica" | "subdominante" | "dominante" | "preparacao";
 
@@ -23,8 +22,8 @@ export interface HarmonicField {
 }
 
 // Encontrar acorde por root e quality
-function findChord(root: string, quality: string = ""): ChordEntry | null {
-  return convertedChords.find(c => c.root === root && c.quality === quality) || null;
+function findChord(chords: ChordEntry[], root: string, quality: string = ""): ChordEntry | null {
+  return chords.find(c => c.root === root && c.quality === quality) || null;
 }
 
 // Mapeamento de graus para cada tonalidade
@@ -120,7 +119,7 @@ const PROGRESSIONS: Record<string, Progression[]> = {
 /**
  * Retorna o campo harmônico de uma tonalidade
  */
-export function getHarmonicField(key: string): HarmonicField | null {
+export function getHarmonicField(key: string, chords?: ChordEntry[]): HarmonicField | null {
   const degrees = DEGREE_MAP[key];
   if (!degrees) return null;
 
@@ -130,7 +129,7 @@ export function getHarmonicField(key: string): HarmonicField | null {
     key,
     degrees: degrees.map((deg, idx) => ({
       degree: degreeNames[idx],
-      chord: findChord(deg.root, deg.quality),
+      chord: chords ? findChord(chords, deg.root, deg.quality) : null,
       function: deg.function,
     })),
     progressions: PROGRESSIONS[key] || [],

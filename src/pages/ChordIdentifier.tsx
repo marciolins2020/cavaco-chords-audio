@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { InteractiveFretboard } from "@/components/InteractiveFretboard";
 import ChordDiagram from "@/components/ChordDiagram";
 import { ChordEntry } from "@/types/chords";
-import { convertedChords } from "@/lib/chordConverter";
+import { useChordList } from "@/hooks/useChordList";
 import { useNavigate } from "react-router-dom";
 
 import { calculateChordDistance, arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
@@ -65,6 +65,7 @@ export default function ChordIdentifier() {
   const [result, setResult] = useState<ChordMatch | null>(null);
   const navigate = useNavigate();
   const { addToHistory } = useApp();
+  const allChords = useChordList();
 
   // Convert notes to frets array
   // Cordas no InteractiveFretboard: 1=D(agudo), 2=B, 3=G, 4=D(grave)
@@ -89,7 +90,7 @@ export default function ChordIdentifier() {
     const userFrets = convertNotesToFrets(notes);
 
     // Look for exact match
-    const exactMatch = convertedChords.find(chord =>
+    const exactMatch = allChords.find(chord =>
       chord.variations.some(variation => 
         arraysEqual(variation.frets, userFrets)
       )
@@ -112,7 +113,7 @@ export default function ChordIdentifier() {
     }
 
     // Find similar chords (fuzzy matching based on notes played)
-    const chordsWithDistance = convertedChords.map(chord => {
+    const chordsWithDistance = allChords.map(chord => {
       const minDistance = Math.min(
         ...chord.variations.map(variation => 
           calculateChordDistance(userFrets, variation.frets)

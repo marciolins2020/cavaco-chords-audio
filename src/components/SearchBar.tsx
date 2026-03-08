@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "@/contexts/AppContext";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
+import { makeChordId, makeChordDisplayName } from "@/lib/chordIds";
 
 interface ChordSearchResult {
   id: string;
@@ -57,8 +58,8 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
         intervals: ["1", "3", "5"],
         description: chord.suffix
       };
-      const id = chord.root + suffixInfo.quality;
-      const displayName = chord.suffix === 'M' ? chord.root : `${chord.root}${suffixInfo.quality}`;
+      const id = makeChordId(chord.root, chord.suffix);
+      const displayName = makeChordDisplayName(chord.root, chord.suffix);
       return {
         id,
         root: chord.root,
