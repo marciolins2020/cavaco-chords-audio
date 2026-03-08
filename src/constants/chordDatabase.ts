@@ -2,6 +2,7 @@
 // Todas as formas são verificadas para produzir as notas corretas na afinação DGBD
 
 import { validateChordDiagram, getExpectedChordNotes } from '@/lib/chordValidator';
+import rzdCourseData from '@/data/rzd-course-chords.json';
 
 export interface ChordVariation {
   id: string;
