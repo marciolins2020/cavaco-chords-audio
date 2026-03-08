@@ -74,13 +74,69 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
   const smartSearch = (searchQuery: string): ChordSearchResult[] => {
     if (!searchQuery) return [];
 
-    let normalized = searchQuery
-      .replace(/maior/gi, '')
-      .replace(/menor/gi, 'm')
-      .replace(/bemol/gi, 'b')
-      .replace(/sustenido/gi, '#')
-      .replace(/\s+/g, '')
-      .trim();
+    // First, translate Portuguese note names to standard notation
+    let normalized = searchQuery.trim();
+    
+    // Portuguese note names → standard
+    const PT_NOTES: Record<string, string> = {
+      'dó': 'C', 'do': 'C', 'ré': 'D', 're': 'D', 'mi': 'E',
+      'fá': 'F', 'fa': 'F', 'sol': 'G', 'lá': 'A', 'la': 'A', 'si': 'B',
+    };
+    
+    // Portuguese qualifier words
+    const PT_QUALIFIERS: Record<string, string> = {
+      'maior': '', 'menor': 'm', 'com sétima': '7', 'sétima': '7',
+      'com sétima maior': 'maj7', 'sétima maior': 'maj7',
+      'menor com sétima': 'm7', 'diminuto': 'dim', 'aumentado': '5+',
+      'sexta': '6', 'nona': '9', 'suspensa': 'sus4', 'suspenso': 'sus4',
+    };
+
+    // Try to match Portuguese input like "Sol com sétima", "Ré menor"
+    const lowerInput = normalized.toLowerCase();
+    let ptRoot: string | null = null;
+    let ptRemainder = '';
+    
+    // Sort by length descending to match "sol" before "si" wouldn't matter but "dó" before "do"
+    const sortedNotes = Object.entries(PT_NOTES).sort((a, b) => b[0].length - a[0].length);
+    for (const [ptName, stdNote] of sortedNotes) {
+      if (lowerInput.startsWith(ptName)) {
+        ptRoot = stdNote;
+        ptRemainder = lowerInput.slice(ptName.length).trim();
+        // Remove leading "com" if present
+        ptRemainder = ptRemainder.replace(/^com\s+/, '');
+        break;
+      }
+    }
+
+    if (ptRoot) {
+      // Try to match qualifier
+      let ptSuffix = 'M'; // default major
+      const sortedQualifiers = Object.entries(PT_QUALIFIERS).sort((a, b) => b[0].length - a[0].length);
+      for (const [ptQual, stdSuffix] of sortedQualifiers) {
+        if (ptRemainder.includes(ptQual)) {
+          ptSuffix = stdSuffix || 'M';
+          break;
+        }
+      }
+      
+      // Check for sharp/flat
+      if (ptRemainder.includes('sustenido') || ptRemainder.includes('#')) {
+        ptRoot += '#';
+      } else if (ptRemainder.includes('bemol') || ptRemainder.includes('b')) {
+        ptRoot += 'b';
+      }
+      
+      normalized = ptRoot + (ptSuffix === 'M' ? '' : ptSuffix);
+    } else {
+      // Standard notation path
+      normalized = normalized
+        .replace(/maior/gi, '')
+        .replace(/menor/gi, 'm')
+        .replace(/bemol/gi, 'b')
+        .replace(/sustenido/gi, '#')
+        .replace(/\s+/g, '')
+        .trim();
+    }
 
     const rootMatch = normalized.match(/^([A-Ga-g])([#b])?/);
     if (!rootMatch) return [];
