@@ -167,19 +167,13 @@ export default function LeaderboardPage() {
 
                       {/* Score */}
                       <div className="text-right">
-                        <div className="flex items-center gap-1 font-bold text-lg">
-                          {selectedType === "streak" ? (
-                            <>
-                              <Flame className="w-5 h-5 text-orange-500" />
-                              {value}
-                            </>
-                          ) : (
-                            <>
-                              <Zap className="w-5 h-5 text-primary fill-primary" />
-                              {value.toLocaleString()}
-                            </>
-                          )}
+                        <div className="font-bold text-lg">
+                          {selectedType === "streak" ? value : value.toLocaleString()}
                         </div>
+                        {selectedType !== "streak" && (
+                          <p className="text-xs text-muted-foreground">XP</p>
+                        )}
+                      </div>
                         {selectedType !== "streak" && (
                           <p className="text-xs text-muted-foreground">XP</p>
                         )}
