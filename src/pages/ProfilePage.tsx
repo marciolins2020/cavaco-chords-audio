@@ -31,7 +31,7 @@ export default function ProfilePage() {
         <Header />
         <div className="container mx-auto px-4 py-12">
           <Card className="p-12 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 text-4xl text-muted-foreground text-center">👤</div>
+            <div className="w-16 h-16 mx-auto mb-4 text-4xl text-muted-foreground text-center">U</div>
             <h2 className="text-2xl font-bold mb-2">Entre para ver seu perfil</h2>
             <p className="text-muted-foreground mb-6">
               Faça login para acessar suas estatísticas e conquistas

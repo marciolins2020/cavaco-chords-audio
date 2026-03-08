@@ -241,7 +241,7 @@ export function PracticeMode({
             </>
           ) : (
             <>
-              <span className="text-6xl block mx-auto mb-3">❌</span>
+              <span className="text-6xl block mx-auto mb-3">X</span>
               <h3 className="text-2xl font-bold text-destructive mb-2">
                 Quase lá!
               </h3>

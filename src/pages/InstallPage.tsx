@@ -84,7 +84,7 @@ export default function InstallPage() {
             ) : deferredPrompt ? (
               <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10">
                 <Button onClick={handleInstall} size="lg" className="mb-4">
-                  ⬇ Instalar Agora
+                  Instalar Agora
                 </Button>
                 <p className="text-sm text-muted-foreground">
                   Clique para adicionar à sua tela inicial
