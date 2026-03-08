@@ -65,18 +65,20 @@ const ChordDiagram: React.FC<Props> = ({
     transform: "scaleX(-1)"
   } : {};
 
-  // Map visual string index to actual string index (0-3)
+  const [pluckedString, setPluckedString] = useState<number | null>(null);
+
   const getStringIndex = (visualS: number) => visualS === 4 ? 0 : visualS === 3 ? 1 : visualS === 2 ? 2 : 3;
 
   const handleStringClick = useCallback((stringNum: number) => {
     if (!interactive) return;
     const stringIndex = getStringIndex(stringNum);
     const fret = frets[stringIndex];
-    if (fret < 0) return; // muted string
+    if (fret < 0) return;
+    setPluckedString(stringNum);
     audioService.playNote(stringIndex, fret);
+    setTimeout(() => setPluckedString(null), 400);
   }, [frets, interactive]);
 
-  // Clickable zone per string — covers full height
   const stringHitArea = (s: number, i: number) => {
     if (!interactive) return null;
     const fret = frets[getStringIndex(s)];
