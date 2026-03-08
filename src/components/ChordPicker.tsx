@@ -15,6 +15,27 @@ interface ChordPickerProps {
 
 const ROOT_ORDER = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
 
+type ChordCategory = "major" | "minor" | "seventh" | "diminished" | "other";
+
+function getChordCategory(quality: string): ChordCategory {
+  const q = quality.toLowerCase();
+  if (q === "" || q === "m" || q === "major") {
+    return q === "m" ? "minor" : "major";
+  }
+  if (q.includes("dim") || q.includes("°")) return "diminished";
+  if (q.includes("7") || q.includes("9") || q.includes("11") || q.includes("13")) return "seventh";
+  if (q.includes("m") && !q.includes("maj") && !q.includes("add")) return "minor";
+  return "other";
+}
+
+const CATEGORY_STYLES: Record<ChordCategory, { border: string; bg: string; label: string; indicator: string }> = {
+  major:      { border: "border-foreground/30", bg: "bg-foreground/5",   label: "M",   indicator: "bg-foreground" },
+  minor:      { border: "border-secondary/40",  bg: "bg-secondary/8",   label: "m",   indicator: "bg-secondary" },
+  seventh:    { border: "border-warning/30",     bg: "bg-warning/5",     label: "7",   indicator: "bg-warning" },
+  diminished: { border: "border-destructive/25", bg: "bg-destructive/5", label: "dim", indicator: "bg-destructive" },
+  other:      { border: "border-accent/20",      bg: "bg-accent/5",      label: "…",   indicator: "bg-accent" },
+};
+
 function displayName(chord: ChordEntry): string {
   const quality = chord.quality === "" ? "" : chord.quality;
   return `${chord.root}${quality}`;
@@ -23,6 +44,7 @@ function displayName(chord: ChordEntry): string {
 export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPickerProps) {
   const [search, setSearch] = useState("");
   const [selectedRoot, setSelectedRoot] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<ChordCategory | null>(null);
 
   const validChords = useMemo(
     () => chords.filter((c) => c.variations && c.variations.length > 0),
@@ -46,6 +68,9 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
 
   const filtered = useMemo(() => {
     let list = selectedRoot ? grouped.get(selectedRoot) || [] : validChords;
+    if (selectedCategory) {
+      list = list.filter((c) => getChordCategory(c.quality) === selectedCategory);
+    }
     if (search.trim()) {
       const q = search.trim().toLowerCase();
       list = list.filter(
@@ -56,7 +81,7 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
       );
     }
     return list;
-  }, [validChords, grouped, selectedRoot, search]);
+  }, [validChords, grouped, selectedRoot, selectedCategory, search]);
 
   return (
     <Card className="p-6">
@@ -91,23 +116,52 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
         ))}
       </div>
 
+      {/* Category filter */}
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        {(Object.entries(CATEGORY_STYLES) as [ChordCategory, typeof CATEGORY_STYLES["major"]][]).map(([cat, style]) => {
+          const labels: Record<ChordCategory, string> = {
+            major: "Maior", minor: "Menor", seventh: "Sétima", diminished: "Dim", other: "Outros"
+          };
+          return (
+            <Button
+              key={cat}
+              size="sm"
+              variant={selectedCategory === cat ? "default" : "outline"}
+              onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+              className="h-7 text-[11px] px-2 gap-1.5"
+            >
+              <span className={`w-2 h-2 rounded-full ${style.indicator} inline-block`} />
+              {labels[cat]}
+            </Button>
+          );
+        })}
+      </div>
+
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-[320px] overflow-y-auto pr-1">
         {filtered.map((chord) => {
           const isMastered = masteredChords.includes(chord.id);
           const mainVar = chord.variations[0];
+          const category = getChordCategory(chord.quality);
+          const style = CATEGORY_STYLES[category];
 
           return (
             <HoverCard key={chord.id} openDelay={200} closeDelay={100}>
               <HoverCardTrigger asChild>
                 <button
                   onClick={() => onSelect(chord)}
-                  className={`relative p-3 rounded-lg border-2 text-center transition-all hover:scale-105 hover:shadow-md ${
+                  className={`relative p-3 rounded-lg border-2 text-center transition-all hover:scale-105 hover:shadow-lg group ${
                     isMastered
-                      ? "border-primary bg-primary/10"
-                      : "border-border bg-card hover:border-primary/50"
+                      ? "border-primary bg-primary/10 ring-1 ring-primary/20"
+                      : `${style.border} ${style.bg} hover:border-foreground/40`
                   }`}
                 >
-                  <div className="font-bold text-sm">{displayName(chord)}</div>
+                  {/* Category indicator dot */}
+                  <div className={`absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full ${style.indicator} opacity-60`} />
+
+                  <div className="font-bold text-sm group-hover:text-foreground transition-colors">
+                    <span>{chord.root}</span>
+                    <span className="text-muted-foreground text-xs">{chord.quality || ""}</span>
+                  </div>
                   <div className="text-[10px] text-muted-foreground mt-0.5">
                     {chord.variations.length} var.
                   </div>
@@ -120,7 +174,10 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
               </HoverCardTrigger>
               <HoverCardContent side="top" className="w-auto p-3" sideOffset={8}>
                 <div className="text-center">
-                  <div className="font-bold text-sm mb-1">{displayName(chord)}</div>
+                  <div className="font-bold text-sm mb-0.5">{displayName(chord)}</div>
+                  <Badge variant="outline" className="text-[9px] px-1.5 py-0 mb-1.5">
+                    {category === "major" ? "Maior" : category === "minor" ? "Menor" : category === "seventh" ? "Sétima" : category === "diminished" ? "Diminuto" : "Outro"}
+                  </Badge>
                   {chord.notes.length > 0 && (
                     <div className="text-[10px] text-muted-foreground mb-2">
                       {chord.notes.join(" · ")}
