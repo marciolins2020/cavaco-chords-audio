@@ -362,12 +362,25 @@ export function mergeChordDatabases(
   
   custom.chords.forEach((chord) => {
     const key = `${chord.root}-${chord.suffix}`;
-    // Recalcula notas teóricas para garantir correção (o JSON pode ter notas erradas)
-    const correctedNotes = getExpectedChordNotes(chord.root, chord.suffix);
-    chordMap.set(key, {
-      ...chord,
-      notes: correctedNotes.length > 0 ? correctedNotes : chord.notes,
+    
+    // Validate each variation harmonically before accepting
+    const validVariations = chord.variations.filter((variation) => {
+      const result = validateChordDiagram(chord.root, chord.suffix, variation.frets);
+      return result.isValid;
     });
+    
+    // Recalculate theoretical notes
+    const correctedNotes = getExpectedChordNotes(chord.root, chord.suffix);
+    
+    if (validVariations.length > 0) {
+      // Use only valid variations from the custom/course data
+      chordMap.set(key, {
+        ...chord,
+        variations: validVariations,
+        notes: correctedNotes.length > 0 ? correctedNotes : chord.notes,
+      });
+    }
+    // If no valid variations, keep the base (generated) version — don't overwrite
   });
   
   merged.chords = Array.from(chordMap.values());
