@@ -131,10 +131,10 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
 
         <div className="flex gap-3">
           <Button onClick={() => handlePlay('strum')} disabled={isPlaying || !currentVariation} className="bg-primary hover:bg-primary/90" size="lg">
-            {isPlaying ? "Tocando..." : "Strum"}
+            {isPlaying ? "Tocando..." : "Dedilhado"}
           </Button>
           <Button onClick={() => handlePlay('block')} disabled={isPlaying || !currentVariation} variant="secondary" size="lg">
-            Block
+            Simultâneo
           </Button>
         </div>
 
