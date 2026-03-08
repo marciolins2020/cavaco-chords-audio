@@ -46,11 +46,6 @@ const About = () => {
           </Card>
 
           <Card className="p-6 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Heart className="w-8 h-8 text-primary" />
-              </div>
-            </div>
             <h3 className="text-xl font-bold mb-2">100% Gratuito</h3>
             <p className="text-muted-foreground">
               Acesso completo e ilimitado a todos os recursos, sem mensalidades ou compras dentro do app
