@@ -117,7 +117,7 @@ export const StreakCalendar = ({
         {/* Badges de Milestones */}
         {getMilestonesBadges().length > 0 && (
           <div className="flex gap-2 flex-wrap">
-            <Award className="w-5 h-5 text-muted-foreground" />
+            <span className="text-muted-foreground">🏅</span>
             {getMilestonesBadges().map((milestone) => (
               <Badge key={milestone.days} variant="secondary" className="gap-1">
                 <span>{milestone.emoji}</span>

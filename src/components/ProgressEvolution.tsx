@@ -94,7 +94,7 @@ export const ProgressEvolution = ({ sessions }: ProgressEvolutionProps) => {
   return (
     <Card className="p-6">
       <div className="flex items-center gap-2 mb-6">
-        <TrendingUp className="w-5 h-5 text-primary" />
+        <span className="text-xl">📈</span>
         <h3 className="text-lg font-semibold">Evolução do Progresso</h3>
       </div>
 

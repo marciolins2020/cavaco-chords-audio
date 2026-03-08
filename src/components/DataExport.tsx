@@ -91,8 +91,7 @@ export const DataExport = () => {
           ⬇ Exportar JSON (completo)
         </DropdownMenuItem>
         <DropdownMenuItem onClick={exportToCSV}>
-          <Download className="w-4 h-4 mr-2" />
-          Exportar CSV (sessões)
+          ⬇ Exportar CSV (sessões)
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

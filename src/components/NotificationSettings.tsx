@@ -105,8 +105,7 @@ export function NotificationSettings() {
               size="sm"
               className="w-full"
             >
-              <TestTube className="w-4 h-4 mr-2" />
-              Enviar notificação de teste
+              🧪 Enviar notificação de teste
             </Button>
           </div>
         )}
