@@ -122,7 +122,7 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
                   {challenge.current_progress} / {challenge.target_value}
                 </span>
                 <div className="flex items-center gap-1 text-yellow-600 font-medium">
-                  <Zap className="w-3 h-3 fill-yellow-600" />
+                  <span className="text-yellow-600">⚡</span>
                   <span>+{challenge.xp_reward} XP</span>
                 </div>
               </div>
