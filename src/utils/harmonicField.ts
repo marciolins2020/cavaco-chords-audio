@@ -1,5 +1,4 @@
 import { ChordEntry } from "@/types/chords";
-import { convertedChords } from "@/lib/chordConverter";
 
 export type HarmonicFunction = "tonica" | "subdominante" | "dominante" | "preparacao";
 
@@ -23,8 +22,8 @@ export interface HarmonicField {
 }
 
 // Encontrar acorde por root e quality
-function findChord(root: string, quality: string = ""): ChordEntry | null {
-  return convertedChords.find(c => c.root === root && c.quality === quality) || null;
+function findChord(chords: ChordEntry[], root: string, quality: string = ""): ChordEntry | null {
+  return chords.find(c => c.root === root && c.quality === quality) || null;
 }
 
 // Mapeamento de graus para cada tonalidade
