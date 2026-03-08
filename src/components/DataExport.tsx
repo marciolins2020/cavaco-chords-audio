@@ -88,8 +88,7 @@ export const DataExport = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={exportToJSON}>
-          <Download className="w-4 h-4 mr-2" />
-          Exportar JSON (completo)
+          ⬇ Exportar JSON (completo)
         </DropdownMenuItem>
         <DropdownMenuItem onClick={exportToCSV}>
           <Download className="w-4 h-4 mr-2" />
