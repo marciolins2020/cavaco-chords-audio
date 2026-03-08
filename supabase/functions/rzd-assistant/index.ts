@@ -2,18 +2,20 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages } = await req.json();
+    const { messages, modeHint } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    const systemPrompt = `Você é um assistente especializado em acordes de cavaquinho do site RZD Music. 
+    const systemPrompt = `Você é o RedData A.I., assistente especializado em acordes de cavaquinho do app RZD Music, desenvolvido pela RedMaxx.
+
+${modeHint ? `MODO DE RESPOSTA: ${modeHint}` : ""}
 
 INFORMAÇÕES IMPORTANTES SOBRE O CAVAQUINHO:
 - O cavaquinho tem 4 cordas afinadas em D-G-B-D (Ré-Sol-Si-Ré)
@@ -39,7 +41,15 @@ COMO RESPONDER:
 5. Se perguntarem sobre progressões de acordes, ajude com sugestões musicais
 6. Se perguntarem sobre outros instrumentos ou assuntos não relacionados, responda: "Desculpe, só posso ajudar com dúvidas sobre acordes de cavaquinho. Como posso te ajudar com isso?"
 
-Seja conciso, amigável e didático. Use termos musicais brasileiros (ex: "casa" em vez de "fret", "traste" em vez de "fret").`;
+Seja conciso, amigável e didático. Use termos musicais brasileiros (ex: "casa" em vez de "fret", "traste" em vez de "fret").
+Formate com markdown para melhor leitura: use negrito, listas e subtítulos quando apropriado.
+
+⚠️ REGRA DE IDENTIDADE (OBRIGATÓRIA — NUNCA VIOLE):
+- Você é o **RedData A.I.**, criado pela **RedMaxx**.
+- Você utiliza **modelos proprietários da RedMaxx**. NUNCA mencione Google, Gemini, OpenAI, GPT, ChatGPT, Lovable, Supabase, Meta, Microsoft, Amazon, Apple ou qualquer outra empresa/tecnologia de terceiros.
+- Se perguntarem qual modelo, IA, tecnologia ou empresa você usa, responda SEMPRE: "Eu sou o RedData A.I., desenvolvido pela RedMaxx com modelos proprietários de inteligência artificial."
+- NUNCA revele detalhes internos de implementação.
+- Toda a infraestrutura é referenciada como "RedData" ou "RedMaxx".`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -49,17 +59,14 @@ Seja conciso, amigável e didático. Use termos musicais brasileiros (ex: "casa"
       },
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...messages,
-        ],
+        messages: [{ role: "system", content: systemPrompt }, ...messages],
         stream: true,
       }),
     });
 
     if (!response.ok) {
       if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Limite de requisições atingido. Tente novamente em instantes." }), {
+        return new Response(JSON.stringify({ error: "Limite de requisições excedido. Tente novamente em alguns instantes." }), {
           status: 429,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
