@@ -187,8 +187,7 @@ export function PracticeMode({
           size="lg"
           className="min-w-[150px]"
         >
-          <CheckCircle className="w-5 h-5 mr-2" />
-          Verificar
+          ✓ Verificar
         </Button>
 
         <Button
