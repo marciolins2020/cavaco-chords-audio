@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download, Smartphone, Wifi, Zap, Check } from "lucide-react";
+
 import rzdLogo from "@/assets/logo-rzd-final.png";
 
 interface BeforeInstallPromptEvent extends Event {
