@@ -39,7 +39,15 @@ export function PracticeMode({
   const [elapsedTime, setElapsedTime] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const targetVariation = chord.variations[0];
+  const targetVariation = chord.variations?.[0];
+  
+  if (!targetVariation) {
+    return (
+      <div className="text-center p-8 text-muted-foreground">
+        Este acorde não possui diagrama disponível.
+      </div>
+    );
+  }
   const successRate = currentAttempts > 0 ? (currentSuccesses / currentAttempts) * 100 : 0;
 
   // Iniciar timer ao montar
