@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -14,12 +14,64 @@ const CHORD_TYPE_LABELS: Record<string, string> = {
   'sus4': 'sus4', '9': '9', 'add9': 'add9'
 };
 
-const ChordExplorer = () => {
+// Reverse map: quality string → suffix key (e.g. "" → "M", "m" → "m")
+const QUALITY_TO_SUFFIX: Record<string, string> = {};
+for (const [suffix] of Object.entries(CHORD_TYPE_LABELS)) {
+  const suffixInfo = SUFFIX_MAP[suffix];
+  const quality = suffixInfo?.quality ?? suffix;
+  QUALITY_TO_SUFFIX[quality] = suffix;
+}
+// Ensure direct mappings too
+CHORD_TYPES.forEach(t => { QUALITY_TO_SUFFIX[t] = t; });
+
+interface ChordExplorerProps {
+  searchQuery?: string;
+}
+
+const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
   const { chordDatabase, leftHanded, setLeftHanded } = useApp();
   const [selectedRoot, setSelectedRoot] = useState("C");
   const [selectedType, setSelectedType] = useState("M");
   const [isPlaying, setIsPlaying] = useState(false);
   const [variationIndex, setVariationIndex] = useState(0);
+
+  // React to search query changes — parse and auto-select root/type
+  useEffect(() => {
+    if (!searchQuery || searchQuery.length < 1) return;
+
+    const normalized = searchQuery.replace(/\s+/g, '').trim();
+    const rootMatch = normalized.match(/^([A-Ga-g])([#b])?/);
+    if (!rootMatch) return;
+
+    const root = rootMatch[0].charAt(0).toUpperCase() + (rootMatch[0].slice(1) || '');
+    const suffix = normalized.slice(rootMatch[0].length) || '';
+
+    // Only update if root is valid
+    if (ROOT_NOTES.includes(root)) {
+      setSelectedRoot(root);
+      setVariationIndex(0);
+
+      // Try to match suffix to a chord type
+      if (suffix) {
+        // Direct match
+        const directMatch = CHORD_TYPES.find(t => t.toLowerCase() === suffix.toLowerCase());
+        if (directMatch) {
+          setSelectedType(directMatch);
+          return;
+        }
+        // Via quality map
+        const viaSuffix = QUALITY_TO_SUFFIX[suffix] || QUALITY_TO_SUFFIX[suffix.toLowerCase()];
+        if (viaSuffix && CHORD_TYPES.includes(viaSuffix)) {
+          setSelectedType(viaSuffix);
+          return;
+        }
+      }
+      // No suffix = major
+      if (!suffix) {
+        setSelectedType("M");
+      }
+    }
+  }, [searchQuery]);
 
   const selectedChord = useMemo(() => {
     return chordDatabase.chords.find(c => c.root === selectedRoot && c.suffix === selectedType);

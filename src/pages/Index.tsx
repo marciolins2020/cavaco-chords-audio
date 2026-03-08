@@ -162,7 +162,7 @@ const Index = () => {
 
         {/* Chord Explorer */}
         <section className="container mx-auto px-4 py-8 md:py-12">
-          <ChordExplorer />
+          <ChordExplorer searchQuery={searchQuery} />
         </section>
 
         {/* Chords Section - Tabbed */}
