@@ -46,17 +46,17 @@ export default function InstallPage() {
 
   const features = [
     {
-      icon: <Wifi className="w-6 h-6" />,
+      icon: "📶",
       title: "Funciona Offline",
       description: "Acesse todos os acordes mesmo sem internet",
     },
     {
-      icon: <Zap className="w-6 h-6" />,
+      icon: "⚡",
       title: "Rápido e Leve",
       description: "Carrega instantaneamente, como um app nativo",
     },
     {
-      icon: <Smartphone className="w-6 h-6" />,
+      icon: "📱",
       title: "Na Tela Inicial",
       description: "Acesso direto da sua tela inicial",
     },
