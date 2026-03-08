@@ -242,7 +242,6 @@ class AudioService {
       this.playTone(freq, this.ctx.currentTime, 1.0, 0.7, stringIndex);
     }
   }
-}
 
   // === Feedback Sounds ===
 
@@ -250,7 +249,6 @@ class AudioService {
     const ok = await this.init();
     if (!ok || !this.ctx) return;
     const t = this.ctx.currentTime;
-    // Ascending major triad — quick & bright
     [523.25, 659.25, 783.99].forEach((freq, i) => {
       const osc = this.ctx!.createOscillator();
       const g = this.ctx!.createGain();
@@ -268,7 +266,6 @@ class AudioService {
     const ok = await this.init();
     if (!ok || !this.ctx) return;
     const t = this.ctx.currentTime;
-    // Short sparkle — two rising notes
     [880, 1318.5].forEach((freq, i) => {
       const osc = this.ctx!.createOscillator();
       const g = this.ctx!.createGain();
@@ -286,7 +283,6 @@ class AudioService {
     const ok = await this.init();
     if (!ok || !this.ctx) return;
     const t = this.ctx.currentTime;
-    // Quick coin-like ding
     const osc = this.ctx.createOscillator();
     const g = this.ctx.createGain();
     osc.type = "sine";
@@ -303,7 +299,6 @@ class AudioService {
     const ok = await this.init();
     if (!ok || !this.ctx) return;
     const t = this.ctx.currentTime;
-    // Low buzz
     const osc = this.ctx.createOscillator();
     const g = this.ctx.createGain();
     osc.type = "sawtooth";
