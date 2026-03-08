@@ -58,7 +58,7 @@ export const LevelProgress = ({
                 ease: "easeInOut",
               }}
             >
-              {levelIcons[level] || "🎸"}
+              {levelIcons[level] || "—"}
             </motion.div>
             
             <div>

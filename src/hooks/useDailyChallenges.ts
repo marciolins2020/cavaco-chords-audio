@@ -153,7 +153,7 @@ export const useDailyChallenges = (userId: string | undefined) => {
 
       // Notificar conclusão
       if (completed && !challenge.completed) {
-        toast.success(`🎉 Desafio concluído! +${challenge.xp_reward} XP`, {
+        toast.success(`Desafio concluído! +${challenge.xp_reward} XP`, {
           description: challenge.title,
           duration: 5000,
         });
