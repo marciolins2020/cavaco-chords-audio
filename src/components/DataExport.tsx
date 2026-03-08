@@ -83,15 +83,15 @@ export const DataExport = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm">
-          ⬇ Exportar Dados
+          Exportar Dados
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={exportToJSON}>
-          ⬇ Exportar JSON (completo)
+          Exportar JSON (completo)
         </DropdownMenuItem>
         <DropdownMenuItem onClick={exportToCSV}>
-          ⬇ Exportar CSV (sessões)
+          Exportar CSV (sessões)
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

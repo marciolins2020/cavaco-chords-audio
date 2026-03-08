@@ -45,21 +45,9 @@ export default function InstallPage() {
   };
 
   const features = [
-    {
-      icon: "📶",
-      title: "Funciona Offline",
-      description: "Acesse todos os acordes mesmo sem internet",
-    },
-    {
-      icon: "⚡",
-      title: "Rápido e Leve",
-      description: "Carrega instantaneamente, como um app nativo",
-    },
-    {
-      icon: "📱",
-      title: "Na Tela Inicial",
-      description: "Acesso direto da sua tela inicial",
-    },
+    { icon: "W", title: "Funciona Offline", description: "Acesse todos os acordes mesmo sem internet" },
+    { icon: "R", title: "Rápido e Leve", description: "Carrega instantaneamente, como um app nativo" },
+    { icon: "M", title: "Na Tela Inicial", description: "Acesso direto da sua tela inicial" },
   ];
 
   return (
@@ -83,7 +71,6 @@ export default function InstallPage() {
             {isInstalled ? (
               <Card className="p-8 bg-success/10 border-success">
                 <div className="flex items-center justify-center gap-3 mb-4">
-                  <span className="text-3xl">✅</span>
                   <h2 className="text-2xl font-bold text-success">App Instalado!</h2>
                 </div>
                 <p className="text-muted-foreground mb-6">
@@ -96,7 +83,7 @@ export default function InstallPage() {
             ) : deferredPrompt ? (
               <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10">
                 <Button onClick={handleInstall} size="lg" className="mb-4">
-                  ⬇ Instalar Agora
+                  Instalar Agora
                 </Button>
                 <p className="text-sm text-muted-foreground">
                   Clique para adicionar à sua tela inicial

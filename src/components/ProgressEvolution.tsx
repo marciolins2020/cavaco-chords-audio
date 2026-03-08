@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { PracticeSession } from "@/types/practice";
-
+import { TrendingUp } from "lucide-react";
 
 import { format, subDays, subWeeks, startOfWeek, endOfWeek, eachDayOfInterval, eachWeekOfInterval } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -94,7 +94,7 @@ export const ProgressEvolution = ({ sessions }: ProgressEvolutionProps) => {
   return (
     <Card className="p-6">
       <div className="flex items-center gap-2 mb-6">
-        <span className="text-xl">📈</span>
+        <TrendingUp className="h-5 w-5 text-primary" />
         <h3 className="text-lg font-semibold">Evolução do Progresso</h3>
       </div>
 

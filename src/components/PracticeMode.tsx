@@ -123,7 +123,7 @@ export function PracticeMode({
           {/* Timer */}
           <div className="text-right">
             <div className="flex items-center gap-2 text-lg font-mono">
-              <span>⏱</span>
+              <span>T</span>
               <span>{(elapsedTime / 1000).toFixed(1)}s</span>
             </div>
           </div>
@@ -158,7 +158,7 @@ export function PracticeMode({
 
         {currentSuccesses >= 3 && (
           <Badge className="mt-4 w-full justify-center" variant="default">
-            🏆 Acorde Dominado!
+            Acorde Dominado!
           </Badge>
         )}
       </Card>
@@ -195,7 +195,7 @@ export function PracticeMode({
           variant="outline"
           size="lg"
         >
-          {showDiagram ? "🙈 Ocultar" : "👁 Ver"} Resposta
+          {showDiagram ? "Ocultar" : "Ver"} Resposta
         </Button>
 
         {feedback === "incorrect" && (
@@ -231,7 +231,7 @@ export function PracticeMode({
         >
           {feedback === "correct" ? (
             <>
-              <span className="text-6xl block mx-auto mb-3">✅</span>
+              <span className="text-6xl block mx-auto mb-3">✓</span>
               <h3 className="text-2xl font-bold text-success mb-2">
                 Perfeito!
               </h3>
@@ -241,7 +241,7 @@ export function PracticeMode({
             </>
           ) : (
             <>
-              <span className="text-6xl block mx-auto mb-3">❌</span>
+              <span className="text-6xl block mx-auto mb-3">X</span>
               <h3 className="text-2xl font-bold text-destructive mb-2">
                 Quase lá!
               </h3>

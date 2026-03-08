@@ -88,14 +88,14 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="gap-2">
-          ⬆ <span className="hidden sm:inline">Importar Acordes</span>
+          <span className="hidden sm:inline">Importar Acordes</span>
         </Button>
       </DialogTrigger>
       
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            📄 Importar Banco de Acordes
+            Importar Banco de Acordes
           </DialogTitle>
           <DialogDescription>
             Faça upload de um arquivo JSON com acordes customizados.
@@ -124,7 +124,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
           <div className="flex flex-col items-center gap-3">
             {isValid === null && (
               <>
-                <span className="text-5xl block">⬆</span>
+                <span className="text-5xl block">^</span>
                 <p className="text-sm text-muted-foreground">
                   Arraste um arquivo JSON ou clique para selecionar
                 </p>
