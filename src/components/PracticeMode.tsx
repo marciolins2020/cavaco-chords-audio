@@ -158,8 +158,7 @@ export function PracticeMode({
 
         {currentSuccesses >= 3 && (
           <Badge className="mt-4 w-full justify-center" variant="default">
-            <Trophy className="w-4 h-4 mr-2" />
-            Acorde Dominado!
+            🏆 Acorde Dominado!
           </Badge>
         )}
       </Card>
