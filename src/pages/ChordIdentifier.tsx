@@ -6,7 +6,7 @@ import ChordDiagram from "@/components/ChordDiagram";
 import { ChordEntry } from "@/types/chords";
 import { convertedChords } from "@/lib/chordConverter";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Volume2 } from "lucide-react";
+
 import { calculateChordDistance, arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
 import { useApp } from "@/contexts/AppContext";
 import { audioService } from "@/lib/audio";
