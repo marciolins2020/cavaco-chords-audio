@@ -7,6 +7,7 @@ import { Card } from "./ui/card";
 import { Progress } from "./ui/progress";
 import { Badge } from "./ui/badge";
 import { arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
+import { CheckCircle, XCircle, Eye, EyeOff, Timer, Trophy } from "lucide-react";
 
 
 interface Note {
