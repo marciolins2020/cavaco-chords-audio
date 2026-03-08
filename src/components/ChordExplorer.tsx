@@ -199,23 +199,27 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
           </div>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">Variações</h3>
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-            {CHORD_TYPES.map(type => (
-              <button
-                key={type}
-                onClick={() => handleTypeChange(type)}
-                className={`px-3 py-2 rounded-lg font-medium text-sm transition-all ${
-                  selectedType === type
-                    ? 'bg-secondary text-secondary-foreground ring-2 ring-primary/50'
-                    : 'bg-muted/30 text-muted-foreground hover:bg-muted hover:text-foreground'
-                }`}
-              >
-                {CHORD_TYPE_LABELS[type] || type}
-              </button>
-            ))}
-          </div>
+        <div className="max-h-[300px] overflow-y-auto pr-1">
+          {CHORD_CATEGORIES.map(cat => (
+            <div key={cat.label} className="mb-3">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">{cat.label}</h3>
+              <div className="flex flex-wrap gap-1.5">
+                {cat.types.map(type => (
+                  <button
+                    key={type}
+                    onClick={() => handleTypeChange(type)}
+                    className={`px-2.5 py-1.5 rounded-lg font-medium text-xs transition-all ${
+                      selectedType === type
+                        ? 'bg-secondary text-secondary-foreground ring-2 ring-primary/50'
+                        : 'bg-muted/30 text-muted-foreground hover:bg-muted hover:text-foreground'
+                    }`}
+                  >
+                    {ALL_SUFFIX_LABELS[type] || type}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="mt-auto p-4 rounded-xl bg-primary/10 border border-primary/20">
