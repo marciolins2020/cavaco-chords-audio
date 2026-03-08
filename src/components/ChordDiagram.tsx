@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useApp } from "@/contexts/AppContext";
 import { audioService } from "@/lib/audio";
 
