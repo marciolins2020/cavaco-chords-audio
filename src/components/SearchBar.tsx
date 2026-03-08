@@ -58,8 +58,8 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
         intervals: ["1", "3", "5"],
         description: chord.suffix
       };
-      const id = chord.root + suffixInfo.quality;
-      const displayName = chord.suffix === 'M' ? chord.root : `${chord.root}${suffixInfo.quality}`;
+      const id = makeChordId(chord.root, chord.suffix);
+      const displayName = makeChordDisplayName(chord.root, chord.suffix);
       return {
         id,
         root: chord.root,
