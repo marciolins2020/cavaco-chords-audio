@@ -180,7 +180,7 @@ export const GoalsManager = () => {
                         {goal.current_value} / {goal.target_value}
                         {goal.end_date && (
                           <span className="ml-2">
-                            <Calendar className="w-3 h-3 inline mr-1" />
+                          <span className="inline mr-1">📅</span>
                             até {format(new Date(goal.end_date), "dd/MM/yyyy", { locale: ptBR })}
                           </span>
                         )}
