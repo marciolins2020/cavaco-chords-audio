@@ -265,7 +265,6 @@ export default function ProfilePage() {
         <Card className="p-6 mb-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-primary" />
               <h3 className="text-lg font-semibold">
                 Conquistas
               </h3>
