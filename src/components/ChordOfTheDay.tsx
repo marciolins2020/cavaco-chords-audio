@@ -34,7 +34,8 @@ export const ChordOfTheDay = () => {
 
   if (!chord) return null;
 
-  const variation = chord.variations[0];
+  const variation = chord.variations?.[0];
+  if (!variation) return null;
   const suffixInfo = SUFFIX_MAP[chord.suffix];
   const displayName = chord.suffix === "M" ? chord.root : `${chord.root}${suffixInfo?.quality || chord.suffix}`;
   const chordId = chord.root + (suffixInfo?.quality || chord.suffix);
