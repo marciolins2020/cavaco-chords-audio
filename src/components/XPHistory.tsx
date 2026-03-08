@@ -85,7 +85,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
               xp: practiceXP,
               type: "practice",
               description: `${log.chords_practiced?.length || 0} acordes praticados`,
-              icon: "🎸",
+              icon: "",
             });
           }
         });
