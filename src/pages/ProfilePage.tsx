@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { User, Trophy, Target, Calendar, Zap, Award, TrendingUp } from "lucide-react";
+
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -31,7 +31,7 @@ export default function ProfilePage() {
         <Header />
         <div className="container mx-auto px-4 py-12">
           <Card className="p-12 text-center">
-            <User className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+            <div className="w-16 h-16 mx-auto mb-4 text-4xl text-muted-foreground text-center">👤</div>
             <h2 className="text-2xl font-bold mb-2">Entre para ver seu perfil</h2>
             <p className="text-muted-foreground mb-6">
               Faça login para acessar suas estatísticas e conquistas
@@ -82,8 +82,8 @@ export default function ProfilePage() {
         <Card className="p-6 mb-6">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                <User className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
+                {(user.user_metadata?.full_name || "M")[0].toUpperCase()}
               </div>
               <div>
                 <h1 className="text-2xl font-bold">
@@ -120,8 +120,8 @@ export default function ProfilePage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <Card className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Target className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+                %
               </div>
               <div>
                 <p className="text-2xl font-bold">{successRate}%</p>
@@ -132,8 +132,8 @@ export default function ProfilePage() {
 
           <Card className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+                D
               </div>
               <div>
                 <p className="text-2xl font-bold">{stats.consecutiveDays}</p>
@@ -144,8 +144,8 @@ export default function ProfilePage() {
 
           <Card className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Zap className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+                ⚡
               </div>
               <div>
                 <p className="text-2xl font-bold">
@@ -160,8 +160,8 @@ export default function ProfilePage() {
 
           <Card className="p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Trophy className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+                ♛
               </div>
               <div>
                 <p className="text-2xl font-bold">{stats.achievements.length}</p>
@@ -210,7 +210,6 @@ export default function ProfilePage() {
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5" />
               Estatísticas Gerais
             </h3>
             <ResponsiveContainer width="100%" height={250}>
@@ -232,7 +231,6 @@ export default function ProfilePage() {
 
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <Target className="w-5 h-5" />
               Acertos vs Erros
             </h3>
             <ResponsiveContainer width="100%" height={250}>
@@ -267,7 +265,6 @@ export default function ProfilePage() {
         <Card className="p-6 mb-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-primary" />
               <h3 className="text-lg font-semibold">
                 Conquistas
               </h3>
@@ -337,7 +334,7 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div className="text-center py-12 text-muted-foreground">
-              <Target className="w-12 h-12 mx-auto mb-3 opacity-50" />
+              <p>Nenhuma prática registrada ainda</p>
               <p>Nenhuma prática registrada ainda</p>
               <Link to="/pratica">
                 <Button variant="outline" className="mt-4">

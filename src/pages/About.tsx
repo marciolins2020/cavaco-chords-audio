@@ -1,4 +1,4 @@
-import { Music2, Guitar, Zap, Heart, Download } from "lucide-react";
+
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -32,11 +32,6 @@ const About = () => {
         {/* Features */}
         <section className="grid md:grid-cols-3 gap-6 mb-16">
           <Card className="p-6 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Zap className="w-8 h-8 text-primary" />
-              </div>
-            </div>
             <h3 className="text-xl font-bold mb-2">Áudio em Tempo Real</h3>
             <p className="text-muted-foreground">
               Ouça cada acorde tocado com síntese de áudio profissional, simulando o som autêntico do cavaquinho
@@ -44,11 +39,6 @@ const About = () => {
           </Card>
 
           <Card className="p-6 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Guitar className="w-8 h-8 text-primary" />
-              </div>
-            </div>
             <h3 className="text-xl font-bold mb-2">33+ Acordes</h3>
             <p className="text-muted-foreground">
               Coleção completa com variações, desde acordes básicos até tensões avançadas para jazz e bossa
@@ -56,11 +46,6 @@ const About = () => {
           </Card>
 
           <Card className="p-6 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Heart className="w-8 h-8 text-primary" />
-              </div>
-            </div>
             <h3 className="text-xl font-bold mb-2">100% Gratuito</h3>
             <p className="text-muted-foreground">
               Acesso completo e ilimitado a todos os recursos, sem mensalidades ou compras dentro do app
@@ -73,8 +58,8 @@ const About = () => {
           <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
-                <div className="p-4 rounded-full bg-primary/20">
-                  <Download className="w-12 h-12 text-primary" />
+                <div className="p-4 rounded-full bg-primary/20 text-primary text-3xl text-center">
+                  ↓
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
@@ -85,7 +70,6 @@ const About = () => {
                 </p>
                 <Link to="/instalar">
                   <Button size="lg">
-                    <Download className="w-5 h-5 mr-2" />
                     Ver Como Instalar
                   </Button>
                 </Link>
@@ -98,7 +82,6 @@ const About = () => {
         <section className="max-w-4xl mx-auto mb-16">
           <Card className="p-8">
             <div className="flex items-center gap-3 mb-6">
-              <Music2 className="w-8 h-8 text-primary" />
               <h2 className="text-3xl font-bold">Mentoria Musical</h2>
             </div>
             

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Mic, MicOff, Volume2 } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
@@ -179,19 +179,8 @@ const TunerPage = () => {
                   onClick={isListening ? stopListening : startListening}
                   size="lg"
                   variant={isListening ? "destructive" : "default"}
-                  className="gap-2"
                 >
-                  {isListening ? (
-                    <>
-                      <MicOff className="w-5 h-5" />
-                      Parar
-                    </>
-                  ) : (
-                    <>
-                      <Mic className="w-5 h-5" />
-                      Iniciar Afinador
-                    </>
-                  )}
+                  {isListening ? "Parar" : "Iniciar Afinador"}
                 </Button>
               </div>
             </CardContent>
@@ -211,7 +200,7 @@ const TunerPage = () => {
                     className="flex flex-col h-auto py-4 gap-1"
                     onClick={() => playReferenceNote(string.frequency)}
                   >
-                    <Volume2 className="w-4 h-4 text-muted-foreground" />
+                    <span className="font-bold">{string.name}</span>
                     <span className="font-bold">{string.name}</span>
                     <span className="text-xs text-muted-foreground">
                       {string.frequency.toFixed(0)} Hz

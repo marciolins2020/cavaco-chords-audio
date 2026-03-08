@@ -10,7 +10,7 @@ import { convertedChords } from "@/lib/chordConverter";
 import { ChordEntry } from "@/types/chords";
 import { usePractice } from "@/hooks/usePractice";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
-import { Trophy, Target, Award, Flame, RotateCcw, Play } from "lucide-react";
+
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -79,7 +79,6 @@ export default function PracticePage() {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Target className="w-8 h-8 text-primary" />
               <h1 className="text-3xl md:text-4xl font-bold">Modo Prática</h1>
             </div>
             <p className="text-muted-foreground text-lg">
@@ -93,9 +92,7 @@ export default function PracticePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Trophy className="w-6 h-6 text-primary" />
-                    </div>
+                    <div className="p-2 bg-primary/10 rounded-lg text-primary font-bold">♛</div>
                     <div>
                       <div className="text-2xl font-bold">{stats.chordsMastered.length}</div>
                       <div className="text-xs text-muted-foreground">Acordes Dominados</div>
@@ -105,9 +102,7 @@ export default function PracticePage() {
 
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 bg-success/10 rounded-lg">
-                      <Target className="w-6 h-6 text-success" />
-                    </div>
+                    <div className="p-2 bg-success/10 rounded-lg text-success font-bold">◎</div>
                     <div>
                       <div className="text-2xl font-bold">{stats.totalSuccesses}</div>
                       <div className="text-xs text-muted-foreground">Acertos Totais</div>
@@ -117,9 +112,7 @@ export default function PracticePage() {
 
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 bg-warning/10 rounded-lg">
-                      <Flame className="w-6 h-6 text-warning" />
-                    </div>
+                    <div className="p-2 bg-warning/10 rounded-lg text-warning font-bold">🔥</div>
                     <div>
                       <div className="text-2xl font-bold">{stats.consecutiveDays}</div>
                       <div className="text-xs text-muted-foreground">Dias Seguidos</div>
@@ -178,7 +171,6 @@ export default function PracticePage() {
               <Card className="p-6 mb-8">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold flex items-center gap-2">
-                    <Award className="w-5 h-5" />
                     Conquistas ({unlockedAchievements.length}/{ACHIEVEMENTS.length})
                   </h3>
                   <Button
@@ -218,7 +210,6 @@ export default function PracticePage() {
               {/* Ações */}
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button onClick={selectNextChord} size="lg" className="min-w-[200px]">
-                  <Play className="w-5 h-5 mr-2" />
                   Começar Prática
                 </Button>
 
@@ -229,7 +220,6 @@ export default function PracticePage() {
                     size="lg"
                     className="text-destructive hover:text-destructive"
                   >
-                    <RotateCcw className="w-5 h-5 mr-2" />
                     Resetar Estatísticas
                   </Button>
                 )}

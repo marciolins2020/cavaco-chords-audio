@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Trophy, Star, Zap } from "lucide-react";
 
+
 interface LevelProgressProps {
   level: string;
   progress: number;

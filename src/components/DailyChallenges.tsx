@@ -3,6 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, Zap, Sparkles } from "lucide-react";
+
 import { useDailyChallenges, DailyChallenge } from "@/hooks/useDailyChallenges";
 import { useAuth } from "@/contexts/AuthContext";
 import { useEffect, useState } from "react";

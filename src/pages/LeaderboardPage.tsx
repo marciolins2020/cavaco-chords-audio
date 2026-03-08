@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, Zap, Flame, Music, Crown, Medal, Award, TrendingUp } from "lucide-react";
+
 import { useLeaderboard, LeaderboardType } from "@/hooks/useLeaderboard";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -15,9 +15,9 @@ export default function LeaderboardPage() {
   const { entries, loading, myRank } = useLeaderboard(selectedType);
 
   const getRankIcon = (rank: number) => {
-    if (rank === 1) return <Crown className="w-6 h-6 text-yellow-500 fill-yellow-500" />;
-    if (rank === 2) return <Medal className="w-6 h-6 text-gray-400 fill-gray-400" />;
-    if (rank === 3) return <Award className="w-6 h-6 text-orange-600 fill-orange-600" />;
+    if (rank === 1) return <span className="text-lg font-bold text-yellow-500">🥇</span>;
+    if (rank === 2) return <span className="text-lg font-bold text-gray-400">🥈</span>;
+    if (rank === 3) return <span className="text-lg font-bold text-orange-600">🥉</span>;
     return <span className="text-lg font-bold text-muted-foreground">#{rank}</span>;
   };
 
@@ -29,10 +29,10 @@ export default function LeaderboardPage() {
   };
 
   const typeConfig = {
-    total: { label: "XP Total", icon: Zap, key: "total_xp" as const },
-    weekly: { label: "XP Semanal", icon: TrendingUp, key: "weekly_xp" as const },
-    monthly: { label: "XP Mensal", icon: Trophy, key: "monthly_xp" as const },
-    streak: { label: "Sequência", icon: Flame, key: "current_streak" as const },
+    total: { label: "XP Total", key: "total_xp" as const },
+    weekly: { label: "XP Semanal", key: "weekly_xp" as const },
+    monthly: { label: "XP Mensal", key: "monthly_xp" as const },
+    streak: { label: "Sequência", key: "current_streak" as const },
   };
 
   const currentConfig = typeConfig[selectedType];
@@ -45,7 +45,6 @@ export default function LeaderboardPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Trophy className="w-10 h-10 text-primary" />
             <h1 className="text-4xl font-bold">Ranking Global</h1>
           </div>
           <p className="text-muted-foreground text-lg">
@@ -81,7 +80,6 @@ export default function LeaderboardPage() {
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
           {(Object.keys(typeConfig) as LeaderboardType[]).map((type) => {
             const config = typeConfig[type];
-            const Icon = config.icon;
             return (
               <Button
                 key={type}
@@ -89,7 +87,6 @@ export default function LeaderboardPage() {
                 variant={selectedType === type ? "default" : "outline"}
                 className="flex-1 min-w-[140px]"
               >
-                <Icon className="w-4 h-4 mr-2" />
                 {config.label}
               </Button>
             );
@@ -99,7 +96,6 @@ export default function LeaderboardPage() {
         {/* Leaderboard */}
         <Card className="p-6">
           <div className="flex items-center gap-2 mb-6">
-            {createElement(currentConfig.icon, { className: "w-5 h-5 text-primary" })}
             <h3 className="text-xl font-semibold">Top 100 - {currentConfig.label}</h3>
           </div>
 
@@ -118,7 +114,6 @@ export default function LeaderboardPage() {
             </div>
           ) : entries.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
-              <Trophy className="w-16 h-16 mx-auto mb-4 opacity-50" />
               <p className="text-lg">Nenhum músico no ranking ainda</p>
               <p className="text-sm mt-2">Seja o primeiro a praticar e aparecer aqui!</p>
             </div>
@@ -165,31 +160,23 @@ export default function LeaderboardPage() {
                           )}
                         </div>
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Music className="w-3 h-3" />
-                            {entry.chords_mastered} acordes
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Flame className="w-3 h-3" />
-                            {entry.current_streak} dias
-                          </span>
+                          <span>{entry.chords_mastered} acordes</span>
+                          <span>{entry.current_streak} dias</span>
                         </div>
                       </div>
 
                       {/* Score */}
                       <div className="text-right">
-                        <div className="flex items-center gap-1 font-bold text-lg">
-                          {selectedType === "streak" ? (
-                            <>
-                              <Flame className="w-5 h-5 text-orange-500" />
-                              {value}
-                            </>
-                          ) : (
-                            <>
-                              <Zap className="w-5 h-5 text-primary fill-primary" />
-                              {value.toLocaleString()}
-                            </>
-                          )}
+                        <div className="font-bold text-lg">
+                          {selectedType === "streak" ? value : value.toLocaleString()}
+                        </div>
+                        {selectedType !== "streak" && (
+                          <p className="text-xs text-muted-foreground">XP</p>
+                        )}
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-lg">
+                          {selectedType === "streak" ? value : value.toLocaleString()}
                         </div>
                         {selectedType !== "streak" && (
                           <p className="text-xs text-muted-foreground">XP</p>
@@ -206,7 +193,6 @@ export default function LeaderboardPage() {
         {/* Info Card */}
         <Card className="p-6 mt-6 bg-gradient-to-br from-muted/50 to-muted/20">
           <div className="flex items-start gap-3">
-            <Trophy className="w-5 h-5 text-primary mt-1" />
             <div>
               <h4 className="font-semibold mb-2">Como funciona o ranking?</h4>
               <ul className="text-sm text-muted-foreground space-y-1">

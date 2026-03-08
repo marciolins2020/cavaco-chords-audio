@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Volume2, Play, Heart } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -114,8 +114,7 @@ const ChordDetail = () => {
           <h1 className="text-2xl font-bold mb-4">Acorde não encontrado</h1>
           <Link to="/">
             <Button variant="outline">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar
+              ← Voltar
             </Button>
           </Link>
         </div>
@@ -158,10 +157,9 @@ const ChordDetail = () => {
       <div className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/">
+          <Link to="/">
               <Button variant="ghost" size="sm">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Voltar
+                ← Voltar
               </Button>
             </Link>
             
@@ -169,9 +167,9 @@ const ChordDetail = () => {
               variant="ghost"
               size="sm"
               onClick={handleToggleFavorite}
-              className={isChordFavorite ? "text-primary" : ""}
+              className={isChordFavorite ? "text-primary font-bold" : ""}
             >
-              <Heart className={`w-5 h-5 ${isChordFavorite ? "fill-current" : ""}`} />
+              {isChordFavorite ? "★" : "☆"}
             </Button>
           </div>
         </div>
@@ -244,7 +242,6 @@ const ChordDetail = () => {
                   size="lg"
                   className="w-full"
                 >
-                  <Play className="w-5 h-5 mr-2" />
                   Dedilhado
                 </Button>
 
@@ -255,7 +252,6 @@ const ChordDetail = () => {
                   size="lg"
                   className="w-full"
                 >
-                  <Volume2 className="w-5 h-5 mr-2" />
                   Simultâneo
                 </Button>
 

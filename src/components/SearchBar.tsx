@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
+
 import { convertedChords } from "@/lib/chordConverter";
 import { ChordEntry } from "@/types/chords";
 import { useNavigate } from "react-router-dom";

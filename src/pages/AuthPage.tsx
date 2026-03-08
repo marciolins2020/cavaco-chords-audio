@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import rzdLogo from "@/assets/logo-rzd-final.png";
-import { LogIn, UserPlus, Mail, Lock, User } from "lucide-react";
+
 
 export default function AuthPage() {
   const [email, setEmail] = useState("");
@@ -73,7 +73,6 @@ export default function AuthPage() {
             <form onSubmit={handleSignIn} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="signin-email">
-                  <Mail className="w-4 h-4 inline mr-2" />
                   Email
                 </Label>
                 <Input
@@ -88,7 +87,6 @@ export default function AuthPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="signin-password">
-                  <Lock className="w-4 h-4 inline mr-2" />
                   Senha
                 </Label>
                 <Input
@@ -102,7 +100,6 @@ export default function AuthPage() {
               </div>
 
               <Button type="submit" className="w-full" disabled={loading}>
-                <LogIn className="w-4 h-4 mr-2" />
                 {loading ? "Entrando..." : "Entrar"}
               </Button>
             </form>
@@ -112,7 +109,6 @@ export default function AuthPage() {
             <form onSubmit={handleSignUp} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="signup-name">
-                  <User className="w-4 h-4 inline mr-2" />
                   Nome Completo
                 </Label>
                 <Input
@@ -126,7 +122,6 @@ export default function AuthPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="signup-email">
-                  <Mail className="w-4 h-4 inline mr-2" />
                   Email
                 </Label>
                 <Input
@@ -141,7 +136,6 @@ export default function AuthPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="signup-password">
-                  <Lock className="w-4 h-4 inline mr-2" />
                   Senha
                 </Label>
                 <Input
@@ -159,7 +153,6 @@ export default function AuthPage() {
               </div>
 
               <Button type="submit" className="w-full" disabled={loading}>
-                <UserPlus className="w-4 h-4 mr-2" />
                 {loading ? "Criando conta..." : "Criar Conta"}
               </Button>
             </form>
