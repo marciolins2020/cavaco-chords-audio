@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Lock } from "lucide-react";
+
 import {
   Dialog,
   DialogContent,

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import ChordDiagram from "@/components/ChordDiagram";
 import { getHarmonicField, getAvailableKeys, FUNCTION_INFO, HarmonicFunction } from "@/utils/harmonicField";
 import { useNavigate } from "react-router-dom";
-import { Play } from "lucide-react";
+
 import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";

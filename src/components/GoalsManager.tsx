@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Target, Plus, Trash2, Play, Pause, Calendar } from "lucide-react";
+
 import { useGoals, PracticeGoal } from "@/hooks/useGoals";
 import { useAuth } from "@/contexts/AuthContext";
 import {
