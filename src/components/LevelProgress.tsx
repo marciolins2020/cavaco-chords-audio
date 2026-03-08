@@ -13,12 +13,12 @@ interface LevelProgressProps {
 }
 
 const levelIcons: Record<string, string> = {
-  "Iniciante": "🎸",
-  "Aprendiz": "🎵",
-  "Intermediário": "🎼",
-  "Avançado": "🎹",
-  "Profissional": "🏆",
-  "Mestre": "👑",
+  "Iniciante": "I",
+  "Aprendiz": "II",
+  "Intermediário": "III",
+  "Avançado": "IV",
+  "Profissional": "V",
+  "Mestre": "VI",
 };
 
 const levelColors: Record<string, string> = {

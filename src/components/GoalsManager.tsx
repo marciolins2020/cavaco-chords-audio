@@ -34,10 +34,10 @@ const goalTypeLabels = {
 };
 
 const goalTypeIcons = {
-  daily_chords: "🎯",
-  weekly_chords: "📅",
-  daily_time: "⏱️",
-  weekly_sessions: "🔥",
+  daily_chords: "",
+  weekly_chords: "",
+  daily_time: "",
+  weekly_sessions: "",
 };
 
 export const GoalsManager = () => {

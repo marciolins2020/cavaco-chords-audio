@@ -48,11 +48,11 @@ export function calculateDifficulty(position: Fingering): 1 | 2 | 3 | 4 | 5 {
  */
 export function getDifficultyInfo(difficulty: 1 | 2 | 3 | 4 | 5) {
   const labels = {
-    1: { label: "Muito Fácil", emoji: "😊", color: "hsl(var(--success))" },
-    2: { label: "Fácil", emoji: "🙂", color: "hsl(var(--success) / 0.7)" },
-    3: { label: "Médio", emoji: "😐", color: "hsl(var(--warning))" },
-    4: { label: "Difícil", emoji: "😰", color: "hsl(var(--warning) / 0.7)" },
-    5: { label: "Muito Difícil", emoji: "🥵", color: "hsl(var(--destructive))" },
+    1: { label: "Muito Fácil", emoji: "", color: "hsl(var(--success))" },
+    2: { label: "Fácil", emoji: "", color: "hsl(var(--success) / 0.7)" },
+    3: { label: "Médio", emoji: "", color: "hsl(var(--warning))" },
+    4: { label: "Difícil", emoji: "", color: "hsl(var(--warning) / 0.7)" },
+    5: { label: "Muito Difícil", emoji: "", color: "hsl(var(--destructive))" },
   };
 
   return labels[difficulty];

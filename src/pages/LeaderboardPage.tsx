@@ -22,9 +22,9 @@ export default function LeaderboardPage() {
   };
 
   const getRankBadge = (rank: number) => {
-    if (rank === 1) return { text: "🥇 1º Lugar", variant: "default" as const, className: "bg-yellow-500 hover:bg-yellow-600" };
-    if (rank === 2) return { text: "🥈 2º Lugar", variant: "secondary" as const, className: "" };
-    if (rank === 3) return { text: "🥉 3º Lugar", variant: "secondary" as const, className: "bg-orange-600 hover:bg-orange-700" };
+    if (rank === 1) return { text: "1º Lugar", variant: "default" as const, className: "bg-yellow-500 hover:bg-yellow-600" };
+    if (rank === 2) return { text: "2º Lugar", variant: "secondary" as const, className: "" };
+    if (rank === 3) return { text: "3º Lugar", variant: "secondary" as const, className: "bg-orange-600 hover:bg-orange-700" };
     return { text: `#${rank}`, variant: "outline" as const, className: "" };
   };
 

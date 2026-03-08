@@ -121,7 +121,7 @@ export const AchievementBadge = ({
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-3">
-            <span className="text-5xl">{unlocked ? icon : "🔒"}</span>
+            <span className="text-5xl">{unlocked ? icon : ""}</span>
             <div>
               <div className="text-xl">{name}</div>
               {unlocked && (
