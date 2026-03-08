@@ -88,7 +88,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="gap-2">
-          ⬆ <span className="hidden sm:inline">Importar Acordes</span>
+          <span className="hidden sm:inline">Importar Acordes</span>
         </Button>
       </DialogTrigger>
       
