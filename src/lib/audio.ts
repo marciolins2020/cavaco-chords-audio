@@ -239,7 +239,7 @@ class AudioService {
 
     const freq = this.getFrequency(stringIndex, fret);
     if (freq > 0) {
-      this.playTone(freq, this.ctx.currentTime, 1.0, 0.7);
+      this.playTone(freq, this.ctx.currentTime, 1.0, 0.7, stringIndex);
     }
   }
 }
