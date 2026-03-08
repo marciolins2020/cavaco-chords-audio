@@ -395,6 +395,8 @@ export function usePractice(userId?: string) {
       if (session.successes >= 3 && !session.mastered) {
         session.mastered = true;
         toast.success(`🎉 Você dominou o acorde ${chordId}!`);
+        import("@/lib/audio").then(({ audioService }) => audioService.playSuccess());
+        import("@/lib/confetti").then(({ fireChallengeConfetti }) => fireChallengeConfetti());
       }
     }
 
