@@ -183,7 +183,7 @@ export const ChatWidget = () => {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full overflow-hidden shadow-lg bg-white"
+            className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full overflow-hidden shadow-lg bg-white"
             style={{
               boxShadow: "0 4px 24px -2px hsl(var(--primary) / 0.4), 0 0 0 3px hsl(var(--primary) / 0.12)",
             }}
