@@ -39,11 +39,6 @@ const About = () => {
           </Card>
 
           <Card className="p-6 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Guitar className="w-8 h-8 text-primary" />
-              </div>
-            </div>
             <h3 className="text-xl font-bold mb-2">33+ Acordes</h3>
             <p className="text-muted-foreground">
               Coleção completa com variações, desde acordes básicos até tensões avançadas para jazz e bossa
