@@ -44,12 +44,11 @@ const App = () => (
               <Route path="/perfil" element={<ProfilePage />} />
               <Route path="/ranking" element={<LeaderboardPage />} />
               <Route path="/afinador" element={<TunerPage />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <ChatWidget />
+            <InstallPrompt />
           </BrowserRouter>
-          <ChatWidget />
-          <InstallPrompt />
         </TooltipProvider>
       </AppProvider>
     </AuthProvider>

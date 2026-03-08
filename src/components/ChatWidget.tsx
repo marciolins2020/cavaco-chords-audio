@@ -2,17 +2,57 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { useLocation } from "react-router-dom";
 import rzdLogo from "@/assets/logo-rzd-final.png";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/rzd-assistant`;
 
-const SUGGESTIONS = [
-  { text: "Como fazer o acorde de Dó maior?" },
-  { text: "Progressão comum de samba?" },
-  { text: "Diferença entre C7 e Cmaj7?" },
-];
+// Contextual suggestions based on current route
+function getSuggestions(pathname: string): { text: string }[] {
+  if (pathname.startsWith("/chord/")) {
+    const chordId = pathname.split("/chord/")[1];
+    return [
+      { text: `Quais músicas usam o acorde ${chordId}?` },
+      { text: `Qual a progressão mais comum com ${chordId}?` },
+      { text: `Como facilitar a transição para ${chordId}?` },
+    ];
+  }
+  if (pathname === "/pratica") {
+    return [
+      { text: "Qual a melhor rotina de prática diária?" },
+      { text: "Como melhorar transições de acordes?" },
+      { text: "Exercícios para velocidade no cavaquinho?" },
+    ];
+  }
+  if (pathname === "/campo-harmonico") {
+    return [
+      { text: "Explique campo harmônico maior." },
+      { text: "Quais acordes do campo de Dó?" },
+      { text: "Diferença entre campo maior e menor?" },
+    ];
+  }
+  if (pathname === "/afinador") {
+    return [
+      { text: "Qual a afinação padrão do cavaquinho?" },
+      { text: "Diferença entre DGBD e DGBE?" },
+      { text: "Como afinar de ouvido?" },
+    ];
+  }
+  if (pathname === "/identifier") {
+    return [
+      { text: "Como identificar acordes pelo som?" },
+      { text: "Diferença entre C7 e Cmaj7?" },
+      { text: "O que é um acorde invertido?" },
+    ];
+  }
+  return [
+    { text: "Como fazer o acorde de Dó maior?" },
+    { text: "Progressão comum de samba?" },
+    { text: "Diferença entre C7 e Cmaj7?" },
+  ];
+}
 
 function renderMarkdown(text: string) {
   const lines = text.split("\n");
@@ -43,6 +83,9 @@ export const ChatWidget = () => {
   const [hoveredSuggestion, setHoveredSuggestion] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const location = useLocation();
+
+  const suggestions = getSuggestions(location.pathname);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -84,6 +127,7 @@ export const ChatWidget = () => {
         body: JSON.stringify({
           messages: allMessages,
           modeHint: "Responda de forma concisa e didática, use bullet points e destaque termos musicais em negrito.",
+          context: `Usuário está na página: ${location.pathname}`,
         }),
       });
 
@@ -149,7 +193,7 @@ export const ChatWidget = () => {
         )}
       </AnimatePresence>
 
-      {/* Chat Panel — Glassmorphism */}
+      {/* Chat Panel */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -203,13 +247,13 @@ export const ChatWidget = () => {
                     Pergunte sobre acordes, progressões ou teoria do cavaquinho.
                   </p>
 
-                  {/* Suggestion Capsules */}
+                  {/* Contextual Suggestion Capsules */}
                   <div className="flex flex-col gap-2.5 w-full mt-1">
-                    {SUGGESTIONS.map((s, i) => {
+                    {suggestions.map((s, i) => {
                       const isHovered = hoveredSuggestion === i;
                       return (
                         <motion.button
-                          key={i}
+                          key={`${location.pathname}-${i}`}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.08 }}
