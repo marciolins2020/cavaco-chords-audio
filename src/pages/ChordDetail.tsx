@@ -167,9 +167,9 @@ const ChordDetail = () => {
               variant="ghost"
               size="sm"
               onClick={handleToggleFavorite}
-              className={isChordFavorite ? "text-primary" : ""}
+              className={isChordFavorite ? "text-primary font-bold" : ""}
             >
-              <Heart className={`w-5 h-5 ${isChordFavorite ? "fill-current" : ""}`} />
+              {isChordFavorite ? "★" : "☆"}
             </Button>
           </div>
         </div>
