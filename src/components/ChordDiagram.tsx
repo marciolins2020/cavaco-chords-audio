@@ -137,18 +137,36 @@ const ChordDiagram: React.FC<Props> = ({
         ))}
         
         {/* Cordas */}
-        {strings.map((s, i) => (
-          <line
-            key={s}
-            x1={colX(i)}
-            x2={colX(i)}
-            y1={rowY(0)}
-            y2={rowY(fretCount)}
-            stroke="currentColor"
-            strokeWidth={1.5}
-            opacity={0.8}
-          />
-        ))}
+        {strings.map((s, i) => {
+          const isPlucked = pluckedString === s;
+          return (
+            <g key={s}>
+              {/* Glow behind string when plucked */}
+              {isPlucked && (
+                <line
+                  x1={colX(i)}
+                  x2={colX(i)}
+                  y1={rowY(0)}
+                  y2={rowY(fretCount)}
+                  stroke="hsl(var(--primary))"
+                  strokeWidth={6}
+                  opacity={0.3}
+                  className="animate-[pulse_0.4s_ease-out]"
+                />
+              )}
+              <line
+                x1={colX(i)}
+                x2={colX(i)}
+                y1={rowY(0)}
+                y2={rowY(fretCount)}
+                stroke={isPlucked ? "hsl(var(--primary))" : "currentColor"}
+                strokeWidth={isPlucked ? 2.5 : 1.5}
+                opacity={isPlucked ? 1 : 0.8}
+                style={isPlucked ? { transition: "all 0.1s ease-out" } : undefined}
+              />
+            </g>
+          );
+        })}
         
         {/* Marcadores de casas */}
         {Array.from({ length: fretCount }).map((_, i) => {
