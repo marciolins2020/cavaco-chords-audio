@@ -32,11 +32,6 @@ const About = () => {
         {/* Features */}
         <section className="grid md:grid-cols-3 gap-6 mb-16">
           <Card className="p-6 text-center">
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-primary/10">
-                <Zap className="w-8 h-8 text-primary" />
-              </div>
-            </div>
             <h3 className="text-xl font-bold mb-2">Áudio em Tempo Real</h3>
             <p className="text-muted-foreground">
               Ouça cada acorde tocado com síntese de áudio profissional, simulando o som autêntico do cavaquinho
