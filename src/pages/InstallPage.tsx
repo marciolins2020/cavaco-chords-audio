@@ -150,7 +150,7 @@ export default function InstallPage() {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {features.map((feature, index) => (
               <Card key={index} className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-2xl mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="font-bold mb-2">{feature.title}</h3>
