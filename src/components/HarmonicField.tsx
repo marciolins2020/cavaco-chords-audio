@@ -82,8 +82,9 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-6">
           {field.degrees.map(({ degree, chord, function: func }) => {
-            if (!chord) return null;
+            if (!chord || !chord.variations || chord.variations.length === 0) return null;
 
+            const mainVariation = chord.variations[0];
             const funcInfo = FUNCTION_INFO[func];
             const isHighlighted = highlightedFunction === func;
 
