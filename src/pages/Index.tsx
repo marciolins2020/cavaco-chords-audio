@@ -15,6 +15,7 @@ import { SUFFIX_MAP } from "@/lib/chordConverter";
 import juninhoBg from "@/assets/juninho-header-bg.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { VisitorProgress } from "@/components/VisitorProgress";
 
 const POPULAR_ROOTS = ["C", "D", "G", "A", "E", "F"];
 const BEGINNER_SUFFIXES = ["M", "m", "7"];
