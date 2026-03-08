@@ -231,7 +231,7 @@ export function PracticeMode({
         >
           {feedback === "correct" ? (
             <>
-              <CheckCircle className="w-16 h-16 mx-auto mb-3 text-success" />
+              <span className="text-6xl block mx-auto mb-3">✅</span>
               <h3 className="text-2xl font-bold text-success mb-2">
                 Perfeito!
               </h3>
