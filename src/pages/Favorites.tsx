@@ -115,7 +115,6 @@ const Favorites = () => {
             {/* Filtros */}
             <Card className="p-4">
               <div className="flex items-center gap-2 mb-3">
-                <Filter className="w-4 h-4" />
                 <h3 className="font-semibold">Filtros</h3>
               </div>
               
