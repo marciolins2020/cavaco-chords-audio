@@ -77,9 +77,7 @@ export const ChordOfTheDay = () => {
             size="sm"
             onClick={handlePlay}
             disabled={isPlaying}
-            className="gap-2"
           >
-            <Play className={`h-4 w-4 ${isPlaying ? "animate-pulse" : ""}`} />
             Ouvir
           </Button>
         </div>
