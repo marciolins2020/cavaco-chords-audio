@@ -29,10 +29,10 @@ export default function LeaderboardPage() {
   };
 
   const typeConfig = {
-    total: { label: "XP Total", icon: Zap, key: "total_xp" as const },
-    weekly: { label: "XP Semanal", icon: TrendingUp, key: "weekly_xp" as const },
-    monthly: { label: "XP Mensal", icon: Trophy, key: "monthly_xp" as const },
-    streak: { label: "Sequência", icon: Flame, key: "current_streak" as const },
+    total: { label: "XP Total", key: "total_xp" as const },
+    weekly: { label: "XP Semanal", key: "weekly_xp" as const },
+    monthly: { label: "XP Mensal", key: "monthly_xp" as const },
+    streak: { label: "Sequência", key: "current_streak" as const },
   };
 
   const currentConfig = typeConfig[selectedType];
