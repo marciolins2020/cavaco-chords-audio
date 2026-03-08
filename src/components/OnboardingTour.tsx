@@ -79,9 +79,9 @@ export const OnboardingTour = () => {
             {/* Close */}
             <button
               onClick={finish}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors text-sm font-bold"
             >
-              <X className="h-5 w-5" />
+              ✕
             </button>
 
             {/* Progress bar */}
