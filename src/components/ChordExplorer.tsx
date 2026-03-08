@@ -163,7 +163,7 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
           <h2 className="text-3xl font-bold mt-1">
             <span className="text-primary">{selectedRoot}</span>
             {selectedType !== 'M' && (
-              <span className="text-foreground ml-1">{CHORD_TYPE_LABELS[selectedType] || selectedType}</span>
+              <span className="text-foreground ml-1">{ALL_SUFFIX_LABELS[selectedType] || selectedType}</span>
             )}
           </h2>
         </div>
