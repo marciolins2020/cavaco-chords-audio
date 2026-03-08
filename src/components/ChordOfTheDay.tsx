@@ -25,7 +25,8 @@ export const ChordOfTheDay = () => {
   const { chord, tip } = useMemo(() => {
     const today = new Date();
     const dayIndex = today.getFullYear() * 366 + today.getMonth() * 31 + today.getDate();
-    const chords = chordDatabase.chords;
+    const chords = chordDatabase.chords.filter(c => c.variations && c.variations.length > 0);
+    if (chords.length === 0) return { chord: null, tip: TIPS[0] };
     const selected = chords[dayIndex % chords.length];
     const selectedTip = TIPS[dayIndex % TIPS.length];
     return { chord: selected, tip: selectedTip };
