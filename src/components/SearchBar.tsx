@@ -193,8 +193,9 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
   // Debounced search
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (query.length >= 1) {
-        const filtered = smartSearch(query);
+      const trimmed = query.trim();
+      if (trimmed.length >= 1) {
+        const filtered = smartSearch(trimmed);
         setSuggestions(filtered);
         setShowSuggestions(true);
         setSelectedIndex(-1);
