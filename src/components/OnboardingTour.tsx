@@ -139,9 +139,8 @@ export const OnboardingTour = () => {
               >
                 Pular tour
               </button>
-              <Button onClick={next} className="gap-2">
+              <Button onClick={next}>
                 {step === STEPS.length - 1 ? "Começar!" : "Próximo"}
-                <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
           </motion.div>
