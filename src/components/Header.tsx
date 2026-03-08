@@ -223,7 +223,7 @@ const Header = () => {
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="px-2">
+                  <Button variant="ghost" size="sm" className="px-2" aria-label="Menu do usuário">
                     <User className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
