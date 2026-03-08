@@ -201,7 +201,6 @@ const TunerPage = () => {
                     onClick={() => playReferenceNote(string.frequency)}
                   >
                     <span className="font-bold">{string.name}</span>
-                    <span className="font-bold">{string.name}</span>
                     <span className="text-xs text-muted-foreground">
                       {string.frequency.toFixed(0)} Hz
                     </span>

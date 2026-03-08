@@ -12,7 +12,7 @@ const STEPS = [
   },
   {
     title: "Explore os Acordes",
-    description: "Navegue por tônicas e variações. Toque cada acorde em modo Strum ou Block direto no navegador.",
+    description: "Navegue por tônicas e variações. Toque cada acorde em modo Dedilhado ou Simultâneo direto no navegador.",
   },
   {
     title: "Modo Prática",
