@@ -182,7 +182,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">XP Total</span>
-            <Zap className="w-5 h-5 text-primary fill-primary" />
+            <span className="text-xl text-primary">⚡</span>
           </div>
           <div className="text-3xl font-bold text-primary mb-1">{totalXP.toLocaleString()}</div>
           <Badge variant="secondary" className={rankInfo.color}>
