@@ -281,8 +281,8 @@ export default function ChordIdentifier() {
                             <span className="text-muted-foreground">{chord.quality}</span>
                           </h3>
                           {chord.difficulty && (
-                            <span className="text-xs">
-                              {'⭐'.repeat(chord.difficulty)}
+                            <span className="text-xs text-muted-foreground">
+                              Nível {chord.difficulty}
                             </span>
                           )}
                         </div>
