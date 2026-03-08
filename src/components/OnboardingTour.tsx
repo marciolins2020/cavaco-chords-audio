@@ -55,7 +55,7 @@ export const OnboardingTour = () => {
   };
 
   const current = STEPS[step];
-  const Icon = current.icon;
+  const progress = ((step + 1) / STEPS.length) * 100;
   const progress = ((step + 1) / STEPS.length) * 100;
 
   return (
