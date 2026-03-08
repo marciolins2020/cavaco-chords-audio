@@ -70,7 +70,6 @@ const About = () => {
                 </p>
                 <Link to="/instalar">
                   <Button size="lg">
-                    <Download className="w-5 h-5 mr-2" />
                     Ver Como Instalar
                   </Button>
                 </Link>
