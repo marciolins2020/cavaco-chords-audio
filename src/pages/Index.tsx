@@ -70,7 +70,6 @@ const Index = () => {
         <div className="container mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
             <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 rounded-full text-xs sm:text-sm text-primary border border-primary/20">
-              <span className="animate-pulse">🎸</span>
               <span>Por Professor Juninho Rezende</span>
             </div>
             
