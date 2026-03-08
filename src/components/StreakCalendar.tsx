@@ -54,10 +54,10 @@ export const StreakCalendar = ({
 
   const getMilestonesBadges = () => {
     const milestones = [
-      { days: 7, emoji: "🌟", label: "Semana" },
-      { days: 30, emoji: "💎", label: "Mês" },
-      { days: 100, emoji: "🏆", label: "100 Dias" },
-      { days: 365, emoji: "👑", label: "1 Ano" },
+      { days: 7, emoji: "★", label: "Semana" },
+      { days: 30, emoji: "◆", label: "Mês" },
+      { days: 100, emoji: "♛", label: "100 Dias" },
+      { days: 365, emoji: "♕", label: "1 Ano" },
     ];
 
     return milestones.filter(m => longestStreak >= m.days);

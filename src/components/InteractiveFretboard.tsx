@@ -249,13 +249,13 @@ export function InteractiveFretboard({
           onClick={clearAll}
           className="px-4 py-2 bg-destructive/10 text-destructive rounded-lg hover:bg-destructive/20 transition-colors"
         >
-          🗑️ Limpar
+          Limpar
         </button>
         <button
           onClick={() => setSelectedNotes([])}
           className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
         >
-          🔄 Resetar
+          Resetar
         </button>
       </div>
 

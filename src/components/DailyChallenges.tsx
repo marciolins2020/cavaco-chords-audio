@@ -217,7 +217,7 @@ export const DailyChallenges = () => {
           className="mt-6 p-4 rounded-lg bg-gradient-to-r from-primary/20 to-primary/10 text-center"
         >
           <p className="font-semibold text-primary mb-1">
-            🎉 Todos os desafios completos!
+            Todos os desafios completos!
           </p>
           <p className="text-sm text-muted-foreground">
             Você ganhou {totalXP} XP hoje. Volte amanhã para novos desafios!

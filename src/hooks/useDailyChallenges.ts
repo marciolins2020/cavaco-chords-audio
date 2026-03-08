@@ -20,7 +20,7 @@ const CHALLENGE_TEMPLATES = [
     challenge_type: "practice_chords",
     title: "Mestre dos Acordes",
     description: "Pratique {target} acordes diferentes hoje",
-    icon: "🎯",
+    icon: "",
     xp_reward: 100,
     target_value: 5,
   },
@@ -28,7 +28,7 @@ const CHALLENGE_TEMPLATES = [
     challenge_type: "perfect_streak",
     title: "Perfeição Total",
     description: "Acerte {target} acordes seguidos sem errar",
-    icon: "⭐",
+    icon: "",
     xp_reward: 150,
     target_value: 10,
   },
@@ -36,7 +36,7 @@ const CHALLENGE_TEMPLATES = [
     challenge_type: "time_challenge",
     title: "Maratona Musical",
     description: "Pratique por {target} minutos hoje",
-    icon: "⏱️",
+    icon: "",
     xp_reward: 120,
     target_value: 30,
   },
@@ -44,7 +44,7 @@ const CHALLENGE_TEMPLATES = [
     challenge_type: "new_chords",
     title: "Explorador",
     description: "Aprenda {target} novos acordes hoje",
-    icon: "🔍",
+    icon: "",
     xp_reward: 200,
     target_value: 3,
   },
@@ -116,7 +116,7 @@ export const useDailyChallenges = (userId: string | undefined) => {
       if (error) throw error;
 
       setChallenges(data as any as DailyChallenge[]);
-      toast.success("🎮 Novos desafios diários disponíveis!");
+      toast.success("Novos desafios diários disponíveis!");
     } catch (error) {
       console.error("Erro ao criar desafios:", error);
     }
@@ -153,7 +153,7 @@ export const useDailyChallenges = (userId: string | undefined) => {
 
       // Notificar conclusão
       if (completed && !challenge.completed) {
-        toast.success(`🎉 Desafio concluído! +${challenge.xp_reward} XP`, {
+        toast.success(`Desafio concluído! +${challenge.xp_reward} XP`, {
           description: challenge.title,
           duration: 5000,
         });

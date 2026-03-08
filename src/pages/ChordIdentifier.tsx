@@ -164,7 +164,7 @@ export default function ChordIdentifier() {
 
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-2">🎯 Identificador de Acordes</h1>
+            <h1 className="text-4xl font-bold mb-2">Identificador de Acordes</h1>
             <p className="text-muted-foreground text-lg">
               Clique no braço para montar um acorde e descubra qual é!
             </p>
@@ -182,7 +182,7 @@ export default function ChordIdentifier() {
                 // Exact match
                 <div className="bg-card border-2 border-primary rounded-xl p-6 shadow-lg">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-4xl">✅</span>
+                    <span className="text-4xl text-success">✓</span>
                     <div>
                       <h2 className="text-2xl font-bold">
                         Você está tocando: {result.exact.root}
@@ -194,7 +194,7 @@ export default function ChordIdentifier() {
                       {result.enharmonicNames && result.enharmonicNames.length > 0 && (
                         <div className="mt-2 p-2 bg-accent/50 rounded-lg">
                           <p className="text-sm text-muted-foreground">
-                            <span className="font-medium">🔄 Nomes equivalentes:</span>{' '}
+                            <span className="font-medium">Nomes equivalentes:</span>{' '}
                             {result.enharmonicNames.join(' = ')}
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
@@ -218,7 +218,7 @@ export default function ChordIdentifier() {
 
                      <div className="flex-1 space-y-4">
                       <div>
-                        <h3 className="font-semibold mb-2">📊 Informações</h3>
+                        <h3 className="font-semibold mb-2">Informações</h3>
                         <div className="space-y-2 text-sm">
                           {result.exact.difficulty && (
                             <div className="flex items-center gap-2">
@@ -256,7 +256,7 @@ export default function ChordIdentifier() {
                 // Similar matches
                 <div className="bg-card border-2 border-border rounded-xl p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-4xl">🤔</span>
+                    <span className="text-4xl text-warning">?</span>
                     <div>
                       <h2 className="text-2xl font-bold">Quase lá!</h2>
                       <p className="text-muted-foreground">
@@ -281,8 +281,8 @@ export default function ChordIdentifier() {
                             <span className="text-muted-foreground">{chord.quality}</span>
                           </h3>
                           {chord.difficulty && (
-                            <span className="text-xs">
-                              {'⭐'.repeat(chord.difficulty)}
+                            <span className="text-xs text-muted-foreground">
+                              Nível {chord.difficulty}
                             </span>
                           )}
                         </div>
@@ -308,7 +308,7 @@ export default function ChordIdentifier() {
           {/* Instructions */}
           {!result && (
             <div className="bg-accent/50 rounded-xl p-6 text-center">
-              <h3 className="font-semibold mb-2">💡 Como usar:</h3>
+              <h3 className="font-semibold mb-2">Como usar:</h3>
               <ol className="text-sm text-muted-foreground space-y-1 max-w-md mx-auto text-left">
                 <li>1. Clique nas cordas e casas para montar o acorde</li>
                 <li>2. Clique novamente para remover uma nota</li>

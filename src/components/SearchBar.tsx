@@ -223,7 +223,7 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
               <div className="flex items-center gap-2">
                 {chord.difficulty && (
                   <span className="text-xs">
-                    {'⭐'.repeat(chord.difficulty)}
+                    {'●'.repeat(chord.difficulty)}
                   </span>
                 )}
               </div>

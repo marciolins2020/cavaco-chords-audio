@@ -166,7 +166,7 @@ export function PracticeMode({
 
       {/* Instruções */}
       <Card className="p-4 bg-accent/30">
-        <p className="text-sm font-medium mb-2">🎯 Desafio:</p>
+        <p className="text-sm font-medium mb-2">Desafio:</p>
         <p className="text-sm text-muted-foreground">
           Monte o acorde {chord.root}{chord.quality} no braço abaixo. Clique nas
           cordas e casas para posicionar os dedos.
@@ -236,7 +236,7 @@ export function PracticeMode({
             <>
               <CheckCircle className="w-16 h-16 mx-auto mb-3 text-success" />
               <h3 className="text-2xl font-bold text-success mb-2">
-                Perfeito! 🎉
+                Perfeito!
               </h3>
               <p className="text-muted-foreground">
                 Você acertou em {(elapsedTime / 1000).toFixed(1)} segundos!
@@ -246,7 +246,7 @@ export function PracticeMode({
             <>
               <XCircle className="w-16 h-16 mx-auto mb-3 text-destructive" />
               <h3 className="text-2xl font-bold text-destructive mb-2">
-                Quase lá! 💪
+                Quase lá!
               </h3>
               <p className="text-muted-foreground">
                 Tente novamente ou clique em "Ver Resposta" para ajuda.

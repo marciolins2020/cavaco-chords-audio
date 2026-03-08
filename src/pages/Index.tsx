@@ -70,7 +70,6 @@ const Index = () => {
         <div className="container mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
             <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 rounded-full text-xs sm:text-sm text-primary border border-primary/20">
-              <span className="animate-pulse">🎸</span>
               <span>Por Professor Juninho Rezende</span>
             </div>
             
@@ -91,19 +90,19 @@ const Index = () => {
                 onClick={() => navigate("/identifier")}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
               >
-                🎯 Identificar Acorde
+                Identificar Acorde
               </button>
               <button
                 onClick={() => navigate("/pratica")}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-success text-success-foreground rounded-xl hover:bg-success/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
               >
-                🎓 Modo Prática
+                Modo Prática
               </button>
               <button
                 onClick={() => navigate("/campo-harmonico")}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
               >
-                🎵 Campo Harmônico
+                Campo Harmônico
               </button>
             </div>
 

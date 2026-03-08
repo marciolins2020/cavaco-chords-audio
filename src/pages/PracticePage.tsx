@@ -144,7 +144,7 @@ export default function PracticePage() {
 
               {/* Sequência de Aprendizado */}
               <Card className="p-6 mb-8">
-                <h3 className="text-xl font-bold mb-4">📚 Sequência de Aprendizado</h3>
+                <h3 className="text-xl font-bold mb-4">Sequência de Aprendizado</h3>
                 <div className="space-y-4">
                   {LEARNING_SEQUENCE.map((level) => (
                     <div key={level.level}>
