@@ -309,6 +309,7 @@ class AudioService {
     osc.start(t);
     osc.stop(t + 0.25);
   }
+}
 
 export const audioService = new AudioService();
 
