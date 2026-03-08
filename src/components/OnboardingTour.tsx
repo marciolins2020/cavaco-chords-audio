@@ -7,34 +7,24 @@ const STORAGE_KEY = "rzd-onboarding-done";
 
 const STEPS = [
   {
-    icon: Sparkles,
     title: "Bem-vindo ao RZD Music!",
     description: "Seu dicionário completo de acordes de cavaquinho, com diagramas profissionais, áudio e inteligência artificial.",
-    color: "hsl(var(--primary))",
   },
   {
-    icon: Music2,
     title: "Explore os Acordes",
     description: "Navegue por tônicas e variações. Toque cada acorde em modo Strum ou Block direto no navegador.",
-    color: "hsl(var(--primary))",
   },
   {
-    icon: Target,
     title: "Modo Prática",
     description: "Treine transições de acordes, ganhe XP e suba no ranking. Desafios diários mantêm sua evolução.",
-    color: "hsl(142 76% 36%)",
   },
   {
-    icon: Radio,
     title: "Afinador Integrado",
     description: "Afine seu cavaquinho usando o microfone do celular. Detecção precisa em tempo real.",
-    color: "hsl(38 92% 50%)",
   },
   {
-    icon: Heart,
     title: "Favoritos e RedData A.I.",
     description: "Salve seus acordes favoritos e pergunte qualquer dúvida ao assistente RedData no canto da tela.",
-    color: "hsl(0 84% 60%)",
   },
 ];
 

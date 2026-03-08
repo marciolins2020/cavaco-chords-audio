@@ -104,9 +104,8 @@ export const ChordOfTheDay = () => {
           </div>
 
           <Link to={`/chord/${chordId}`}>
-            <Button variant="outline" size="sm" className="gap-2 mt-2">
+            <Button variant="outline" size="sm" className="mt-2">
               Ver detalhes
-              <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
         </div>
