@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { convertedChords } from "@/lib/chordConverter";
+import { useChordList } from "@/hooks/useChordList";
 import { ChordEntry } from "@/types/chords";
 import { usePractice } from "@/hooks/usePractice";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
