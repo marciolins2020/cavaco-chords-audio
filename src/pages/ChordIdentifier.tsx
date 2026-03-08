@@ -113,7 +113,7 @@ export default function ChordIdentifier() {
     }
 
     // Find similar chords (fuzzy matching based on notes played)
-    const chordsWithDistance = convertedChords.map(chord => {
+    const chordsWithDistance = allChords.map(chord => {
       const minDistance = Math.min(
         ...chord.variations.map(variation => 
           calculateChordDistance(userFrets, variation.frets)
