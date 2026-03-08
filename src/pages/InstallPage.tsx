@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download, Smartphone, Wifi, Zap, Check } from "lucide-react";
+
 import rzdLogo from "@/assets/logo-rzd-final.png";
 
 interface BeforeInstallPromptEvent extends Event {
@@ -46,17 +46,17 @@ export default function InstallPage() {
 
   const features = [
     {
-      icon: <Wifi className="w-6 h-6" />,
+      icon: "📶",
       title: "Funciona Offline",
       description: "Acesse todos os acordes mesmo sem internet",
     },
     {
-      icon: <Zap className="w-6 h-6" />,
+      icon: "⚡",
       title: "Rápido e Leve",
       description: "Carrega instantaneamente, como um app nativo",
     },
     {
-      icon: <Smartphone className="w-6 h-6" />,
+      icon: "📱",
       title: "Na Tela Inicial",
       description: "Acesso direto da sua tela inicial",
     },
@@ -83,7 +83,7 @@ export default function InstallPage() {
             {isInstalled ? (
               <Card className="p-8 bg-success/10 border-success">
                 <div className="flex items-center justify-center gap-3 mb-4">
-                  <Check className="w-8 h-8 text-success" />
+                  <span className="text-3xl">✅</span>
                   <h2 className="text-2xl font-bold text-success">App Instalado!</h2>
                 </div>
                 <p className="text-muted-foreground mb-6">
@@ -96,8 +96,7 @@ export default function InstallPage() {
             ) : deferredPrompt ? (
               <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10">
                 <Button onClick={handleInstall} size="lg" className="mb-4">
-                  <Download className="w-5 h-5 mr-2" />
-                  Instalar Agora
+                  ⬇ Instalar Agora
                 </Button>
                 <p className="text-sm text-muted-foreground">
                   Clique para adicionar à sua tela inicial
@@ -151,7 +150,7 @@ export default function InstallPage() {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {features.map((feature, index) => (
               <Card key={index} className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-2xl mb-4">
                   {feature.icon}
                 </div>
                 <h3 className="font-bold mb-2">{feature.title}</h3>
@@ -167,23 +166,23 @@ export default function InstallPage() {
             </h2>
             <ul className="space-y-4 max-w-2xl mx-auto">
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Acesso instantâneo sem abrir o navegador</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Todos os recursos disponíveis offline</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Carregamento mais rápido que um site normal</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Interface limpa sem barras do navegador</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Atualizações automáticas em segundo plano</span>
               </li>
             </ul>

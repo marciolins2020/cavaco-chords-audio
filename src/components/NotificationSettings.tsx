@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Bell, BellOff, TestTube } from "lucide-react";
+
 
 import { useNotifications } from "@/hooks/useNotifications";
 import { Input } from "@/components/ui/input";
@@ -32,9 +32,9 @@ export function NotificationSettings() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               {settings.enabled ? (
-                <Bell className="w-5 h-5 text-primary" />
+                <span className="text-xl">🔔</span>
               ) : (
-                <BellOff className="w-5 h-5 text-muted-foreground" />
+                <span className="text-xl opacity-50">🔕</span>
               )}
               <h3 className="text-lg font-semibold">Lembretes de Prática</h3>
             </div>
@@ -105,8 +105,7 @@ export function NotificationSettings() {
               size="sm"
               className="w-full"
             >
-              <TestTube className="w-4 h-4 mr-2" />
-              Enviar notificação de teste
+              🧪 Enviar notificação de teste
             </Button>
           </div>
         )}

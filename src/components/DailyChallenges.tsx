@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, Zap, Sparkles } from "lucide-react";
+
 
 import { useDailyChallenges, DailyChallenge } from "@/hooks/useDailyChallenges";
 import { useAuth } from "@/contexts/AuthContext";
@@ -110,7 +110,7 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
                   animate={{ scale: 1, rotate: 0 }}
                   className="ml-2"
                 >
-                  <Sparkles className="w-4 h-4 text-primary fill-primary" />
+                  <span className="text-primary">✨</span>
                 </motion.div>
               )}
             </div>
@@ -122,7 +122,7 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
                   {challenge.current_progress} / {challenge.target_value}
                 </span>
                 <div className="flex items-center gap-1 text-yellow-600 font-medium">
-                  <Zap className="w-3 h-3 fill-yellow-600" />
+                  <span className="text-yellow-600">⚡</span>
                   <span>+{challenge.xp_reward} XP</span>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const DailyChallenges = () => {
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <Trophy className="w-5 h-5 text-primary" />
+          <span className="text-xl">🏆</span>
           <h3 className="text-lg font-semibold">Desafios Diários</h3>
           {completedCount > 0 && (
             <Badge variant="secondary">
@@ -184,7 +184,7 @@ export const DailyChallenges = () => {
         </div>
         {totalXP > 0 && (
           <div className="flex items-center gap-1 text-yellow-600 font-semibold">
-            <Zap className="w-5 h-5 fill-yellow-600" />
+            <span className="text-yellow-600">⚡</span>
             <span>+{totalXP} XP</span>
           </div>
         )}
@@ -192,7 +192,7 @@ export const DailyChallenges = () => {
 
       {challenges.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
-          <Trophy className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <span className="text-5xl block mx-auto mb-3 opacity-50">🏆</span>
           <p>Nenhum desafio disponível</p>
           <p className="text-sm mt-1">Volte amanhã para novos desafios!</p>
         </div>

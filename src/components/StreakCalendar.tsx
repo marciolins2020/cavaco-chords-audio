@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Flame, Award, Snowflake } from "lucide-react";
+
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -77,7 +77,7 @@ export const StreakCalendar = ({
         <div className="flex items-start justify-between">
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <Flame className="w-5 h-5 text-orange-500" />
+              <span className="text-orange-500">🔥</span>
               Sequência de Prática
             </h3>
             
@@ -105,8 +105,7 @@ export const StreakCalendar = ({
                 onClick={onUseFreeze}
                 className="gap-2"
               >
-                <Snowflake className="w-4 h-4" />
-                Usar Congelamento ({freezeCount})
+                ❄ Usar Congelamento ({freezeCount})
               </Button>
               <p className="text-xs text-muted-foreground mt-1">
                 Preserve seu streak
@@ -118,7 +117,7 @@ export const StreakCalendar = ({
         {/* Badges de Milestones */}
         {getMilestonesBadges().length > 0 && (
           <div className="flex gap-2 flex-wrap">
-            <Award className="w-5 h-5 text-muted-foreground" />
+            <span className="text-muted-foreground">🏅</span>
             {getMilestonesBadges().map((milestone) => (
               <Badge key={milestone.days} variant="secondary" className="gap-1">
                 <span>{milestone.emoji}</span>

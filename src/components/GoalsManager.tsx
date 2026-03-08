@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Target, Plus, Trash2, Play, Pause, Calendar } from "lucide-react";
+
 
 import { useGoals, PracticeGoal } from "@/hooks/useGoals";
 import { useAuth } from "@/contexts/AuthContext";
@@ -84,14 +84,13 @@ export const GoalsManager = () => {
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <Target className="w-5 h-5 text-primary" />
+          <span className="text-xl">🎯</span>
           <h3 className="text-lg font-semibold">Metas de Prática</h3>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button size="sm">
-              <Plus className="w-4 h-4 mr-2" />
-              Nova Meta
+              ＋ Nova Meta
             </Button>
           </DialogTrigger>
           <DialogContent>
@@ -159,7 +158,7 @@ export const GoalsManager = () => {
 
       {activeGoals.length === 0 && completedGoals.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
-          <Target className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <span className="text-5xl block mx-auto mb-3 opacity-50">🎯</span>
           <p>Nenhuma meta criada ainda</p>
           <p className="text-sm mt-1">Crie uma meta para começar a acompanhar seu progresso</p>
         </div>
@@ -181,7 +180,7 @@ export const GoalsManager = () => {
                         {goal.current_value} / {goal.target_value}
                         {goal.end_date && (
                           <span className="ml-2">
-                            <Calendar className="w-3 h-3 inline mr-1" />
+                          <span className="inline mr-1">📅</span>
                             até {format(new Date(goal.end_date), "dd/MM/yyyy", { locale: ptBR })}
                           </span>
                         )}
@@ -193,14 +192,14 @@ export const GoalsManager = () => {
                         size="sm"
                         onClick={() => toggleGoalActive(goal.id, false)}
                       >
-                        <Pause className="w-4 h-4" />
+                        ⏸
                       </Button>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => deleteGoal(goal.id)}
                       >
-                        <Trash2 className="w-4 h-4" />
+                        🗑
                       </Button>
                     </div>
                   </div>
@@ -235,7 +234,7 @@ export const GoalsManager = () => {
                       size="sm"
                       onClick={() => deleteGoal(goal.id)}
                     >
-                      <Trash2 className="w-4 h-4" />
+                      🗑
                     </Button>
                   </div>
                 </div>

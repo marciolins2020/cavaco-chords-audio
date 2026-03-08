@@ -7,7 +7,7 @@ import { Card } from "./ui/card";
 import { Progress } from "./ui/progress";
 import { Badge } from "./ui/badge";
 import { arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
-import { CheckCircle, XCircle, Eye, EyeOff, Timer, Trophy } from "lucide-react";
+
 
 
 interface Note {
@@ -123,7 +123,7 @@ export function PracticeMode({
           {/* Timer */}
           <div className="text-right">
             <div className="flex items-center gap-2 text-lg font-mono">
-              <Timer className="w-4 h-4" />
+              <span>⏱</span>
               <span>{(elapsedTime / 1000).toFixed(1)}s</span>
             </div>
           </div>
@@ -158,8 +158,7 @@ export function PracticeMode({
 
         {currentSuccesses >= 3 && (
           <Badge className="mt-4 w-full justify-center" variant="default">
-            <Trophy className="w-4 h-4 mr-2" />
-            Acorde Dominado!
+            🏆 Acorde Dominado!
           </Badge>
         )}
       </Card>
@@ -188,8 +187,7 @@ export function PracticeMode({
           size="lg"
           className="min-w-[150px]"
         >
-          <CheckCircle className="w-5 h-5 mr-2" />
-          Verificar
+          ✓ Verificar
         </Button>
 
         <Button
@@ -197,8 +195,7 @@ export function PracticeMode({
           variant="outline"
           size="lg"
         >
-          {showDiagram ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
-          {showDiagram ? "Ocultar" : "Ver"} Resposta
+          {showDiagram ? "🙈 Ocultar" : "👁 Ver"} Resposta
         </Button>
 
         {feedback === "incorrect" && (
@@ -234,7 +231,7 @@ export function PracticeMode({
         >
           {feedback === "correct" ? (
             <>
-              <CheckCircle className="w-16 h-16 mx-auto mb-3 text-success" />
+              <span className="text-6xl block mx-auto mb-3">✅</span>
               <h3 className="text-2xl font-bold text-success mb-2">
                 Perfeito!
               </h3>
@@ -244,7 +241,7 @@ export function PracticeMode({
             </>
           ) : (
             <>
-              <XCircle className="w-16 h-16 mx-auto mb-3 text-destructive" />
+              <span className="text-6xl block mx-auto mb-3">❌</span>
               <h3 className="text-2xl font-bold text-destructive mb-2">
                 Quase lá!
               </h3>

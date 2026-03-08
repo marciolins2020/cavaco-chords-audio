@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { TrendingUp, Zap, Award, Target, Calendar } from "lucide-react";
+
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -153,7 +153,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <Zap className="w-5 h-5 text-primary" />
+          <span className="text-xl">⚡</span>
           <h3 className="text-lg font-semibold">Evolução de XP</h3>
         </div>
         <div className="flex gap-2">
@@ -182,7 +182,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">XP Total</span>
-            <Zap className="w-5 h-5 text-primary fill-primary" />
+            <span className="text-xl text-primary">⚡</span>
           </div>
           <div className="text-3xl font-bold text-primary mb-1">{totalXP.toLocaleString()}</div>
           <Badge variant="secondary" className={rankInfo.color}>
@@ -198,7 +198,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">Próximo Rank</span>
-            <Award className="w-5 h-5 text-secondary" />
+            <span className="text-xl text-secondary">🏅</span>
           </div>
           {rankInfo.nextRank > 0 ? (
             <>
@@ -263,7 +263,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         </div>
       ) : (
         <div className="text-center py-12 text-muted-foreground">
-          <TrendingUp className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <span className="text-5xl block mx-auto mb-3 opacity-50">📈</span>
           <p>Nenhum dado de XP para este período</p>
           <p className="text-sm mt-1">Complete desafios para ver sua evolução!</p>
         </div>
@@ -273,7 +273,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
       {events.length > 0 && (
         <div>
           <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
-            <Calendar className="w-4 h-4" />
+            <span>📅</span>
             Atividades Recentes
           </h4>
           <div className="space-y-2 max-h-80 overflow-y-auto">
@@ -296,7 +296,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
                   variant={event.type === "challenge" ? "default" : "secondary"}
                   className="gap-1"
                 >
-                  <Zap className="w-3 h-3 fill-current" />
+                  <span className="text-xs">⚡</span>
                   +{event.xp}
                 </Badge>
               </motion.div>

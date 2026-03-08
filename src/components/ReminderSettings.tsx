@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
-import { Bell, TestTube } from "lucide-react";
+
 
 import { useNotificationReminders } from "@/hooks/useNotificationReminders";
 import { Badge } from "@/components/ui/badge";
@@ -37,7 +37,7 @@ export const ReminderSettings = () => {
   return (
     <Card className="p-6">
       <div className="flex items-center gap-2 mb-6">
-        <Bell className="w-5 h-5 text-primary" />
+        <span className="text-xl">🔔</span>
         <h3 className="text-lg font-semibold">Lembretes de Prática</h3>
       </div>
 
@@ -124,8 +124,7 @@ export const ReminderSettings = () => {
               onClick={testNotification}
               disabled={permission !== "granted"}
             >
-              <TestTube className="w-4 h-4 mr-2" />
-              Testar Notificação
+              🧪 Testar Notificação
             </Button>
           </>
         )}

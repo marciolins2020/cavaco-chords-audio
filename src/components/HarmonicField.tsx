@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import ChordDiagram from "@/components/ChordDiagram";
 import { getHarmonicField, getAvailableKeys, FUNCTION_INFO, HarmonicFunction } from "@/utils/harmonicField";
 import { useNavigate } from "react-router-dom";
-import { Play } from "lucide-react";
+
 
 import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
@@ -189,8 +189,7 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
                   size="sm"
                   className="w-full"
                 >
-                  <Play className="w-4 h-4 mr-2" />
-                  {playingChord ? "Tocando..." : "Tocar Progressão"}
+                  ▶ {playingChord ? "Tocando..." : "Tocar Progressão"}
                 </Button>
               </Card>
             ))}

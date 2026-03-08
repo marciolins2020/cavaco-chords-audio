@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Trophy, Star, Zap } from "lucide-react";
+
 
 
 interface LevelProgressProps {
@@ -71,19 +71,19 @@ export const LevelProgress = ({
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                  <span className="text-yellow-500">⭐</span>
                   <span>{totalXP} XP</span>
                 </div>
                 <span>•</span>
                 <div className="flex items-center gap-1">
-                  <Zap className="w-4 h-4 text-primary" />
+                  <span className="text-primary">⚡</span>
                   <span>{nextLevelXP - totalXP} XP para próximo nível</span>
                 </div>
               </div>
             </div>
           </div>
           
-          <Trophy className="w-8 h-8 text-primary/30" />
+          <span className="text-3xl text-primary/30">🏆</span>
         </div>
 
         {/* Progress bar */}

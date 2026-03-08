@@ -1,4 +1,4 @@
-import { Download } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/contexts/AppContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -83,18 +83,15 @@ export const DataExport = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm">
-          <Download className="w-4 h-4 mr-2" />
-          Exportar Dados
+          ⬇ Exportar Dados
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={exportToJSON}>
-          <Download className="w-4 h-4 mr-2" />
-          Exportar JSON (completo)
+          ⬇ Exportar JSON (completo)
         </DropdownMenuItem>
         <DropdownMenuItem onClick={exportToCSV}>
-          <Download className="w-4 h-4 mr-2" />
-          Exportar CSV (sessões)
+          ⬇ Exportar CSV (sessões)
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, Check, AlertCircle, FileJson } from "lucide-react";
+
 
 import { Button } from "@/components/ui/button";
 import {
@@ -88,16 +88,14 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="gap-2">
-          <Upload className="w-4 h-4" />
-          <span className="hidden sm:inline">Importar Acordes</span>
+          ⬆ <span className="hidden sm:inline">Importar Acordes</span>
         </Button>
       </DialogTrigger>
       
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <FileJson className="w-5 h-5" />
-            Importar Banco de Acordes
+            📄 Importar Banco de Acordes
           </DialogTitle>
           <DialogDescription>
             Faça upload de um arquivo JSON com acordes customizados.
@@ -126,7 +124,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
           <div className="flex flex-col items-center gap-3">
             {isValid === null && (
               <>
-                <Upload className="w-12 h-12 text-muted-foreground" />
+                <span className="text-5xl block">⬆</span>
                 <p className="text-sm text-muted-foreground">
                   Arraste um arquivo JSON ou clique para selecionar
                 </p>
@@ -135,7 +133,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
             
             {isValid === true && (
               <>
-                <Check className="w-12 h-12 text-success" />
+                <span className="text-5xl block text-success">✓</span>
                 <p className="text-sm font-semibold text-success">
                   Arquivo validado com sucesso!
                 </p>
@@ -147,7 +145,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
             
             {isValid === false && (
               <>
-                <AlertCircle className="w-12 h-12 text-destructive" />
+                <span className="text-5xl block text-destructive">⚠</span>
                 <p className="text-sm font-semibold text-destructive">
                   Formato inválido
                 </p>
