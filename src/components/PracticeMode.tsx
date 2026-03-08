@@ -241,7 +241,7 @@ export function PracticeMode({
             </>
           ) : (
             <>
-              <XCircle className="w-16 h-16 mx-auto mb-3 text-destructive" />
+              <span className="text-6xl block mx-auto mb-3">❌</span>
               <h3 className="text-2xl font-bold text-destructive mb-2">
                 Quase lá!
               </h3>
