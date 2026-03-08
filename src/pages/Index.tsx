@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useApp } from "@/contexts/AppContext";
 import { ChordEntry } from "@/types/chords";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
+import { makeChordId } from "@/lib/chordIds";
 import juninhoBg from "@/assets/juninho-header-bg.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
