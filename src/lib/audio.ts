@@ -218,13 +218,10 @@ class AudioService {
       const humanize = Math.random() * 0.008;
       const noteTime = now + (note.stringIndex * strumSpeed) + humanize;
 
-      // Velocity com variação natural
       const velocity = 0.6 + (Math.random() * 0.15);
-      
-      // Sustain curto - característico do cavaquinho
       const sustain = 0.8;
 
-      this.playTone(freq, noteTime, sustain, velocity);
+      this.playTone(freq, noteTime, sustain, velocity, note.stringIndex);
     });
   }
 
