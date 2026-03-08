@@ -18,3 +18,28 @@ export function fireLevelUpConfetti() {
     confetti({ ...defaults, particleCount: 40, origin: { x: 0.5, y: 0.3 } });
   }, 200);
 }
+
+export function fireMasteryConfetti() {
+  const end = Date.now() + 800;
+  const colors = ["#f59e0b", "#10b981", "#6366f1", "#ec4899", "#f43f5e"];
+
+  (function frame() {
+    confetti({
+      particleCount: 3,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors,
+      zIndex: 200,
+    });
+    confetti({
+      particleCount: 3,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors,
+      zIndex: 200,
+    });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+}

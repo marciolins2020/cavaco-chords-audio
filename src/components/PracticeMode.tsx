@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChordEntry } from "@/types/chords";
+import { fireMasteryConfetti } from "@/lib/confetti";
 import { InteractiveFretboard } from "./InteractiveFretboard";
 import ChordDiagram from "./ChordDiagram";
 import { Button } from "./ui/button";
@@ -85,6 +86,10 @@ export function PracticeMode({
     // Feedback sonoro
     if (isCorrect) {
       audioService.playSuccess();
+      // Fire confetti when reaching mastery (3rd success)
+      if (currentSuccesses === 2) {
+        fireMasteryConfetti();
+      }
     } else {
       audioService.playError();
     }
