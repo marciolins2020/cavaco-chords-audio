@@ -80,7 +80,6 @@ export default function LeaderboardPage() {
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
           {(Object.keys(typeConfig) as LeaderboardType[]).map((type) => {
             const config = typeConfig[type];
-            const Icon = config.icon;
             return (
               <Button
                 key={type}
@@ -88,7 +87,6 @@ export default function LeaderboardPage() {
                 variant={selectedType === type ? "default" : "outline"}
                 className="flex-1 min-w-[140px]"
               >
-                <Icon className="w-4 h-4 mr-2" />
                 {config.label}
               </Button>
             );
