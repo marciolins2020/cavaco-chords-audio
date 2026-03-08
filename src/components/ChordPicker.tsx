@@ -3,6 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import ChordDiagram from "@/components/ChordDiagram";
 import { ChordEntry } from "@/types/chords";
 
 interface ChordPickerProps {
@@ -22,13 +24,11 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
   const [search, setSearch] = useState("");
   const [selectedRoot, setSelectedRoot] = useState<string | null>(null);
 
-  // Filter chords that have at least one variation
   const validChords = useMemo(
     () => chords.filter((c) => c.variations && c.variations.length > 0),
     [chords]
   );
 
-  // Group by root
   const grouped = useMemo(() => {
     const map = new Map<string, ChordEntry[]>();
     for (const chord of validChords) {
@@ -39,13 +39,11 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
     return map;
   }, [validChords]);
 
-  // Available roots in order
   const roots = useMemo(
     () => ROOT_ORDER.filter((r) => grouped.has(r)),
     [grouped]
   );
 
-  // Filtered chords
   const filtered = useMemo(() => {
     let list = selectedRoot ? grouped.get(selectedRoot) || [] : validChords;
     if (search.trim()) {
@@ -64,7 +62,6 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
     <Card className="p-6">
       <h3 className="text-xl font-bold mb-4">Escolher Acorde</h3>
 
-      {/* Search */}
       <Input
         placeholder="Buscar acorde... (ex: Am7, G, Dm)"
         value={search}
@@ -72,7 +69,6 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
         className="mb-4"
       />
 
-      {/* Root filter */}
       <div className="flex flex-wrap gap-1.5 mb-4">
         <Button
           size="sm"
@@ -95,30 +91,52 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
         ))}
       </div>
 
-      {/* Chord grid */}
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-[320px] overflow-y-auto pr-1">
         {filtered.map((chord) => {
           const isMastered = masteredChords.includes(chord.id);
+          const mainVar = chord.variations[0];
+
           return (
-            <button
-              key={chord.id}
-              onClick={() => onSelect(chord)}
-              className={`relative p-3 rounded-lg border-2 text-center transition-all hover:scale-105 hover:shadow-md ${
-                isMastered
-                  ? "border-primary bg-primary/10"
-                  : "border-border bg-card hover:border-primary/50"
-              }`}
-            >
-              <div className="font-bold text-sm">{displayName(chord)}</div>
-              <div className="text-[10px] text-muted-foreground mt-0.5">
-                {chord.variations.length} var.
-              </div>
-              {isMastered && (
-                <Badge variant="default" className="absolute -top-1.5 -right-1.5 h-5 w-5 p-0 flex items-center justify-center text-[10px]">
-                  ✓
-                </Badge>
-              )}
-            </button>
+            <HoverCard key={chord.id} openDelay={200} closeDelay={100}>
+              <HoverCardTrigger asChild>
+                <button
+                  onClick={() => onSelect(chord)}
+                  className={`relative p-3 rounded-lg border-2 text-center transition-all hover:scale-105 hover:shadow-md ${
+                    isMastered
+                      ? "border-primary bg-primary/10"
+                      : "border-border bg-card hover:border-primary/50"
+                  }`}
+                >
+                  <div className="font-bold text-sm">{displayName(chord)}</div>
+                  <div className="text-[10px] text-muted-foreground mt-0.5">
+                    {chord.variations.length} var.
+                  </div>
+                  {isMastered && (
+                    <Badge variant="default" className="absolute -top-1.5 -right-1.5 h-5 w-5 p-0 flex items-center justify-center text-[10px]">
+                      ✓
+                    </Badge>
+                  )}
+                </button>
+              </HoverCardTrigger>
+              <HoverCardContent side="top" className="w-auto p-3" sideOffset={8}>
+                <div className="text-center">
+                  <div className="font-bold text-sm mb-1">{displayName(chord)}</div>
+                  {chord.notes.length > 0 && (
+                    <div className="text-[10px] text-muted-foreground mb-2">
+                      {chord.notes.join(" · ")}
+                    </div>
+                  )}
+                  <div className="flex justify-center scale-90">
+                    <ChordDiagram
+                      frets={mainVar.frets}
+                      fingers={mainVar.fingers}
+                      barre={mainVar.barre}
+                      startFret={mainVar.startFret}
+                    />
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           );
         })}
       </div>
