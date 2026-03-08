@@ -94,7 +94,7 @@ export const useNotificationReminders = () => {
   const showNotification = () => {
     if (typeof Notification === "undefined" || permission !== "granted") return;
 
-    const notification = new Notification("🎸 Hora de Praticar!", {
+    const notification = new Notification("Hora de Praticar!", {
       body: "Não quebre seu streak! Pratique alguns acordes hoje.",
       icon: "/favicon.png",
       badge: "/favicon.png",

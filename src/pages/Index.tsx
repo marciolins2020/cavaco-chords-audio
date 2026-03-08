@@ -102,7 +102,7 @@ const Index = () => {
                 onClick={() => navigate("/campo-harmonico")}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
               >
-                🎵 Campo Harmônico
+                Campo Harmônico
               </button>
             </div>
 

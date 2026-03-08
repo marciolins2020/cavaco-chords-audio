@@ -246,7 +246,7 @@ export function PracticeMode({
             <>
               <XCircle className="w-16 h-16 mx-auto mb-3 text-destructive" />
               <h3 className="text-2xl font-bold text-destructive mb-2">
-                Quase lá! 💪
+                Quase lá!
               </h3>
               <p className="text-muted-foreground">
                 Tente novamente ou clique em "Ver Resposta" para ajuda.

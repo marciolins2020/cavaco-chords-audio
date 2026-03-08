@@ -117,7 +117,7 @@ export const useGoals = (userId: string | undefined) => {
       if (error) throw error;
 
       if (completed && !goal.completed) {
-        toast.success("🎉 Meta concluída! Parabéns!");
+        toast.success("Meta concluída! Parabéns!");
       }
     } catch (error) {
       console.error("Erro ao atualizar progresso:", error);

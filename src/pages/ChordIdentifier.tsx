@@ -308,7 +308,7 @@ export default function ChordIdentifier() {
           {/* Instructions */}
           {!result && (
             <div className="bg-accent/50 rounded-xl p-6 text-center">
-              <h3 className="font-semibold mb-2">💡 Como usar:</h3>
+              <h3 className="font-semibold mb-2">Como usar:</h3>
               <ol className="text-sm text-muted-foreground space-y-1 max-w-md mx-auto text-left">
                 <li>1. Clique nas cordas e casas para montar o acorde</li>
                 <li>2. Clique novamente para remover uma nota</li>

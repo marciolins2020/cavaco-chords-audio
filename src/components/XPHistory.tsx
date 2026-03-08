@@ -215,7 +215,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
             </>
           ) : (
             <div className="text-xl font-bold text-purple-500">
-              🏆 Rank Máximo Alcançado!
+              Rank Máximo Alcançado!
             </div>
           )}
         </motion.div>

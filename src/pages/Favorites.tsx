@@ -108,7 +108,7 @@ const Favorites = () => {
                   {stats.total}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Sua coleção está crescendo! 🎸
+                  Sua coleção está crescendo!
                 </p>
               </Card>
             </div>

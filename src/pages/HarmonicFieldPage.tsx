@@ -56,7 +56,7 @@ export default function HarmonicFieldPage() {
 
           {/* Tips */}
           <Card className="p-6 mt-8 bg-accent/50">
-            <h3 className="font-bold mb-3">💡 Dicas do Professor Juninho:</h3>
+            <h3 className="font-bold mb-3">Dicas do Professor Juninho:</h3>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>
                 <strong>Comece pelo tom de C:</strong> É o mais fácil para entender as relações harmônicas
