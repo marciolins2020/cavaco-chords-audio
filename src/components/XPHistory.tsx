@@ -153,7 +153,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <Zap className="w-5 h-5 text-primary" />
+          <span className="text-xl">⚡</span>
           <h3 className="text-lg font-semibold">Evolução de XP</h3>
         </div>
         <div className="flex gap-2">
