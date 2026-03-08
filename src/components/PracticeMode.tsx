@@ -112,7 +112,7 @@ export function PracticeMode({
           <div>
             <h2 className="text-3xl font-bold mb-2">
               {chord.root}
-              <span className="text-primary">{chord.quality}</span>
+              <span className="text-primary">{chord.quality === "M" || chord.quality === "major" ? "" : chord.quality}</span>
             </h2>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span>Notas: {chord.notes.join(", ")}</span>
