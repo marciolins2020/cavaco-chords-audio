@@ -90,8 +90,7 @@ export const GoalsManager = () => {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button size="sm">
-              <Plus className="w-4 h-4 mr-2" />
-              Nova Meta
+              ＋ Nova Meta
             </Button>
           </DialogTrigger>
           <DialogContent>
