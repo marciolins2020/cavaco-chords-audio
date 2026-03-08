@@ -317,7 +317,16 @@ function generateFullDatabase(): ChordDatabase {
   return { version: "6.0-validated", chords };
 }
 
-export const DEFAULT_DB: ChordDatabase = generateFullDatabase();
+const GENERATED_DB: ChordDatabase = generateFullDatabase();
+
+// Merge course chords (priority) with generated chords (fallback)
+function buildDefaultDB(): ChordDatabase {
+  const courseDB = rzdCourseData as ChordDatabase;
+  // Course chords override generated ones
+  return mergeChordDatabases(GENERATED_DB, courseDB);
+}
+
+export const DEFAULT_DB: ChordDatabase = buildDefaultDB();
 
 export function validateChordDatabase(data: any): data is ChordDatabase {
   if (!data || typeof data !== "object") return false;
