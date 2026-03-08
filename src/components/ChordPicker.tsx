@@ -116,6 +116,27 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
         ))}
       </div>
 
+      {/* Category filter */}
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        {(Object.entries(CATEGORY_STYLES) as [ChordCategory, typeof CATEGORY_STYLES["major"]][]).map(([cat, style]) => {
+          const labels: Record<ChordCategory, string> = {
+            major: "Maior", minor: "Menor", seventh: "Sétima", diminished: "Dim", other: "Outros"
+          };
+          return (
+            <Button
+              key={cat}
+              size="sm"
+              variant={selectedCategory === cat ? "default" : "outline"}
+              onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+              className="h-7 text-[11px] px-2 gap-1.5"
+            >
+              <span className={`w-2 h-2 rounded-full ${style.indicator} inline-block`} />
+              {labels[cat]}
+            </Button>
+          );
+        })}
+      </div>
+
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-[320px] overflow-y-auto pr-1">
         {filtered.map((chord) => {
           const isMastered = masteredChords.includes(chord.id);
