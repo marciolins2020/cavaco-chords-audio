@@ -1,5 +1,4 @@
 import { useState, useMemo, Suspense } from "react";
-import { Guitar } from "lucide-react";
 import ChordCard from "@/components/ChordCard";
 import ChordExplorer from "@/components/ChordExplorer";
 import Header from "@/components/Header";
@@ -178,7 +177,6 @@ const Index = () => {
                 </div>
               ) : (
                 <div className="text-center py-16">
-                  <Guitar className="w-16 h-16 mx-auto text-muted-foreground mb-4 opacity-50" />
                   <p className="text-lg text-muted-foreground">
                     Nenhum acorde encontrado para "{searchQuery}"
                   </p>

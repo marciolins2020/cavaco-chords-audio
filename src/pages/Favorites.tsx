@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, Guitar, Filter, Download } from "lucide-react";
+
 import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -54,7 +54,6 @@ const Favorites = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Heart className="w-8 h-8 text-primary fill-current" />
               <h1 className="text-3xl md:text-4xl font-bold">Meus Favoritos</h1>
             </div>
           </div>
@@ -116,7 +115,6 @@ const Favorites = () => {
             {/* Filtros */}
             <Card className="p-4">
               <div className="flex items-center gap-2 mb-3">
-                <Filter className="w-4 h-4" />
                 <h3 className="font-semibold">Filtros</h3>
               </div>
               
@@ -191,9 +189,8 @@ const Favorites = () => {
           </div>
         ) : (
           <div className="text-center py-16">
-            <Guitar className="w-16 h-16 mx-auto text-muted-foreground mb-4 opacity-50" />
             <p className="text-lg text-muted-foreground mb-6">
-              Comece a adicionar seus acordes favoritos clicando no ícone de coração
+              Comece a adicionar seus acordes favoritos clicando na estrela
             </p>
             <Link to="/">
               <Button>

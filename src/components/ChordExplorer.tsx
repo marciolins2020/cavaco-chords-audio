@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { Play, Square, Hand } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -9,21 +8,10 @@ import { useApp } from "@/contexts/AppContext";
 import { ROOT_NOTES, CHORD_TYPES } from "@/constants/chordDatabase";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 
-// Mapa de nomes amigáveis para os tipos de acorde
 const CHORD_TYPE_LABELS: Record<string, string> = {
-  'M': 'Maior',
-  'm': 'menor',
-  '7': '7',
-  'm7': 'm7',
-  'maj7': 'maj7',
-  '6': '6',
-  'm6': 'm6',
-  'dim': 'dim',
-  'm7b5': 'm7(b5)',
-  '5+': '(#5)',
-  'sus4': 'sus4',
-  '9': '9',
-  'add9': 'add9'
+  'M': 'Maior', 'm': 'menor', '7': '7', 'm7': 'm7', 'maj7': 'maj7',
+  '6': '6', 'm6': 'm6', 'dim': 'dim', 'm7b5': 'm7(b5)', '5+': '(#5)',
+  'sus4': 'sus4', '9': '9', 'add9': 'add9'
 };
 
 const ChordExplorer = () => {
@@ -33,30 +21,18 @@ const ChordExplorer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [variationIndex, setVariationIndex] = useState(0);
 
-  // Encontra o acorde selecionado no banco de dados
   const selectedChord = useMemo(() => {
-    return chordDatabase.chords.find(
-      c => c.root === selectedRoot && c.suffix === selectedType
-    );
+    return chordDatabase.chords.find(c => c.root === selectedRoot && c.suffix === selectedType);
   }, [chordDatabase, selectedRoot, selectedType]);
 
-  // Reset variation index quando muda de acorde
-  const handleRootChange = (root: string) => {
-    setSelectedRoot(root);
-    setVariationIndex(0);
-  };
-
-  const handleTypeChange = (type: string) => {
-    setSelectedType(type);
-    setVariationIndex(0);
-  };
+  const handleRootChange = (root: string) => { setSelectedRoot(root); setVariationIndex(0); };
+  const handleTypeChange = (type: string) => { setSelectedType(type); setVariationIndex(0); };
 
   const currentVariation = selectedChord?.variations[variationIndex];
   const totalVariations = selectedChord?.variations.length || 0;
 
   const handlePlay = async (mode: 'strum' | 'block') => {
     if (isPlaying || !currentVariation) return;
-    
     setIsPlaying(true);
     try {
       await initAudio();
@@ -68,16 +44,9 @@ const ChordExplorer = () => {
     }
   };
 
-  // Nome de exibição do acorde
-  const displayName = selectedType === 'M' 
-    ? selectedRoot 
-    : `${selectedRoot}${CHORD_TYPE_LABELS[selectedType] || selectedType}`;
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Painel Esquerdo - Diagrama */}
       <Card className="p-6 flex flex-col items-center gap-6 bg-card">
-        {/* Diagrama Grande */}
         <div className="w-48 sm:w-56 md:w-64">
           {currentVariation ? (
             <ChordDiagram
@@ -93,7 +62,6 @@ const ChordExplorer = () => {
           )}
         </div>
 
-        {/* Indicador de variação */}
         {totalVariations > 1 && (
           <div className="flex items-center gap-2">
             {selectedChord?.variations.map((_, idx) => (
@@ -101,9 +69,7 @@ const ChordExplorer = () => {
                 key={idx}
                 onClick={() => setVariationIndex(idx)}
                 className={`w-3 h-3 rounded-full transition-all ${
-                  idx === variationIndex 
-                    ? 'bg-primary w-6' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                  idx === variationIndex ? 'bg-primary w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                 }`}
                 aria-label={`Variação ${idx + 1}`}
               />
@@ -111,48 +77,23 @@ const ChordExplorer = () => {
           </div>
         )}
 
-        {/* Botões de Tocar */}
         <div className="flex gap-3">
-          <Button
-            onClick={() => handlePlay('strum')}
-            disabled={isPlaying || !currentVariation}
-            className="gap-2 bg-primary hover:bg-primary/90"
-            size="lg"
-          >
-            <Play className={`h-5 w-5 ${isPlaying ? 'animate-pulse' : ''}`} />
-            Strum
+          <Button onClick={() => handlePlay('strum')} disabled={isPlaying || !currentVariation} className="bg-primary hover:bg-primary/90" size="lg">
+            {isPlaying ? "Tocando..." : "Strum"}
           </Button>
-          <Button
-            onClick={() => handlePlay('block')}
-            disabled={isPlaying || !currentVariation}
-            variant="secondary"
-            className="gap-2"
-            size="lg"
-          >
-            <Square className="h-5 w-5" />
+          <Button onClick={() => handlePlay('block')} disabled={isPlaying || !currentVariation} variant="secondary" size="lg">
             Block
           </Button>
         </div>
 
-        {/* Toggle Destro/Canhoto */}
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setLeftHanded(!leftHanded)}
-          className="gap-2 text-muted-foreground hover:text-foreground"
-        >
-          <Hand className="h-4 w-4" />
+        <Button variant="ghost" size="sm" onClick={() => setLeftHanded(!leftHanded)} className="text-muted-foreground hover:text-foreground">
           {leftHanded ? 'Canhoto' : 'Destro'}
         </Button>
       </Card>
 
-      {/* Painel Direito - Seletores */}
       <Card className="p-6 flex flex-col gap-6 bg-card">
-        {/* Título do Acorde */}
         <div>
-          <span className="text-xs uppercase tracking-wider text-muted-foreground">
-            Dicionário de Acordes
-          </span>
+          <span className="text-xs uppercase tracking-wider text-muted-foreground">Dicionário de Acordes</span>
           <h2 className="text-3xl font-bold mt-1">
             <span className="text-primary">{selectedRoot}</span>
             {selectedType !== 'M' && (
@@ -161,11 +102,8 @@ const ChordExplorer = () => {
           </h2>
         </div>
 
-        {/* Seletor de Tônica */}
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-            Tônica
-          </h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">Tônica</h3>
           <ScrollArea className="w-full whitespace-nowrap">
             <div className="flex gap-1 pb-2">
               {ROOT_NOTES.map(root => (
@@ -184,7 +122,6 @@ const ChordExplorer = () => {
             </div>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
-          {/* Indicador visual de seleção */}
           <div className="h-0.5 bg-muted mt-1 relative overflow-hidden rounded-full">
             <div 
               className="absolute h-full bg-primary transition-all duration-200"
@@ -196,11 +133,8 @@ const ChordExplorer = () => {
           </div>
         </div>
 
-        {/* Seletor de Variações/Tipos */}
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-            Variações
-          </h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">Variações</h3>
           <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
             {CHORD_TYPES.map(type => (
               <button
@@ -218,7 +152,6 @@ const ChordExplorer = () => {
           </div>
         </div>
 
-        {/* Dica RZD */}
         <div className="mt-auto p-4 rounded-xl bg-primary/10 border border-primary/20">
           <h4 className="font-bold text-primary text-sm mb-1">DICA RZD</h4>
           <p className="text-sm text-muted-foreground">
