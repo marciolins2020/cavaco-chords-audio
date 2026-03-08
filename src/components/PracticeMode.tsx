@@ -112,7 +112,7 @@ export function PracticeMode({
           <div>
             <h2 className="text-3xl font-bold mb-2">
               {chord.root}
-              <span className="text-primary">{chord.quality}</span>
+              <span className="text-primary">{chord.quality === "M" || chord.quality === "major" ? "" : chord.quality}</span>
             </h2>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span>Notas: {chord.notes.join(", ")}</span>
@@ -175,7 +175,7 @@ export function PracticeMode({
       <Card className="p-4 bg-accent/30">
         <p className="text-sm font-medium mb-2">Desafio:</p>
         <p className="text-sm text-muted-foreground">
-          Monte o acorde {chord.root}{chord.quality} no braço abaixo. Clique nas
+          Monte o acorde <strong>{chord.root}{chord.quality === "M" || chord.quality === "major" ? "" : chord.quality}</strong> no braço abaixo. Clique nas
           cordas e casas para posicionar os dedos.
         </p>
       </Card>
