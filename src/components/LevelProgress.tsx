@@ -76,7 +76,7 @@ export const LevelProgress = ({
                 </div>
                 <span>•</span>
                 <div className="flex items-center gap-1">
-                  <Zap className="w-4 h-4 text-primary" />
+                  <span className="text-primary">⚡</span>
                   <span>{nextLevelXP - totalXP} XP para próximo nível</span>
                 </div>
               </div>
