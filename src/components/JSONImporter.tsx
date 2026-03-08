@@ -124,7 +124,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
           <div className="flex flex-col items-center gap-3">
             {isValid === null && (
               <>
-                <Upload className="w-12 h-12 text-muted-foreground" />
+                <span className="text-5xl block">⬆</span>
                 <p className="text-sm text-muted-foreground">
                   Arraste um arquivo JSON ou clique para selecionar
                 </p>
