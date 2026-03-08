@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HarmonicField } from "@/components/HarmonicField";
 import { Card } from "@/components/ui/card";
-import { Music2 } from "lucide-react";
+
 
 export default function HarmonicFieldPage() {
   return (
