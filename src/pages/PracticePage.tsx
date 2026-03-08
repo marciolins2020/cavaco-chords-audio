@@ -152,7 +152,7 @@ export default function PracticePage() {
                               variant={isMastered ? "default" : isLearned ? "secondary" : "outline"}
                               className="cursor-pointer"
                               onClick={() => {
-                                const chord = convertedChords.find((c) => c.id === chordName);
+                                const chord = allChords.find((c) => c.id === chordName);
                                 if (chord) navigate(`/chord/${chord.id}`);
                               }}
                             >
