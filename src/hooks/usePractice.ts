@@ -202,6 +202,9 @@ export function usePractice(userId?: string) {
                       total_xp: currentXP + challenge.xp_reward,
                     } as any)
                     .eq("user_id", userId);
+
+                  // Som de XP
+                  import("@/lib/audio").then(({ audioService }) => audioService.playXP());
                 }
               }
             }
