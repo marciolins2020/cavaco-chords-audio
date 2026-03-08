@@ -175,7 +175,7 @@ export function PracticeMode({
       <Card className="p-4 bg-accent/30">
         <p className="text-sm font-medium mb-2">Desafio:</p>
         <p className="text-sm text-muted-foreground">
-          Monte o acorde {chord.root}{chord.quality} no braço abaixo. Clique nas
+          Monte o acorde <strong>{chord.root}{chord.quality === "M" || chord.quality === "major" ? "" : chord.quality}</strong> no braço abaixo. Clique nas
           cordas e casas para posicionar os dedos.
         </p>
       </Card>
