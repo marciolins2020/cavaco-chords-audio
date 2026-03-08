@@ -90,7 +90,7 @@ export default function ChordIdentifier() {
     const userFrets = convertNotesToFrets(notes);
 
     // Look for exact match
-    const exactMatch = convertedChords.find(chord =>
+    const exactMatch = allChords.find(chord =>
       chord.variations.some(variation => 
         arraysEqual(variation.frets, userFrets)
       )
