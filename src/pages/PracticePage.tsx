@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PracticeMode } from "@/components/PracticeMode";
 import { ChordPicker } from "@/components/ChordPicker";
+import { TransitionTrainer } from "@/components/TransitionTrainer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -133,9 +134,10 @@ export default function PracticePage() {
 
               {/* Practice mode selection: Tabs */}
               <Tabs defaultValue="sequence" className="mb-8">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="sequence">Sequência Guiada</TabsTrigger>
-                  <TabsTrigger value="manual">Escolha Livre</TabsTrigger>
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="sequence">Guiada</TabsTrigger>
+                  <TabsTrigger value="manual">Livre</TabsTrigger>
+                  <TabsTrigger value="transitions">Transições</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="sequence" className="mt-4 space-y-6">
@@ -187,6 +189,13 @@ export default function PracticePage() {
                     chords={allChords}
                     masteredChords={stats.chordsMastered}
                     onSelect={startPracticeWithChord}
+                  />
+                </TabsContent>
+
+                <TabsContent value="transitions" className="mt-4">
+                  <TransitionTrainer
+                    allChords={allChords}
+                    masteredChords={stats.chordsMastered}
                   />
                 </TabsContent>
               </Tabs>
