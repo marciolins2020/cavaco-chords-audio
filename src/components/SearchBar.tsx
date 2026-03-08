@@ -15,6 +15,7 @@ interface ChordSearchResult {
 interface SearchBarProps {
   onSearch?: (query: string) => void;
   className?: string;
+  value?: string;
 }
 
 // Enharmonic equivalents
