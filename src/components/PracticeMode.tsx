@@ -82,6 +82,13 @@ export function PracticeMode({
     setFeedback(isCorrect ? "correct" : "incorrect");
     onAttempt(isCorrect);
 
+    // Feedback sonoro
+    if (isCorrect) {
+      audioService.playSuccess();
+    } else {
+      audioService.playError();
+    }
+
     if (isCorrect && startTime) {
       const timeTaken = Date.now() - startTime;
       onSuccess(timeTaken);
