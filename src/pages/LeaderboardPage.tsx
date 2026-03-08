@@ -96,7 +96,6 @@ export default function LeaderboardPage() {
         {/* Leaderboard */}
         <Card className="p-6">
           <div className="flex items-center gap-2 mb-6">
-            {createElement(currentConfig.icon, { className: "w-5 h-5 text-primary" })}
             <h3 className="text-xl font-semibold">Top 100 - {currentConfig.label}</h3>
           </div>
 
