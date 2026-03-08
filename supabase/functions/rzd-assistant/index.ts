@@ -9,13 +9,14 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages, modeHint } = await req.json();
+    const { messages, modeHint, context } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const systemPrompt = `Você é o RedData A.I., assistente especializado em acordes de cavaquinho do app RZD Music, desenvolvido pela RedMaxx.
 
 ${modeHint ? `MODO DE RESPOSTA: ${modeHint}` : ""}
+${context ? `CONTEXTO ATUAL DO USUÁRIO: ${context}. Use esta informação para dar respostas mais relevantes.` : ""}
 
 INFORMAÇÕES IMPORTANTES SOBRE O CAVAQUINHO:
 - O cavaquinho tem 4 cordas afinadas em D-G-B-D (Ré-Sol-Si-Ré)

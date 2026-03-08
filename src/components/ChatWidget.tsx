@@ -9,6 +9,21 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/rzd-assistant`;
 
+// Build rich context string based on current route
+function buildContext(pathname: string): string {
+  if (pathname.startsWith("/chord/")) {
+    const chordId = decodeURIComponent(pathname.split("/chord/")[1]);
+    return `Usuário está visualizando a página do acorde "${chordId}". Priorize informações sobre esse acorde: posições alternativas, músicas que usam, progressões comuns, dicas de digitação.`;
+  }
+  if (pathname === "/pratica") return "Usuário está no Modo Prática, treinando transições de acordes. Foque em dicas de prática, exercícios e motivação.";
+  if (pathname === "/campo-harmonico") return "Usuário está estudando Campo Harmônico. Explique relações entre acordes, funções harmônicas e progressões.";
+  if (pathname === "/afinador") return "Usuário está usando o Afinador. Ajude com afinação, diferenças entre DGBD e outras afinações.";
+  if (pathname === "/identifier") return "Usuário está no Identificador de Acordes, tentando descobrir um acorde pelo braço do instrumento.";
+  if (pathname === "/ranking") return "Usuário está vendo o Ranking/Leaderboard de prática.";
+  if (pathname === "/favoritos") return "Usuário está na lista de acordes favoritos.";
+  return "Usuário está na página inicial, explorando o dicionário de acordes de cavaquinho.";
+}
+
 // Contextual suggestions based on current route
 function getSuggestions(pathname: string): { text: string }[] {
   if (pathname.startsWith("/chord/")) {
@@ -127,7 +142,7 @@ export const ChatWidget = () => {
         body: JSON.stringify({
           messages: allMessages,
           modeHint: "Responda de forma concisa e didática, use bullet points e destaque termos musicais em negrito.",
-          context: `Usuário está na página: ${location.pathname}`,
+          context: buildContext(location.pathname),
         }),
       });
 
@@ -183,7 +198,7 @@ export const ChatWidget = () => {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full overflow-hidden shadow-lg bg-white"
+            className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full overflow-hidden shadow-lg bg-white"
             style={{
               boxShadow: "0 4px 24px -2px hsl(var(--primary) / 0.4), 0 0 0 3px hsl(var(--primary) / 0.12)",
             }}
@@ -201,7 +216,7 @@ export const ChatWidget = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 60, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-6 right-6 z-50 flex flex-col overflow-hidden rounded-2xl border border-white/20"
+            className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col overflow-hidden rounded-2xl border border-white/20"
             style={{
               width: "min(380px, calc(100vw - 48px))",
               height: "min(540px, calc(100vh - 100px))",
