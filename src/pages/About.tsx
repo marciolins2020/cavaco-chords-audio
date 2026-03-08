@@ -1,4 +1,4 @@
-import { Music2, Guitar, Zap, Heart, Download } from "lucide-react";
+
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
