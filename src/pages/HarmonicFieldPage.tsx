@@ -36,7 +36,7 @@ export default function HarmonicFieldPage() {
                   <p className="text-xs">Repouso e estabilidade</p>
                 </div>
                 <div className="p-3 bg-background rounded-lg">
-                  <div className="font-bold text-foreground mb-1">🟢 Subdominante (IV)</div>
+                  <div className="font-bold text-foreground mb-1">Subdominante (IV)</div>
                   <p className="text-xs">Afastamento suave</p>
                 </div>
                 <div className="p-3 bg-background rounded-lg">
