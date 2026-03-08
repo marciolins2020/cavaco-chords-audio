@@ -22,7 +22,7 @@ export function useChordList(): ChordEntry[] {
       return {
         id: makeChordId(chord.root, chord.suffix),
         root: chord.root,
-        quality: suffixInfo.quality || chord.suffix,
+        quality: suffixInfo.quality !== undefined ? suffixInfo.quality : chord.suffix,
         notes: chord.notes || [],
         intervals: chord.intervals || suffixInfo.intervals,
         variations: chord.variations.map((variation, idx) => ({
