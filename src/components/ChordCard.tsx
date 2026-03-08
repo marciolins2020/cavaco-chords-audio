@@ -60,6 +60,7 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
                 size="sm"
                 className={`h-8 px-2 text-xs ${favorite ? "text-primary font-bold" : ""}`}
                 onClick={handleFavorite}
+                aria-label={favorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
               >
                 {favorite ? "★" : "☆"}
               </Button>
