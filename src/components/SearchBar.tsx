@@ -42,8 +42,15 @@ const INPUT_SUFFIX_MAP: Record<string, string> = {
   'add2': 'add9',
 };
 
-export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
-  const [query, setQuery] = useState("");
+export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
+  const [query, setQuery] = useState(value || "");
+
+  // Sync external value prop
+  useEffect(() => {
+    if (value !== undefined) {
+      setQuery(value);
+    }
+  }, [value]);
   const [suggestions, setSuggestions] = useState<ChordSearchResult[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);

@@ -112,7 +112,7 @@ const Index = () => {
                 áudio e múltiplas posições
               </p>
 
-              <SearchBar onSearch={setSearchQuery} className="max-w-2xl mx-auto" />
+              <SearchBar onSearch={setSearchQuery} value={searchQuery} className="max-w-2xl mx-auto" />
 
               <div className="flex flex-wrap justify-center gap-2 text-sm max-w-full">
                 <button
