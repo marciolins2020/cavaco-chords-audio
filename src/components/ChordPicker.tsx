@@ -116,19 +116,27 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
         {filtered.map((chord) => {
           const isMastered = masteredChords.includes(chord.id);
           const mainVar = chord.variations[0];
+          const category = getChordCategory(chord.quality);
+          const style = CATEGORY_STYLES[category];
 
           return (
             <HoverCard key={chord.id} openDelay={200} closeDelay={100}>
               <HoverCardTrigger asChild>
                 <button
                   onClick={() => onSelect(chord)}
-                  className={`relative p-3 rounded-lg border-2 text-center transition-all hover:scale-105 hover:shadow-md ${
+                  className={`relative p-3 rounded-lg border-2 text-center transition-all hover:scale-105 hover:shadow-lg group ${
                     isMastered
-                      ? "border-primary bg-primary/10"
-                      : "border-border bg-card hover:border-primary/50"
+                      ? "border-primary bg-primary/10 ring-1 ring-primary/20"
+                      : `${style.border} ${style.bg} hover:border-foreground/40`
                   }`}
                 >
-                  <div className="font-bold text-sm">{displayName(chord)}</div>
+                  {/* Category indicator dot */}
+                  <div className={`absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full ${style.indicator} opacity-60`} />
+
+                  <div className="font-bold text-sm group-hover:text-foreground transition-colors">
+                    <span>{chord.root}</span>
+                    <span className="text-muted-foreground text-xs">{chord.quality || ""}</span>
+                  </div>
                   <div className="text-[10px] text-muted-foreground mt-0.5">
                     {chord.variations.length} var.
                   </div>
@@ -141,7 +149,10 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
               </HoverCardTrigger>
               <HoverCardContent side="top" className="w-auto p-3" sideOffset={8}>
                 <div className="text-center">
-                  <div className="font-bold text-sm mb-1">{displayName(chord)}</div>
+                  <div className="font-bold text-sm mb-0.5">{displayName(chord)}</div>
+                  <Badge variant="outline" className="text-[9px] px-1.5 py-0 mb-1.5">
+                    {category === "major" ? "Maior" : category === "minor" ? "Menor" : category === "seventh" ? "Sétima" : category === "diminished" ? "Diminuto" : "Outro"}
+                  </Badge>
                   {chord.notes.length > 0 && (
                     <div className="text-[10px] text-muted-foreground mb-2">
                       {chord.notes.join(" · ")}
