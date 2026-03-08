@@ -20,8 +20,9 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   const [playingChord, setPlayingChord] = useState<string | null>(null);
   const navigate = useNavigate();
   const { addToHistory } = useApp();
+  const allChords = useChordList();
 
-  const field = getHarmonicField(currentKey);
+  const field = getHarmonicField(currentKey, allChords);
   const availableKeys = getAvailableKeys();
 
   if (!field) return null;
