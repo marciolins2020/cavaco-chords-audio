@@ -150,6 +150,11 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Visitor Progress CTA */}
+        <section className="container mx-auto px-4 py-4">
+          <VisitorProgress />
+        </section>
+
         {/* Acorde do Dia */}
         <section className="container mx-auto px-4 py-6">
           <ChordOfTheDay />
