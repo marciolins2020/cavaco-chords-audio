@@ -114,8 +114,7 @@ const ChordDetail = () => {
           <h1 className="text-2xl font-bold mb-4">Acorde não encontrado</h1>
           <Link to="/">
             <Button variant="outline">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar
+              ← Voltar
             </Button>
           </Link>
         </div>
