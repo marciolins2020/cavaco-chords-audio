@@ -244,6 +244,78 @@ class AudioService {
   }
 }
 
+  // === Feedback Sounds ===
+
+  async playSuccess(): Promise<void> {
+    const ok = await this.init();
+    if (!ok || !this.ctx) return;
+    const t = this.ctx.currentTime;
+    // Ascending major triad — quick & bright
+    [523.25, 659.25, 783.99].forEach((freq, i) => {
+      const osc = this.ctx!.createOscillator();
+      const g = this.ctx!.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = freq;
+      g.gain.setValueAtTime(0.18, t + i * 0.08);
+      g.gain.exponentialRampToValueAtTime(0.001, t + i * 0.08 + 0.25);
+      osc.connect(g).connect(this.ctx!.destination);
+      osc.start(t + i * 0.08);
+      osc.stop(t + i * 0.08 + 0.3);
+    });
+  }
+
+  async playFavorite(): Promise<void> {
+    const ok = await this.init();
+    if (!ok || !this.ctx) return;
+    const t = this.ctx.currentTime;
+    // Short sparkle — two rising notes
+    [880, 1318.5].forEach((freq, i) => {
+      const osc = this.ctx!.createOscillator();
+      const g = this.ctx!.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      g.gain.setValueAtTime(0.15, t + i * 0.06);
+      g.gain.exponentialRampToValueAtTime(0.001, t + i * 0.06 + 0.15);
+      osc.connect(g).connect(this.ctx!.destination);
+      osc.start(t + i * 0.06);
+      osc.stop(t + i * 0.06 + 0.2);
+    });
+  }
+
+  async playXP(): Promise<void> {
+    const ok = await this.init();
+    if (!ok || !this.ctx) return;
+    const t = this.ctx.currentTime;
+    // Quick coin-like ding
+    const osc = this.ctx.createOscillator();
+    const g = this.ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(987.77, t);
+    osc.frequency.exponentialRampToValueAtTime(1318.5, t + 0.06);
+    g.gain.setValueAtTime(0.2, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+    osc.connect(g).connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.25);
+  }
+
+  async playError(): Promise<void> {
+    const ok = await this.init();
+    if (!ok || !this.ctx) return;
+    const t = this.ctx.currentTime;
+    // Low buzz
+    const osc = this.ctx.createOscillator();
+    const g = this.ctx.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.value = 150;
+    g.gain.setValueAtTime(0.12, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+    osc.connect(g).connect(this.ctx.destination);
+    osc.start(t);
+    osc.stop(t + 0.25);
+  }
+}
+
 export const audioService = new AudioService();
 
 export async function initAudio(): Promise<void> {
