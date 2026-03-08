@@ -231,7 +231,6 @@ export default function ProfilePage() {
 
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <Target className="w-5 h-5" />
               Acertos vs Erros
             </h3>
             <ResponsiveContainer width="100%" height={250}>
