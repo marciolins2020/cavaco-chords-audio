@@ -263,7 +263,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         </div>
       ) : (
         <div className="text-center py-12 text-muted-foreground">
-          <TrendingUp className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <span className="text-5xl block mx-auto mb-3 opacity-50">📈</span>
           <p>Nenhum dado de XP para este período</p>
           <p className="text-sm mt-1">Complete desafios para ver sua evolução!</p>
         </div>
