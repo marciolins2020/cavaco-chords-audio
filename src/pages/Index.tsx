@@ -1,5 +1,4 @@
 import { useState, useMemo, Suspense } from "react";
-import { Guitar } from "lucide-react";
 import ChordCard from "@/components/ChordCard";
 import ChordExplorer from "@/components/ChordExplorer";
 import Header from "@/components/Header";

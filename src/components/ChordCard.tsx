@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Play, Heart } from "lucide-react";
 import { ChordEntry } from "@/types/chords";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,9 +8,7 @@ import { playChord, initAudio } from "@/lib/audio";
 import { useApp } from "@/contexts/AppContext";
 import { toast } from "sonner";
 
-type Props = {
-  chord: ChordEntry;
-};
+type Props = { chord: ChordEntry };
 
 const ChordCard: React.FC<Props> = ({ chord }) => {
   const mainVariation = chord.variations[0];
@@ -22,12 +19,10 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
   const handlePlay = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
     if (isPlaying) return;
-    
     setIsPlaying(true);
     try {
-      await initAudio(); // Inicializa no gesto do usuário
+      await initAudio();
       await playChord(mainVariation.frets, "strum");
     } catch (error) {
       console.error("Erro ao tocar acorde:", error);
@@ -47,7 +42,6 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
     <Link to={`/chord/${chord.id}`}>
       <Card className="p-4 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-glow)] hover:scale-[1.02] cursor-pointer group bg-card relative">
         <div className="flex flex-col items-center gap-3">
-          {/* Header com nome e ações */}
           <div className="w-full flex items-center justify-between">
             <div className="flex items-baseline gap-2">
               <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
@@ -61,21 +55,21 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
             <div className="flex gap-1">
               <Button
                 variant="ghost"
-                size="icon"
-                className="h-8 w-8"
+                size="sm"
+                className={`h-8 px-2 text-xs ${favorite ? "text-primary font-bold" : ""}`}
                 onClick={handleFavorite}
               >
-                <Heart className={`h-4 w-4 ${favorite ? "fill-current text-primary" : ""}`} />
+                {favorite ? "★" : "☆"}
               </Button>
               
               <Button
                 variant="ghost"
-                size="icon"
-                className={`h-8 w-8 ${isPlaying ? "text-primary" : ""}`}
+                size="sm"
+                className={`h-8 px-2 text-xs ${isPlaying ? "text-primary" : ""}`}
                 onClick={handlePlay}
                 disabled={isPlaying}
               >
-                <Play className={`h-4 w-4 ${isPlaying ? "animate-pulse" : ""}`} />
+                {isPlaying ? "..." : "▶"}
               </Button>
             </div>
           </div>

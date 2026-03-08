@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, Guitar, Filter, Download } from "lucide-react";
+
 import ChordCard from "@/components/ChordCard";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
