@@ -335,7 +335,7 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div className="text-center py-12 text-muted-foreground">
-              <Target className="w-12 h-12 mx-auto mb-3 opacity-50" />
+              <p>Nenhuma prática registrada ainda</p>
               <p>Nenhuma prática registrada ainda</p>
               <Link to="/pratica">
                 <Button variant="outline" className="mt-4">
