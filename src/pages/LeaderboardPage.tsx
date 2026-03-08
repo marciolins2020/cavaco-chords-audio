@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, Zap, Flame, Music, Crown, Medal, Award, TrendingUp } from "lucide-react";
+
 import { useLeaderboard, LeaderboardType } from "@/hooks/useLeaderboard";
 import { useAuth } from "@/contexts/AuthContext";
 
