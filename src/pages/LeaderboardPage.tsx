@@ -174,6 +174,10 @@ export default function LeaderboardPage() {
                           <p className="text-xs text-muted-foreground">XP</p>
                         )}
                       </div>
+                      <div className="text-right">
+                        <div className="font-bold text-lg">
+                          {selectedType === "streak" ? value : value.toLocaleString()}
+                        </div>
                         {selectedType !== "streak" && (
                           <p className="text-xs text-muted-foreground">XP</p>
                         )}
