@@ -208,7 +208,7 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
           <h4 className="font-bold text-primary text-sm mb-1">DICA RZD</h4>
           <p className="text-sm text-muted-foreground">
             Experimente as variações clicando nos pontos abaixo do diagrama.
-            Use o modo "Block" para ouvir a harmonia soando simultaneamente.
+            Use o modo "Simultâneo" para ouvir a harmonia soando ao mesmo tempo.
           </p>
         </div>
       </Card>
