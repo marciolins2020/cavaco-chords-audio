@@ -195,8 +195,7 @@ export function PracticeMode({
           variant="outline"
           size="lg"
         >
-          {showDiagram ? <EyeOff className="w-5 h-5 mr-2" /> : <Eye className="w-5 h-5 mr-2" />}
-          {showDiagram ? "Ocultar" : "Ver"} Resposta
+          {showDiagram ? "🙈 Ocultar" : "👁 Ver"} Resposta
         </Button>
 
         {feedback === "incorrect" && (
