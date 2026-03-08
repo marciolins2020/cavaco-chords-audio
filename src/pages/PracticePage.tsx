@@ -163,7 +163,7 @@ export default function PracticePage() {
                                 if (chord) navigate(`/chord/${chord.id}`);
                               }}
                             >
-                              {chordName}
+                              {displayChordName(chordName)}
                               {isMastered && " ✓"}
                             </Badge>
                           );
