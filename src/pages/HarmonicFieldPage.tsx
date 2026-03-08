@@ -24,7 +24,7 @@ export default function HarmonicFieldPage() {
 
           {/* Info Card */}
           <Card className="p-6 mb-8 bg-gradient-to-br from-primary/5 to-primary/10">
-            <h2 className="text-xl font-bold mb-3">📚 O que é Campo Harmônico?</h2>
+            <h2 className="text-xl font-bold mb-3">O que é Campo Harmônico?</h2>
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>
                 O campo harmônico é o conjunto de acordes formados a partir das notas de uma escala.
