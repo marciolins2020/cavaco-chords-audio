@@ -362,7 +362,12 @@ export function mergeChordDatabases(
   
   custom.chords.forEach((chord) => {
     const key = `${chord.root}-${chord.suffix}`;
-    chordMap.set(key, chord);
+    // Recalcula notas teóricas para garantir correção (o JSON pode ter notas erradas)
+    const correctedNotes = getExpectedChordNotes(chord.root, chord.suffix);
+    chordMap.set(key, {
+      ...chord,
+      notes: correctedNotes.length > 0 ? correctedNotes : chord.notes,
+    });
   });
   
   merged.chords = Array.from(chordMap.values());
