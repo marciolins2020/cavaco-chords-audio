@@ -110,7 +110,7 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
                   animate={{ scale: 1, rotate: 0 }}
                   className="ml-2"
                 >
-                  <Sparkles className="w-4 h-4 text-primary fill-primary" />
+                  <span className="text-primary">✨</span>
                 </motion.div>
               )}
             </div>
