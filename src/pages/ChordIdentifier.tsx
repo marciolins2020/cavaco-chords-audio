@@ -256,7 +256,7 @@ export default function ChordIdentifier() {
                 // Similar matches
                 <div className="bg-card border-2 border-border rounded-xl p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-4xl">🤔</span>
+                    <span className="text-4xl text-warning">?</span>
                     <div>
                       <h2 className="text-2xl font-bold">Quase lá!</h2>
                       <p className="text-muted-foreground">
