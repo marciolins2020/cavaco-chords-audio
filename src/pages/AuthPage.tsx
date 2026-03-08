@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import rzdLogo from "@/assets/logo-rzd-final.png";
-import { LogIn, UserPlus, Mail, Lock, User } from "lucide-react";
+
 
 export default function AuthPage() {
   const [email, setEmail] = useState("");
