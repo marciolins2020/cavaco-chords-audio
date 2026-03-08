@@ -97,57 +97,73 @@ class AudioService {
     return openFreq * Math.pow(2, fret / 12);
   }
 
-  private playTone(freq: number, startTime: number, duration: number, velocity: number) {
+  private playTone(freq: number, startTime: number, duration: number, velocity: number, stringIndex?: number) {
     if (!this.ctx || !this.bodyResonance) return;
     if (freq === 0) return;
 
+    // Normalizar posição da corda (0=grave, 1=agudo) para variar timbre
+    const stringPos = stringIndex !== undefined ? stringIndex / 3 : 0.5;
+
     // === OSCILADOR PRINCIPAL (fundamental) ===
     const osc1 = this.ctx.createOscillator();
-    osc1.type = 'sawtooth'; // Rico em harmônicos
+    osc1.type = 'sawtooth';
     osc1.frequency.setValueAtTime(freq, startTime);
-    osc1.detune.setValueAtTime((Math.random() - 0.5) * 10, startTime);
+    // Mais detune nas graves para "grossura", menos nas agudas para clareza
+    osc1.detune.setValueAtTime((Math.random() - 0.5) * (14 - stringPos * 8), startTime);
 
-    // === OSCILADOR HARMÔNICO (oitava acima - brilho) ===
+    // === OSCILADOR HARMÔNICO (oitava acima) ===
     const osc2 = this.ctx.createOscillator();
-    osc2.type = 'triangle'; // Mais suave para harmônico
-    osc2.frequency.setValueAtTime(freq * 2, startTime); // Oitava
-    osc2.detune.setValueAtTime((Math.random() - 0.5) * 8, startTime);
+    osc2.type = 'triangle';
+    osc2.frequency.setValueAtTime(freq * 2, startTime);
+    osc2.detune.setValueAtTime((Math.random() - 0.5) * 6, startTime);
 
     // === OSCILADOR DE ATAQUE (ruído metálico inicial) ===
     const osc3 = this.ctx.createOscillator();
     osc3.type = 'square';
-    osc3.frequency.setValueAtTime(freq * 3, startTime); // 3ª harmônica
+    osc3.frequency.setValueAtTime(freq * 3, startTime);
     
-    // Mixer para os osciladores
+    // Mixer
     const oscMix = this.ctx.createGain();
     const osc2Gain = this.ctx.createGain();
     const osc3Gain = this.ctx.createGain();
     
-    osc2Gain.gain.value = 0.3; // Harmônico mais baixo
-    osc3Gain.gain.value = 0.15; // Ataque metálico sutil
+    // Cordas agudas = mais harmônicos (brilho), graves = mais fundamental
+    osc2Gain.gain.value = 0.15 + stringPos * 0.3;
+    osc3Gain.gain.value = 0.08 + stringPos * 0.15;
     
-    // Envelope do ataque metálico (decai rápido)
-    osc3Gain.gain.setValueAtTime(0.2, startTime);
-    osc3Gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.05);
+    // Ataque metálico
+    osc3Gain.gain.setValueAtTime(0.12 + stringPos * 0.15, startTime);
+    osc3Gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.04);
 
-    // === FILTRO DE CORDA (simula a corda de aço) ===
+    // === FILTRO POR CORDA (diferenciação principal) ===
     const stringFilter = this.ctx.createBiquadFilter();
     stringFilter.type = 'lowpass';
-    stringFilter.Q.value = 2; // Leve ressonância para "zing"
+    // Cordas graves: cutoff mais baixo = som mais escuro
+    // Cordas agudas: cutoff mais alto = som mais brilhante e metálico
+    const baseCutoff = 4000 + stringPos * 10000;
+    stringFilter.Q.value = 1.5 + stringPos * 2;
     
-    // Envelope do filtro: começa MUITO brilhante, decai para médios
-    const attackBrightness = 12000; // Muito brilhante no ataque
-    stringFilter.frequency.setValueAtTime(attackBrightness, startTime);
-    stringFilter.frequency.exponentialRampToValueAtTime(2000, startTime + 0.08); // Decay rápido
-    stringFilter.frequency.exponentialRampToValueAtTime(800, startTime + duration);
+    stringFilter.frequency.setValueAtTime(baseCutoff, startTime);
+    stringFilter.frequency.exponentialRampToValueAtTime(baseCutoff * 0.3, startTime + 0.1);
+    stringFilter.frequency.exponentialRampToValueAtTime(baseCutoff * 0.08, startTime + duration);
 
-    // === ENVELOPE DE AMPLITUDE ===
+    // === RESSONÂNCIA POR CORDA (simula espessura diferente) ===
+    const stringResonance = this.ctx.createBiquadFilter();
+    stringResonance.type = 'peaking';
+    // Cada corda ressoa em frequência diferente
+    stringResonance.frequency.setValueAtTime(freq * 1.5, startTime);
+    stringResonance.Q.value = 3;
+    stringResonance.gain.value = 3 + stringPos * 2;
+
+    // === ENVELOPE ===
     const amp = this.ctx.createGain();
     amp.gain.setValueAtTime(0, startTime);
-    amp.gain.linearRampToValueAtTime(velocity, startTime + 0.002); // Attack MUITO rápido
-    amp.gain.setValueAtTime(velocity * 0.9, startTime + 0.01); // Pequeno decay inicial
-    amp.gain.exponentialRampToValueAtTime(velocity * 0.4, startTime + 0.15); // Sustain curto
-    amp.gain.exponentialRampToValueAtTime(0.001, startTime + duration); // Release
+    amp.gain.linearRampToValueAtTime(velocity, startTime + 0.002);
+    amp.gain.setValueAtTime(velocity * 0.9, startTime + 0.01);
+    // Cordas agudas decaem mais rápido (corda mais fina = menos sustain)
+    const decayTime = 0.15 + (1 - stringPos) * 0.1;
+    amp.gain.exponentialRampToValueAtTime(velocity * 0.4, startTime + decayTime);
+    amp.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
 
     // === CONEXÕES ===
     osc1.connect(oscMix);
@@ -157,31 +173,24 @@ class AudioService {
     osc3Gain.connect(oscMix);
     
     oscMix.connect(stringFilter);
-    stringFilter.connect(amp);
+    stringFilter.connect(stringResonance);
+    stringResonance.connect(amp);
     amp.connect(this.bodyResonance);
 
-    // Start/Stop
     osc1.start(startTime);
     osc2.start(startTime);
     osc3.start(startTime);
     osc1.stop(startTime + duration + 0.1);
     osc2.stop(startTime + duration + 0.1);
-    osc3.stop(startTime + 0.1); // Ataque curto
+    osc3.stop(startTime + 0.1);
 
-    // Cleanup
     setTimeout(() => {
       try {
-        osc1.disconnect();
-        osc2.disconnect();
-        osc3.disconnect();
-        osc2Gain.disconnect();
-        osc3Gain.disconnect();
-        oscMix.disconnect();
-        stringFilter.disconnect();
-        amp.disconnect();
-      } catch (e) {
-        // Ignore disconnect errors
-      }
+        osc1.disconnect(); osc2.disconnect(); osc3.disconnect();
+        osc2Gain.disconnect(); osc3Gain.disconnect();
+        oscMix.disconnect(); stringFilter.disconnect();
+        stringResonance.disconnect(); amp.disconnect();
+      } catch (e) {}
     }, (duration + 0.5) * 1000);
   }
 
