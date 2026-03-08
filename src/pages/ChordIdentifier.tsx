@@ -182,7 +182,7 @@ export default function ChordIdentifier() {
                 // Exact match
                 <div className="bg-card border-2 border-primary rounded-xl p-6 shadow-lg">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-4xl">✅</span>
+                    <span className="text-4xl text-success">✓</span>
                     <div>
                       <h2 className="text-2xl font-bold">
                         Você está tocando: {result.exact.root}
