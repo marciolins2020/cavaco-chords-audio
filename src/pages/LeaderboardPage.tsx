@@ -15,9 +15,9 @@ export default function LeaderboardPage() {
   const { entries, loading, myRank } = useLeaderboard(selectedType);
 
   const getRankIcon = (rank: number) => {
-    if (rank === 1) return <Crown className="w-6 h-6 text-yellow-500 fill-yellow-500" />;
-    if (rank === 2) return <Medal className="w-6 h-6 text-gray-400 fill-gray-400" />;
-    if (rank === 3) return <Award className="w-6 h-6 text-orange-600 fill-orange-600" />;
+    if (rank === 1) return <span className="text-lg font-bold text-yellow-500">🥇</span>;
+    if (rank === 2) return <span className="text-lg font-bold text-gray-400">🥈</span>;
+    if (rank === 3) return <span className="text-lg font-bold text-orange-600">🥉</span>;
     return <span className="text-lg font-bold text-muted-foreground">#{rank}</span>;
   };
 
