@@ -309,43 +309,6 @@ class AudioService {
     osc.start(t);
     osc.stop(t + 0.25);
   }
-  // Feedback sonoro: acerto (acorde maior ascendente)
-  async playSuccess(): Promise<void> {
-    const ok = await this.init();
-    if (!ok || !this.ctx) return;
-    const t = this.ctx.currentTime;
-    const notes = [523.25, 659.25, 783.99]; // C5, E5, G5
-    notes.forEach((freq, i) => {
-      const osc = this.ctx!.createOscillator();
-      const g = this.ctx!.createGain();
-      osc.type = "sine";
-      osc.frequency.value = freq;
-      g.gain.setValueAtTime(0, t + i * 0.08);
-      g.gain.linearRampToValueAtTime(0.15, t + i * 0.08 + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.001, t + i * 0.08 + 0.4);
-      osc.connect(g).connect(this.ctx!.destination);
-      osc.start(t + i * 0.08);
-      osc.stop(t + i * 0.08 + 0.45);
-    });
-  }
-
-  // Feedback sonoro: erro (intervalo dissonante descendente)
-  async playError(): Promise<void> {
-    const ok = await this.init();
-    if (!ok || !this.ctx) return;
-    const t = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const g = this.ctx.createGain();
-    osc.type = "square";
-    osc.frequency.setValueAtTime(330, t);
-    osc.frequency.linearRampToValueAtTime(220, t + 0.2);
-    g.gain.setValueAtTime(0.08, t);
-    g.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
-    osc.connect(g).connect(this.ctx.destination);
-    osc.start(t);
-    osc.stop(t + 0.35);
-  }
-}
 
 export const audioService = new AudioService();
 
