@@ -109,7 +109,6 @@ export default function AuthPage() {
             <form onSubmit={handleSignUp} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="signup-name">
-                  <User className="w-4 h-4 inline mr-2" />
                   Nome Completo
                 </Label>
                 <Input
