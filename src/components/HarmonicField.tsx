@@ -112,10 +112,10 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
                   </div>
                   <div className="flex justify-center">
                     <ChordDiagram
-                      frets={chord.variations[0].frets}
-                      fingers={chord.variations[0].fingers}
-                      barre={chord.variations[0].barre}
-                      startFret={chord.variations[0].startFret}
+                      frets={mainVariation.frets}
+                      fingers={mainVariation.fingers}
+                      barre={mainVariation.barre}
+                      startFret={mainVariation.startFret}
                     />
                   </div>
                 </div>
