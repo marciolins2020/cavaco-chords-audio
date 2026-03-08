@@ -249,11 +249,16 @@ const ChordDiagram: React.FC<Props> = ({
         {barre && (() => {
           const relativeBarre = barre.fret - effectiveStartFret + 1;
           if (relativeBarre > 0 && relativeBarre <= fretCount) {
+            const fromIdx = strings.indexOf(barre.fromString);
+            const toIdx = strings.indexOf(barre.toString);
+            const x1 = colX(Math.min(fromIdx, toIdx));
+            const x2 = colX(Math.max(fromIdx, toIdx));
+            const barreWidth = Math.max(0, x2 - x1 + 16);
             return (
               <rect
-                x={colX(strings.indexOf(barre.fromString)) - 8}
+                x={x1 - 8}
                 y={rowY(relativeBarre) - (rowY(relativeBarre) - rowY(relativeBarre - 1)) / 2 - 7}
-                width={colX(strings.indexOf(barre.toString)) - colX(strings.indexOf(barre.fromString)) + 16}
+                width={barreWidth}
                 height={14}
                 rx={7}
                 fill="hsl(var(--primary))"
