@@ -127,7 +127,7 @@ export const ChatWidget = () => {
         body: JSON.stringify({
           messages: allMessages,
           modeHint: "Responda de forma concisa e didática, use bullet points e destaque termos musicais em negrito.",
-          context: `Usuário está na página: ${location.pathname}`,
+          context: buildContext(location.pathname),
         }),
       });
 
