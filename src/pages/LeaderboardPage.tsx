@@ -114,7 +114,6 @@ export default function LeaderboardPage() {
             </div>
           ) : entries.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
-              <Trophy className="w-16 h-16 mx-auto mb-4 opacity-50" />
               <p className="text-lg">Nenhum músico no ranking ainda</p>
               <p className="text-sm mt-2">Seja o primeiro a praticar e aparecer aqui!</p>
             </div>
