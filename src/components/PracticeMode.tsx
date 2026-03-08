@@ -123,7 +123,7 @@ export function PracticeMode({
           {/* Timer */}
           <div className="text-right">
             <div className="flex items-center gap-2 text-lg font-mono">
-              <Timer className="w-4 h-4" />
+              <span>⏱</span>
               <span>{(elapsedTime / 1000).toFixed(1)}s</span>
             </div>
           </div>
