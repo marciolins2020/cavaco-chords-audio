@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "@/contexts/AppContext";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
+import { makeChordId, makeChordDisplayName } from "@/lib/chordIds";
 
 interface ChordSearchResult {
   id: string;
