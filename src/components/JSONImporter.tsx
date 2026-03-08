@@ -133,7 +133,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
             
             {isValid === true && (
               <>
-                <Check className="w-12 h-12 text-success" />
+                <span className="text-5xl block text-success">✓</span>
                 <p className="text-sm font-semibold text-success">
                   Arquivo validado com sucesso!
                 </p>
