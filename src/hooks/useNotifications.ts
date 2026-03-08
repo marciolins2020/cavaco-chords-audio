@@ -104,11 +104,11 @@ export function useNotifications() {
     if (permission !== "granted") return;
 
     const messages = [
-      "Hora de praticar seus acordes! 🎸",
-      "Que tal tocar um pouquinho? 🎵",
-      "Seus dedos estão com saudade do cavaquinho! 🎼",
-      "Pratique 10 minutos hoje e veja seu progresso! 🌟",
-      "O cavaquinho está te esperando! 🎶",
+      "Hora de praticar seus acordes!",
+      "Que tal tocar um pouquinho?",
+      "Seus dedos estão com saudade do cavaquinho!",
+      "Pratique 10 minutos hoje e veja seu progresso!",
+      "O cavaquinho está te esperando!",
     ];
 
     const message = messages[Math.floor(Math.random() * messages.length)];

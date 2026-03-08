@@ -1,11 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-
-
+import { Zap, Award, Calendar, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 
 interface XPEvent {
   date: string;
@@ -33,27 +32,18 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
   const loadXPHistory = async () => {
     if (!userId) return;
     setLoading(true);
-
     try {
       const now = new Date();
       let startDate = new Date();
-
-      if (timeRange === "week") {
-        startDate.setDate(now.getDate() - 7);
-      } else if (timeRange === "month") {
-        startDate.setDate(now.getDate() - 30);
-      } else {
-        startDate.setDate(now.getDate() - 90); // 3 meses para "all"
-      }
+      if (timeRange === "week") startDate.setDate(now.getDate() - 7);
+      else if (timeRange === "month") startDate.setDate(now.getDate() - 30);
+      else startDate.setDate(now.getDate() - 90);
 
       const xpEvents: XPEvent[] = [];
 
-      // Buscar desafios completados
       const { data: challenges } = await supabase
-        .from("daily_challenges" as any)
-        .select("*")
-        .eq("user_id", userId)
-        .eq("completed", true)
+        .from("daily_challenges" as any).select("*")
+        .eq("user_id", userId).eq("completed", true)
         .gte("updated_at", startDate.toISOString())
         .order("updated_at", { ascending: true });
 
@@ -61,18 +51,14 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         challenges.forEach((challenge: any) => {
           xpEvents.push({
             date: new Date(challenge.updated_at).toISOString().split("T")[0],
-            xp: challenge.xp_reward,
-            type: "challenge",
-            description: challenge.title,
-            icon: challenge.icon,
+            xp: challenge.xp_reward, type: "challenge",
+            description: challenge.title, icon: challenge.icon,
           });
         });
       }
 
-      // Buscar prática diária (estimativa de XP por prática)
       const { data: practiceLogs } = await supabase
-        .from("daily_practice_log")
-        .select("*")
+        .from("daily_practice_log").select("*")
         .eq("user_id", userId)
         .gte("practice_date", startDate.toISOString().split("T")[0])
         .order("practice_date", { ascending: true });
@@ -82,23 +68,17 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
           const practiceXP = (log.chords_practiced?.length || 0) * 10;
           if (practiceXP > 0) {
             xpEvents.push({
-              date: log.practice_date,
-              xp: practiceXP,
-              type: "practice",
-              description: `${log.chords_practiced?.length || 0} acordes praticados`,
-              icon: "",
+              date: log.practice_date, xp: practiceXP, type: "practice",
+              description: `${log.chords_practiced?.length || 0} acordes praticados`, icon: "",
             });
           }
         });
       }
 
-      // Ordenar eventos por data
       xpEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-      // Criar dados acumulados para o gráfico
       let cumulativeXP = 0;
       const dailyXP = new Map<string, number>();
-
       xpEvents.forEach((event) => {
         const current = dailyXP.get(event.date) || 0;
         dailyXP.set(event.date, current + event.xp);
@@ -106,7 +86,6 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
 
       const chartPoints: { date: string; xp: number }[] = [];
       const sortedDates = Array.from(dailyXP.keys()).sort();
-
       sortedDates.forEach((date) => {
         cumulativeXP += dailyXP.get(date) || 0;
         chartPoints.push({
@@ -115,7 +94,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         });
       });
 
-      setEvents(xpEvents.slice(-10)); // Últimos 10 eventos
+      setEvents(xpEvents.slice(-10));
       setChartData(chartPoints);
     } catch (error) {
       console.error("Erro ao carregar histórico de XP:", error);
@@ -124,7 +103,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
     }
   };
 
-  const getXPRank = (xp: number): { rank: string; color: string; nextRank: number } => {
+  const getXPRank = (xp: number) => {
     if (xp >= 10000) return { rank: "Lenda", color: "text-purple-500", nextRank: 0 };
     if (xp >= 5000) return { rank: "Mestre", color: "text-yellow-500", nextRank: 10000 };
     if (xp >= 2000) return { rank: "Expert", color: "text-blue-500", nextRank: 5000 };
@@ -134,9 +113,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
   };
 
   const rankInfo = getXPRank(totalXP);
-  const progressToNextRank = rankInfo.nextRank > 0 
-    ? ((totalXP % rankInfo.nextRank) / rankInfo.nextRank) * 100 
-    : 100;
+  const progressToNextRank = rankInfo.nextRank > 0 ? ((totalXP % rankInfo.nextRank) / rankInfo.nextRank) * 100 : 100;
 
   if (loading) {
     return (
@@ -153,19 +130,13 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <span className="text-xl">⚡</span>
+          <Zap className="h-5 w-5 text-primary" />
           <h3 className="text-lg font-semibold">Evolução de XP</h3>
         </div>
         <div className="flex gap-2">
           {(["week", "month", "all"] as const).map((range) => (
-            <button
-              key={range}
-              onClick={() => setTimeRange(range)}
-              className={`px-3 py-1 text-xs rounded-lg transition-colors ${
-                timeRange === range
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted hover:bg-muted/80"
-              }`}
+            <button key={range} onClick={() => setTimeRange(range)}
+              className={`px-3 py-1 text-xs rounded-lg transition-colors ${timeRange === range ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"}`}
             >
               {range === "week" ? "7 dias" : range === "month" ? "30 dias" : "90 dias"}
             </button>
@@ -173,56 +144,40 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         </div>
       </div>
 
-      {/* Rank e Total XP */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
           className="p-4 rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">XP Total</span>
-            <span className="text-xl text-primary">⚡</span>
+            <Zap className="h-5 w-5 text-primary" />
           </div>
           <div className="text-3xl font-bold text-primary mb-1">{totalXP.toLocaleString()}</div>
-          <Badge variant="secondary" className={rankInfo.color}>
-            {rankInfo.rank}
-          </Badge>
+          <Badge variant="secondary" className={rankInfo.color}>{rankInfo.rank}</Badge>
         </motion.div>
 
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.1 }}
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.1 }}
           className="p-4 rounded-lg bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20"
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">Próximo Rank</span>
-            <span className="text-xl text-secondary">🏅</span>
+            <Award className="h-5 w-5 text-secondary-foreground" />
           </div>
           {rankInfo.nextRank > 0 ? (
             <>
-              <div className="text-2xl font-bold mb-2">
-                {rankInfo.nextRank - totalXP} XP
-              </div>
+              <div className="text-2xl font-bold mb-2">{rankInfo.nextRank - totalXP} XP</div>
               <div className="w-full bg-muted rounded-full h-2">
-                <motion.div
-                  className="bg-gradient-to-r from-primary to-secondary h-2 rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progressToNextRank}%` }}
-                  transition={{ duration: 1, ease: "easeOut" }}
+                <motion.div className="bg-gradient-to-r from-primary to-secondary h-2 rounded-full"
+                  initial={{ width: 0 }} animate={{ width: `${progressToNextRank}%` }} transition={{ duration: 1, ease: "easeOut" }}
                 />
               </div>
             </>
           ) : (
-            <div className="text-xl font-bold text-purple-500">
-              Rank Máximo Alcançado!
-            </div>
+            <div className="text-xl font-bold text-purple-500">Rank Máximo Alcançado!</div>
           )}
         </motion.div>
       </div>
 
-      {/* Gráfico */}
       {chartData.length > 0 ? (
         <div className="mb-6">
           <ResponsiveContainer width="100%" height={250}>
@@ -234,70 +189,40 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-              <XAxis 
-                dataKey="date" 
-                stroke="hsl(var(--muted-foreground))" 
-                fontSize={12}
-              />
-              <YAxis 
-                stroke="hsl(var(--muted-foreground))" 
-                fontSize={12}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: "hsl(var(--background))",
-                  border: "1px solid hsl(var(--border))",
-                  borderRadius: "8px",
-                }}
+              <XAxis dataKey="date" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
+              <Tooltip contentStyle={{ backgroundColor: "hsl(var(--background))", border: "1px solid hsl(var(--border))", borderRadius: "8px" }}
                 formatter={(value: number) => [`${value} XP`, "Total"]}
               />
-              <Area
-                type="monotone"
-                dataKey="xp"
-                stroke="hsl(var(--primary))"
-                strokeWidth={2}
-                fill="url(#xpGradient)"
-              />
+              <Area type="monotone" dataKey="xp" stroke="hsl(var(--primary))" strokeWidth={2} fill="url(#xpGradient)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
       ) : (
         <div className="text-center py-12 text-muted-foreground">
-          <span className="text-5xl block mx-auto mb-3 opacity-50">📈</span>
+          <TrendingUp className="h-12 w-12 mx-auto mb-3 opacity-50" />
           <p>Nenhum dado de XP para este período</p>
           <p className="text-sm mt-1">Complete desafios para ver sua evolução!</p>
         </div>
       )}
 
-      {/* Timeline de Eventos */}
       {events.length > 0 && (
         <div>
           <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
-            <span>📅</span>
-            Atividades Recentes
+            <Calendar className="h-4 w-4" /> Atividades Recentes
           </h4>
           <div className="space-y-2 max-h-80 overflow-y-auto">
             {events.map((event, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05 }}
+              <motion.div key={index} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.05 }}
                 className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
               >
                 <div className="text-2xl">{event.icon}</div>
                 <div className="flex-1">
                   <div className="font-medium text-sm">{event.description}</div>
-                  <div className="text-xs text-muted-foreground">
-                    {new Date(event.date).toLocaleDateString("pt-BR")}
-                  </div>
+                  <div className="text-xs text-muted-foreground">{new Date(event.date).toLocaleDateString("pt-BR")}</div>
                 </div>
-                <Badge 
-                  variant={event.type === "challenge" ? "default" : "secondary"}
-                  className="gap-1"
-                >
-                  <span className="text-xs">⚡</span>
-                  +{event.xp}
+                <Badge variant={event.type === "challenge" ? "default" : "secondary"} className="gap-1">
+                  <Zap className="h-3 w-3" /> +{event.xp}
                 </Badge>
               </motion.div>
             ))}
