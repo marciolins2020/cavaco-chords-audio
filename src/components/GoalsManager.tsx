@@ -192,7 +192,7 @@ export const GoalsManager = () => {
                         size="sm"
                         onClick={() => toggleGoalActive(goal.id, false)}
                       >
-                        <Pause className="w-4 h-4" />
+                        ⏸
                       </Button>
                       <Button
                         variant="ghost"
