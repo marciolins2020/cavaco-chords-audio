@@ -14,7 +14,7 @@ const TIPS = [
   "Use o polegar como apoio atrás do braço do cavaquinho.",
   "Toque cada corda individualmente para verificar se todas soam.",
   "A pestana exige pressão uniforme — pratique devagar.",
-  "Ouça a diferença entre strum e block para treinar o ouvido.",
+  "Ouça a diferença entre dedilhado e simultâneo para treinar o ouvido.",
   "Comece pelo acorde mais fácil da progressão e adicione os outros.",
 ];
 
