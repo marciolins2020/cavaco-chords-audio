@@ -194,7 +194,7 @@ export default function ChordIdentifier() {
                       {result.enharmonicNames && result.enharmonicNames.length > 0 && (
                         <div className="mt-2 p-2 bg-accent/50 rounded-lg">
                           <p className="text-sm text-muted-foreground">
-                            <span className="font-medium">🔄 Nomes equivalentes:</span>{' '}
+                            <span className="font-medium">Nomes equivalentes:</span>{' '}
                             {result.enharmonicNames.join(' = ')}
                           </p>
                           <p className="text-xs text-muted-foreground mt-1">
