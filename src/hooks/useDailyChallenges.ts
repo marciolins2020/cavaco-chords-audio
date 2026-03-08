@@ -116,7 +116,7 @@ export const useDailyChallenges = (userId: string | undefined) => {
       if (error) throw error;
 
       setChallenges(data as any as DailyChallenge[]);
-      toast.success("🎮 Novos desafios diários disponíveis!");
+      toast.success("Novos desafios diários disponíveis!");
     } catch (error) {
       console.error("Erro ao criar desafios:", error);
     }
