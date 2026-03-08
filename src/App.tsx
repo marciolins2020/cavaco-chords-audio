@@ -21,6 +21,7 @@ import LeaderboardPage from "./pages/LeaderboardPage";
 import TunerPage from "./pages/TunerPage";
 import NotFound from "./pages/NotFound";
 
+
 const queryClient = new QueryClient();
 
 const App = () => (
