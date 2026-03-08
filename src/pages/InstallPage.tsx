@@ -83,7 +83,7 @@ export default function InstallPage() {
             {isInstalled ? (
               <Card className="p-8 bg-success/10 border-success">
                 <div className="flex items-center justify-center gap-3 mb-4">
-                  <Check className="w-8 h-8 text-success" />
+                  <span className="text-3xl">✅</span>
                   <h2 className="text-2xl font-bold text-success">App Instalado!</h2>
                 </div>
                 <p className="text-muted-foreground mb-6">
