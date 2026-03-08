@@ -210,7 +210,6 @@ export default function ProfilePage() {
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <Card className="p-6">
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5" />
               Estatísticas Gerais
             </h3>
             <ResponsiveContainer width="100%" height={250}>
