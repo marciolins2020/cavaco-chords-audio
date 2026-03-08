@@ -10,7 +10,7 @@ import { convertedChords } from "@/lib/chordConverter";
 import { ChordEntry } from "@/types/chords";
 import { usePractice } from "@/hooks/usePractice";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
-import { Trophy, Target, Award, Flame, RotateCcw, Play } from "lucide-react";
+
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
