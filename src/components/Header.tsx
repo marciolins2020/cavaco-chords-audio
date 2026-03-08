@@ -248,6 +248,7 @@ const Header = () => {
               size="sm"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="px-2"
+              aria-label={theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>

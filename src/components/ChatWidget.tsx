@@ -374,6 +374,7 @@ export const ChatWidget = () => {
                 <button
                   onClick={() => send(input)}
                   disabled={!input.trim() || isLoading}
+                  aria-label="Enviar mensagem"
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-30 hover:brightness-110 active:scale-95 transition-all shadow-md"
                   style={{
                     boxShadow: "0 4px 12px -2px hsl(var(--primary) / 0.35)",

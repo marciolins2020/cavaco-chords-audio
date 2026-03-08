@@ -245,7 +245,7 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
     <div className={`relative ${className}`}>
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg">🔍</span>
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg" aria-hidden="true">🔍</span>
           <input
             ref={inputRef}
             type="text"
@@ -258,6 +258,7 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
             onFocus={() => query && setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
             placeholder="Digite o acorde (ex: C, Dm7, G7, Am, F#m)"
+            aria-label="Buscar acorde"
             className="w-full pl-12 pr-4 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-2 border-border bg-background focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none transition-all"
           />
         </div>

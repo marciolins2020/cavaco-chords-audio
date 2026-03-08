@@ -79,6 +79,7 @@ export const OnboardingTour = () => {
             {/* Close */}
             <button
               onClick={finish}
+              aria-label="Fechar tour"
               className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors text-sm font-bold"
             >
               ✕

@@ -71,6 +71,7 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
                 className={`h-8 px-2 text-xs ${isPlaying ? "text-primary" : ""}`}
                 onClick={handlePlay}
                 disabled={isPlaying}
+                aria-label={`Tocar acorde ${chord.root}${chord.quality}`}
               >
                 {isPlaying ? "..." : "▶"}
               </Button>
