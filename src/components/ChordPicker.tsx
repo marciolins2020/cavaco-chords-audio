@@ -44,6 +44,7 @@ function displayName(chord: ChordEntry): string {
 export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPickerProps) {
   const [search, setSearch] = useState("");
   const [selectedRoot, setSelectedRoot] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<ChordCategory | null>(null);
 
   const validChords = useMemo(
     () => chords.filter((c) => c.variations && c.variations.length > 0),
@@ -67,6 +68,9 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
 
   const filtered = useMemo(() => {
     let list = selectedRoot ? grouped.get(selectedRoot) || [] : validChords;
+    if (selectedCategory) {
+      list = list.filter((c) => getChordCategory(c.quality) === selectedCategory);
+    }
     if (search.trim()) {
       const q = search.trim().toLowerCase();
       list = list.filter(
@@ -77,7 +81,7 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
       );
     }
     return list;
-  }, [validChords, grouped, selectedRoot, search]);
+  }, [validChords, grouped, selectedRoot, selectedCategory, search]);
 
   return (
     <Card className="p-6">
