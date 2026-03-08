@@ -158,8 +158,7 @@ export default function ChordIdentifier() {
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
-          <ArrowLeft className="h-4 w-4" />
-          Voltar
+          ← Voltar
         </button>
 
         <div className="max-w-6xl mx-auto">

@@ -189,7 +189,6 @@ export default function LeaderboardPage() {
         {/* Info Card */}
         <Card className="p-6 mt-6 bg-gradient-to-br from-muted/50 to-muted/20">
           <div className="flex items-start gap-3">
-            <Trophy className="w-5 h-5 text-primary mt-1" />
             <div>
               <h4 className="font-semibold mb-2">Como funciona o ranking?</h4>
               <ul className="text-sm text-muted-foreground space-y-1">
