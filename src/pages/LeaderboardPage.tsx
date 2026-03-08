@@ -160,14 +160,8 @@ export default function LeaderboardPage() {
                           )}
                         </div>
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Music className="w-3 h-3" />
-                            {entry.chords_mastered} acordes
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Flame className="w-3 h-3" />
-                            {entry.current_streak} dias
-                          </span>
+                          <span>{entry.chords_mastered} acordes</span>
+                          <span>{entry.current_streak} dias</span>
                         </div>
                       </div>
 
