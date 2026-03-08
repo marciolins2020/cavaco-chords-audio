@@ -273,7 +273,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
       {events.length > 0 && (
         <div>
           <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
-            <Calendar className="w-4 h-4" />
+            <span>📅</span>
             Atividades Recentes
           </h4>
           <div className="space-y-2 max-h-80 overflow-y-auto">
