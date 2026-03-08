@@ -236,7 +236,7 @@ export function PracticeMode({
             <>
               <CheckCircle className="w-16 h-16 mx-auto mb-3 text-success" />
               <h3 className="text-2xl font-bold text-success mb-2">
-                Perfeito! 🎉
+                Perfeito!
               </h3>
               <p className="text-muted-foreground">
                 Você acertou em {(elapsedTime / 1000).toFixed(1)} segundos!
