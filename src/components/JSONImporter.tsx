@@ -95,8 +95,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <FileJson className="w-5 h-5" />
-            Importar Banco de Acordes
+            📄 Importar Banco de Acordes
           </DialogTitle>
           <DialogDescription>
             Faça upload de um arquivo JSON com acordes customizados.
