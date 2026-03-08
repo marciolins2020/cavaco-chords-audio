@@ -84,14 +84,15 @@ const ChordDiagram: React.FC<Props> = ({
     const fret = frets[getStringIndex(s)];
     if (fret < 0) return null;
     const x = colX(i);
-    const hitWidth = (width - 2 * margin) / (strings.length - 1);
+    const hitWidth = Math.max(0, (width - 2 * margin) / (strings.length - 1));
+    const hitHeight = Math.max(0, rowY(fretCount) - rowY(0) + 36);
     return (
       <rect
         key={`hit-${s}`}
         x={x - hitWidth / 2}
         y={rowY(0) - 18}
         width={hitWidth}
-        height={rowY(fretCount) - rowY(0) + 36}
+        height={hitHeight}
         fill="transparent"
         className="cursor-pointer"
         onClick={() => handleStringClick(s)}
