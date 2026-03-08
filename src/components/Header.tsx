@@ -44,7 +44,7 @@ const Header = () => {
           {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="sm" className="md:hidden">
+              <Button variant="ghost" size="sm" className="md:hidden" aria-label="Abrir menu de navegação">
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
@@ -215,7 +215,7 @@ const Header = () => {
               size="sm"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="px-2"
-              title={theme === "dark" ? "Tema Claro" : "Tema Escuro"}
+              aria-label={theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
@@ -223,7 +223,7 @@ const Header = () => {
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="px-2">
+                  <Button variant="ghost" size="sm" className="px-2" aria-label="Menu do usuário">
                     <User className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -248,6 +248,7 @@ const Header = () => {
               size="sm"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="px-2"
+              aria-label={theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>

@@ -198,6 +198,7 @@ export const ChatWidget = () => {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setOpen(true)}
+            aria-label="Abrir assistente RedData A.I."
             className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full overflow-hidden shadow-lg bg-white"
             style={{
               boxShadow: "0 4px 24px -2px hsl(var(--primary) / 0.4), 0 0 0 3px hsl(var(--primary) / 0.12)",
@@ -238,6 +239,7 @@ export const ChatWidget = () => {
               </div>
               <button
                 onClick={() => setOpen(false)}
+                aria-label="Fechar assistente"
                 className="rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors text-sm font-bold"
               >
                 ✕
@@ -372,6 +374,7 @@ export const ChatWidget = () => {
                 <button
                   onClick={() => send(input)}
                   disabled={!input.trim() || isLoading}
+                  aria-label="Enviar mensagem"
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-30 hover:brightness-110 active:scale-95 transition-all shadow-md"
                   style={{
                     boxShadow: "0 4px 12px -2px hsl(var(--primary) / 0.35)",

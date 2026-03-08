@@ -60,13 +60,14 @@ export const OnboardingTour = () => {
   return (
     <AnimatePresence>
       {show && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-          style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(8px)" }}
-        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-auto"
+            style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(8px)" }}
+            onClick={(e) => { if (e.target === e.currentTarget) finish(); }}
+          >
           <motion.div
             key={step}
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -78,6 +79,7 @@ export const OnboardingTour = () => {
             {/* Close */}
             <button
               onClick={finish}
+              aria-label="Fechar tour"
               className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors text-sm font-bold"
             >
               ✕
