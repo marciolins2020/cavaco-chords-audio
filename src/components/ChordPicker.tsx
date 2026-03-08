@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -138,7 +139,7 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
       </div>
 
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 max-h-[320px] overflow-y-auto pr-1">
-        {filtered.map((chord) => {
+        {filtered.map((chord, index) => {
           const isMastered = masteredChords.includes(chord.id);
           const mainVar = chord.variations[0];
           const category = getChordCategory(chord.quality);
@@ -147,7 +148,10 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
           return (
             <HoverCard key={chord.id} openDelay={200} closeDelay={100}>
               <HoverCardTrigger asChild>
-                <button
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.9, y: 8 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.4), ease: "easeOut" }}
                   onClick={() => onSelect(chord)}
                   className={`relative p-3 rounded-lg border-2 text-center transition-all hover:scale-105 hover:shadow-lg group ${
                     isMastered
@@ -170,7 +174,7 @@ export function ChordPicker({ chords, masteredChords = [], onSelect }: ChordPick
                       ✓
                     </Badge>
                   )}
-                </button>
+                </motion.button>
               </HoverCardTrigger>
               <HoverCardContent side="top" className="w-auto p-3" sideOffset={8}>
                 <div className="text-center">
