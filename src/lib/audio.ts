@@ -47,11 +47,12 @@ class AudioService {
       this.masterGain.gain.value = 0.35;
 
       // CAVAQUINHO: Corpo pequeno = ressonância mais alta (~800-1200Hz)
+      // Reduzido para não mascarar diferenças entre cordas
       this.bodyResonance = this.ctx.createBiquadFilter();
       this.bodyResonance.type = 'peaking';
       this.bodyResonance.frequency.value = 1000;
-      this.bodyResonance.Q.value = 2;
-      this.bodyResonance.gain.value = 8;
+      this.bodyResonance.Q.value = 1.2;
+      this.bodyResonance.gain.value = 4;
 
       // BRILHO: Boost nos agudos para som metálico das cordas de aço
       this.brightnessBoost = this.ctx.createBiquadFilter();
