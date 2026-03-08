@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChordEntry } from "@/types/chords";
+import { fireMasteryConfetti } from "@/lib/confetti";
 import { InteractiveFretboard } from "./InteractiveFretboard";
 import ChordDiagram from "./ChordDiagram";
 import { Button } from "./ui/button";
