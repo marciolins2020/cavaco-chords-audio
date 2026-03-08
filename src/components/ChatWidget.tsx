@@ -1,22 +1,48 @@
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { X, Send, MessageCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 import rzdLogo from "@/assets/logo-rzd-final.png";
 
-interface Message {
-  role: "user" | "assistant";
-  content: string;
+type Msg = { role: "user" | "assistant"; content: string };
+
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/rzd-assistant`;
+
+const SUGGESTIONS = [
+  { text: "Como fazer o acorde de Dó maior?" },
+  { text: "Progressão comum de samba?" },
+  { text: "Diferença entre C7 e Cmaj7?" },
+];
+
+function renderMarkdown(text: string) {
+  const lines = text.split("\n");
+  const elements: React.ReactNode[] = [];
+  lines.forEach((line, idx) => {
+    let cleaned = line.replace(/^#{1,4}\s*/, "");
+    cleaned = cleaned.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+    cleaned = cleaned.replace(/^\*\s+/, "• ");
+    cleaned = cleaned.replace(/^-\s+/, "• ");
+    if (line.match(/^#{1,4}\s/)) {
+      elements.push(<p key={idx} className="font-semibold text-foreground mt-2 mb-0.5 text-[13px]" dangerouslySetInnerHTML={{ __html: cleaned }} />);
+    } else if (cleaned.startsWith("• ")) {
+      elements.push(<p key={idx} className="pl-3 text-[12px]" dangerouslySetInnerHTML={{ __html: cleaned }} />);
+    } else if (cleaned.trim() === "") {
+      elements.push(<div key={idx} className="h-1.5" />);
+    } else {
+      elements.push(<p key={idx} className="text-[12px]" dangerouslySetInnerHTML={{ __html: cleaned }} />);
+    }
+  });
+  return elements;
 }
 
 export const ChatWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [open, setOpen] = useState(false);
+  const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [hoveredSuggestion, setHoveredSuggestion] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/rzd-assistant`;
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -24,11 +50,29 @@ export const ChatWidget = () => {
     }
   }, [messages]);
 
-  const streamChat = async (userMessage: string) => {
-    const newMessages = [...messages, { role: "user" as const, content: userMessage }];
-    setMessages(newMessages);
+  useEffect(() => {
+    if (open) inputRef.current?.focus();
+  }, [open]);
+
+  const send = async (text: string) => {
+    if (!text.trim() || isLoading) return;
+    const userMsg: Msg = { role: "user", content: text.trim() };
+    const allMessages = [...messages, userMsg];
+    setMessages(allMessages);
     setInput("");
     setIsLoading(true);
+
+    let assistantSoFar = "";
+    const upsert = (chunk: string) => {
+      assistantSoFar += chunk;
+      setMessages((prev) => {
+        const last = prev[prev.length - 1];
+        if (last?.role === "assistant") {
+          return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: assistantSoFar } : m));
+        }
+        return [...prev, { role: "assistant", content: assistantSoFar }];
+      });
+    };
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -37,155 +81,250 @@ export const ChatWidget = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({
+          messages: allMessages,
+          modeHint: "Responda de forma concisa e didática, use bullet points e destaque termos musicais em negrito.",
+        }),
       });
 
-      if (!resp.ok || !resp.body) throw new Error("Erro ao conectar com o assistente");
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ error: "Erro desconhecido" }));
+        toast.error(err.error || `Erro ${resp.status}`);
+        setIsLoading(false);
+        return;
+      }
 
-      const reader = resp.body.getReader();
+      const reader = resp.body?.getReader();
+      if (!reader) throw new Error("No reader");
       const decoder = new TextDecoder();
-      let textBuffer = "";
-      let assistantMessage = "";
+      let buf = "";
 
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-        
-        textBuffer += decoder.decode(value, { stream: true });
-
-        let newlineIndex: number;
-        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
-          let line = textBuffer.slice(0, newlineIndex);
-          textBuffer = textBuffer.slice(newlineIndex + 1);
-
+        buf += decoder.decode(value, { stream: true });
+        let idx: number;
+        while ((idx = buf.indexOf("\n")) !== -1) {
+          let line = buf.slice(0, idx);
+          buf = buf.slice(idx + 1);
           if (line.endsWith("\r")) line = line.slice(0, -1);
-          if (line.startsWith(":") || line.trim() === "") continue;
           if (!line.startsWith("data: ")) continue;
-
-          const jsonStr = line.slice(6).trim();
-          if (jsonStr === "[DONE]") break;
-
+          const json = line.slice(6).trim();
+          if (json === "[DONE]") break;
           try {
-            const parsed = JSON.parse(jsonStr);
-            const content = parsed.choices?.[0]?.delta?.content as string | undefined;
-            if (content) {
-              assistantMessage += content;
-              setMessages([...newMessages, { role: "assistant", content: assistantMessage }]);
-            }
+            const c = JSON.parse(json).choices?.[0]?.delta?.content;
+            if (c) upsert(c);
           } catch {
-            textBuffer = line + "\n" + textBuffer;
+            buf = line + "\n" + buf;
             break;
           }
         }
       }
-    } catch (error) {
-      console.error("Erro no chat:", error);
-      setMessages([...newMessages, { 
-        role: "assistant", 
-        content: "Desculpe, ocorreu um erro. Tente novamente." 
-      }]);
-    } finally {
-      setIsLoading(false);
+    } catch (e) {
+      console.error(e);
+      toast.error("Falha na comunicação com o assistente.");
     }
-  };
-
-  const handleSend = () => {
-    if (!input.trim() || isLoading) return;
-    streamChat(input);
+    setIsLoading(false);
   };
 
   return (
     <>
-      {/* Botão flutuante */}
-      {!isOpen && (
-        <Button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 h-14 w-14 sm:h-16 sm:w-16 sm:bottom-6 sm:right-6 rounded-full shadow-lg hover:scale-110 transition-transform z-50 p-0 overflow-hidden bg-white"
-          size="icon"
-        >
-          <img src={rzdLogo} alt="RZD Assistant" className="h-full w-full object-contain p-2" />
-        </Button>
-      )}
+      {/* Floating Button */}
+      <AnimatePresence>
+        {!open && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setOpen(true)}
+            className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full overflow-hidden shadow-lg bg-white"
+            style={{
+              boxShadow: "0 4px 24px -2px hsl(var(--primary) / 0.4), 0 0 0 3px hsl(var(--primary) / 0.12)",
+            }}
+          >
+            <img src={rzdLogo} alt="RedData A.I." className="h-full w-full object-contain p-2" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
-      {/* Widget de chat */}
-      {isOpen && (
-        <div className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 w-full sm:w-96 h-[70vh] sm:h-[500px] bg-background border-t sm:border border-border sm:rounded-lg shadow-2xl flex flex-col z-50">
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-border bg-background">
-            <div className="flex items-center gap-3">
-              <img src={rzdLogo} alt="RZD" className="h-8 w-auto" />
-              <div>
-                <h3 className="font-semibold text-sm">Assistente RZD</h3>
-                <p className="text-xs text-muted-foreground">Acordes de Cavaquinho</p>
-              </div>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(false)}
-              className="h-8 w-8"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
-
-          {/* Mensagens */}
-          <ScrollArea className="flex-1 p-4" ref={scrollRef}>
-            {messages.length === 0 && (
-              <div className="text-center text-muted-foreground text-sm py-8">
-                <img src={rzdLogo} alt="RZD" className="h-12 w-auto mx-auto mb-3 opacity-50" />
-                <p>Olá! Pergunte sobre acordes de cavaquinho.</p>
-              </div>
-            )}
-            <div className="space-y-4">
-              {messages.map((msg, idx) => (
-                <div
-                  key={idx}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <div
-                    className={`max-w-[80%] rounded-lg px-4 py-2 ${
-                      msg.role === "user"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted"
-                    }`}
-                  >
-                    <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
-                  </div>
+      {/* Chat Panel — Glassmorphism */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, x: 60, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 60, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 320, damping: 26 }}
+            className="fixed bottom-6 right-6 z-50 flex flex-col overflow-hidden rounded-2xl border border-white/20"
+            style={{
+              width: "min(380px, calc(100vw - 48px))",
+              height: "min(540px, calc(100vh - 100px))",
+              background: "linear-gradient(160deg, hsl(0 0% 100% / 0.10), hsl(0 0% 98% / 0.06))",
+              backdropFilter: "blur(24px) saturate(1.3)",
+              WebkitBackdropFilter: "blur(24px) saturate(1.3)",
+              boxShadow:
+                "0 12px 48px -8px hsl(210 25% 15% / 0.12), 0 0 0 1px hsl(0 0% 100% / 0.12), inset 0 1px 0 0 hsl(0 0% 100% / 0.15)",
+            }}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-4 shrink-0 border-b border-border/10">
+              <div className="flex items-center gap-3">
+                <img src={rzdLogo} alt="RZD" className="h-7 object-contain" />
+                <div>
+                  <p className="text-sm font-semibold text-foreground leading-none">RedData A.I.</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">Acordes de Cavaquinho</p>
                 </div>
-              ))}
-              {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-muted rounded-lg px-4 py-2">
-                    <p className="text-sm">Digitando...</p>
+              </div>
+              <button
+                onClick={() => setOpen(false)}
+                className="rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors text-sm font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Messages / Welcome */}
+            <div ref={scrollRef} className="flex-1 overflow-y-auto px-5 py-4 space-y-3 scroll-smooth">
+              {messages.length === 0 && (
+                <div className="flex flex-col items-center justify-center h-full gap-5 py-6">
+                  <div
+                    className="h-16 w-16 rounded-full flex items-center justify-center overflow-hidden bg-white"
+                    style={{
+                      boxShadow: "0 0 24px 4px hsl(var(--primary) / 0.12)",
+                      border: "2px solid hsl(var(--primary) / 0.15)",
+                    }}
+                  >
+                    <img src={rzdLogo} alt="RedData A.I." className="h-full w-full object-contain p-2" />
+                  </div>
+
+                  <p className="text-[13px] text-muted-foreground text-center max-w-[280px] leading-relaxed">
+                    Pergunte sobre acordes, progressões ou teoria do cavaquinho.
+                  </p>
+
+                  {/* Suggestion Capsules */}
+                  <div className="flex flex-col gap-2.5 w-full mt-1">
+                    {SUGGESTIONS.map((s, i) => {
+                      const isHovered = hoveredSuggestion === i;
+                      return (
+                        <motion.button
+                          key={i}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.08 }}
+                          onMouseEnter={() => setHoveredSuggestion(i)}
+                          onMouseLeave={() => setHoveredSuggestion(null)}
+                          onClick={() => send(s.text)}
+                          className={cn(
+                            "flex items-center gap-3 text-left rounded-xl px-4 py-3 text-[13px] font-medium transition-all duration-200",
+                            isHovered
+                              ? "border-primary/50 bg-primary/5 text-foreground shadow-[0_0_12px_-2px_hsl(var(--primary)/0.25)]"
+                              : "border-border/50 bg-muted/30 text-muted-foreground hover:text-foreground"
+                          )}
+                          style={{
+                            border: `1.5px solid ${isHovered ? "hsl(var(--primary) / 0.5)" : "hsl(var(--border) / 0.5)"}`,
+                          }}
+                        >
+                          <span>{s.text}</span>
+                        </motion.button>
+                      );
+                    })}
                   </div>
                 </div>
               )}
-            </div>
-          </ScrollArea>
 
-          {/* Input */}
-          <div className="p-4 border-t border-border bg-background">
-            <div className="flex gap-2">
-              <Input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder="Digite sua pergunta..."
-                disabled={isLoading}
-                className="flex-1"
-              />
-              <Button
-                onClick={handleSend}
-                disabled={isLoading || !input.trim()}
-                size="icon"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
+              {/* Chat bubbles */}
+              <AnimatePresence>
+                {messages.map((m, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={cn(
+                      "rounded-2xl px-4 py-3 text-[12.5px] leading-relaxed max-w-[88%]",
+                      m.role === "user"
+                        ? "ml-auto bg-primary text-primary-foreground"
+                        : "mr-auto text-foreground"
+                    )}
+                    style={
+                      m.role === "assistant"
+                        ? {
+                            background: "linear-gradient(145deg, hsl(0 0% 97% / 0.95), hsl(210 12% 95% / 0.8))",
+                            border: "1px solid hsl(0 0% 0% / 0.05)",
+                            backdropFilter: "blur(8px)",
+                          }
+                        : undefined
+                    }
+                  >
+                    {m.role === "assistant" ? renderMarkdown(m.content) : m.content}
+                    {m.role === "assistant" && isLoading && i === messages.length - 1 && (
+                      <span className="inline-block ml-1 animate-pulse text-primary">|</span>
+                    )}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+
+              {/* Loading indicator */}
+              {isLoading && messages[messages.length - 1]?.role === "user" && (
+                <div
+                  className="mr-auto rounded-2xl px-4 py-3 text-[12.5px] text-muted-foreground max-w-[88%]"
+                  style={{
+                    background: "linear-gradient(145deg, hsl(0 0% 97% / 0.95), hsl(210 12% 95% / 0.8))",
+                    border: "1px solid hsl(0 0% 0% / 0.05)",
+                  }}
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="flex gap-1">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/50 animate-bounce" style={{ animationDelay: "0ms" }} />
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/50 animate-bounce" style={{ animationDelay: "150ms" }} />
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/50 animate-bounce" style={{ animationDelay: "300ms" }} />
+                    </span>
+                    Analisando...
+                  </span>
+                </div>
+              )}
             </div>
-          </div>
-        </div>
-      )}
+
+            {/* Input Bar */}
+            <div
+              className="shrink-0 px-4 py-3 border-t border-border/10"
+              style={{ background: "hsl(0 0% 100% / 0.35)", backdropFilter: "blur(12px)" }}
+            >
+              <div className="flex items-end gap-2.5">
+                <div className="relative flex-1">
+                  <textarea
+                    ref={inputRef}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        send(input);
+                      }
+                    }}
+                    placeholder="Pergunte ao RedData A.I..."
+                    rows={1}
+                    disabled={isLoading}
+                    className="w-full resize-none rounded-xl border border-border/40 bg-background/70 pl-4 pr-10 py-2.5 text-[13px] placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 disabled:opacity-50 max-h-[80px] transition-all"
+                    style={{ minHeight: "40px" }}
+                  />
+                </div>
+                <button
+                  onClick={() => send(input)}
+                  disabled={!input.trim() || isLoading}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground disabled:opacity-30 hover:brightness-110 active:scale-95 transition-all shadow-md"
+                  style={{
+                    boxShadow: "0 4px 12px -2px hsl(var(--primary) / 0.35)",
+                  }}
+                >
+                  <span className="text-sm font-bold">&rarr;</span>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
