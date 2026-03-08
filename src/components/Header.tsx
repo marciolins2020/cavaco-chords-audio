@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/sheet";
 import { useState } from "react";
 import { useTheme } from "next-themes";
+import { Menu, Music, Target, Trophy, AudioLines, Piano, Star, Info, Hand, Sun, Moon, User, ChevronDown } from "lucide-react";
 
 const Header = () => {
   const { leftHanded, setLeftHanded, favorites } = useApp();
@@ -43,8 +44,8 @@ const Header = () => {
           {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="sm" className="md:hidden text-xs font-bold">
-                ☰
+              <Button variant="ghost" size="sm" className="md:hidden">
+                <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-72">
@@ -56,33 +57,33 @@ const Header = () => {
               </SheetHeader>
               <div className="mt-6 flex flex-col gap-2">
                 <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/") ? "default" : "ghost"} className="w-full justify-start">
-                    🎵 Acordes
+                  <Button variant={isActive("/") ? "default" : "ghost"} className="w-full justify-start gap-2">
+                    <Music className="h-4 w-4" /> Acordes
                   </Button>
                 </Link>
                 <Link to="/pratica" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/pratica") ? "default" : "ghost"} className="w-full justify-start">
-                    🎯 Modo Prática
+                  <Button variant={isActive("/pratica") ? "default" : "ghost"} className="w-full justify-start gap-2">
+                    <Target className="h-4 w-4" /> Modo Prática
                   </Button>
                 </Link>
                 <Link to="/ranking" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/ranking") ? "default" : "ghost"} className="w-full justify-start">
-                    🏆 Ranking
+                  <Button variant={isActive("/ranking") ? "default" : "ghost"} className="w-full justify-start gap-2">
+                    <Trophy className="h-4 w-4" /> Ranking
                   </Button>
                 </Link>
                 <Link to="/afinador" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/afinador") ? "default" : "ghost"} className="w-full justify-start">
-                    🎼 Afinador
+                  <Button variant={isActive("/afinador") ? "default" : "ghost"} className="w-full justify-start gap-2">
+                    <AudioLines className="h-4 w-4" /> Afinador
                   </Button>
                 </Link>
                 <Link to="/campo-harmonico" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/campo-harmonico") ? "default" : "ghost"} className="w-full justify-start">
-                    🎹 Campo Harmônico
+                  <Button variant={isActive("/campo-harmonico") ? "default" : "ghost"} className="w-full justify-start gap-2">
+                    <Piano className="h-4 w-4" /> Campo Harmônico
                   </Button>
                 </Link>
                 <Link to="/favoritos" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/favoritos") ? "default" : "ghost"} className="w-full justify-start relative">
-                    ⭐ Favoritos
+                  <Button variant={isActive("/favoritos") ? "default" : "ghost"} className="w-full justify-start relative gap-2">
+                    <Star className="h-4 w-4" /> Favoritos
                     {favorites.length > 0 && (
                       <span className="ml-auto bg-primary text-primary-foreground text-xs rounded-full px-2 py-0.5">
                         {favorites.length}
@@ -91,8 +92,8 @@ const Header = () => {
                   </Button>
                 </Link>
                 <Link to="/sobre" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/sobre") ? "default" : "ghost"} className="w-full justify-start">
-                    ℹ️ Sobre
+                  <Button variant={isActive("/sobre") ? "default" : "ghost"} className="w-full justify-start gap-2">
+                    <Info className="h-4 w-4" /> Sobre
                   </Button>
                 </Link>
 
@@ -101,17 +102,18 @@ const Header = () => {
                 <Button
                   variant={leftHanded ? "default" : "outline"}
                   onClick={() => { setLeftHanded(!leftHanded); setMobileMenuOpen(false); }}
-                  className="w-full justify-start"
+                  className="w-full justify-start gap-2"
                 >
-                  {leftHanded ? "🤚 Canhoto" : "✋ Destro"}
+                  <Hand className="h-4 w-4" /> {leftHanded ? "Canhoto" : "Destro"}
                 </Button>
 
                 <Button
                   variant="outline"
                   onClick={() => { setTheme(theme === "dark" ? "light" : "dark"); setMobileMenuOpen(false); }}
-                  className="w-full justify-start"
+                  className="w-full justify-start gap-2"
                 >
-                  {theme === "dark" ? "☀️ Tema Claro" : "🌙 Tema Escuro"}
+                  {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                  {theme === "dark" ? "Tema Claro" : "Tema Escuro"}
                 </Button>
 
                 {user ? (
@@ -121,8 +123,8 @@ const Header = () => {
                       <p className="font-medium truncate">{user.email}</p>
                     </div>
                     <Link to="/perfil" onClick={() => setMobileMenuOpen(false)}>
-                      <Button variant="ghost" className="w-full justify-start">
-                        👤 Meu Perfil
+                      <Button variant="ghost" className="w-full justify-start gap-2">
+                        <User className="h-4 w-4" /> Meu Perfil
                       </Button>
                     </Link>
                     <Button
@@ -158,32 +160,33 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* Desktop Navigation — max 5 visible items + "Mais" dropdown */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1.5">
             <Link to="/"><Button variant={isActive("/") ? "default" : "ghost"} size="sm">Acordes</Button></Link>
             <Link to="/pratica"><Button variant={isActive("/pratica") ? "default" : "ghost"} size="sm">Prática</Button></Link>
             <Link to="/ranking"><Button variant={isActive("/ranking") ? "default" : "ghost"} size="sm">Ranking</Button></Link>
             <Link to="/afinador"><Button variant={isActive("/afinador") ? "default" : "ghost"} size="sm">Afinador</Button></Link>
 
-            {/* "Mais" dropdown — secondary items */}
+            {/* "Mais" dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button 
                   variant={(isActive("/campo-harmonico") || isActive("/favoritos") || isActive("/sobre")) ? "secondary" : "ghost"} 
                   size="sm"
+                  className="gap-1"
                 >
-                  Mais ▾
+                  Mais <ChevronDown className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-52">
                 <Link to="/campo-harmonico">
-                  <DropdownMenuItem className="cursor-pointer">
-                    🎹 Campo Harmônico
+                  <DropdownMenuItem className="cursor-pointer gap-2">
+                    <Piano className="h-4 w-4" /> Campo Harmônico
                   </DropdownMenuItem>
                 </Link>
                 <Link to="/favoritos">
                   <DropdownMenuItem className="cursor-pointer flex items-center justify-between">
-                    <span>⭐ Favoritos</span>
+                    <span className="flex items-center gap-2"><Star className="h-4 w-4" /> Favoritos</span>
                     {favorites.length > 0 && (
                       <span className="bg-primary text-primary-foreground text-xs rounded-full px-2 py-0.5">
                         {favorites.length}
@@ -193,34 +196,36 @@ const Header = () => {
                 </Link>
                 <DropdownMenuSeparator />
                 <Link to="/sobre">
-                  <DropdownMenuItem className="cursor-pointer">
-                    ℹ️ Sobre
+                  <DropdownMenuItem className="cursor-pointer gap-2">
+                    <Info className="h-4 w-4" /> Sobre
                   </DropdownMenuItem>
                 </Link>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setLeftHanded(!leftHanded)} className="cursor-pointer">
-                  {leftHanded ? "🤚 Canhoto ✓" : "✋ Destro ✓"}
+                <DropdownMenuItem onClick={() => setLeftHanded(!leftHanded)} className="cursor-pointer gap-2">
+                  <Hand className="h-4 w-4" /> {leftHanded ? "Canhoto" : "Destro"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             <div className="h-6 w-px bg-border mx-0.5" />
 
-            {/* Dark mode toggle — always visible */}
+            {/* Dark mode toggle */}
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="px-2 text-lg"
+              className="px-2"
               title={theme === "dark" ? "Tema Claro" : "Tema Escuro"}
             >
-              {theme === "dark" ? "☀️" : "🌙"}
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm">👤</Button>
+                  <Button variant="ghost" size="sm" className="px-2">
+                    <User className="h-4 w-4" />
+                  </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
                   <div className="px-2 py-2 text-sm">
@@ -242,13 +247,13 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="px-2 text-base"
+              className="px-2"
             >
-              {theme === "dark" ? "☀️" : "🌙"}
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
 
             {user ? (
-              <Link to="/perfil"><Button variant="ghost" size="sm" className="px-2 text-xs">👤</Button></Link>
+              <Link to="/perfil"><Button variant="ghost" size="sm" className="px-2"><User className="h-4 w-4" /></Button></Link>
             ) : (
               <Link to="/auth"><Button variant="default" size="sm" className="px-2 text-xs">Entrar</Button></Link>
             )}
