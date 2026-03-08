@@ -321,7 +321,7 @@ const GENERATED_DB: ChordDatabase = generateFullDatabase();
 
 // Merge course chords (priority) with generated chords (fallback)
 function buildDefaultDB(): ChordDatabase {
-  const courseDB = rzdCourseData as ChordDatabase;
+  const courseDB = rzdCourseData as unknown as ChordDatabase;
   // Course chords override generated ones
   return mergeChordDatabases(GENERATED_DB, courseDB);
 }
