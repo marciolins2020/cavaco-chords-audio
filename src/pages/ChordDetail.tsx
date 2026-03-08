@@ -66,7 +66,7 @@ const ChordDetail = () => {
         description: chordDef.suffix
       };
       
-      const chordId = chordDef.root + suffixInfo.quality;
+      const chordId = makeChordId(chordDef.root, chordDef.suffix);
       
       if (chordId === id) {
         // Calcula as notas reais da primeira variação

@@ -36,7 +36,7 @@ const Index = () => {
       };
       
       return {
-        id: chord.root + suffixInfo.quality,
+        id: makeChordId(chord.root, chord.suffix),
         root: chord.root,
         quality: suffixInfo.quality,
         notes: [],
