@@ -105,8 +105,7 @@ export const StreakCalendar = ({
                 onClick={onUseFreeze}
                 className="gap-2"
               >
-                <Snowflake className="w-4 h-4" />
-                Usar Congelamento ({freezeCount})
+                ❄ Usar Congelamento ({freezeCount})
               </Button>
               <p className="text-xs text-muted-foreground mt-1">
                 Preserve seu streak
