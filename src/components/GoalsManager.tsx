@@ -84,7 +84,7 @@ export const GoalsManager = () => {
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <Target className="w-5 h-5 text-primary" />
+          <span className="text-xl">🎯</span>
           <h3 className="text-lg font-semibold">Metas de Prática</h3>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
