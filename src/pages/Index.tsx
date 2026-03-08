@@ -96,7 +96,7 @@ const Index = () => {
                 onClick={() => navigate("/pratica")}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-success text-success-foreground rounded-xl hover:bg-success/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
               >
-                🎓 Modo Prática
+                Modo Prática
               </button>
               <button
                 onClick={() => navigate("/campo-harmonico")}
