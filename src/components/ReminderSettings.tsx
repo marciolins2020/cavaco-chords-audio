@@ -124,7 +124,7 @@ export const ReminderSettings = () => {
               onClick={testNotification}
               disabled={permission !== "granted"}
             >
-              <TestTube className="w-4 h-4 mr-2" />
+              🧪 Testar Notificação
               Testar Notificação
             </Button>
           </>

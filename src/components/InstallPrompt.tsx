@@ -79,9 +79,9 @@ export function InstallPrompt() {
           onClick={handleDismiss}
           size="icon"
           variant="ghost"
-          className="h-6 w-6 -mt-1"
+          className="h-6 w-6 -mt-1 text-xs font-bold"
         >
-          <X className="h-4 w-4" />
+          ✕
         </Button>
       </div>
     </Card>

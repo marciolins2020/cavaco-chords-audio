@@ -192,7 +192,7 @@ export const DailyChallenges = () => {
 
       {challenges.length === 0 ? (
         <div className="text-center py-12 text-muted-foreground">
-          <Trophy className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <span className="text-5xl block mx-auto mb-3 opacity-50">🏆</span>
           <p>Nenhum desafio disponível</p>
           <p className="text-sm mt-1">Volte amanhã para novos desafios!</p>
         </div>

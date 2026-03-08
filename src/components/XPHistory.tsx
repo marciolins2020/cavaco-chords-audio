@@ -296,7 +296,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
                   variant={event.type === "challenge" ? "default" : "secondary"}
                   className="gap-1"
                 >
-                  <Zap className="w-3 h-3 fill-current" />
+                  <span className="text-xs">⚡</span>
                   +{event.xp}
                 </Badge>
               </motion.div>

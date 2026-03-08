@@ -166,23 +166,23 @@ export default function InstallPage() {
             </h2>
             <ul className="space-y-4 max-w-2xl mx-auto">
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Acesso instantâneo sem abrir o navegador</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Todos os recursos disponíveis offline</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Carregamento mais rápido que um site normal</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Interface limpa sem barras do navegador</span>
               </li>
               <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                <span className="text-success flex-shrink-0 mt-0.5">✓</span>
                 <span>Atualizações automáticas em segundo plano</span>
               </li>
             </ul>

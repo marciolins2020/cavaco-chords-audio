@@ -83,7 +83,7 @@ export const LevelProgress = ({
             </div>
           </div>
           
-          <Trophy className="w-8 h-8 text-primary/30" />
+          <span className="text-3xl text-primary/30">🏆</span>
         </div>
 
         {/* Progress bar */}

@@ -189,8 +189,7 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
                   size="sm"
                   className="w-full"
                 >
-                  <Play className="w-4 h-4 mr-2" />
-                  {playingChord ? "Tocando..." : "Tocar Progressão"}
+                  ▶ {playingChord ? "Tocando..." : "Tocar Progressão"}
                 </Button>
               </Card>
             ))}

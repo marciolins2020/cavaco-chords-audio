@@ -14,7 +14,7 @@ export default function HarmonicFieldPage() {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Music2 className="w-8 h-8 text-primary" />
+              <span className="text-3xl">🎵</span>
               <h1 className="text-3xl md:text-4xl font-bold">Campo Harmônico</h1>
             </div>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

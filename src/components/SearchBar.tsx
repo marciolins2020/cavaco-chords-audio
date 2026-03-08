@@ -183,7 +183,7 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
     <div className={`relative ${className}`}>
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg">🔍</span>
           <input
             ref={inputRef}
             type="text"

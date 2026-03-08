@@ -90,7 +90,7 @@ export const AchievementBadge = ({
                   ease: "easeInOut",
                 }}
               >
-                {unlocked ? icon : <Lock className="w-12 h-12 mx-auto text-muted-foreground" />}
+                {unlocked ? icon : <span className="text-5xl block mx-auto text-muted-foreground">🔒</span>}
               </motion.div>
 
               <p className="font-semibold text-sm mb-1 line-clamp-1">{name}</p>

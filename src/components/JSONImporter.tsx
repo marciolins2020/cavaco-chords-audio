@@ -145,7 +145,7 @@ export const JSONImporter = ({ onImport }: JSONImporterProps) => {
             
             {isValid === false && (
               <>
-                <AlertCircle className="w-12 h-12 text-destructive" />
+                <span className="text-5xl block text-destructive">⚠</span>
                 <p className="text-sm font-semibold text-destructive">
                   Formato inválido
                 </p>
