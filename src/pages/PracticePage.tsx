@@ -102,9 +102,7 @@ export default function PracticePage() {
 
                 <Card className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 bg-success/10 rounded-lg">
-                      <Target className="w-6 h-6 text-success" />
-                    </div>
+                    <div className="p-2 bg-success/10 rounded-lg text-success font-bold">◎</div>
                     <div>
                       <div className="text-2xl font-bold">{stats.totalSuccesses}</div>
                       <div className="text-xs text-muted-foreground">Acertos Totais</div>
