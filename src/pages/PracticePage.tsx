@@ -191,6 +191,13 @@ export default function PracticePage() {
                     onSelect={startPracticeWithChord}
                   />
                 </TabsContent>
+
+                <TabsContent value="transitions" className="mt-4">
+                  <TransitionTrainer
+                    allChords={allChords}
+                    masteredChords={stats.chordsMastered}
+                  />
+                </TabsContent>
               </Tabs>
 
               {/* Achievements */}
