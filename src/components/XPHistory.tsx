@@ -198,7 +198,7 @@ export const XPHistory = ({ userId, totalXP }: XPHistoryProps) => {
         >
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm text-muted-foreground">Próximo Rank</span>
-            <Award className="w-5 h-5 text-secondary" />
+            <span className="text-xl text-secondary">🏅</span>
           </div>
           {rankInfo.nextRank > 0 ? (
             <>
