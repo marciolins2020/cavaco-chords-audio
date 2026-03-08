@@ -164,7 +164,7 @@ export default function ChordIdentifier() {
 
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-2">🎯 Identificador de Acordes</h1>
+            <h1 className="text-4xl font-bold mb-2">Identificador de Acordes</h1>
             <p className="text-muted-foreground text-lg">
               Clique no braço para montar um acorde e descubra qual é!
             </p>
