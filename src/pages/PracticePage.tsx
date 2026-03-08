@@ -14,11 +14,18 @@ import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
-// Sequência pedagógica de acordes
+// Helper to display chord names nicely (CM→C, Fsm→F#m, etc.)
+function displayChordName(id: string): string {
+  return id
+    .replace(/^([A-G])M$/, "$1")
+    .replace(/s/, "#");
+}
+
+// Sequência pedagógica de acordes (IDs usam makeChordId: root + suffix sanitizado)
 const LEARNING_SEQUENCE = [
-  { level: "Iniciante", chords: ["C", "G", "Am", "F", "Dm", "Em", "D"] },
-  { level: "Intermediário", chords: ["A", "E", "C7", "G7", "D7", "F#m", "Bm"] },
-  { level: "Avançado", chords: ["Cmaj7", "Dm7", "Em7", "Fmaj7", "G7", "Am7", "Bdim"] },
+  { level: "Iniciante", chords: ["CM", "GM", "Am", "FM", "Dm", "Em", "DM"] },
+  { level: "Intermediário", chords: ["AM", "EM", "C7", "G7", "D7", "Fsm", "Bm"] },
+  { level: "Avançado", chords: ["C7M", "Dm7", "Em7", "F7M", "G7", "Am7", "Bdim"] },
 ];
 
 export default function PracticePage() {
@@ -156,7 +163,7 @@ export default function PracticePage() {
                                 if (chord) navigate(`/chord/${chord.id}`);
                               }}
                             >
-                              {chordName}
+                              {displayChordName(chordName)}
                               {isMastered && " ✓"}
                             </Badge>
                           );
