@@ -15,6 +15,27 @@ interface ChordPickerProps {
 
 const ROOT_ORDER = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
 
+type ChordCategory = "major" | "minor" | "seventh" | "diminished" | "other";
+
+function getChordCategory(quality: string): ChordCategory {
+  const q = quality.toLowerCase();
+  if (q === "" || q === "m" || q === "major") {
+    return q === "m" ? "minor" : "major";
+  }
+  if (q.includes("dim") || q.includes("°")) return "diminished";
+  if (q.includes("7") || q.includes("9") || q.includes("11") || q.includes("13")) return "seventh";
+  if (q.includes("m") && !q.includes("maj") && !q.includes("add")) return "minor";
+  return "other";
+}
+
+const CATEGORY_STYLES: Record<ChordCategory, { border: string; bg: string; label: string; indicator: string }> = {
+  major:      { border: "border-foreground/30", bg: "bg-foreground/5",   label: "M",   indicator: "bg-foreground" },
+  minor:      { border: "border-secondary/40",  bg: "bg-secondary/8",   label: "m",   indicator: "bg-secondary" },
+  seventh:    { border: "border-warning/30",     bg: "bg-warning/5",     label: "7",   indicator: "bg-warning" },
+  diminished: { border: "border-destructive/25", bg: "bg-destructive/5", label: "dim", indicator: "bg-destructive" },
+  other:      { border: "border-accent/20",      bg: "bg-accent/5",      label: "…",   indicator: "bg-accent" },
+};
+
 function displayName(chord: ChordEntry): string {
   const quality = chord.quality === "" ? "" : chord.quality;
   return `${chord.root}${quality}`;
