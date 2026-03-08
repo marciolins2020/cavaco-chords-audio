@@ -239,6 +239,7 @@ export const ChatWidget = () => {
               </div>
               <button
                 onClick={() => setOpen(false)}
+                aria-label="Fechar assistente"
                 className="rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors text-sm font-bold"
               >
                 ✕
