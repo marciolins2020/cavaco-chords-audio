@@ -73,7 +73,6 @@ export default function InstallPage() {
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <h2 className="text-2xl font-bold text-success">App Instalado!</h2>
                 </div>
-                </div>
                 <p className="text-muted-foreground mb-6">
                   O RZD Acordes já está instalado no seu dispositivo.
                 </p>
