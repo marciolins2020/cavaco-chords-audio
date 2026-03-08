@@ -82,8 +82,8 @@ export default function ProfilePage() {
         <Card className="p-6 mb-6">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                <User className="w-8 h-8 text-primary" />
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
+                {(user.user_metadata?.full_name || "M")[0].toUpperCase()}
               </div>
               <div>
                 <h1 className="text-2xl font-bold">
