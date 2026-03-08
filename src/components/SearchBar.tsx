@@ -1,67 +1,79 @@
-import { useState, useEffect, useRef } from "react";
-
-
-import { convertedChords } from "@/lib/chordConverter";
-import { ChordEntry } from "@/types/chords";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { useApp } from "@/contexts/AppContext";
+import { SUFFIX_MAP } from "@/lib/chordConverter";
+
+interface ChordSearchResult {
+  id: string;
+  root: string;
+  quality: string;
+  displayName: string;
+  notes: string[];
+}
 
 interface SearchBarProps {
   onSearch?: (query: string) => void;
   className?: string;
 }
 
+// Enharmonic equivalents
+const ENHARMONICS: Record<string, string> = {
+  'C#': 'Db', 'Db': 'C#',
+  'D#': 'Eb', 'Eb': 'D#',
+  'F#': 'Gb', 'Gb': 'F#',
+  'G#': 'Ab', 'Ab': 'G#',
+  'A#': 'Bb', 'Bb': 'A#',
+};
+
+// Suffix normalization for user input
+const INPUT_SUFFIX_MAP: Record<string, string> = {
+  'major': 'M', 'maj': 'M', 'maior': 'M',
+  'minor': 'm', 'min': 'm', 'menor': 'm', '-': 'm',
+  'dom7': '7', 'dominant7': '7',
+  'min7': 'm7', 'minor7': 'm7', 'menor7': 'm7', '-7': 'm7',
+  'major7': 'maj7', 'maior7': 'maj7',
+  'dim7': 'dim', 'diminuto': 'dim', 'º': 'dim', 'o': 'dim',
+  'half-dim': 'm7b5', 'ø': 'm7b5', 'm7-5': 'm7b5', 'm7(b5)': 'm7b5',
+  'aug': '5+', 'aumentado': '5+', '+': '5+', '#5': '5+',
+  'sus': 'sus4',
+  '9th': '9', 'nona': '9',
+  'add2': 'add9',
+};
+
 export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
   const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<ChordEntry[]>([]);
+  const [suggestions, setSuggestions] = useState<ChordSearchResult[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const { chordDatabase } = useApp();
 
-  // Get enharmonic equivalent
-  const getEnharmonicEquivalent = (note: string): string | null => {
-    const equivalents: Record<string, string> = {
-      'C#': 'Db', 'Db': 'C#',
-      'D#': 'Eb', 'Eb': 'D#',
-      'F#': 'Gb', 'Gb': 'F#',
-      'G#': 'Ab', 'Ab': 'G#',
-      'A#': 'Bb', 'Bb': 'A#',
-    };
-    
-    for (const [key, value] of Object.entries(equivalents)) {
-      if (note.startsWith(key)) {
-        return note.replace(key, value);
-      }
-    }
-    
-    return null;
-  };
+  // Build searchable chord list from the SAME source as ChordDetail/Index
+  const searchableChords = useMemo((): ChordSearchResult[] => {
+    return chordDatabase.chords.map((chord) => {
+      const suffixInfo = SUFFIX_MAP[chord.suffix] || {
+        quality: chord.suffix,
+        intervals: ["1", "3", "5"],
+        description: chord.suffix
+      };
+      const id = chord.root + suffixInfo.quality;
+      const displayName = chord.suffix === 'M' ? chord.root : `${chord.root}${suffixInfo.quality}`;
+      return {
+        id,
+        root: chord.root,
+        quality: suffixInfo.quality,
+        suffix: chord.suffix,
+        displayName,
+        notes: chord.notes || [],
+      };
+    });
+  }, [chordDatabase]);
 
-  // Normaliza sufixos de acordes para o formato interno
-  const normalizeSuffix = (suffix: string): string => {
-    const map: Record<string, string> = {
-      'major': '', 'maj': '', 'maior': '', 'M': '',
-      'minor': 'm', 'min': 'm', 'menor': 'm', '-': 'm',
-      'dom7': '7', 'dominant7': '7',
-      'min7': 'm7', 'minor7': 'm7', 'menor7': 'm7', '-7': 'm7',
-      'major7': 'maj7', 'maior7': 'maj7',
-      'dim7': 'dim', 'diminuto': 'dim', 'º': 'dim', 'o': 'dim',
-      'half-dim': 'm7b5', 'ø': 'm7b5', 'm7-5': 'm7b5', 'm7(b5)': 'm7b5',
-      'aug': '5+', 'aumentado': '5+', '+': '5+', '#5': '5+',
-      'sus': 'sus4',
-      '9th': '9', 'nona': '9',
-      'add9': 'add9', 'add2': 'add9',
-    };
-    
-    const lower = suffix.toLowerCase().replace(/[()]/g, '');
-    return map[lower] ?? suffix;
-  };
-
-  // Smart search with normalization
-  const smartSearch = (searchQuery: string): ChordEntry[] => {
+  // Smart search
+  const smartSearch = (searchQuery: string): ChordSearchResult[] => {
     if (!searchQuery) return [];
 
-    // Normalize input
     let normalized = searchQuery
       .replace(/maior/gi, '')
       .replace(/menor/gi, 'm')
@@ -70,44 +82,46 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
       .replace(/\s+/g, '')
       .trim();
 
-    // Extrai root e suffix do input
-    // Exemplo: "Dm7b5" -> root="D", suffix="m7b5"
-    // Exemplo: "F#m" -> root="F#", suffix="m"
     const rootMatch = normalized.match(/^([A-Ga-g])([#b])?/);
     if (!rootMatch) return [];
-    
-    const inputRoot = rootMatch[0].charAt(0).toUpperCase() + (rootMatch[0].slice(1) || '');
-    const inputSuffix = normalizeSuffix(normalized.slice(rootMatch[0].length) || '');
 
-    // Busca exata primeiro
-    let results = convertedChords.filter(chord => {
-      const chordRoot = chord.root.toUpperCase();
-      const chordSuffix = (chord.quality || '').toLowerCase();
-      return chordRoot === inputRoot.toUpperCase() && 
-             chordSuffix === inputSuffix.toLowerCase();
+    const inputRoot = rootMatch[0].charAt(0).toUpperCase() + (rootMatch[0].slice(1) || '');
+    const rawSuffix = normalized.slice(rootMatch[0].length) || '';
+    const normalizedSuffix = INPUT_SUFFIX_MAP[rawSuffix.toLowerCase().replace(/[()]/g, '')] || rawSuffix;
+
+    // Exact match first
+    let results = searchableChords.filter(chord => {
+      return chord.root.toUpperCase() === inputRoot.toUpperCase() &&
+             chord.quality.toLowerCase() === normalizedSuffix.toLowerCase();
     });
 
-    // Se não encontrou exato, busca parcial
+    // Partial match
     if (results.length === 0) {
-      results = convertedChords.filter(chord => {
+      results = searchableChords.filter(chord => {
         const fullName = (chord.root + chord.quality).toLowerCase();
         return fullName.includes(normalized.toLowerCase());
       });
     }
 
-    // Se ainda não encontrou, tenta enarmônico
+    // Enharmonic search
     if (results.length === 0) {
-      const enharmonic = getEnharmonicEquivalent(inputRoot);
+      const enharmonic = ENHARMONICS[inputRoot];
       if (enharmonic) {
-        const altQuery = enharmonic + inputSuffix;
-        results = convertedChords.filter(chord => {
-          const fullName = (chord.root + chord.quality).toLowerCase();
-          return fullName === altQuery.toLowerCase();
+        results = searchableChords.filter(chord => {
+          return chord.root.toUpperCase() === enharmonic.toUpperCase() &&
+                 chord.quality.toLowerCase() === normalizedSuffix.toLowerCase();
         });
       }
     }
 
-    // Ordena: exatos primeiro, depois parciais
+    // If just a root with no suffix, show all chords for that root
+    if (results.length === 0 && !rawSuffix) {
+      results = searchableChords.filter(chord =>
+        chord.root.toUpperCase() === inputRoot.toUpperCase()
+      );
+    }
+
+    // Sort: exact first
     results.sort((a, b) => {
       const aExact = (a.root + a.quality).toLowerCase() === normalized.toLowerCase();
       const bExact = (b.root + b.quality).toLowerCase() === normalized.toLowerCase();
@@ -131,21 +145,16 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
         setSuggestions([]);
         setShowSuggestions(false);
       }
-    }, 300);
-
+    }, 200);
     return () => clearTimeout(timer);
-  }, [query]);
+  }, [query, searchableChords]);
 
-  // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!showSuggestions || suggestions.length === 0) return;
-
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
-        setSelectedIndex(prev => 
-          prev < suggestions.length - 1 ? prev + 1 : prev
-        );
+        setSelectedIndex(prev => prev < suggestions.length - 1 ? prev + 1 : prev);
         break;
       case 'ArrowUp':
         e.preventDefault();
@@ -153,11 +162,8 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
         break;
       case 'Enter':
         e.preventDefault();
-        if (selectedIndex >= 0) {
-          selectChord(suggestions[selectedIndex]);
-        } else if (suggestions.length > 0) {
-          selectChord(suggestions[0]);
-        }
+        if (selectedIndex >= 0) selectChord(suggestions[selectedIndex]);
+        else if (suggestions.length > 0) selectChord(suggestions[0]);
         break;
       case 'Escape':
         setShowSuggestions(false);
@@ -166,17 +172,15 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
     }
   };
 
-  const selectChord = (chord: ChordEntry) => {
-    setQuery(chord.root + chord.quality);
+  const selectChord = (chord: ChordSearchResult) => {
+    setQuery(chord.displayName);
     setShowSuggestions(false);
     navigate(`/chord/${chord.id}`);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (suggestions.length > 0) {
-      selectChord(suggestions[0]);
-    }
+    if (suggestions.length > 0) selectChord(suggestions[0]);
   };
 
   return (
@@ -195,7 +199,7 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
             onKeyDown={handleKeyDown}
             onFocus={() => query && setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-            placeholder="Digite o acorde (ex: C, Dm7, G/B, A#m)"
+            placeholder="Digite o acorde (ex: C, Dm7, G7, Am, F#m)"
             className="w-full pl-12 pr-4 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-2 border-border bg-background focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none transition-all"
           />
         </div>
@@ -217,14 +221,9 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
                   {chord.root}
                   <span className="text-muted-foreground">{chord.quality}</span>
                 </span>
-                <span className="text-sm text-muted-foreground">
-                  {chord.notes.join(', ')}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                {chord.difficulty && (
-                  <span className="text-xs">
-                    {'●'.repeat(chord.difficulty)}
+                {chord.notes.length > 0 && (
+                  <span className="text-sm text-muted-foreground">
+                    {chord.notes.join(', ')}
                   </span>
                 )}
               </div>
@@ -240,7 +239,7 @@ export function SearchBar({ onSearch, className = "" }: SearchBarProps) {
             Nenhum acorde encontrado para "<span className="font-bold">{query}</span>"
           </p>
           <p className="text-sm text-muted-foreground text-center mt-2">
-            Tente buscar por: C, Dm, G7, Am, F#m, etc.
+            Tente: C, Dm, G7, Am, F#m, Bbmaj7
           </p>
         </div>
       )}
