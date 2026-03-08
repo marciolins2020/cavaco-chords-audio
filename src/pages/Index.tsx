@@ -90,7 +90,7 @@ const Index = () => {
                 onClick={() => navigate("/identifier")}
                 className="px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
               >
-                🎯 Identificar Acorde
+                Identificar Acorde
               </button>
               <button
                 onClick={() => navigate("/pratica")}
