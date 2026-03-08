@@ -29,14 +29,13 @@ const ALL_SUFFIX_LABELS: Record<string, string> = {
   '7(b9/13)': '7(b9/13)', '7(#11/13)': '7(#11/13)', '7(#5/#9)': '7(#5/#9)',
 };
 
-// Reverse map: quality string → suffix key (e.g. "" → "M", "m" → "m")
+// Reverse map: quality string → suffix key
 const QUALITY_TO_SUFFIX: Record<string, string> = {};
-for (const [suffix] of Object.entries(CHORD_TYPE_LABELS)) {
+for (const [suffix] of Object.entries(ALL_SUFFIX_LABELS)) {
   const suffixInfo = SUFFIX_MAP[suffix];
   const quality = suffixInfo?.quality ?? suffix;
   QUALITY_TO_SUFFIX[quality] = suffix;
 }
-// Ensure direct mappings too
 CHORD_TYPES.forEach(t => { QUALITY_TO_SUFFIX[t] = t; });
 
 interface ChordExplorerProps {
