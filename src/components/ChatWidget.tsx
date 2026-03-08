@@ -9,6 +9,21 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/rzd-assistant`;
 
+// Build rich context string based on current route
+function buildContext(pathname: string): string {
+  if (pathname.startsWith("/chord/")) {
+    const chordId = decodeURIComponent(pathname.split("/chord/")[1]);
+    return `Usuário está visualizando a página do acorde "${chordId}". Priorize informações sobre esse acorde: posições alternativas, músicas que usam, progressões comuns, dicas de digitação.`;
+  }
+  if (pathname === "/pratica") return "Usuário está no Modo Prática, treinando transições de acordes. Foque em dicas de prática, exercícios e motivação.";
+  if (pathname === "/campo-harmonico") return "Usuário está estudando Campo Harmônico. Explique relações entre acordes, funções harmônicas e progressões.";
+  if (pathname === "/afinador") return "Usuário está usando o Afinador. Ajude com afinação, diferenças entre DGBD e outras afinações.";
+  if (pathname === "/identifier") return "Usuário está no Identificador de Acordes, tentando descobrir um acorde pelo braço do instrumento.";
+  if (pathname === "/ranking") return "Usuário está vendo o Ranking/Leaderboard de prática.";
+  if (pathname === "/favoritos") return "Usuário está na lista de acordes favoritos.";
+  return "Usuário está na página inicial, explorando o dicionário de acordes de cavaquinho.";
+}
+
 // Contextual suggestions based on current route
 function getSuggestions(pathname: string): { text: string }[] {
   if (pathname.startsWith("/chord/")) {
