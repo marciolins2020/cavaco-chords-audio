@@ -27,13 +27,8 @@ const Header = () => {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isHome = location.pathname === "/";
-  const isFavorites = location.pathname === "/favoritos";
-  const isHarmonicField = location.pathname === "/campo-harmonico";
-  const isPractice = location.pathname === "/pratica";
-  const isAbout = location.pathname === "/sobre";
-  const isRanking = location.pathname === "/ranking";
-  const isTuner = location.pathname === "/afinador";
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="sticky top-0 z-50 border-b relative overflow-hidden">
@@ -61,38 +56,33 @@ const Header = () => {
               </SheetHeader>
               <div className="mt-6 flex flex-col gap-2">
                 <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isHome ? "default" : "ghost"} className="w-full justify-start">
-                    Acordes
+                  <Button variant={isActive("/") ? "default" : "ghost"} className="w-full justify-start">
+                    🎵 Acordes
                   </Button>
                 </Link>
-                
                 <Link to="/pratica" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isPractice ? "default" : "ghost"} className="w-full justify-start">
-                    Modo Prática
+                  <Button variant={isActive("/pratica") ? "default" : "ghost"} className="w-full justify-start">
+                    🎯 Modo Prática
                   </Button>
                 </Link>
-                
                 <Link to="/ranking" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isRanking ? "default" : "ghost"} className="w-full justify-start">
-                    Ranking
+                  <Button variant={isActive("/ranking") ? "default" : "ghost"} className="w-full justify-start">
+                    🏆 Ranking
                   </Button>
                 </Link>
-                
                 <Link to="/afinador" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isTuner ? "default" : "ghost"} className="w-full justify-start">
-                    Afinador
+                  <Button variant={isActive("/afinador") ? "default" : "ghost"} className="w-full justify-start">
+                    🎼 Afinador
                   </Button>
                 </Link>
-                
                 <Link to="/campo-harmonico" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isHarmonicField ? "default" : "ghost"} className="w-full justify-start">
-                    Campo Harmônico
+                  <Button variant={isActive("/campo-harmonico") ? "default" : "ghost"} className="w-full justify-start">
+                    🎹 Campo Harmônico
                   </Button>
                 </Link>
-                
                 <Link to="/favoritos" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isFavorites ? "default" : "ghost"} className="w-full justify-start relative">
-                    Favoritos
+                  <Button variant={isActive("/favoritos") ? "default" : "ghost"} className="w-full justify-start relative">
+                    ⭐ Favoritos
                     {favorites.length > 0 && (
                       <span className="ml-auto bg-primary text-primary-foreground text-xs rounded-full px-2 py-0.5">
                         {favorites.length}
@@ -100,10 +90,9 @@ const Header = () => {
                     )}
                   </Button>
                 </Link>
-                
                 <Link to="/sobre" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isAbout ? "default" : "ghost"} className="w-full justify-start">
-                    Sobre
+                  <Button variant={isActive("/sobre") ? "default" : "ghost"} className="w-full justify-start">
+                    ℹ️ Sobre
                   </Button>
                 </Link>
 
@@ -114,7 +103,7 @@ const Header = () => {
                   onClick={() => { setLeftHanded(!leftHanded); setMobileMenuOpen(false); }}
                   className="w-full justify-start"
                 >
-                  {leftHanded ? "Canhoto" : "Destro"}
+                  {leftHanded ? "🤚 Canhoto" : "✋ Destro"}
                 </Button>
 
                 <Button
@@ -122,7 +111,7 @@ const Header = () => {
                   onClick={() => { setTheme(theme === "dark" ? "light" : "dark"); setMobileMenuOpen(false); }}
                   className="w-full justify-start"
                 >
-                  {theme === "dark" ? "Tema Claro" : "Tema Escuro"}
+                  {theme === "dark" ? "☀️ Tema Claro" : "🌙 Tema Escuro"}
                 </Button>
 
                 {user ? (
@@ -133,7 +122,7 @@ const Header = () => {
                     </div>
                     <Link to="/perfil" onClick={() => setMobileMenuOpen(false)}>
                       <Button variant="ghost" className="w-full justify-start">
-                        Meu Perfil
+                        👤 Meu Perfil
                       </Button>
                     </Link>
                     <Button
@@ -149,7 +138,7 @@ const Header = () => {
                     <div className="my-4 border-t" />
                     <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
                       <Button variant="default" className="w-full justify-start">
-                        Entrar
+                        Entrar / Criar Conta
                       </Button>
                     </Link>
                   </>
@@ -169,79 +158,97 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2">
-            <Link to="/"><Button variant={isHome ? "default" : "ghost"} size="sm">Acordes</Button></Link>
-            <Link to="/pratica"><Button variant={isPractice ? "default" : "ghost"} size="sm">Prática</Button></Link>
-            <Link to="/ranking"><Button variant={isRanking ? "default" : "ghost"} size="sm">Ranking</Button></Link>
-            <Link to="/afinador"><Button variant={isTuner ? "default" : "ghost"} size="sm">Afinador</Button></Link>
-            <Link to="/campo-harmonico"><Button variant={isHarmonicField ? "default" : "ghost"} size="sm">Campo</Button></Link>
-            
-            <Link to="/favoritos">
-              <Button variant={isFavorites ? "default" : "ghost"} size="sm" className="relative">
-                Favoritos
-                {favorites.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {favorites.length}
-                  </span>
-                )}
-              </Button>
-            </Link>
-            
-            <Link to="/sobre"><Button variant={isAbout ? "default" : "ghost"} size="sm">Sobre</Button></Link>
+          {/* Desktop Navigation — max 5 visible items + "Mais" dropdown */}
+          <nav className="hidden md:flex items-center gap-1.5">
+            <Link to="/"><Button variant={isActive("/") ? "default" : "ghost"} size="sm">Acordes</Button></Link>
+            <Link to="/pratica"><Button variant={isActive("/pratica") ? "default" : "ghost"} size="sm">Prática</Button></Link>
+            <Link to="/ranking"><Button variant={isActive("/ranking") ? "default" : "ghost"} size="sm">Ranking</Button></Link>
+            <Link to="/afinador"><Button variant={isActive("/afinador") ? "default" : "ghost"} size="sm">Afinador</Button></Link>
 
-            <div className="h-6 w-px bg-border mx-1" />
+            {/* "Mais" dropdown — secondary items */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant={(isActive("/campo-harmonico") || isActive("/favoritos") || isActive("/sobre")) ? "secondary" : "ghost"} 
+                  size="sm"
+                >
+                  Mais ▾
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-52">
+                <Link to="/campo-harmonico">
+                  <DropdownMenuItem className="cursor-pointer">
+                    🎹 Campo Harmônico
+                  </DropdownMenuItem>
+                </Link>
+                <Link to="/favoritos">
+                  <DropdownMenuItem className="cursor-pointer flex items-center justify-between">
+                    <span>⭐ Favoritos</span>
+                    {favorites.length > 0 && (
+                      <span className="bg-primary text-primary-foreground text-xs rounded-full px-2 py-0.5">
+                        {favorites.length}
+                      </span>
+                    )}
+                  </DropdownMenuItem>
+                </Link>
+                <DropdownMenuSeparator />
+                <Link to="/sobre">
+                  <DropdownMenuItem className="cursor-pointer">
+                    ℹ️ Sobre
+                  </DropdownMenuItem>
+                </Link>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => setLeftHanded(!leftHanded)} className="cursor-pointer">
+                  {leftHanded ? "🤚 Canhoto ✓" : "✋ Destro ✓"}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <div className="h-6 w-px bg-border mx-0.5" />
+
+            {/* Dark mode toggle — always visible */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="px-2 text-lg"
+              title={theme === "dark" ? "Tema Claro" : "Tema Escuro"}
+            >
+              {theme === "dark" ? "☀️" : "🌙"}
+            </Button>
             
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm">Perfil</Button>
+                  <Button variant="ghost" size="sm">👤</Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
                   <div className="px-2 py-2 text-sm">
                     <p className="font-medium truncate">{user.email}</p>
                   </div>
                   <DropdownMenuSeparator />
-                  <Link to="/perfil"><DropdownMenuItem>Meu Perfil</DropdownMenuItem></Link>
-                  <DropdownMenuItem onClick={() => signOut()}>Sair</DropdownMenuItem>
+                  <Link to="/perfil"><DropdownMenuItem className="cursor-pointer">Meu Perfil</DropdownMenuItem></Link>
+                  <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">Sair</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <Link to="/auth"><Button variant="default" size="sm">Entrar</Button></Link>
             )}
-
-            <Button
-              variant={leftHanded ? "default" : "outline"}
-              size="sm"
-              onClick={() => setLeftHanded(!leftHanded)}
-            >
-              {leftHanded ? "Canhoto" : "Destro"}
-            </Button>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? "Claro" : "Escuro"}
-            </Button>
           </nav>
 
           {/* Mobile Quick Actions */}
           <div className="flex md:hidden items-center gap-1">
-            <Link to="/favoritos">
-              <Button variant={isFavorites ? "default" : "ghost"} size="sm" className="relative px-2 text-xs">
-                Fav
-                {favorites.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                    {favorites.length}
-                  </span>
-                )}
-              </Button>
-            </Link>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="px-2 text-base"
+            >
+              {theme === "dark" ? "☀️" : "🌙"}
+            </Button>
 
             {user ? (
-              <Link to="/perfil"><Button variant="ghost" size="sm" className="px-2 text-xs">Perfil</Button></Link>
+              <Link to="/perfil"><Button variant="ghost" size="sm" className="px-2 text-xs">👤</Button></Link>
             ) : (
               <Link to="/auth"><Button variant="default" size="sm" className="px-2 text-xs">Entrar</Button></Link>
             )}
