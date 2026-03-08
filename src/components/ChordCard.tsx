@@ -11,11 +11,12 @@ import { toast } from "sonner";
 type Props = { chord: ChordEntry };
 
 const ChordCard: React.FC<Props> = ({ chord }) => {
-  const mainVariation = chord.variations?.[0];
-  if (!mainVariation) return null;
   const [isPlaying, setIsPlaying] = useState(false);
   const { isFavorite, toggleFavorite } = useApp();
   const favorite = isFavorite(chord.id);
+  const mainVariation = chord.variations?.[0];
+  
+  if (!mainVariation) return null;
 
   const handlePlay = async (e: React.MouseEvent) => {
     e.preventDefault();
