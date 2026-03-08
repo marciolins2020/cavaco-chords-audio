@@ -45,14 +45,13 @@ export default function PracticePage() {
     if (unmasteredChords.length > 0) {
       // Pegar o primeiro acorde não dominado
       const nextChordName = unmasteredChords[0];
-      const chord = convertedChords.find((c) => c.id === nextChordName);
+      const chord = allChords.find((c) => c.id === nextChordName);
       if (chord) {
         setCurrentChord(chord);
       }
     } else {
-      // Se dominou todos, escolher aleatório
       const randomChord =
-        convertedChords[Math.floor(Math.random() * convertedChords.length)];
+        allChords[Math.floor(Math.random() * allChords.length)];
       setCurrentChord(randomChord);
     }
   };
