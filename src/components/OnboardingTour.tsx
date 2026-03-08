@@ -94,16 +94,15 @@ export const OnboardingTour = () => {
               />
             </div>
 
-            {/* Icon */}
+            {/* Step number */}
             <div className="flex justify-center mb-6">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", delay: 0.1 }}
-                className="h-20 w-20 rounded-2xl flex items-center justify-center"
-                style={{ background: `${current.color}15`, border: `2px solid ${current.color}30` }}
+                className="h-16 w-16 rounded-2xl flex items-center justify-center bg-primary/10 border-2 border-primary/20"
               >
-                <Icon className="h-10 w-10" style={{ color: current.color }} />
+                <span className="text-2xl font-bold text-primary">{step + 1}</span>
               </motion.div>
             </div>
 
