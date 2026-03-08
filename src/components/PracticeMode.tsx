@@ -86,6 +86,10 @@ export function PracticeMode({
     // Feedback sonoro
     if (isCorrect) {
       audioService.playSuccess();
+      // Fire confetti when reaching mastery (3rd success)
+      if (currentSuccesses === 2) {
+        fireMasteryConfetti();
+      }
     } else {
       audioService.playError();
     }
