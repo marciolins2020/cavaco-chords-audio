@@ -419,7 +419,17 @@ export function usePractice(userId?: string) {
       }
 
       if (session.mastered && !newStats.chordsMastered.includes(chordId)) {
+        const prevCount = newStats.chordsMastered.length;
         newStats.chordsMastered = [...newStats.chordsMastered, chordId];
+        const newCount = newStats.chordsMastered.length;
+
+        // Level-up confetti at milestone thresholds
+        const milestones = [5, 15, 30];
+        if (milestones.some(m => prevCount < m && newCount >= m)) {
+          import("@/lib/confetti").then(({ fireLevelUpConfetti }) => fireLevelUpConfetti());
+          import("@/lib/audio").then(({ audioService }) => audioService.playSuccess());
+          toast.success("🏆 Você subiu de nível!");
+        }
       }
 
       const lastDate = prev.lastPracticeDate;
