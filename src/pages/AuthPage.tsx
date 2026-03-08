@@ -136,7 +136,6 @@ export default function AuthPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="signup-password">
-                  <Lock className="w-4 h-4 inline mr-2" />
                   Senha
                 </Label>
                 <Input
