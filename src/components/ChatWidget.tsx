@@ -201,7 +201,7 @@ export const ChatWidget = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 60, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-6 right-6 z-50 flex flex-col overflow-hidden rounded-2xl border border-white/20"
+            className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col overflow-hidden rounded-2xl border border-white/20"
             style={{
               width: "min(380px, calc(100vw - 48px))",
               height: "min(540px, calc(100vh - 100px))",
