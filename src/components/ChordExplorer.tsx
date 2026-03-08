@@ -8,10 +8,25 @@ import { useApp } from "@/contexts/AppContext";
 import { ROOT_NOTES, CHORD_TYPES } from "@/constants/chordDatabase";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 
-const CHORD_TYPE_LABELS: Record<string, string> = {
-  'M': 'Maior', 'm': 'menor', '7': '7', 'm7': 'm7', 'maj7': 'maj7',
-  '6': '6', 'm6': 'm6', 'dim': 'dim', 'm7b5': 'm7(b5)', '5+': '(#5)',
-  'sus4': 'sus4', '9': '9', 'add9': 'add9'
+// Categorized chord types for better organization
+const CHORD_CATEGORIES: { label: string; types: string[] }[] = [
+  { label: "Básicos", types: ['M', 'm', '7', 'm7', '7M', '6', 'sus4'] },
+  { label: "Com Tensão", types: ['add9', 'madd9', 'madd11', '7(9)', '7(13)', '7(b13)', '7(b9)', '7(b5)', '7(#9)', '7(#11)'] },
+  { label: "Avançados", types: ['6(9)', '6(7M)', '6(7M/9)', '6(#11)', '6(9/#11)', '7M(9)', '7M(#11)', '7M(9/#11)'] },
+  { label: "Menores+", types: ['m7(9)', 'm7(11)', 'm7(9/11)', 'm7(b5)', '(b5)', '(#5)'] },
+  { label: "Alterados", types: ['7(b9/13)', '7(#11/13)', '7(#5/#9)'] },
+];
+
+const ALL_SUFFIX_LABELS: Record<string, string> = {
+  'M': 'Maior', 'm': 'menor', '7': '7', 'm7': 'm7', '7M': '7M',
+  '6': '6', 'sus4': 'sus4', 'add9': 'add9', 'madd9': 'madd9', 'madd11': 'madd11',
+  '(b5)': '(b5)', '(#5)': '(#5)', 'm7(b5)': 'm7(b5)',
+  '7(9)': '7(9)', '7(13)': '7(13)', '7(b13)': '7(b13)', '7(b9)': '7(b9)',
+  '7(b5)': '7(b5)', '7(#9)': '7(#9)', '7(#11)': '7(#11)',
+  '6(9)': '6(9)', '6(7M)': '6(7M)', '6(7M/9)': '6(7M/9)', '6(#11)': '6(#11)', '6(9/#11)': '6(9/#11)',
+  '7M(9)': '7M(9)', '7M(#11)': '7M(#11)', '7M(9/#11)': '7M(9/#11)',
+  'm7(9)': 'm7(9)', 'm7(11)': 'm7(11)', 'm7(9/11)': 'm7(9/11)',
+  '7(b9/13)': '7(b9/13)', '7(#11/13)': '7(#11/13)', '7(#5/#9)': '7(#5/#9)',
 };
 
 // Reverse map: quality string → suffix key (e.g. "" → "M", "m" → "m")
