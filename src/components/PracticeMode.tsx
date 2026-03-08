@@ -7,6 +7,7 @@ import { Card } from "./ui/card";
 import { Progress } from "./ui/progress";
 import { Badge } from "./ui/badge";
 import { arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
+import { audioService } from "@/lib/audio";
 
 
 
@@ -80,6 +81,13 @@ export function PracticeMode({
 
     setFeedback(isCorrect ? "correct" : "incorrect");
     onAttempt(isCorrect);
+
+    // Feedback sonoro
+    if (isCorrect) {
+      audioService.playSuccess();
+    } else {
+      audioService.playError();
+    }
 
     if (isCorrect && startTime) {
       const timeTaken = Date.now() - startTime;

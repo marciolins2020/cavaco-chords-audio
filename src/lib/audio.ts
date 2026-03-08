@@ -313,9 +313,7 @@ class AudioService {
 
 export const audioService = new AudioService();
 
-export async function initAudio(): Promise<void> {
-  // No-op, audioService inicializa automaticamente
-}
+export async function initAudio(): Promise<void> {}
 
 export async function playChord(
   frets: [number, number, number, number],
