@@ -125,7 +125,6 @@ export const ReminderSettings = () => {
               disabled={permission !== "granted"}
             >
               🧪 Testar Notificação
-              Testar Notificação
             </Button>
           </>
         )}
