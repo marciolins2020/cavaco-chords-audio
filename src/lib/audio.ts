@@ -204,7 +204,7 @@ class AudioService {
     const now = this.ctx.currentTime;
     
     // Strum com velocidade natural - delay entre cordas
-    const strumSpeed = mode === 'strum' ? 0.08 : 0.015;
+    const strumSpeed = mode === 'strum' ? 0.12 : 0.03;
 
     const activeNotes = frets
       .map((fret, stringIndex) => ({ fret, stringIndex }))
