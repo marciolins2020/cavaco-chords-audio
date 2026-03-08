@@ -122,7 +122,6 @@ export default function AuthPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="signup-email">
-                  <Mail className="w-4 h-4 inline mr-2" />
                   Email
                 </Label>
                 <Input
