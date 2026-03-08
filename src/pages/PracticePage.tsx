@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PracticeMode } from "@/components/PracticeMode";
 import { ChordPicker } from "@/components/ChordPicker";
+import { TransitionTrainer } from "@/components/TransitionTrainer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
