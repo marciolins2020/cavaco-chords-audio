@@ -252,7 +252,6 @@ const ChordDetail = () => {
                   size="lg"
                   className="w-full"
                 >
-                  <Volume2 className="w-5 h-5 mr-2" />
                   Simultâneo
                 </Button>
 

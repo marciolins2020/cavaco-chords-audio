@@ -153,7 +153,6 @@ export default function AuthPage() {
               </div>
 
               <Button type="submit" className="w-full" disabled={loading}>
-                <UserPlus className="w-4 h-4 mr-2" />
                 {loading ? "Criando conta..." : "Criar Conta"}
               </Button>
             </form>

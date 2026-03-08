@@ -82,7 +82,6 @@ const About = () => {
         <section className="max-w-4xl mx-auto mb-16">
           <Card className="p-8">
             <div className="flex items-center gap-3 mb-6">
-              <Music2 className="w-8 h-8 text-primary" />
               <h2 className="text-3xl font-bold">Mentoria Musical</h2>
             </div>
             

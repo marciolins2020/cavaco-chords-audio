@@ -200,7 +200,7 @@ const TunerPage = () => {
                     className="flex flex-col h-auto py-4 gap-1"
                     onClick={() => playReferenceNote(string.frequency)}
                   >
-                    <Volume2 className="w-4 h-4 text-muted-foreground" />
+                    <span className="font-bold">{string.name}</span>
                     <span className="font-bold">{string.name}</span>
                     <span className="text-xs text-muted-foreground">
                       {string.frequency.toFixed(0)} Hz
