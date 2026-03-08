@@ -58,8 +58,8 @@ export function InstallPrompt() {
   return (
     <Card className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 p-4 shadow-2xl z-40 border-2 border-primary/20 bg-background">
       <div className="flex items-start gap-3">
-        <div className="p-2 bg-primary/10 rounded-lg">
-          <Download className="w-5 h-5 text-primary" />
+        <div className="p-2 bg-primary/10 rounded-lg text-xl">
+          ⬇
         </div>
         <div className="flex-1">
           <h3 className="font-semibold mb-1">Instalar App</h3>
