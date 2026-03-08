@@ -27,6 +27,7 @@ export default function PracticePage() {
   const [currentChord, setCurrentChord] = useState<ChordEntry | null>(null);
   const [showAchievements, setShowAchievements] = useState(false);
   const navigate = useNavigate();
+  const allChords = useChordList();
 
   const levelInfo = getLevelInfo(stats);
   const unlockedAchievements = ACHIEVEMENTS.filter((a) =>
