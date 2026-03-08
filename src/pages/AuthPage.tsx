@@ -73,7 +73,6 @@ export default function AuthPage() {
             <form onSubmit={handleSignIn} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="signin-email">
-                  <Mail className="w-4 h-4 inline mr-2" />
                   Email
                 </Label>
                 <Input
