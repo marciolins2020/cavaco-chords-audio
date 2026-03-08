@@ -58,8 +58,8 @@ const About = () => {
           <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
-                <div className="p-4 rounded-full bg-primary/20">
-                  <Download className="w-12 h-12 text-primary" />
+                <div className="p-4 rounded-full bg-primary/20 text-primary text-3xl text-center">
+                  ↓
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
