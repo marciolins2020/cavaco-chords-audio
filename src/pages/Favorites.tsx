@@ -14,10 +14,11 @@ import { getDifficultyInfo } from "@/utils/chordAnalysis";
 
 const Favorites = () => {
   const { favorites } = useApp();
+  const allChords = useChordList();
   const [difficultyFilter, setDifficultyFilter] = useState<number | null>(null);
   const [tagFilter, setTagFilter] = useState<string | null>(null);
   
-  const favoriteChords = convertedChords.filter(chord => favorites.includes(chord.id));
+  const favoriteChords = allChords.filter(chord => favorites.includes(chord.id));
 
   // Filtrar por dificuldade e tag
   const filteredChords = favoriteChords.filter(chord => {

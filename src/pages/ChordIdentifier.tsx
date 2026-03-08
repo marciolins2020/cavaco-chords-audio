@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { InteractiveFretboard } from "@/components/InteractiveFretboard";
 import ChordDiagram from "@/components/ChordDiagram";
 import { ChordEntry } from "@/types/chords";
-import { convertedChords } from "@/lib/chordConverter";
+import { useChordList } from "@/hooks/useChordList";
 import { useNavigate } from "react-router-dom";
 
 import { calculateChordDistance, arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
