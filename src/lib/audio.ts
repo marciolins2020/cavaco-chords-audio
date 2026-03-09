@@ -90,6 +90,15 @@ class AudioService {
     }
   }
 
+  /**
+   * Garante que o AudioContext esteja criado e (se necessário) resumido.
+   * Deve ser chamado a partir de um gesto do usuário (click/tap) para passar
+   * pelas políticas de autoplay dos browsers.
+   */
+  public async ensureReady(): Promise<boolean> {
+    return this.init();
+  }
+
   private getFrequency(stringIndex: number, fret: number): number {
     // Cavaquinho uma oitava acima para som mais agudo
     const openFreq = TUNING_FREQUENCIES[stringIndex];
@@ -313,11 +322,13 @@ class AudioService {
 
 export const audioService = new AudioService();
 
-export async function initAudio(): Promise<void> {}
+export async function initAudio(): Promise<void> {
+  await audioService.ensureReady();
+}
 
 export async function playChord(
-  frets: [number, number, number, number],
+  frets: number[],
   mode: "strum" | "block" = "strum"
 ): Promise<void> {
-  audioService.playChord(frets, mode);
+  await audioService.playChord(frets, mode);
 }
