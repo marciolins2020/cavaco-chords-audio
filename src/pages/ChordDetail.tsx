@@ -169,6 +169,7 @@ const ChordDetail = () => {
               size="sm"
               onClick={handleToggleFavorite}
               className={isChordFavorite ? "text-primary font-bold" : ""}
+              aria-label={isChordFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
             >
               {isChordFavorite ? "★" : "☆"}
             </Button>
