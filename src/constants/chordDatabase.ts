@@ -80,6 +80,8 @@ const SUFFIX_ALIASES: Record<string, string> = {
   '7M': 'maj7',
   '(#5)': '5+',
   'm7(b5)': 'm7b5',
+  '7(9)': '9',        // same intervals as 9
+  'madd9': 'add9',     // try add9 patterns (minor variant)
 };
 
 const VERIFIED_PATTERNS: Record<string, SourcePattern[]> = {
