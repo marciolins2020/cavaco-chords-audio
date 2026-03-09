@@ -160,11 +160,11 @@ export default function AuthPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.05 }}
         >
-          {/* Mobile logo */}
+          {/* Mobile profile */}
           <div className="flex flex-col items-center mb-8 lg:hidden">
-            <img src={rzdLogo} alt="RZD Music" className="h-12 mb-3" />
-            <h1 className="text-lg font-semibold">RZD Music</h1>
-            <p className="text-sm text-muted-foreground">Acordes de Cavaquinho</p>
+            <img src={juninhoPhoto} alt="Juninho Rezende" className="h-16 w-16 rounded-full object-cover border-2 border-border shadow-md mb-3" />
+            <h1 className="text-lg font-semibold">Juninho Rezende</h1>
+            <p className="text-sm text-muted-foreground">RZD Music</p>
           </div>
 
           {/* Desktop heading */}
