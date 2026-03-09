@@ -254,7 +254,7 @@ const Header = () => {
             </Button>
 
             {user ? (
-              <Link to="/perfil"><Button variant="ghost" size="sm" className="px-2"><User className="h-4 w-4" /></Button></Link>
+              <Link to="/perfil"><Button variant="ghost" size="sm" className="px-2" aria-label="Meu perfil"><User className="h-4 w-4" /></Button></Link>
             ) : (
               <Link to="/auth"><Button variant="default" size="sm" className="px-2 text-xs">Entrar</Button></Link>
             )}
