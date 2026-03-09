@@ -67,7 +67,7 @@ export function useHistory(userId?: string) {
     }
   }, [history, userId]);
 
-  const addToHistory = async (
+  const addToHistory = (
     chordId: string,
     context: HistoryEntry["context"] = "browse"
   ) => {
