@@ -261,7 +261,49 @@ const VERIFIED_PATTERNS: Record<string, SourcePattern[]> = {
   '(b5)': [
     // D(b5): D-F#-Ab -> [0,1,3,4] = D,Ab,D,F# ✓
     { baseRoot: 'D', frets: [0, 1, 3, 4], fingers: [0, 1, 3, 4] },
-  ]
+  ],
+  '6(7M)': [
+    // G6(7M): G-B-D-E-F# -> [0,0,0,4] = D,G,B,F# (contains 6=E via open, 7=F#) 
+    { baseRoot: 'G', frets: [2, 0, 0, 4], fingers: [1, 0, 0, 4] },
+    // D6(7M): D-F#-A-B-C# -> [0,2,0,2] voicing
+    { baseRoot: 'D', frets: [0, 2, 2, 4], fingers: [0, 1, 2, 4] },
+  ],
+  '6(7M/9)': [
+    // G6(7M/9): G-B-D-E-F#-A -> [0,2,0,4] = D,A,B,F# ✓
+    { baseRoot: 'G', frets: [0, 2, 0, 4], fingers: [0, 2, 0, 4] },
+  ],
+  '6(#11)': [
+    // G6(#11): G-B-D-E-C# -> [0,0,2,2] = D,G,C#,E ✓
+    { baseRoot: 'G', frets: [0, 0, 2, 2], fingers: [0, 0, 1, 2] },
+  ],
+  '6(9/#11)': [
+    // G6(9/#11): G-B-D-E-A-C# -> [0,2,2,2] = D,A,C#,E ✓
+    { baseRoot: 'G', frets: [0, 2, 2, 2], fingers: [0, 1, 1, 1], barre: 2 },
+  ],
+  '7M(9/#11)': [
+    // G7M(9/#11): G-B-D-F#-A-C# -> [0,2,2,4] = D,A,C#,F# ✓
+    { baseRoot: 'G', frets: [0, 2, 2, 4], fingers: [0, 1, 2, 4] },
+  ],
+  'm7(9/11)': [
+    // Dm7(9/11): D-F-A-C-E-G -> [0,0,1,2] = D,G,C,E ✓
+    { baseRoot: 'D', frets: [0, 0, 1, 2], fingers: [0, 0, 1, 2] },
+  ],
+  '7(b9/13)': [
+    // G7(b9/13): G-B-D-F-Ab-E -> [1,0,0,3] voicing with b9+13
+    { baseRoot: 'G', frets: [2, 1, 0, 3], fingers: [2, 1, 0, 3] },
+    // D7(b9/13): D-F#-A-C-Eb-B -> [0,2,1,1] voicing
+    { baseRoot: 'D', frets: [0, 2, 0, 1], fingers: [0, 2, 0, 1] },
+  ],
+  '7(#11/13)': [
+    // G7(#11/13): G-B-D-F-C#-E -> [2,0,2,3] = E,G,C#,F ✓
+    { baseRoot: 'G', frets: [2, 0, 2, 3], fingers: [2, 0, 3, 4] },
+  ],
+  '7(#5/#9)': [
+    // G7(#5/#9): G-B-D#-F-A# -> [1,0,1,3] = Eb,G,C,F voicing
+    { baseRoot: 'G', frets: [1, 0, 1, 3], fingers: [1, 0, 2, 4] },
+    // D7(#5/#9): D-F#-A#-C-F -> [0,3,1,3] = D,Bb,C,F ✓ 
+    { baseRoot: 'D', frets: [0, 3, 1, 3], fingers: [0, 3, 1, 4] },
+  ],
 };
 
 // Função de transposição COM validação harmônica
