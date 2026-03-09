@@ -36,7 +36,7 @@ export const OnboardingTour = () => {
   useEffect(() => {
     const done = localStorage.getItem(STORAGE_KEY);
     if (!done) {
-      const timer = setTimeout(() => setShow(true), 800);
+      const timer = setTimeout(() => setShow(true), 1500);
       return () => clearTimeout(timer);
     }
   }, []);
