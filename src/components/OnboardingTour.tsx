@@ -61,20 +61,18 @@ export const OnboardingTour = () => {
     <AnimatePresence>
       {show && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(8px)" }}
-            onClick={(e) => { if (e.target === e.currentTarget) finish(); }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-md pointer-events-auto"
           >
           <motion.div
             key={step}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative w-full max-w-md rounded-2xl border border-border/20 bg-card p-8 shadow-2xl"
+            className="relative w-full rounded-2xl border border-border/40 bg-card p-6 shadow-2xl"
           >
             {/* Close */}
             <button
