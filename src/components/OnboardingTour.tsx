@@ -144,7 +144,6 @@ export const OnboardingTour = () => {
               </Button>
             </div>
           </motion.div>
-          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
