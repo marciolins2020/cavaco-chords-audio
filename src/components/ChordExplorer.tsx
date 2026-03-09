@@ -8,7 +8,6 @@ import { useApp } from "@/contexts/AppContext";
 import { ROOT_NOTES, CHORD_TYPES } from "@/constants/chordDatabase";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 
-// Categorized chord types for better organization
 const CHORD_CATEGORIES: { label: string; types: string[] }[] = [
   { label: "Básicos", types: ['M', 'm', '7', 'm7', '7M', '6', 'sus4'] },
   { label: "Com Tensão", types: ['add9', 'madd9', 'madd11', '7(9)', '7(13)', '7(b13)', '7(b9)', '7(b5)', '7(#9)', '7(#11)'] },
@@ -29,7 +28,6 @@ const ALL_SUFFIX_LABELS: Record<string, string> = {
   '7(b9/13)': '7(b9/13)', '7(#11/13)': '7(#11/13)', '7(#5/#9)': '7(#5/#9)',
 };
 
-// Reverse map: quality string → suffix key
 const QUALITY_TO_SUFFIX: Record<string, string> = {};
 for (const [suffix] of Object.entries(ALL_SUFFIX_LABELS)) {
   const suffixInfo = SUFFIX_MAP[suffix];
@@ -49,41 +47,23 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [variationIndex, setVariationIndex] = useState(0);
 
-  // React to search query changes — parse and auto-select root/type
   useEffect(() => {
     if (!searchQuery || searchQuery.length < 1) return;
-
     const normalized = searchQuery.replace(/\s+/g, '').trim();
     const rootMatch = normalized.match(/^([A-Ga-g])([#b])?/);
     if (!rootMatch) return;
-
     const root = rootMatch[0].charAt(0).toUpperCase() + (rootMatch[0].slice(1) || '');
     const suffix = normalized.slice(rootMatch[0].length) || '';
-
-    // Only update if root is valid
     if (ROOT_NOTES.includes(root)) {
       setSelectedRoot(root);
       setVariationIndex(0);
-
-      // Try to match suffix to a chord type
       if (suffix) {
-        // Direct match
         const directMatch = CHORD_TYPES.find(t => t.toLowerCase() === suffix.toLowerCase());
-        if (directMatch) {
-          setSelectedType(directMatch);
-          return;
-        }
-        // Via quality map
+        if (directMatch) { setSelectedType(directMatch); return; }
         const viaSuffix = QUALITY_TO_SUFFIX[suffix] || QUALITY_TO_SUFFIX[suffix.toLowerCase()];
-        if (viaSuffix && CHORD_TYPES.includes(viaSuffix)) {
-          setSelectedType(viaSuffix);
-          return;
-        }
+        if (viaSuffix && CHORD_TYPES.includes(viaSuffix)) { setSelectedType(viaSuffix); return; }
       }
-      // No suffix = major
-      if (!suffix) {
-        setSelectedType("M");
-      }
+      if (!suffix) setSelectedType("M");
     }
   }, [searchQuery]);
 
@@ -111,9 +91,10 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card className="p-6 flex flex-col items-center gap-6 bg-card">
-        <div className="w-48 sm:w-56 md:w-64">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* Diagram panel */}
+      <Card className="p-5 flex flex-col items-center gap-5 bg-card border border-border shadow-card">
+        <div className="w-44 sm:w-52 md:w-60">
           {currentVariation ? (
             <ChordDiagram
               frets={currentVariation.frets}
@@ -122,20 +103,20 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
               startFret={currentVariation.startFret}
             />
           ) : (
-            <div className="aspect-square flex items-center justify-center text-muted-foreground">
+            <div className="aspect-square flex items-center justify-center text-sm text-muted-foreground">
               Selecione um acorde
             </div>
           )}
         </div>
 
         {totalVariations > 1 && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             {selectedChord?.variations.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setVariationIndex(idx)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  idx === variationIndex ? 'bg-primary w-6' : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                className={`h-2 rounded-full transition-smooth ${
+                  idx === variationIndex ? 'bg-accent w-5' : 'bg-border w-2 hover:bg-muted-foreground/40'
                 }`}
                 aria-label={`Variação ${idx + 1}`}
               />
@@ -143,43 +124,60 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
           </div>
         )}
 
-        <div className="flex gap-3">
-          <Button onClick={() => handlePlay('strum')} disabled={isPlaying || !currentVariation} className="bg-primary hover:bg-primary/90" size="lg">
-            {isPlaying ? "Tocando..." : "Dedilhado"}
+        <div className="flex gap-2 w-full max-w-xs">
+          <Button
+            onClick={() => handlePlay('strum')}
+            disabled={isPlaying || !currentVariation}
+            size="lg"
+            className="flex-1"
+          >
+            {isPlaying ? "Tocando..." : "▶ Dedilhado"}
           </Button>
-          <Button onClick={() => handlePlay('block')} disabled={isPlaying || !currentVariation} variant="secondary" size="lg">
+          <Button
+            onClick={() => handlePlay('block')}
+            disabled={isPlaying || !currentVariation}
+            variant="secondary"
+            size="lg"
+            className="flex-1"
+          >
             Simultâneo
           </Button>
         </div>
 
-        <Button variant="ghost" size="sm" onClick={() => setLeftHanded(!leftHanded)} className="text-muted-foreground hover:text-foreground">
-          {leftHanded ? 'Canhoto' : 'Destro'}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setLeftHanded(!leftHanded)}
+          className="text-xs text-muted-foreground hover:text-foreground"
+        >
+          {leftHanded ? 'Canhoto ✓' : 'Destro'}
         </Button>
       </Card>
 
-      <Card className="p-6 flex flex-col gap-6 bg-card">
+      {/* Selector panel */}
+      <Card className="p-5 flex flex-col gap-5 bg-card border border-border shadow-card">
         <div>
-          <span className="text-xs uppercase tracking-wider text-muted-foreground">Dicionário de Acordes</span>
-          <h2 className="text-3xl font-bold mt-1">
-            <span className="text-primary">{selectedRoot}</span>
+          <span className="text-[11px] uppercase tracking-wider text-muted-foreground font-medium">Dicionário de Acordes</span>
+          <h2 className="text-2xl font-semibold tracking-tight mt-0.5">
+            <span>{selectedRoot}</span>
             {selectedType !== 'M' && (
-              <span className="text-foreground ml-1">{ALL_SUFFIX_LABELS[selectedType] || selectedType}</span>
+              <span className="text-muted-foreground ml-1 font-normal">{ALL_SUFFIX_LABELS[selectedType] || selectedType}</span>
             )}
           </h2>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">Tônica</h3>
+          <h3 className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground mb-2.5">Tônica</h3>
           <ScrollArea className="w-full whitespace-nowrap">
             <div className="flex gap-1 pb-2">
               {ROOT_NOTES.map(root => (
                 <button
                   key={root}
                   onClick={() => handleRootChange(root)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all min-w-[48px] ${
+                  className={`px-3.5 py-1.5 rounded-md text-sm font-medium transition-smooth min-w-[44px] ${
                     selectedRoot === root
                       ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
+                      : 'bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground'
                   }`}
                 >
                   {root}
@@ -188,30 +186,21 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
             </div>
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
-          <div className="h-0.5 bg-muted mt-1 relative overflow-hidden rounded-full">
-            <div 
-              className="absolute h-full bg-primary transition-all duration-200"
-              style={{ 
-                width: `${100 / ROOT_NOTES.length}%`,
-                left: `${(ROOT_NOTES.indexOf(selectedRoot) / ROOT_NOTES.length) * 100}%`
-              }}
-            />
-          </div>
         </div>
 
-        <div className="max-h-[300px] overflow-y-auto pr-1">
+        <div className="max-h-[280px] overflow-y-auto pr-1 space-y-3">
           {CHORD_CATEGORIES.map(cat => (
-            <div key={cat.label} className="mb-3">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">{cat.label}</h3>
-              <div className="flex flex-wrap gap-1.5">
+            <div key={cat.label}>
+              <h3 className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground mb-2">{cat.label}</h3>
+              <div className="flex flex-wrap gap-1">
                 {cat.types.map(type => (
                   <button
                     key={type}
                     onClick={() => handleTypeChange(type)}
-                    className={`px-2.5 py-1.5 rounded-lg font-medium text-xs transition-all ${
+                    className={`px-2.5 py-1 rounded-md text-xs font-medium transition-smooth ${
                       selectedType === type
-                        ? 'bg-secondary text-secondary-foreground ring-2 ring-primary/50'
-                        : 'bg-muted/30 text-muted-foreground hover:bg-muted hover:text-foreground'
+                        ? 'bg-accent text-accent-foreground'
+                        : 'bg-secondary/40 text-muted-foreground hover:bg-secondary hover:text-foreground'
                     }`}
                   >
                     {ALL_SUFFIX_LABELS[type] || type}
@@ -222,9 +211,9 @@ const ChordExplorer = ({ searchQuery = "" }: ChordExplorerProps) => {
           ))}
         </div>
 
-        <div className="mt-auto p-4 rounded-xl bg-primary/10 border border-primary/20">
-          <h4 className="font-bold text-primary text-sm mb-1">DICA RZD</h4>
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-auto p-3 rounded-md bg-secondary border border-border">
+          <p className="text-[11px] font-semibold text-accent uppercase tracking-wider mb-1">Dica RZD</p>
+          <p className="text-xs text-muted-foreground leading-relaxed">
             Experimente as variações clicando nos pontos abaixo do diagrama.
             Use o modo "Simultâneo" para ouvir a harmonia soando ao mesmo tempo.
           </p>

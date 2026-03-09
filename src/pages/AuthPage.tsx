@@ -85,8 +85,8 @@ export default function AuthPage() {
   ];
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left side — branding & background */}
+    <div className="min-h-screen flex bg-background">
+      {/* Left side — branding */}
       <div
         className="hidden lg:flex lg:w-1/2 xl:w-[55%] relative flex-col justify-between p-12"
         style={{
@@ -95,42 +95,42 @@ export default function AuthPage() {
           backgroundPosition: "center",
         }}
       >
+        <div className="absolute inset-0 bg-background/30" />
         <div className="relative z-10">
           <motion.img
             src={rzdLogo}
             alt="RZD Music"
-            className="h-14 mb-2"
-            initial={{ opacity: 0, y: -20 }}
+            className="h-12"
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
           />
         </div>
 
         <motion.div
           className="relative z-10 max-w-lg"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h1 className="text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-4">
+          <h1 className="text-3xl xl:text-4xl font-semibold text-foreground leading-tight mb-3 tracking-tight">
             Domine os acordes
             <br />
             do <span className="italic">cavaquinho</span>.
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-            Seu dicionário completo de acordes com diagramas interativos,
+          <p className="text-base text-muted-foreground leading-relaxed mb-8">
+            Dicionário completo com diagramas interativos,
             áudio e prática guiada pelo método RZD.
           </p>
 
-          {/* Stats row */}
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-5">
             {stats.map(({ icon: Icon, value, label }) => (
               <div key={label} className="text-center">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-foreground/5 mb-2">
-                  <Icon className="h-5 w-5 text-foreground/70" />
+                <div className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-secondary mb-2">
+                  <Icon className="h-4 w-4 text-foreground/70" />
                 </div>
-                <p className="text-2xl font-bold text-foreground">{value}</p>
-                <p className="text-xs text-muted-foreground">{label}</p>
+                <p className="text-xl font-semibold text-foreground">{value}</p>
+                <p className="text-[11px] text-muted-foreground">{label}</p>
               </div>
             ))}
           </div>
@@ -144,43 +144,43 @@ export default function AuthPage() {
       </div>
 
       {/* Right side — auth form */}
-      <div className="w-full lg:w-1/2 xl:w-[45%] flex items-center justify-center p-6 sm:p-10 bg-background">
+      <div className="w-full lg:w-1/2 xl:w-[45%] flex items-center justify-center p-6 sm:p-10">
         <motion.div
           className="w-full max-w-sm"
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 10 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.05 }}
         >
           {/* Mobile logo */}
           <div className="flex flex-col items-center mb-8 lg:hidden">
-            <img src={rzdLogo} alt="RZD Music" className="h-14 mb-3" />
-            <h1 className="text-xl font-bold">RZD Music</h1>
+            <img src={rzdLogo} alt="RZD Music" className="h-12 mb-3" />
+            <h1 className="text-lg font-semibold">RZD Music</h1>
             <p className="text-sm text-muted-foreground">Acordes de Cavaquinho</p>
           </div>
 
           {/* Desktop heading */}
-          <div className="hidden lg:block mb-8">
-            <h2 className="text-2xl font-bold text-foreground">Bem-vindo</h2>
-            <p className="text-muted-foreground mt-1">
+          <div className="hidden lg:block mb-6">
+            <h2 className="text-xl font-semibold text-foreground tracking-tight">Bem-vindo</h2>
+            <p className="text-sm text-muted-foreground mt-1">
               Entre ou crie sua conta para começar.
             </p>
           </div>
 
           <Tabs defaultValue="signin" className="w-full" onValueChange={handleTabChange}>
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="signin">Entrar</TabsTrigger>
-              <TabsTrigger value="signup">Cadastrar</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 mb-5 h-9">
+              <TabsTrigger value="signin" className="text-sm">Entrar</TabsTrigger>
+              <TabsTrigger value="signup" className="text-sm">Cadastrar</TabsTrigger>
             </TabsList>
 
             <TabsContent value="signin">
               <form onSubmit={handleSignIn} className="space-y-4">
                 {signInError && (
-                  <div className="bg-destructive/10 border border-destructive/30 text-destructive text-sm rounded-lg px-4 py-3">
+                  <div className="bg-destructive/8 border border-destructive/20 text-destructive text-sm rounded-md px-3 py-2.5">
                     {signInError}
                   </div>
                 )}
-                <div className="space-y-2">
-                  <Label htmlFor="signin-email">Email</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="signin-email" className="text-sm">Email</Label>
                   <Input
                     id="signin-email"
                     type="email"
@@ -188,11 +188,11 @@ export default function AuthPage() {
                     value={signInEmail}
                     onChange={(e) => { setSignInEmail(e.target.value); setSignInError(""); }}
                     required
-                    className="h-11"
+                    className="h-10"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="signin-password">Senha</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="signin-password" className="text-sm">Senha</Label>
                   <Input
                     id="signin-password"
                     type="password"
@@ -200,10 +200,10 @@ export default function AuthPage() {
                     value={signInPassword}
                     onChange={(e) => { setSignInPassword(e.target.value); setSignInError(""); }}
                     required
-                    className="h-11"
+                    className="h-10"
                   />
                 </div>
-                <Button type="submit" className="w-full h-11 text-base" disabled={signInLoading}>
+                <Button type="submit" className="w-full h-10" disabled={signInLoading}>
                   {signInLoading ? "Entrando..." : "Entrar"}
                 </Button>
               </form>
@@ -212,28 +212,28 @@ export default function AuthPage() {
             <TabsContent value="signup">
               <form onSubmit={handleSignUp} className="space-y-4">
                 {signUpError && (
-                  <div className="bg-destructive/10 border border-destructive/30 text-destructive text-sm rounded-lg px-4 py-3">
+                  <div className="bg-destructive/8 border border-destructive/20 text-destructive text-sm rounded-md px-3 py-2.5">
                     {signUpError}
                   </div>
                 )}
                 {signUpSuccess && (
-                  <div className="bg-primary/10 border border-primary/30 text-foreground text-sm rounded-lg px-4 py-3">
+                  <div className="bg-accent/10 border border-accent/20 text-foreground text-sm rounded-md px-3 py-2.5">
                     {signUpSuccess}
                   </div>
                 )}
-                <div className="space-y-2">
-                  <Label htmlFor="signup-name">Nome Completo</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="signup-name" className="text-sm">Nome Completo</Label>
                   <Input
                     id="signup-name"
                     type="text"
                     placeholder="Seu nome"
                     value={signUpName}
                     onChange={(e) => { setSignUpName(e.target.value); setSignUpError(""); }}
-                    className="h-11"
+                    className="h-10"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="signup-email">Email</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="signup-email" className="text-sm">Email</Label>
                   <Input
                     id="signup-email"
                     type="email"
@@ -241,11 +241,11 @@ export default function AuthPage() {
                     value={signUpEmail}
                     onChange={(e) => { setSignUpEmail(e.target.value); setSignUpError(""); }}
                     required
-                    className="h-11"
+                    className="h-10"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="signup-password">Senha</Label>
+                <div className="space-y-1.5">
+                  <Label htmlFor="signup-password" className="text-sm">Senha</Label>
                   <Input
                     id="signup-password"
                     type="password"
@@ -254,18 +254,18 @@ export default function AuthPage() {
                     onChange={(e) => { setSignUpPassword(e.target.value); setSignUpError(""); }}
                     required
                     minLength={6}
-                    className="h-11"
+                    className="h-10"
                   />
                   <p className="text-xs text-muted-foreground">Mínimo de 6 caracteres</p>
                 </div>
-                <Button type="submit" className="w-full h-11 text-base" disabled={signUpLoading}>
+                <Button type="submit" className="w-full h-10" disabled={signUpLoading}>
                   {signUpLoading ? "Criando conta..." : "Criar Conta"}
                 </Button>
               </form>
             </TabsContent>
           </Tabs>
 
-          <p className="text-xs text-muted-foreground text-center mt-8">
+          <p className="text-xs text-muted-foreground text-center mt-6">
             Ao continuar, você concorda com os termos de uso.
           </p>
         </motion.div>

@@ -25,14 +25,14 @@ export function VisitorProgress() {
   const message = explored < 5
     ? `Você já explorou ${explored} acordes! Continue descobrindo.`
     : explored < 15
-    ? `${explored} acordes explorados! Crie uma conta para salvar seu progresso.`
+    ? `${explored} acordes explorados — crie uma conta para salvar seu progresso.`
     : `Incrível! ${explored} acordes! Crie uma conta para não perder nada.`;
 
   return (
-    <div className="bg-primary/10 border border-primary/20 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div className="flex items-center gap-3">
-        <Music className="h-6 w-6 text-primary" />
-        <div>
+    <div className="bg-accent/8 border border-accent/15 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="flex items-center gap-3 min-w-0">
+        <Music className="h-5 w-5 text-accent flex-shrink-0" />
+        <div className="min-w-0">
           <p className="text-sm font-medium text-foreground">{message}</p>
           <p className="text-xs text-muted-foreground">
             Salve favoritos, acompanhe XP e entre no ranking.
@@ -40,7 +40,7 @@ export function VisitorProgress() {
         </div>
       </div>
       <Link to="/auth" className="flex-shrink-0">
-        <Button size="sm" className="whitespace-nowrap">Criar conta grátis</Button>
+        <Button size="sm" className="h-8 text-xs px-4">Criar conta grátis</Button>
       </Link>
     </div>
   );

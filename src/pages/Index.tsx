@@ -1,11 +1,10 @@
-import { useState, useMemo, Suspense } from "react";
+import { useState, useMemo } from "react";
 import ChordCard from "@/components/ChordCard";
 import ChordExplorer from "@/components/ChordExplorer";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SearchBar } from "@/components/SearchBar";
 import { ChordOfTheDay } from "@/components/ChordOfTheDay";
-import { ChordGridSkeleton } from "@/components/ChordCardSkeleton";
 import { PageTransition } from "@/components/PageTransition";
 import { OnboardingTour } from "@/components/OnboardingTour";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +12,6 @@ import { useApp } from "@/contexts/AppContext";
 import { ChordEntry } from "@/types/chords";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 import { makeChordId } from "@/lib/chordIds";
-import juninhoBg from "@/assets/juninho-header-bg.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { VisitorProgress } from "@/components/VisitorProgress";
@@ -26,7 +24,7 @@ const Index = () => {
   const [showAll, setShowAll] = useState(false);
   const navigate = useNavigate();
   const { chordDatabase } = useApp();
-  
+
   const allChords = useMemo(() => {
     return chordDatabase.chords.map((chord): ChordEntry => {
       const suffixInfo = SUFFIX_MAP[chord.suffix] || {
@@ -34,7 +32,6 @@ const Index = () => {
         intervals: ["1", "3", "5"],
         description: chord.suffix
       };
-      
       return {
         id: makeChordId(chord.root, chord.suffix),
         root: chord.root,
@@ -88,60 +85,60 @@ const Index = () => {
       <div className="min-h-screen bg-background overflow-x-hidden">
         <Header />
         <OnboardingTour />
-        
-        {/* Hero Section */}
-        <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden max-w-full">
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-15"
-            style={{ backgroundImage: `url(${juninhoBg})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-background/80" />
-          
-          <div className="container mx-auto relative z-10">
-            <div className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 rounded-full text-xs sm:text-sm text-primary border border-primary/20">
-                <span>Por Professor Juninho Rezende</span>
-              </div>
-              
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Dicionário de Acordes
-              </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
-                Aprenda todos os acordes de cavaquinho com diagramas profissionais,
-                áudio e múltiplas posições
+
+        {/* Hero Section — search-first */}
+        <section className="py-10 sm:py-14 md:py-16 px-4 sm:px-6 max-w-full">
+          <div className="container mx-auto">
+            <div className="max-w-2xl mx-auto text-center space-y-5">
+              <p className="text-xs font-medium text-accent uppercase tracking-wider">
+                Por Professor Juninho Rezende
               </p>
 
-              <SearchBar onSearch={setSearchQuery} value={searchQuery} className="max-w-2xl mx-auto" />
+              <h1 className="font-semibold tracking-tight">
+                Dicionário de Acordes
+              </h1>
 
-              <div className="flex flex-wrap justify-center gap-2 text-sm max-w-full">
-                <button
+              <p className="text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+                Todos os acordes de cavaquinho com diagramas, áudio e múltiplas posições.
+              </p>
+
+              <SearchBar onSearch={setSearchQuery} value={searchQuery} className="max-w-xl mx-auto" />
+
+              {/* Quick Actions */}
+              <div className="flex flex-wrap justify-center gap-2 pt-1">
+                <Button
                   onClick={() => navigate("/identifier")}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
+                  size="sm"
+                  className="text-xs h-8 px-4"
                 >
                   Identificar Acorde
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => navigate("/pratica")}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-success text-success-foreground rounded-xl hover:bg-success/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
+                  variant="secondary"
+                  size="sm"
+                  className="text-xs h-8 px-4"
                 >
                   Modo Prática
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => navigate("/campo-harmonico")}
-                  className="px-4 sm:px-6 py-2 sm:py-3 bg-secondary text-secondary-foreground rounded-xl hover:bg-secondary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-semibold text-xs sm:text-sm"
+                  variant="secondary"
+                  size="sm"
+                  className="text-xs h-8 px-4"
                 >
                   Campo Harmônico
-                </button>
+                </Button>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-2 text-xs sm:text-sm text-muted-foreground">
-                <span>Ou busque rápido:</span>
+              {/* Quick search chips */}
+              <div className="flex flex-wrap justify-center gap-1.5 text-xs text-muted-foreground pt-1">
+                <span>Busca rápida:</span>
                 {["C", "Dm", "G7", "Am", "F#m"].map((chord) => (
                   <button
                     key={chord}
                     onClick={() => setSearchQuery(chord)}
-                    className="px-3 py-1 bg-accent text-accent-foreground hover:bg-accent/90 rounded-full transition-colors font-semibold"
+                    className="px-2.5 py-0.5 bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth font-medium"
                   >
                     {chord}
                   </button>
@@ -152,39 +149,39 @@ const Index = () => {
         </section>
 
         {/* Visitor Progress CTA */}
-        <section className="container mx-auto px-4 py-4">
+        <section className="container mx-auto px-4 pb-2">
           <VisitorProgress />
         </section>
 
         {/* Acorde do Dia */}
-        <section className="container mx-auto px-4 py-6">
+        <section className="container mx-auto px-4 py-4">
           <ChordOfTheDay />
         </section>
 
         {/* Chord Explorer */}
-        <section className="container mx-auto px-4 py-8 md:py-12">
+        <section className="container mx-auto px-4 py-6 md:py-8">
           <ChordExplorer searchQuery={searchQuery} />
         </section>
 
-        {/* Chords Section - Tabbed */}
-        <main className="container mx-auto px-4 py-8 md:py-12">
+        {/* Chords Section — Tabbed */}
+        <main className="container mx-auto px-4 py-6 md:py-8">
           {searchQuery ? (
             <>
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-2">Resultados da busca</h2>
-                <p className="text-muted-foreground">
+              <div className="mb-6">
+                <h2 className="font-semibold mb-1">Resultados da busca</h2>
+                <p className="text-sm text-muted-foreground">
                   {filteredChords.length} {filteredChords.length === 1 ? "acorde encontrado" : "acordes encontrados"}
                 </p>
               </div>
               {filteredChords.length > 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
                   {filteredChords.map((chord) => (
                     <ChordCard key={chord.id} chord={chord} />
                   ))}
                 </div>
               ) : (
                 <div className="text-center py-16">
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-muted-foreground">
                     Nenhum acorde encontrado para "{searchQuery}"
                   </p>
                 </div>
@@ -192,17 +189,17 @@ const Index = () => {
             </>
           ) : (
             <Tabs defaultValue="popular" className="w-full">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">Acordes</h2>
-                <TabsList>
-                  <TabsTrigger value="popular">Populares</TabsTrigger>
-                  <TabsTrigger value="beginner">Iniciante</TabsTrigger>
-                  <TabsTrigger value="all">Todos</TabsTrigger>
+              <div className="flex items-center justify-between mb-5">
+                <h2 className="font-semibold">Acordes</h2>
+                <TabsList className="h-8">
+                  <TabsTrigger value="popular" className="text-xs px-3 h-7">Populares</TabsTrigger>
+                  <TabsTrigger value="beginner" className="text-xs px-3 h-7">Iniciante</TabsTrigger>
+                  <TabsTrigger value="all" className="text-xs px-3 h-7">Todos</TabsTrigger>
                 </TabsList>
               </div>
 
               <TabsContent value="popular">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
                   {popularChords.map((chord) => (
                     <ChordCard key={chord.id} chord={chord} />
                   ))}
@@ -210,8 +207,8 @@ const Index = () => {
               </TabsContent>
 
               <TabsContent value="beginner">
-                <p className="text-muted-foreground mb-4 text-sm">Acordes sem pestana — ideais para quem está começando.</p>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                <p className="text-sm text-muted-foreground mb-4">Acordes sem pestana — ideais para quem está começando.</p>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
                   {beginnerChords.map((chord) => (
                     <ChordCard key={chord.id} chord={chord} />
                   ))}
@@ -219,17 +216,17 @@ const Index = () => {
               </TabsContent>
 
               <TabsContent value="all">
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className="text-sm text-muted-foreground mb-4">
                   {allChords.length} acordes no dicionário
                 </p>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
                   {displayedChords.map((chord) => (
                     <ChordCard key={chord.id} chord={chord} />
                   ))}
                 </div>
                 {!showAll && allChords.length > 20 && (
                   <div className="text-center mt-8">
-                    <Button variant="outline" onClick={() => setShowAll(true)}>
+                    <Button variant="outline" size="sm" onClick={() => setShowAll(true)}>
                       Ver todos os {allChords.length} acordes
                     </Button>
                   </div>

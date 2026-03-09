@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useApp } from "@/contexts/AppContext";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 import { makeChordId, makeChordDisplayName } from "@/lib/chordIds";
+import { Search } from "lucide-react";
 
 interface ChordSearchResult {
   id: string;
@@ -45,12 +46,10 @@ const INPUT_SUFFIX_MAP: Record<string, string> = {
 export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
   const [query, setQuery] = useState(value || "");
 
-  // Sync external value prop
   useEffect(() => {
-    if (value !== undefined) {
-      setQuery(value);
-    }
+    if (value !== undefined) setQuery(value);
   }, [value]);
+
   const [suggestions, setSuggestions] = useState<ChordSearchResult[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -58,7 +57,6 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
   const navigate = useNavigate();
   const { chordDatabase } = useApp();
 
-  // Build searchable chord list from the SAME source as ChordDetail/Index
   const searchableChords = useMemo((): ChordSearchResult[] => {
     return chordDatabase.chords.map((chord) => {
       const suffixInfo = SUFFIX_MAP[chord.suffix] || {
@@ -79,20 +77,16 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
     });
   }, [chordDatabase]);
 
-  // Smart search
   const smartSearch = (searchQuery: string): ChordSearchResult[] => {
     if (!searchQuery) return [];
 
-    // First, translate Portuguese note names to standard notation
     let normalized = searchQuery.trim();
-    
-    // Portuguese note names → standard
+
     const PT_NOTES: Record<string, string> = {
       'dó': 'C', 'do': 'C', 'ré': 'D', 're': 'D', 'mi': 'E',
       'fá': 'F', 'fa': 'F', 'sol': 'G', 'lá': 'A', 'la': 'A', 'si': 'B',
     };
-    
-    // Portuguese qualifier words
+
     const PT_QUALIFIERS: Record<string, string> = {
       'maior': '', 'menor': 'm', 'com sétima': '7', 'sétima': '7',
       'com sétima maior': 'maj7', 'sétima maior': 'maj7',
@@ -100,26 +94,22 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
       'sexta': '6', 'nona': '9', 'suspensa': 'sus4', 'suspenso': 'sus4',
     };
 
-    // Try to match Portuguese input like "Sol com sétima", "Ré menor"
     const lowerInput = normalized.toLowerCase();
     let ptRoot: string | null = null;
     let ptRemainder = '';
-    
-    // Sort by length descending to match "sol" before "si" wouldn't matter but "dó" before "do"
+
     const sortedNotes = Object.entries(PT_NOTES).sort((a, b) => b[0].length - a[0].length);
     for (const [ptName, stdNote] of sortedNotes) {
       if (lowerInput.startsWith(ptName)) {
         ptRoot = stdNote;
         ptRemainder = lowerInput.slice(ptName.length).trim();
-        // Remove leading "com" if present
         ptRemainder = ptRemainder.replace(/^com\s+/, '');
         break;
       }
     }
 
     if (ptRoot) {
-      // Try to match qualifier
-      let ptSuffix = 'M'; // default major
+      let ptSuffix = 'M';
       const sortedQualifiers = Object.entries(PT_QUALIFIERS).sort((a, b) => b[0].length - a[0].length);
       for (const [ptQual, stdSuffix] of sortedQualifiers) {
         if (ptRemainder.includes(ptQual)) {
@@ -127,17 +117,10 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
           break;
         }
       }
-      
-      // Check for sharp/flat
-      if (ptRemainder.includes('sustenido') || ptRemainder.includes('#')) {
-        ptRoot += '#';
-      } else if (ptRemainder.includes('bemol') || ptRemainder.includes('b')) {
-        ptRoot += 'b';
-      }
-      
+      if (ptRemainder.includes('sustenido') || ptRemainder.includes('#')) ptRoot += '#';
+      else if (ptRemainder.includes('bemol') || ptRemainder.includes('b')) ptRoot += 'b';
       normalized = ptRoot + (ptSuffix === 'M' ? '' : ptSuffix);
     } else {
-      // Standard notation path
       normalized = normalized
         .replace(/maior/gi, '')
         .replace(/menor/gi, 'm')
@@ -154,13 +137,11 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
     const rawSuffix = normalized.slice(rootMatch[0].length) || '';
     const normalizedSuffix = INPUT_SUFFIX_MAP[rawSuffix.toLowerCase().replace(/[()]/g, '')] || rawSuffix;
 
-    // Exact match first
-    let results = searchableChords.filter(chord => {
-      return chord.root.toUpperCase() === inputRoot.toUpperCase() &&
-             chord.quality.toLowerCase() === normalizedSuffix.toLowerCase();
-    });
+    let results = searchableChords.filter(chord =>
+      chord.root.toUpperCase() === inputRoot.toUpperCase() &&
+      chord.quality.toLowerCase() === normalizedSuffix.toLowerCase()
+    );
 
-    // Partial match
     if (results.length === 0) {
       results = searchableChords.filter(chord => {
         const fullName = (chord.root + chord.quality).toLowerCase();
@@ -168,25 +149,22 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
       });
     }
 
-    // Enharmonic search
     if (results.length === 0) {
       const enharmonic = ENHARMONICS[inputRoot];
       if (enharmonic) {
-        results = searchableChords.filter(chord => {
-          return chord.root.toUpperCase() === enharmonic.toUpperCase() &&
-                 chord.quality.toLowerCase() === normalizedSuffix.toLowerCase();
-        });
+        results = searchableChords.filter(chord =>
+          chord.root.toUpperCase() === enharmonic.toUpperCase() &&
+          chord.quality.toLowerCase() === normalizedSuffix.toLowerCase()
+        );
       }
     }
 
-    // If just a root with no suffix, show all chords for that root
     if (results.length === 0 && !rawSuffix) {
       results = searchableChords.filter(chord =>
         chord.root.toUpperCase() === inputRoot.toUpperCase()
       );
     }
 
-    // Sort: exact first
     results.sort((a, b) => {
       const aExact = (a.root + a.quality).toLowerCase() === normalized.toLowerCase();
       const bExact = (b.root + b.quality).toLowerCase() === normalized.toLowerCase();
@@ -198,7 +176,6 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
     return results.slice(0, 10);
   };
 
-  // Debounced search
   useEffect(() => {
     const timer = setTimeout(() => {
       const trimmed = query.trim();
@@ -253,7 +230,7 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
     <div className={`relative ${className}`}>
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground text-lg" aria-hidden="true">🔍</span>
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" aria-hidden="true" />
           <input
             ref={inputRef}
             type="text"
@@ -265,31 +242,31 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
             onKeyDown={handleKeyDown}
             onFocus={() => query && setShowSuggestions(true)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-            placeholder="Digite o acorde (ex: C, Dm7, G7, Am, F#m)"
+            placeholder="Buscar acorde — ex: C, Dm7, G7, Am"
             aria-label="Buscar acorde"
-            className="w-full pl-12 pr-4 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-2 border-border bg-background focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none transition-all"
+            className="w-full pl-12 pr-4 py-3.5 text-base rounded-lg border border-input bg-card focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-smooth placeholder:text-muted-foreground/60"
           />
         </div>
       </form>
 
       {/* Autocomplete dropdown */}
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-card border-2 border-border rounded-xl shadow-2xl overflow-hidden z-50 max-h-[400px] overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-1.5 bg-card border border-border rounded-lg shadow-elevated overflow-hidden z-50 max-h-[360px] overflow-y-auto">
           {suggestions.map((chord, index) => (
             <button
               key={chord.id}
               onClick={() => selectChord(chord)}
-              className={`w-full px-4 py-3 flex items-center justify-between hover:bg-accent transition-colors ${
-                selectedIndex === index ? 'bg-accent' : ''
+              className={`w-full px-4 py-2.5 flex items-center justify-between transition-smooth text-left ${
+                selectedIndex === index ? 'bg-secondary' : 'hover:bg-secondary/50'
               }`}
             >
-              <div className="flex items-center gap-3">
-                <span className="text-lg font-bold">
+              <div className="flex items-center gap-2.5">
+                <span className="text-base font-semibold text-foreground">
                   {chord.root}
-                  <span className="text-muted-foreground">{chord.quality}</span>
+                  <span className="text-muted-foreground font-normal">{chord.quality}</span>
                 </span>
                 {chord.notes.length > 0 && (
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-xs text-muted-foreground">
                     {chord.notes.join(', ')}
                   </span>
                 )}
@@ -299,13 +276,13 @@ export function SearchBar({ onSearch, className = "", value }: SearchBarProps) {
         </div>
       )}
 
-      {/* No results message */}
+      {/* No results */}
       {showSuggestions && query.length >= 1 && suggestions.length === 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-card border-2 border-border rounded-xl shadow-2xl p-4 z-50">
-          <p className="text-muted-foreground text-center">
-            Nenhum acorde encontrado para "<span className="font-bold">{query}</span>"
+        <div className="absolute top-full left-0 right-0 mt-1.5 bg-card border border-border rounded-lg shadow-elevated p-4 z-50">
+          <p className="text-sm text-muted-foreground text-center">
+            Nenhum acorde para "<span className="font-semibold text-foreground">{query}</span>"
           </p>
-          <p className="text-sm text-muted-foreground text-center mt-2">
+          <p className="text-xs text-muted-foreground text-center mt-1.5">
             Tente: C, Dm, G7, Am, F#m, Bbmaj7
           </p>
         </div>
