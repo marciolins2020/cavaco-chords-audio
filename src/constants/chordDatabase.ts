@@ -184,6 +184,82 @@ const VERIFIED_PATTERNS: Record<string, SourcePattern[]> = {
     { baseRoot: 'C', frets: [0, 0, 1, 2], fingers: [0, 0, 1, 2] },
     // Dadd9: D-F#-A-E -> [0,2,5,4] = D,A,E,F# ✓
     { baseRoot: 'D', frets: [0, 2, 5, 4], fingers: [0, 1, 4, 3] },
+  ],
+  'madd9': [
+    // Dmadd9: D-F-A-E -> [2,2,3,3] = E,A,D,F ✓
+    { baseRoot: 'D', frets: [2, 2, 3, 3], fingers: [1, 1, 3, 4], barre: 2 },
+  ],
+  'madd11': [
+    // Dmadd11: D-F-A-G -> [0,0,3,3] = D,G,D,F ✓
+    { baseRoot: 'D', frets: [0, 0, 3, 3], fingers: [0, 0, 2, 3] },
+  ],
+  '7(b9)': [
+    // D7(b9): D-F#-A-C-Eb -> [0,2,1,1] = D,A,C,Eb ✓
+    { baseRoot: 'D', frets: [0, 2, 1, 1], fingers: [0, 3, 1, 2] },
+    // E7(b9): E-G#-B-D-F -> [0,1,0,3] = D,Ab,B,F ✓ (Ab=G#)
+    { baseRoot: 'E', frets: [0, 1, 0, 3], fingers: [0, 1, 0, 3] },
+  ],
+  '7(b5)': [
+    // D7(b5): D-F#-Ab-C -> [0,1,1,4] = D,Ab,C,F# ✓
+    { baseRoot: 'D', frets: [0, 1, 1, 4], fingers: [0, 1, 2, 4] },
+  ],
+  '7(#9)': [
+    // D7(#9): D-F#-A-C-F -> [0,2,1,3] = D,A,C,F ✓
+    { baseRoot: 'D', frets: [0, 2, 1, 3], fingers: [0, 2, 1, 3] },
+  ],
+  '7(#11)': [
+    // G7(#11): G-B-D-F-C# -> [0,0,2,3] = D,G,C#,F ✓
+    { baseRoot: 'G', frets: [0, 0, 2, 3], fingers: [0, 0, 1, 2] },
+    // D7(#11): D-F#-A-C-G# -> [0,1,1,4] = D,Ab,C,F# ✓ (Ab=G#)
+    { baseRoot: 'D', frets: [0, 1, 1, 4], fingers: [0, 1, 2, 4] },
+  ],
+  '7(13)': [
+    // G7(13): G-B-D-F-E -> [2,0,0,3] = E,G,B,F ✓
+    { baseRoot: 'G', frets: [2, 0, 0, 3], fingers: [2, 0, 0, 3] },
+    // D7(13): D-F#-A-C-B -> [0,2,0,4] = D,A,B,F# ✓
+    { baseRoot: 'D', frets: [0, 2, 0, 4], fingers: [0, 2, 0, 4] },
+  ],
+  '7(b13)': [
+    // D7(b13): D-F#-A-C-Bb -> [0,3,1,4] = D,Bb,C,F# ✓
+    { baseRoot: 'D', frets: [0, 3, 1, 4], fingers: [0, 3, 1, 4] },
+    // G7(b13): G-B-D-F-Eb -> [1,0,0,3] = Eb,G,B,F ✓
+    { baseRoot: 'G', frets: [1, 0, 0, 3], fingers: [1, 0, 0, 3] },
+  ],
+  '6(9)': [
+    // G6(9): G-B-D-E-A -> [0,2,0,2] = D,A,B,E ✓
+    { baseRoot: 'G', frets: [0, 2, 0, 2], fingers: [0, 2, 0, 3] },
+    // C6(9): C-E-G-A-D -> [0,2,1,2] = D,A,C,E ✓
+    { baseRoot: 'C', frets: [0, 2, 1, 2], fingers: [0, 2, 1, 3] },
+    // D6(9): D-F#-A-B-E -> [0,2,0,4] = D,A,B,F# ✓
+    { baseRoot: 'D', frets: [0, 2, 0, 4], fingers: [0, 2, 0, 4] },
+  ],
+  'm7(9)': [
+    // Dm7(9): D-F-A-C-E -> [0,2,1,2] = D,A,C,E ✓
+    { baseRoot: 'D', frets: [0, 2, 1, 2], fingers: [0, 2, 1, 3] },
+    // Em7(9): E-G-B-D-F# -> [0,0,0,4] = D,G,B,F# ✓
+    { baseRoot: 'E', frets: [0, 0, 0, 4], fingers: [0, 0, 0, 4] },
+  ],
+  'm7(11)': [
+    // Dm7(11): D-F-A-C-G -> [0,0,1,3] = D,G,C,F ✓
+    { baseRoot: 'D', frets: [0, 0, 1, 3], fingers: [0, 0, 1, 3] },
+    // Em7(11): E-G-B-D-A -> [0,2,0,2] = D,A,B,E ✓
+    { baseRoot: 'E', frets: [0, 2, 0, 2], fingers: [0, 2, 0, 3] },
+  ],
+  '7M(9)': [
+    // G7M(9): G-B-D-F#-A -> [0,2,0,4] = D,A,B,F# ✓
+    { baseRoot: 'G', frets: [0, 2, 0, 4], fingers: [0, 2, 0, 4] },
+    // D7M(9): D-F#-A-C#-E -> [0,2,2,2] = D,A,C#,E ✓
+    { baseRoot: 'D', frets: [0, 2, 2, 2], fingers: [0, 1, 1, 1], barre: 2 },
+  ],
+  '7M(#11)': [
+    // G7M(#11): G-B-D-F#-C# -> [0,0,2,4] = D,G,C#,F# ✓
+    { baseRoot: 'G', frets: [0, 0, 2, 4], fingers: [0, 0, 1, 3] },
+    // D7M(#11): D-F#-A-C#-G# -> [0,1,2,4] = D,Ab,C#,F# ✓ (Ab=G#)
+    { baseRoot: 'D', frets: [0, 1, 2, 4], fingers: [0, 1, 2, 4] },
+  ],
+  '(b5)': [
+    // D(b5): D-F#-Ab -> [0,1,3,4] = D,Ab,D,F# ✓
+    { baseRoot: 'D', frets: [0, 1, 3, 4], fingers: [0, 1, 3, 4] },
   ]
 };
 
