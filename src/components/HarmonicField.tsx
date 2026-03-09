@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import ChordDiagram from "@/components/ChordDiagram";
 import { getHarmonicField, getAvailableKeys, FUNCTION_INFO, HarmonicFunction } from "@/utils/harmonicField";
 import { useNavigate } from "react-router-dom";
-import { playChord, initAudio } from "@/lib/audio";
 import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
 import { useChordList } from "@/hooks/useChordList";
+import { AutoPlayControls } from "@/components/AutoPlayControls";
+import { Music } from "lucide-react";
 
 interface HarmonicFieldProps {
   selectedKey?: string;
@@ -16,7 +17,8 @@ interface HarmonicFieldProps {
 export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   const [currentKey, setCurrentKey] = useState(selectedKey);
   const [highlightedFunction, setHighlightedFunction] = useState<HarmonicFunction | null>(null);
-  const [playingChord, setPlayingChord] = useState<string | null>(null);
+  const [selectedProgression, setSelectedProgression] = useState<number | null>(null);
+  const [highlightedDegreeIndex, setHighlightedDegreeIndex] = useState<number | null>(null);
   const navigate = useNavigate();
   const { addToHistory } = useApp();
   const allChords = useChordList();
@@ -31,29 +33,24 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
     navigate(`/chord/${chordId}`);
   };
 
-  const handlePlayProgression = async (sequence: string[]) => {
-    try {
-      await initAudio();
-      
-      for (const chordName of sequence) {
+  // Convert field degrees to AutoPlayControls format
+  const fieldChords = field.degrees
+    .filter(d => d.chord && d.chord.variations.length > 0)
+    .map(d => ({
+      name: d.chord!.root + d.chord!.quality,
+      frets: d.chord!.variations[0].frets,
+    }));
+
+  // Convert progression sequence to AutoPlayControls format
+  const getProgressionChords = (sequence: string[]) => {
+    return sequence
+      .map(chordName => {
         const chord = field.degrees.find(
           d => d.chord && (d.chord.root + d.chord.quality) === chordName
         )?.chord;
-        
-        if (chord && chord.variations.length > 0) {
-          setPlayingChord(chordName);
-          await playChord(chord.variations[0].frets, "strum");
-          await new Promise(resolve => setTimeout(resolve, 800));
-        }
-      }
-      
-      setPlayingChord(null);
-      toast.success("Progressão tocada!");
-    } catch (error) {
-      console.error("Erro ao tocar progressão:", error);
-      toast.error("Erro ao tocar a progressão");
-      setPlayingChord(null);
-    }
+        return chord?.variations[0] ? { name: chordName, frets: chord.variations[0].frets } : null;
+      })
+      .filter(Boolean) as { name: string; frets: number[] }[];
   };
 
   return (
@@ -81,12 +78,12 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
         </h3>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-6">
-          {field.degrees.map(({ degree, chord, function: func }) => {
+          {field.degrees.map(({ degree, chord, function: func }, index) => {
             if (!chord || !chord.variations || chord.variations.length === 0) return null;
 
             const mainVariation = chord.variations[0];
             const funcInfo = FUNCTION_INFO[func];
-            const isHighlighted = highlightedFunction === func;
+            const isHighlighted = highlightedFunction === func || highlightedDegreeIndex === index;
 
             return (
               <Card
@@ -124,6 +121,13 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
           })}
         </div>
 
+        {/* Auto-play field */}
+        <AutoPlayControls
+          chords={fieldChords}
+          label="▶ Tocar Campo Harmônico Completo"
+          onChordHighlight={setHighlightedDegreeIndex}
+        />
+
         {/* Function Legend */}
         <div className="flex flex-wrap gap-4 justify-center text-sm">
           {Object.entries(FUNCTION_INFO).map(([func, info]) => (
@@ -152,48 +156,65 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {field.progressions.map((prog, idx) => (
-              <Card key={idx} className="p-5 space-y-3">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h4 className="font-bold text-lg">{prog.name}</h4>
-                    <p className="text-sm text-muted-foreground">{prog.description}</p>
-                  </div>
-                  <span className="text-xs px-2 py-1 bg-secondary rounded-full">
-                    {prog.style}
-                  </span>
-                </div>
+            {field.progressions.map((prog, idx) => {
+              const isSelected = selectedProgression === idx;
+              const progressionChords = getProgressionChords(prog.sequence);
 
-                <div className="flex flex-wrap gap-2 items-center">
-                  {prog.sequence.map((chordName, i) => (
-                    <div key={i} className="flex items-center gap-1">
-                      <span
-                        className={`font-mono font-bold px-2 py-1 rounded ${
-                          playingChord === chordName
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-secondary text-secondary-foreground"
-                        }`}
-                      >
-                        {chordName}
-                      </span>
-                      {i < prog.sequence.length - 1 && (
-                        <span className="text-muted-foreground">→</span>
-                      )}
+              return (
+                <Card key={idx} className="p-5 space-y-3">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h4 className="font-bold text-lg">{prog.name}</h4>
+                      <p className="text-sm text-muted-foreground">{prog.description}</p>
                     </div>
-                  ))}
-                </div>
+                    <span className="text-xs px-2 py-1 bg-secondary rounded-full whitespace-nowrap">
+                      {prog.style}
+                    </span>
+                  </div>
 
-                <Button
-                  onClick={() => handlePlayProgression(prog.sequence)}
-                  disabled={playingChord !== null}
-                  variant="outline"
-                  size="sm"
-                  className="w-full"
-                >
-                  ▶ {playingChord ? "Tocando..." : "Tocar Progressão"}
-                </Button>
-              </Card>
-            ))}
+                  {!isSelected ? (
+                    <>
+                      <div className="flex flex-wrap gap-2 items-center">
+                        {prog.sequence.map((chordName, i) => (
+                          <div key={i} className="flex items-center gap-1">
+                            <span className="font-mono font-bold px-2 py-1 rounded bg-secondary text-secondary-foreground">
+                              {chordName}
+                            </span>
+                            {i < prog.sequence.length - 1 && (
+                              <span className="text-muted-foreground">→</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      <Button
+                        onClick={() => setSelectedProgression(idx)}
+                        variant="outline"
+                        size="sm"
+                        className="w-full gap-2"
+                      >
+                        <Music className="h-4 w-4" />
+                        Controles Avançados
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <AutoPlayControls
+                        chords={progressionChords}
+                        onChordHighlight={null}
+                      />
+                      <Button
+                        onClick={() => setSelectedProgression(null)}
+                        variant="ghost"
+                        size="sm"
+                        className="w-full"
+                      >
+                        Fechar Controles
+                      </Button>
+                    </>
+                  )}
+                </Card>
+              );
+            })}
           </div>
         </div>
       )}
