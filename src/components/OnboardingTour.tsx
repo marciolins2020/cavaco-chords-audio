@@ -125,6 +125,7 @@ export const OnboardingTour = () => {
                 <button
                   key={i}
                   onClick={() => setStep(i)}
+                  aria-label={`Ir para passo ${i + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === step ? "w-8 bg-primary" : i < step ? "w-2 bg-primary/50" : "w-2 bg-muted-foreground/30"
                   }`}
