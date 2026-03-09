@@ -63,7 +63,7 @@ export default function AuthPage() {
           </p>
         </div>
 
-        <Tabs defaultValue="signin" className="w-full" onValueChange={() => { setEmail(""); setPassword(""); setFullName(""); }}>
+        <Tabs defaultValue="signin" className="w-full" onValueChange={() => { setEmail(""); setPassword(""); setFullName(""); setLoading(false); }}>
           <TabsList className="grid w-full grid-cols-2 mb-6">
             <TabsTrigger value="signin">Entrar</TabsTrigger>
             <TabsTrigger value="signup">Cadastrar</TabsTrigger>
