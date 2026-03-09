@@ -334,7 +334,6 @@ export default function ProfilePage() {
           ) : (
             <div className="text-center py-12 text-muted-foreground">
               <p>Nenhuma prática registrada ainda</p>
-              <p>Nenhuma prática registrada ainda</p>
               <Link to="/pratica">
                 <Button variant="outline" className="mt-4">
                   Começar a Praticar
