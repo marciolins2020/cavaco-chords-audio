@@ -83,7 +83,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
       
       if (error) {
-        toast.error(error.message);
+        const msg = error.message.includes("already registered")
+          ? "Este email já está cadastrado. Tente fazer login."
+          : "Erro ao criar conta. Tente novamente.";
+        toast.error(msg);
       } else {
         toast.success("Conta criada com sucesso! Você já pode fazer login.");
       }
