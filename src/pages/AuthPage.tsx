@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import rzdLogo from "@/assets/logo-rzd-final.png";
+import juninhoPhoto from "@/assets/juninho-rezende.png";
 import authBg from "@/assets/auth-bg-music.jpg";
 import { motion } from "framer-motion";
 import { Music, Users, Trophy, BookOpen } from "lucide-react";
@@ -97,14 +98,22 @@ export default function AuthPage() {
       >
         <div className="absolute inset-0 bg-background/30" />
         <div className="relative z-10">
-          <motion.img
-            src={rzdLogo}
-            alt="RZD Music"
-            className="h-12"
+          <motion.div
+            className="flex items-center gap-3"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-          />
+          >
+            <img
+              src={juninhoPhoto}
+              alt="Juninho Rezende"
+              className="h-14 w-14 rounded-full object-cover border-2 border-background/50 shadow-md"
+            />
+            <div>
+              <p className="text-sm font-semibold text-foreground">Juninho Rezende</p>
+              <p className="text-xs text-muted-foreground">RZD Music</p>
+            </div>
+          </motion.div>
         </div>
 
         <motion.div
