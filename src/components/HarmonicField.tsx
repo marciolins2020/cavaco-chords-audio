@@ -17,7 +17,8 @@ interface HarmonicFieldProps {
 export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   const [currentKey, setCurrentKey] = useState(selectedKey);
   const [highlightedFunction, setHighlightedFunction] = useState<HarmonicFunction | null>(null);
-  const [playingChord, setPlayingChord] = useState<string | null>(null);
+  const [selectedProgression, setSelectedProgression] = useState<number | null>(null);
+  const [highlightedDegreeIndex, setHighlightedDegreeIndex] = useState<number | null>(null);
   const navigate = useNavigate();
   const { addToHistory } = useApp();
   const allChords = useChordList();
