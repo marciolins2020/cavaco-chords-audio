@@ -3,7 +3,6 @@ import { useApp } from "@/contexts/AppContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import rzdLogo from "@/assets/logo-rzd-final.png";
-import headerBg from "@/assets/juninho-header-bg.jpg";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,86 +30,67 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const navLinkClass = (path: string) =>
+    `text-sm font-medium px-3 py-1.5 rounded-md transition-smooth ${
+      isActive(path)
+        ? "bg-primary text-primary-foreground"
+        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+    }`;
+
   return (
-    <header className="sticky top-0 z-50 border-b relative overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20"
-        style={{ backgroundImage: `url(${headerBg})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background" />
-      
-      <div className="relative container mx-auto px-2 sm:px-4 py-2">
-        <div className="flex items-center justify-between gap-2">
+    <header className="sticky top-0 z-50 border-b bg-card/95 backdrop-blur-sm">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between h-14 gap-2">
           {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="sm" className="md:hidden" aria-label="Abrir menu de navegação">
-                <Menu className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="md:hidden h-9 w-9" aria-label="Abrir menu de navegação">
+                <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-72">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
                   <img src={rzdLogo} alt="RZD" className="h-8 w-auto" />
-                  <span>Menu</span>
+                  <span className="text-base">RZD Music</span>
                 </SheetTitle>
               </SheetHeader>
-              <div className="mt-6 flex flex-col gap-2">
-                <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/") ? "default" : "ghost"} className="w-full justify-start gap-2">
-                    <Music className="h-4 w-4" /> Acordes
-                  </Button>
-                </Link>
-                <Link to="/pratica" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/pratica") ? "default" : "ghost"} className="w-full justify-start gap-2">
-                    <Target className="h-4 w-4" /> Modo Prática
-                  </Button>
-                </Link>
-                <Link to="/ranking" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/ranking") ? "default" : "ghost"} className="w-full justify-start gap-2">
-                    <Trophy className="h-4 w-4" /> Ranking
-                  </Button>
-                </Link>
-                <Link to="/afinador" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/afinador") ? "default" : "ghost"} className="w-full justify-start gap-2">
-                    <AudioLines className="h-4 w-4" /> Afinador
-                  </Button>
-                </Link>
-                <Link to="/campo-harmonico" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/campo-harmonico") ? "default" : "ghost"} className="w-full justify-start gap-2">
-                    <Piano className="h-4 w-4" /> Campo Harmônico
-                  </Button>
-                </Link>
-                <Link to="/favoritos" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/favoritos") ? "default" : "ghost"} className="w-full justify-start relative gap-2">
-                    <Star className="h-4 w-4" /> Favoritos
-                    {favorites.length > 0 && (
-                      <span className="ml-auto bg-primary text-primary-foreground text-xs rounded-full px-2 py-0.5">
-                        {favorites.length}
-                      </span>
-                    )}
-                  </Button>
-                </Link>
-                <Link to="/sobre" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant={isActive("/sobre") ? "default" : "ghost"} className="w-full justify-start gap-2">
-                    <Info className="h-4 w-4" /> Sobre
-                  </Button>
-                </Link>
+              <nav className="mt-6 flex flex-col gap-1">
+                {[
+                  { to: "/", icon: Music, label: "Acordes" },
+                  { to: "/pratica", icon: Target, label: "Modo Prática" },
+                  { to: "/ranking", icon: Trophy, label: "Ranking" },
+                  { to: "/afinador", icon: AudioLines, label: "Afinador" },
+                  { to: "/campo-harmonico", icon: Piano, label: "Campo Harmônico" },
+                  { to: "/favoritos", icon: Star, label: "Favoritos", badge: favorites.length || undefined },
+                  { to: "/sobre", icon: Info, label: "Sobre" },
+                ].map(({ to, icon: Icon, label, badge }) => (
+                  <Link key={to} to={to} onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant={isActive(to) ? "default" : "ghost"} className="w-full justify-start gap-2.5 h-10">
+                      <Icon className="h-4 w-4" /> {label}
+                      {badge && (
+                        <span className="ml-auto text-xs bg-accent text-accent-foreground rounded-full px-2 py-0.5 font-medium">
+                          {badge}
+                        </span>
+                      )}
+                    </Button>
+                  </Link>
+                ))}
 
-                <div className="my-4 border-t" />
+                <div className="my-3 border-t" />
 
                 <Button
-                  variant={leftHanded ? "default" : "outline"}
+                  variant={leftHanded ? "secondary" : "ghost"}
                   onClick={() => { setLeftHanded(!leftHanded); setMobileMenuOpen(false); }}
-                  className="w-full justify-start gap-2"
+                  className="w-full justify-start gap-2.5 h-10"
                 >
                   <Hand className="h-4 w-4" /> {leftHanded ? "Canhoto" : "Destro"}
                 </Button>
 
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   onClick={() => { setTheme(theme === "dark" ? "light" : "dark"); setMobileMenuOpen(false); }}
-                  className="w-full justify-start gap-2"
+                  className="w-full justify-start gap-2.5 h-10"
                 >
                   {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
                   {theme === "dark" ? "Tema Claro" : "Tema Escuro"}
@@ -118,77 +98,77 @@ const Header = () => {
 
                 {user ? (
                   <>
-                    <div className="my-4 border-t" />
+                    <div className="my-3 border-t" />
                     <div className="px-3 py-2 text-sm text-muted-foreground">
                       <p className="font-medium truncate">{user.email}</p>
                     </div>
                     <Link to="/perfil" onClick={() => setMobileMenuOpen(false)}>
-                      <Button variant="ghost" className="w-full justify-start gap-2">
+                      <Button variant="ghost" className="w-full justify-start gap-2.5 h-10">
                         <User className="h-4 w-4" /> Meu Perfil
                       </Button>
                     </Link>
                     <Button
                       variant="ghost"
                       onClick={() => { signOut(); setMobileMenuOpen(false); }}
-                      className="w-full justify-start text-destructive"
+                      className="w-full justify-start text-destructive h-10"
                     >
                       Sair
                     </Button>
                   </>
                 ) : (
                   <>
-                    <div className="my-4 border-t" />
+                    <div className="my-3 border-t" />
                     <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
-                      <Button variant="default" className="w-full justify-start">
-                        Entrar / Criar Conta
-                      </Button>
+                      <Button className="w-full h-10">Entrar / Criar Conta</Button>
                     </Link>
                   </>
                 )}
-              </div>
+              </nav>
             </SheetContent>
           </Sheet>
 
-          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
-            <img 
-              src={rzdLogo} 
-              alt="RZD Music" 
-              className="h-10 sm:h-13 md:h-16 w-auto transition-transform group-hover:scale-105"
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 group">
+            <img
+              src={rzdLogo}
+              alt="RZD Music"
+              className="h-9 sm:h-10 md:h-11 w-auto transition-smooth group-hover:opacity-80"
             />
-            <div className="hidden md:block">
-              <p className="text-lg md:text-xl font-semibold">Cavaquinho DGBD</p>
-            </div>
+            <span className="hidden md:block text-base font-semibold text-foreground tracking-tight">
+              Cavaquinho DGBD
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1.5">
-            <Link to="/"><Button variant={isActive("/") ? "default" : "ghost"} size="sm">Acordes</Button></Link>
-            <Link to="/pratica"><Button variant={isActive("/pratica") ? "default" : "ghost"} size="sm">Prática</Button></Link>
-            <Link to="/ranking"><Button variant={isActive("/ranking") ? "default" : "ghost"} size="sm">Ranking</Button></Link>
-            <Link to="/afinador"><Button variant={isActive("/afinador") ? "default" : "ghost"} size="sm">Afinador</Button></Link>
+          <nav className="hidden md:flex items-center gap-1">
+            <Link to="/" className={navLinkClass("/")}>Acordes</Link>
+            <Link to="/pratica" className={navLinkClass("/pratica")}>Prática</Link>
+            <Link to="/ranking" className={navLinkClass("/ranking")}>Ranking</Link>
+            <Link to="/afinador" className={navLinkClass("/afinador")}>Afinador</Link>
 
-            {/* "Mais" dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button 
-                  variant={(isActive("/campo-harmonico") || isActive("/favoritos") || isActive("/sobre")) ? "secondary" : "ghost"} 
-                  size="sm"
-                  className="gap-1"
+                <button
+                  className={`text-sm font-medium px-3 py-1.5 rounded-md transition-smooth inline-flex items-center gap-1 ${
+                    isActive("/campo-harmonico") || isActive("/favoritos") || isActive("/sobre")
+                      ? "bg-secondary text-secondary-foreground"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                  }`}
                 >
-                  Mais <ChevronDown className="h-3 w-3" />
-                </Button>
+                  Mais <ChevronDown className="h-3 w-3 opacity-60" />
+                </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-52">
                 <Link to="/campo-harmonico">
-                  <DropdownMenuItem className="cursor-pointer gap-2">
-                    <Piano className="h-4 w-4" /> Campo Harmônico
+                  <DropdownMenuItem className="cursor-pointer gap-2.5">
+                    <Piano className="h-4 w-4 text-muted-foreground" /> Campo Harmônico
                   </DropdownMenuItem>
                 </Link>
                 <Link to="/favoritos">
                   <DropdownMenuItem className="cursor-pointer flex items-center justify-between">
-                    <span className="flex items-center gap-2"><Star className="h-4 w-4" /> Favoritos</span>
+                    <span className="flex items-center gap-2.5"><Star className="h-4 w-4 text-muted-foreground" /> Favoritos</span>
                     {favorites.length > 0 && (
-                      <span className="bg-primary text-primary-foreground text-xs rounded-full px-2 py-0.5">
+                      <span className="text-xs bg-accent text-accent-foreground rounded-full px-2 py-0.5 font-medium">
                         {favorites.length}
                       </span>
                     )}
@@ -196,67 +176,74 @@ const Header = () => {
                 </Link>
                 <DropdownMenuSeparator />
                 <Link to="/sobre">
-                  <DropdownMenuItem className="cursor-pointer gap-2">
-                    <Info className="h-4 w-4" /> Sobre
+                  <DropdownMenuItem className="cursor-pointer gap-2.5">
+                    <Info className="h-4 w-4 text-muted-foreground" /> Sobre
                   </DropdownMenuItem>
                 </Link>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setLeftHanded(!leftHanded)} className="cursor-pointer gap-2">
-                  <Hand className="h-4 w-4" /> {leftHanded ? "Canhoto" : "Destro"}
+                <DropdownMenuItem onClick={() => setLeftHanded(!leftHanded)} className="cursor-pointer gap-2.5">
+                  <Hand className="h-4 w-4 text-muted-foreground" /> {leftHanded ? "Canhoto ✓" : "Destro"}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <div className="h-6 w-px bg-border mx-0.5" />
+            <div className="h-5 w-px bg-border mx-1" />
 
-            {/* Dark mode toggle */}
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
+              className="h-8 w-8"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="px-2"
               aria-label={theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
-            
+
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="px-2" aria-label="Menu do usuário">
+                  <Button variant="ghost" size="icon" className="h-8 w-8" aria-label="Menu do usuário">
                     <User className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
-                  <div className="px-2 py-2 text-sm">
+                  <div className="px-3 py-2 text-sm">
                     <p className="font-medium truncate">{user.email}</p>
                   </div>
                   <DropdownMenuSeparator />
                   <Link to="/perfil"><DropdownMenuItem className="cursor-pointer">Meu Perfil</DropdownMenuItem></Link>
-                  <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">Sair</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-destructive">Sair</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Link to="/auth"><Button variant="default" size="sm">Entrar</Button></Link>
+              <Link to="/auth">
+                <Button size="sm" className="h-8 text-sm px-4">Entrar</Button>
+              </Link>
             )}
           </nav>
 
           {/* Mobile Quick Actions */}
-          <div className="flex md:hidden items-center gap-1">
+          <div className="flex md:hidden items-center gap-0.5">
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
+              className="h-9 w-9"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="px-2"
               aria-label={theme === "dark" ? "Mudar para tema claro" : "Mudar para tema escuro"}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
 
             {user ? (
-              <Link to="/perfil"><Button variant="ghost" size="sm" className="px-2" aria-label="Meu perfil"><User className="h-4 w-4" /></Button></Link>
+              <Link to="/perfil">
+                <Button variant="ghost" size="icon" className="h-9 w-9" aria-label="Meu perfil">
+                  <User className="h-4 w-4" />
+                </Button>
+              </Link>
             ) : (
-              <Link to="/auth"><Button variant="default" size="sm" className="px-2 text-xs">Entrar</Button></Link>
+              <Link to="/auth">
+                <Button size="sm" className="h-8 text-xs px-3">Entrar</Button>
+              </Link>
             )}
           </div>
         </div>

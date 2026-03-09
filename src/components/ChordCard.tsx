@@ -15,7 +15,7 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
   const { isFavorite, toggleFavorite } = useApp();
   const favorite = isFavorite(chord.id);
   const mainVariation = chord.variations?.[0];
-  
+
   if (!mainVariation) return null;
 
   const handlePlay = async (e: React.MouseEvent) => {
@@ -39,61 +39,64 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
     e.stopPropagation();
     toggleFavorite(chord.id);
   };
-  
+
   return (
-    <Link to={`/chord/${chord.id}`}>
-      <Card className="p-4 hover:border-primary transition-all duration-300 hover:shadow-[var(--shadow-glow)] hover:scale-[1.02] cursor-pointer group bg-card relative">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-full flex items-center justify-between">
-            <div className="flex items-baseline gap-2">
-              <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
-                {chord.root}
-              </h3>
-              {chord.quality && (
-                <span className="text-lg text-muted-foreground group-hover:text-foreground transition-colors">{chord.quality}</span>
-              )}
-            </div>
-            
-            <div className="flex gap-1">
-              <Button
-                variant="ghost"
-                size="sm"
-                className={`h-8 px-2 text-xs ${favorite ? "text-primary font-bold" : ""}`}
-                onClick={handleFavorite}
-                aria-label={favorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-              >
-                {favorite ? "★" : "☆"}
-              </Button>
-              
-              <Button
-                variant="ghost"
-                size="sm"
-                className={`h-8 px-2 text-xs transition-all duration-300 ${
-                  isPlaying 
-                    ? "text-primary scale-110 animate-pulse bg-primary/10" 
-                    : "hover:scale-105"
-                }`}
-                onClick={handlePlay}
-                disabled={isPlaying}
-                aria-label={`Tocar acorde ${chord.root}${chord.quality}`}
-              >
-                {isPlaying ? "♪" : "▶"}
-              </Button>
-            </div>
+    <Link to={`/chord/${chord.id}`} className="group outline-none">
+      <Card className="p-4 transition-smooth border border-border hover:border-accent/40 hover:shadow-[var(--shadow-elevated)] cursor-pointer bg-card relative overflow-hidden">
+        {/* Top row: name + actions */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-xl font-semibold text-foreground group-hover:text-accent transition-smooth">
+              {chord.root}
+            </span>
+            {chord.quality && (
+              <span className="text-base text-muted-foreground">{chord.quality}</span>
+            )}
           </div>
-          
-          <div className="w-32 opacity-80 group-hover:opacity-100 transition-opacity">
-            <ChordDiagram
-              frets={mainVariation.frets}
-              fingers={mainVariation.fingers}
-              barre={mainVariation.barre}
-              startFret={mainVariation.startFret}
-            />
+
+          <div className="flex gap-0.5">
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`h-7 w-7 rounded-md ${favorite ? "text-accent" : "text-muted-foreground opacity-0 group-hover:opacity-100"}`}
+              onClick={handleFavorite}
+              aria-label={favorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+            >
+              <span className="text-sm">{favorite ? "★" : "☆"}</span>
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`h-7 w-7 rounded-md transition-smooth ${
+                isPlaying
+                  ? "text-accent bg-accent/10 animate-pulse"
+                  : "text-muted-foreground opacity-0 group-hover:opacity-100 hover:text-accent hover:bg-accent/10"
+              }`}
+              onClick={handlePlay}
+              disabled={isPlaying}
+              aria-label={`Tocar acorde ${chord.root}${chord.quality}`}
+            >
+              <span className="text-xs">{isPlaying ? "♪" : "▶"}</span>
+            </Button>
           </div>
-          
-          <div className="text-xs text-muted-foreground">
-            {chord.variations.length} variações
-          </div>
+        </div>
+
+        {/* Diagram */}
+        <div className="w-full max-w-[140px] mx-auto group-hover:opacity-100 opacity-90 transition-smooth">
+          <ChordDiagram
+            frets={mainVariation.frets}
+            fingers={mainVariation.fingers}
+            barre={mainVariation.barre}
+            startFret={mainVariation.startFret}
+          />
+        </div>
+
+        {/* Footer info */}
+        <div className="mt-3 text-center">
+          <span className="text-xs text-muted-foreground">
+            {chord.variations.length} {chord.variations.length === 1 ? "posição" : "posições"}
+          </span>
         </div>
       </Card>
     </Link>
