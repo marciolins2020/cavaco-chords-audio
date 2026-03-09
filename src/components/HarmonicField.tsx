@@ -33,29 +33,24 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
     navigate(`/chord/${chordId}`);
   };
 
-  const handlePlayProgression = async (sequence: string[]) => {
-    try {
-      await initAudio();
-      
-      for (const chordName of sequence) {
+  // Convert field degrees to AutoPlayControls format
+  const fieldChords = field.degrees
+    .filter(d => d.chord && d.chord.variations.length > 0)
+    .map(d => ({
+      name: d.chord!.root + d.chord!.quality,
+      frets: d.chord!.variations[0].frets,
+    }));
+
+  // Convert progression sequence to AutoPlayControls format
+  const getProgressionChords = (sequence: string[]) => {
+    return sequence
+      .map(chordName => {
         const chord = field.degrees.find(
           d => d.chord && (d.chord.root + d.chord.quality) === chordName
         )?.chord;
-        
-        if (chord && chord.variations.length > 0) {
-          setPlayingChord(chordName);
-          await playChord(chord.variations[0].frets, "strum");
-          await new Promise(resolve => setTimeout(resolve, 800));
-        }
-      }
-      
-      setPlayingChord(null);
-      toast.success("Progressão tocada!");
-    } catch (error) {
-      console.error("Erro ao tocar progressão:", error);
-      toast.error("Erro ao tocar a progressão");
-      setPlayingChord(null);
-    }
+        return chord?.variations[0] ? { name: chordName, frets: chord.variations[0].frets } : null;
+      })
+      .filter(Boolean) as { name: string; frets: number[] }[];
   };
 
   return (
