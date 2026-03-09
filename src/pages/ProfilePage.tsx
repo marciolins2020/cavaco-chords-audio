@@ -75,26 +75,26 @@ export default function ProfilePage() {
     .slice(0, 10);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 overflow-x-hidden">
       <Header />
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl overflow-hidden">
         {/* Header do Perfil */}
-        <Card className="p-6 mb-6">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
+        <Card className="p-4 sm:p-6 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 flex items-center justify-center text-xl sm:text-2xl font-bold text-primary flex-shrink-0">
                 {(user.user_metadata?.full_name || "M")[0].toUpperCase()}
               </div>
-              <div>
-                <h1 className="text-2xl font-bold">
+              <div className="min-w-0">
+                <h1 className="text-lg sm:text-2xl font-bold truncate">
                   {user.user_metadata?.full_name || "Músico"}
                 </h1>
-                <p className="text-muted-foreground">{user.email}</p>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge variant="secondary" className="text-sm">
+                <p className="text-muted-foreground text-sm truncate">{user.email}</p>
+                <div className="flex items-center gap-2 mt-2 flex-wrap">
+                  <Badge variant="secondary" className="text-xs sm:text-sm">
                     {levelInfo.level}
                   </Badge>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-xs sm:text-sm text-muted-foreground">
                     {stats.chordsMastered.length} acordes dominados
                   </span>
                 </div>
@@ -102,7 +102,6 @@ export default function ProfilePage() {
             </div>
             <DataExport />
           </div>
-
         </Card>
 
         {/* Progresso de Nível */}
@@ -117,55 +116,55 @@ export default function ProfilePage() {
         </div>
 
         {/* Estatísticas Principais */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-6">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 %
               </div>
-              <div>
-                <p className="text-2xl font-bold">{successRate}%</p>
-                <p className="text-xs text-muted-foreground">Taxa de Acerto</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{successRate}%</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Taxa de Acerto</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 D
               </div>
-              <div>
-                <p className="text-2xl font-bold">{stats.consecutiveDays}</p>
-                <p className="text-xs text-muted-foreground">Dias Seguidos</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.consecutiveDays}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Dias Seguidos</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 ⚡
               </div>
-              <div>
-                <p className="text-2xl font-bold">
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">
                   {stats.fastestTransition 
                     ? (stats.fastestTransition / 1000).toFixed(1) + "s"
                     : "-"}
                 </p>
-                <p className="text-xs text-muted-foreground">Mais Rápido</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Mais Rápido</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 ♛
               </div>
-              <div>
-                <p className="text-2xl font-bold">{stats.achievements.length}</p>
-                <p className="text-xs text-muted-foreground">Conquistas</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.achievements.length}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Conquistas</p>
               </div>
             </div>
           </Card>
@@ -276,7 +275,7 @@ export default function ProfilePage() {
               {((unlockedAchievements.length / ACHIEVEMENTS.length) * 100).toFixed(0)}% completo
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4">
             {ACHIEVEMENTS.map((achievement) => {
               const unlocked = stats.achievements.includes(achievement.id);
               return (
@@ -334,7 +333,6 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div className="text-center py-12 text-muted-foreground">
-              <p>Nenhuma prática registrada ainda</p>
               <p>Nenhuma prática registrada ainda</p>
               <Link to="/pratica">
                 <Button variant="outline" className="mt-4">

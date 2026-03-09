@@ -36,7 +36,7 @@ export const OnboardingTour = () => {
   useEffect(() => {
     const done = localStorage.getItem(STORAGE_KEY);
     if (!done) {
-      const timer = setTimeout(() => setShow(true), 800);
+      const timer = setTimeout(() => setShow(true), 1500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -64,7 +64,7 @@ export const OnboardingTour = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-auto"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
             style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(8px)" }}
             onClick={(e) => { if (e.target === e.currentTarget) finish(); }}
           >
@@ -125,6 +125,7 @@ export const OnboardingTour = () => {
                 <button
                   key={i}
                   onClick={() => setStep(i)}
+                  aria-label={`Ir para passo ${i + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === step ? "w-8 bg-primary" : i < step ? "w-2 bg-primary/50" : "w-2 bg-muted-foreground/30"
                   }`}
