@@ -117,55 +117,55 @@ export default function ProfilePage() {
         </div>
 
         {/* Estatísticas Principais */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-6">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 %
               </div>
-              <div>
-                <p className="text-2xl font-bold">{successRate}%</p>
-                <p className="text-xs text-muted-foreground">Taxa de Acerto</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{successRate}%</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Taxa de Acerto</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 D
               </div>
-              <div>
-                <p className="text-2xl font-bold">{stats.consecutiveDays}</p>
-                <p className="text-xs text-muted-foreground">Dias Seguidos</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.consecutiveDays}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Dias Seguidos</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 ⚡
               </div>
-              <div>
-                <p className="text-2xl font-bold">
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">
                   {stats.fastestTransition 
                     ? (stats.fastestTransition / 1000).toFixed(1) + "s"
                     : "-"}
                 </p>
-                <p className="text-xs text-muted-foreground">Mais Rápido</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Mais Rápido</p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">
+          <Card className="p-3 sm:p-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm sm:text-base flex-shrink-0">
                 ♛
               </div>
-              <div>
-                <p className="text-2xl font-bold">{stats.achievements.length}</p>
-                <p className="text-xs text-muted-foreground">Conquistas</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.achievements.length}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Conquistas</p>
               </div>
             </div>
           </Card>
