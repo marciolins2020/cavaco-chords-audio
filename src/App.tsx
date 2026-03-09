@@ -46,6 +46,7 @@ const App = () => (
               <Route path="/perfil" element={<ProfilePage />} />
               <Route path="/ranking" element={<LeaderboardPage />} />
               <Route path="/afinador" element={<TunerPage />} />
+              <Route path="/diagnostico" element={<DiagnosticsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ChatWidget />
