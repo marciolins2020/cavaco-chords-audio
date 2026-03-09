@@ -64,7 +64,7 @@ export const OnboardingTour = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-auto"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
             style={{ background: "hsl(0 0% 0% / 0.6)", backdropFilter: "blur(8px)" }}
             onClick={(e) => { if (e.target === e.currentTarget) finish(); }}
           >

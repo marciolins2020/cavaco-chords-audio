@@ -276,7 +276,7 @@ export default function ProfilePage() {
               {((unlockedAchievements.length / ACHIEVEMENTS.length) * 100).toFixed(0)}% completo
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4">
             {ACHIEVEMENTS.map((achievement) => {
               const unlocked = stats.achievements.includes(achievement.id);
               return (
