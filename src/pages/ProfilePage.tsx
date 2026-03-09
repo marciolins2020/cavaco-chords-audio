@@ -75,9 +75,9 @@ export default function ProfilePage() {
     .slice(0, 10);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 overflow-x-hidden">
       <Header />
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl overflow-hidden">
         {/* Header do Perfil */}
         <Card className="p-6 mb-6">
           <div className="flex items-start justify-between">
