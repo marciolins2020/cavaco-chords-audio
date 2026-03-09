@@ -90,6 +90,15 @@ class AudioService {
     }
   }
 
+  /**
+   * Garante que o AudioContext esteja criado e (se necessário) resumido.
+   * Deve ser chamado a partir de um gesto do usuário (click/tap) para passar
+   * pelas políticas de autoplay dos browsers.
+   */
+  public async ensureReady(): Promise<boolean> {
+    return this.init();
+  }
+
   private getFrequency(stringIndex: number, fret: number): number {
     // Cavaquinho uma oitava acima para som mais agudo
     const openFreq = TUNING_FREQUENCIES[stringIndex];
