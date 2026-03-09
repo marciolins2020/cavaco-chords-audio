@@ -156,48 +156,65 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {field.progressions.map((prog, idx) => (
-              <Card key={idx} className="p-5 space-y-3">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h4 className="font-bold text-lg">{prog.name}</h4>
-                    <p className="text-sm text-muted-foreground">{prog.description}</p>
-                  </div>
-                  <span className="text-xs px-2 py-1 bg-secondary rounded-full">
-                    {prog.style}
-                  </span>
-                </div>
+            {field.progressions.map((prog, idx) => {
+              const isSelected = selectedProgression === idx;
+              const progressionChords = getProgressionChords(prog.sequence);
 
-                <div className="flex flex-wrap gap-2 items-center">
-                  {prog.sequence.map((chordName, i) => (
-                    <div key={i} className="flex items-center gap-1">
-                      <span
-                        className={`font-mono font-bold px-2 py-1 rounded ${
-                          playingChord === chordName
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-secondary text-secondary-foreground"
-                        }`}
-                      >
-                        {chordName}
-                      </span>
-                      {i < prog.sequence.length - 1 && (
-                        <span className="text-muted-foreground">→</span>
-                      )}
+              return (
+                <Card key={idx} className="p-5 space-y-3">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h4 className="font-bold text-lg">{prog.name}</h4>
+                      <p className="text-sm text-muted-foreground">{prog.description}</p>
                     </div>
-                  ))}
-                </div>
+                    <span className="text-xs px-2 py-1 bg-secondary rounded-full whitespace-nowrap">
+                      {prog.style}
+                    </span>
+                  </div>
 
-                <Button
-                  onClick={() => handlePlayProgression(prog.sequence)}
-                  disabled={playingChord !== null}
-                  variant="outline"
-                  size="sm"
-                  className="w-full"
-                >
-                  ▶ {playingChord ? "Tocando..." : "Tocar Progressão"}
-                </Button>
-              </Card>
-            ))}
+                  {!isSelected ? (
+                    <>
+                      <div className="flex flex-wrap gap-2 items-center">
+                        {prog.sequence.map((chordName, i) => (
+                          <div key={i} className="flex items-center gap-1">
+                            <span className="font-mono font-bold px-2 py-1 rounded bg-secondary text-secondary-foreground">
+                              {chordName}
+                            </span>
+                            {i < prog.sequence.length - 1 && (
+                              <span className="text-muted-foreground">→</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      <Button
+                        onClick={() => setSelectedProgression(idx)}
+                        variant="outline"
+                        size="sm"
+                        className="w-full gap-2"
+                      >
+                        <Music className="h-4 w-4" />
+                        Controles Avançados
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <AutoPlayControls
+                        chords={progressionChords}
+                        onChordHighlight={null}
+                      />
+                      <Button
+                        onClick={() => setSelectedProgression(null)}
+                        variant="ghost"
+                        size="sm"
+                        className="w-full"
+                      >
+                        Fechar Controles
+                      </Button>
+                    </>
+                  )}
+                </Card>
+              );
+            })}
           </div>
         </div>
       )}
