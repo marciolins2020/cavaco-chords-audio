@@ -52,7 +52,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       });
       
       if (error) {
-        toast.error(error.message);
+        const msg = error.message === "Invalid login credentials"
+          ? "Email ou senha incorretos"
+          : error.message === "Email not confirmed"
+          ? "Confirme seu email antes de entrar"
+          : "Erro ao fazer login. Tente novamente.";
+        toast.error(msg);
       }
       
       return { error };
