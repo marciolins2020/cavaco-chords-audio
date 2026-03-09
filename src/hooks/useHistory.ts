@@ -43,7 +43,10 @@ export function useHistory(userId?: string) {
         .order("created_at", { ascending: false })
         .limit(MAX_HISTORY_ITEMS);
 
-      if (error) throw error;
+      if (error) {
+        console.warn("Histórico: falha ao carregar do servidor, usando dados locais", error.message);
+        return;
+      }
 
       const supabaseHistory = data.map((h) => ({
         chordId: h.chord_id,
@@ -53,7 +56,7 @@ export function useHistory(userId?: string) {
 
       setHistory(supabaseHistory);
     } catch (error) {
-      console.error("Erro ao carregar histórico:", error);
+      console.warn("Histórico: erro de rede, usando dados locais");
     }
   };
 

@@ -75,6 +75,13 @@ interface SourcePattern {
 
 // BIBLIOTECA DE FORMAS VERIFICADAS para afinação DGBD
 // Cada forma foi validada manualmente para produzir as notas corretas do acorde
+// Suffix aliases: map CHORD_TYPES suffixes to VERIFIED_PATTERNS keys
+const SUFFIX_ALIASES: Record<string, string> = {
+  '7M': 'maj7',
+  '(#5)': '5+',
+  'm7(b5)': 'm7b5',
+};
+
 const VERIFIED_PATTERNS: Record<string, SourcePattern[]> = {
   'M': [
     // C: C-E-G -> [2,0,1,2] = E,G,C,E ✓
@@ -271,7 +278,9 @@ function generateFullDatabase(): ChordDatabase {
   ROOT_NOTES.forEach(targetRoot => {
     CHORD_TYPES.forEach(suffix => {
       const variations: ChordVariation[] = [];
-      const templates = VERIFIED_PATTERNS[suffix] || [];
+      // Use alias to find patterns (e.g., '7M' → 'maj7')
+      const patternKey = SUFFIX_ALIASES[suffix] || suffix;
+      const templates = VERIFIED_PATTERNS[patternKey] || [];
 
       // Transpõe todas as formas COM validação harmônica
       templates.forEach(tpl => {
@@ -303,14 +312,17 @@ function generateFullDatabase(): ChordDatabase {
       // Obtém as notas teóricas do acorde
       const notes = getExpectedChordNotes(targetRoot, suffix);
 
-      chords.push({
-        root: targetRoot,
-        suffix,
-        displayName: suffix === 'M' ? targetRoot : `${targetRoot}${suffix}`,
-        variations: uniqueVariations.slice(0, 5), // Máximo 5 variações
-        notes,
-        intervals: CHORD_INTERVALS[suffix] || ['1', '3', '5']
-      });
+      // Only add chords that have at least 1 valid variation
+      if (uniqueVariations.length > 0) {
+        chords.push({
+          root: targetRoot,
+          suffix,
+          displayName: suffix === 'M' ? targetRoot : `${targetRoot}${suffix}`,
+          variations: uniqueVariations.slice(0, 5),
+          notes,
+          intervals: CHORD_INTERVALS[suffix] || ['1', '3', '5']
+        });
+      }
     });
   });
 

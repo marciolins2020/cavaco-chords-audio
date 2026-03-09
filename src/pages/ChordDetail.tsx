@@ -159,7 +159,7 @@ const ChordDetail = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
           <Link to="/">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" aria-label="Voltar para a página inicial">
                 ← Voltar
               </Button>
             </Link>
@@ -169,6 +169,7 @@ const ChordDetail = () => {
               size="sm"
               onClick={handleToggleFavorite}
               className={isChordFavorite ? "text-primary font-bold" : ""}
+              aria-label={isChordFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
             >
               {isChordFavorite ? "★" : "☆"}
             </Button>

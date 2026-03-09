@@ -64,13 +64,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Sincronizar favoritos locais com Supabase no login
   const loadFavoritesFromSupabase = async () => {
+    if (!user) return;
     try {
       const { data, error } = await supabase
         .from("user_favorites")
         .select("chord_id")
-        .eq("user_id", user!.id);
+        .eq("user_id", user.id);
 
-      if (error) throw error;
+      if (error) {
+        // Silently handle network errors - user can still use local favorites
+        console.warn("Favoritos: falha ao carregar do servidor, usando dados locais", error.message);
+        return;
+      }
 
       const supabaseFavorites = data.map((f) => f.chord_id);
       
@@ -81,16 +86,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       // Sincronizar favoritos locais que não estão no Supabase
       const toSync = localFavorites.filter((id) => !supabaseFavorites.includes(id));
       if (toSync.length > 0) {
-        await Promise.all(
+        await Promise.allSettled(
           toSync.map((chord_id) =>
-            supabase.from("user_favorites").insert({ chord_id, user_id: user!.id })
+            supabase.from("user_favorites").insert({ chord_id, user_id: user.id })
           )
         );
       }
 
       setFavorites(merged);
     } catch (error) {
-      console.error("Erro ao carregar favoritos:", error);
+      console.warn("Favoritos: erro de rede, usando dados locais");
     }
   };
 
