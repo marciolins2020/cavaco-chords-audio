@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Card } from "@/components/ui/card";
@@ -7,49 +7,78 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import rzdLogo from "@/assets/logo-rzd-final.png";
-
+import { useEffect } from "react";
 
 export default function AuthPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [loading, setLoading] = useState(false);
+  // Separate state per form
+  const [signInEmail, setSignInEmail] = useState("");
+  const [signInPassword, setSignInPassword] = useState("");
+  const [signInError, setSignInError] = useState("");
+  const [signInLoading, setSignInLoading] = useState(false);
+
+  const [signUpEmail, setSignUpEmail] = useState("");
+  const [signUpPassword, setSignUpPassword] = useState("");
+  const [signUpName, setSignUpName] = useState("");
+  const [signUpError, setSignUpError] = useState("");
+  const [signUpSuccess, setSignUpSuccess] = useState("");
+  const [signUpLoading, setSignUpLoading] = useState(false);
+
   const { signIn, signUp, user } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if already logged in
   useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
+    if (user) navigate("/");
   }, [user, navigate]);
+
+  const handleTabChange = () => {
+    // Clear all errors and messages on tab switch
+    setSignInError("");
+    setSignUpError("");
+    setSignUpSuccess("");
+    setSignInLoading(false);
+    setSignUpLoading(false);
+  };
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    
-    const { error } = await signIn(email, password);
-    
-    if (!error) {
+    setSignInError("");
+    setSignInLoading(true);
+
+    const { error } = await signIn(signInEmail, signInPassword);
+
+    if (error) {
+      const msg =
+        error.message === "Invalid login credentials"
+          ? "Email ou senha incorretos."
+          : error.message === "Email not confirmed"
+          ? "Confirme seu email antes de entrar."
+          : "Erro ao fazer login. Tente novamente.";
+      setSignInError(msg);
+    } else {
       navigate("/");
     }
-    
-    setLoading(false);
+    setSignInLoading(false);
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    
-    const { error } = await signUp(email, password, fullName);
-    
-    if (!error) {
-      // Automatically sign in after signup
-      await signIn(email, password);
-      navigate("/");
+    setSignUpError("");
+    setSignUpSuccess("");
+    setSignUpLoading(true);
+
+    const { error } = await signUp(signUpEmail, signUpPassword, signUpName);
+
+    if (error) {
+      const msg = error.message?.includes("already registered")
+        ? "Este email já está cadastrado. Tente fazer login."
+        : error.message?.includes("Password should be at least")
+        ? "A senha deve ter no mínimo 6 caracteres."
+        : "Erro ao criar conta. Tente novamente.";
+      setSignUpError(msg);
+    } else {
+      setSignUpSuccess("Conta criada! Verifique seu email para confirmar o cadastro.");
     }
-    
-    setLoading(false);
+    setSignUpLoading(false);
   };
 
   return (
@@ -63,7 +92,7 @@ export default function AuthPage() {
           </p>
         </div>
 
-        <Tabs defaultValue="signin" className="w-full" onValueChange={() => { setEmail(""); setPassword(""); setFullName(""); setLoading(false); }}>
+        <Tabs defaultValue="signin" className="w-full" onValueChange={handleTabChange}>
           <TabsList className="grid w-full grid-cols-2 mb-6">
             <TabsTrigger value="signin">Entrar</TabsTrigger>
             <TabsTrigger value="signup">Cadastrar</TabsTrigger>
@@ -71,89 +100,94 @@ export default function AuthPage() {
 
           <TabsContent value="signin">
             <form onSubmit={handleSignIn} className="space-y-4">
+              {signInError && (
+                <div className="bg-destructive/10 border border-destructive/30 text-destructive text-sm rounded-lg px-4 py-3">
+                  {signInError}
+                </div>
+              )}
+
               <div className="space-y-2">
-                <Label htmlFor="signin-email">
-                  Email
-                </Label>
+                <Label htmlFor="signin-email">Email</Label>
                 <Input
                   id="signin-email"
                   type="email"
                   placeholder="seu@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={signInEmail}
+                  onChange={(e) => { setSignInEmail(e.target.value); setSignInError(""); }}
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="signin-password">
-                  Senha
-                </Label>
+                <Label htmlFor="signin-password">Senha</Label>
                 <Input
                   id="signin-password"
                   type="password"
                   placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={signInPassword}
+                  onChange={(e) => { setSignInPassword(e.target.value); setSignInError(""); }}
                   required
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Entrando..." : "Entrar"}
+              <Button type="submit" className="w-full" disabled={signInLoading}>
+                {signInLoading ? "Entrando..." : "Entrar"}
               </Button>
             </form>
           </TabsContent>
 
           <TabsContent value="signup">
             <form onSubmit={handleSignUp} className="space-y-4">
+              {signUpError && (
+                <div className="bg-destructive/10 border border-destructive/30 text-destructive text-sm rounded-lg px-4 py-3">
+                  {signUpError}
+                </div>
+              )}
+              {signUpSuccess && (
+                <div className="bg-primary/10 border border-primary/30 text-primary text-sm rounded-lg px-4 py-3">
+                  {signUpSuccess}
+                </div>
+              )}
+
               <div className="space-y-2">
-                <Label htmlFor="signup-name">
-                  Nome Completo
-                </Label>
+                <Label htmlFor="signup-name">Nome Completo</Label>
                 <Input
                   id="signup-name"
                   type="text"
                   placeholder="Seu nome"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={signUpName}
+                  onChange={(e) => { setSignUpName(e.target.value); setSignUpError(""); }}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="signup-email">
-                  Email
-                </Label>
+                <Label htmlFor="signup-email">Email</Label>
                 <Input
                   id="signup-email"
                   type="email"
                   placeholder="seu@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={signUpEmail}
+                  onChange={(e) => { setSignUpEmail(e.target.value); setSignUpError(""); }}
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="signup-password">
-                  Senha
-                </Label>
+                <Label htmlFor="signup-password">Senha</Label>
                 <Input
                   id="signup-password"
                   type="password"
                   placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={signUpPassword}
+                  onChange={(e) => { setSignUpPassword(e.target.value); setSignUpError(""); }}
                   required
                   minLength={6}
                 />
-                <p className="text-xs text-muted-foreground">
-                  Mínimo de 6 caracteres
-                </p>
+                <p className="text-xs text-muted-foreground">Mínimo de 6 caracteres</p>
               </div>
 
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Criando conta..." : "Criar Conta"}
+              <Button type="submit" className="w-full" disabled={signUpLoading}>
+                {signUpLoading ? "Criando conta..." : "Criar Conta"}
               </Button>
             </form>
           </TabsContent>
