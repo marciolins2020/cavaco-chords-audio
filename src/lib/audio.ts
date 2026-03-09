@@ -322,11 +322,13 @@ class AudioService {
 
 export const audioService = new AudioService();
 
-export async function initAudio(): Promise<void> {}
+export async function initAudio(): Promise<void> {
+  await audioService.ensureReady();
+}
 
 export async function playChord(
-  frets: [number, number, number, number],
+  frets: number[],
   mode: "strum" | "block" = "strum"
 ): Promise<void> {
-  audioService.playChord(frets, mode);
+  await audioService.playChord(frets, mode);
 }
