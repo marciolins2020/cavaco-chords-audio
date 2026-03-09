@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import rzdLogo from "@/assets/logo-rzd-final.png";
+import juninhoPhoto from "@/assets/juninho-rezende.png";
 import authBg from "@/assets/auth-bg-music.jpg";
 import { motion } from "framer-motion";
 import { Music, Users, Trophy, BookOpen } from "lucide-react";
