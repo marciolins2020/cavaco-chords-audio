@@ -68,12 +68,16 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className={`h-8 px-2 text-xs ${isPlaying ? "text-primary" : ""}`}
+                className={`h-8 px-2 text-xs transition-all duration-300 ${
+                  isPlaying 
+                    ? "text-primary scale-110 animate-pulse bg-primary/10" 
+                    : "hover:scale-105"
+                }`}
                 onClick={handlePlay}
                 disabled={isPlaying}
                 aria-label={`Tocar acorde ${chord.root}${chord.quality}`}
               >
-                {isPlaying ? "..." : "▶"}
+                {isPlaying ? "♪" : "▶"}
               </Button>
             </div>
           </div>

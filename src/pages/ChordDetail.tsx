@@ -241,9 +241,11 @@ const ChordDetail = () => {
                   onClick={() => handlePlayChord("strum")}
                   disabled={isPlaying}
                   size="lg"
-                  className="w-full"
+                  className={`w-full transition-all duration-300 ${
+                    isPlaying ? "scale-105 animate-pulse shadow-[var(--shadow-glow)]" : "hover:scale-[1.02]"
+                  }`}
                 >
-                  Dedilhado
+                  {isPlaying ? "♪ Tocando..." : "▶ Dedilhado"}
                 </Button>
 
                 <Button
@@ -251,9 +253,11 @@ const ChordDetail = () => {
                   disabled={isPlaying}
                   variant="secondary"
                   size="lg"
-                  className="w-full"
+                  className={`w-full transition-all duration-300 ${
+                    isPlaying ? "scale-105 animate-pulse shadow-[var(--shadow-glow)]" : "hover:scale-[1.02]"
+                  }`}
                 >
-                  Simultâneo
+                  {isPlaying ? "♪ Tocando..." : "▶ Simultâneo"}
                 </Button>
 
                 {chord.difficulty && (

@@ -78,8 +78,13 @@ export const ChordOfTheDay = () => {
             size="sm"
             onClick={handlePlay}
             disabled={isPlaying}
+            className={`transition-all duration-300 ${
+              isPlaying 
+                ? "scale-110 animate-pulse shadow-[var(--shadow-glow)]" 
+                : "hover:scale-105"
+            }`}
           >
-            Ouvir
+            {isPlaying ? "♪ Tocando..." : "▶ Ouvir"}
           </Button>
         </div>
 
