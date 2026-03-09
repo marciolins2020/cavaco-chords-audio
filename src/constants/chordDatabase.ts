@@ -278,7 +278,9 @@ function generateFullDatabase(): ChordDatabase {
   ROOT_NOTES.forEach(targetRoot => {
     CHORD_TYPES.forEach(suffix => {
       const variations: ChordVariation[] = [];
-      const templates = VERIFIED_PATTERNS[suffix] || [];
+      // Use alias to find patterns (e.g., '7M' → 'maj7')
+      const patternKey = SUFFIX_ALIASES[suffix] || suffix;
+      const templates = VERIFIED_PATTERNS[patternKey] || [];
 
       // Transpõe todas as formas COM validação harmônica
       templates.forEach(tpl => {
