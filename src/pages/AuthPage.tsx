@@ -7,10 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import rzdLogo from "@/assets/logo-rzd-final.png";
+import authBg from "@/assets/auth-bg-music.jpg";
 import { useEffect } from "react";
 
 export default function AuthPage() {
-  // Separate state per form
   const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
   const [signInError, setSignInError] = useState("");
@@ -31,7 +31,6 @@ export default function AuthPage() {
   }, [user, navigate]);
 
   const handleTabChange = () => {
-    // Clear all errors and messages on tab switch
     setSignInError("");
     setSignUpError("");
     setSignUpSuccess("");
@@ -82,8 +81,19 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8">
+    <div
+      className="min-h-screen flex items-center justify-center p-4 relative"
+      style={{
+        backgroundImage: `url(${authBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+
+      <Card className="w-full max-w-md p-8 relative z-10 shadow-2xl border-border/50">
         <div className="flex flex-col items-center mb-8">
           <img src={rzdLogo} alt="RZD Music" className="h-16 mb-4" />
           <h1 className="text-2xl font-bold text-center">RZD Music</h1>
@@ -192,12 +202,6 @@ export default function AuthPage() {
             </form>
           </TabsContent>
         </Tabs>
-
-        <div className="mt-6 text-center">
-          <Button variant="ghost" onClick={() => navigate("/")} className="text-sm">
-            ← Voltar para o início
-          </Button>
-        </div>
       </Card>
     </div>
   );
