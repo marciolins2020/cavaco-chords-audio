@@ -20,6 +20,7 @@ import ProfilePage from "./pages/ProfilePage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import TunerPage from "./pages/TunerPage";
 import NotFound from "./pages/NotFound";
+import DiagnosticsPage from "./pages/DiagnosticsPage";
 
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/perfil" element={<ProfilePage />} />
               <Route path="/ranking" element={<LeaderboardPage />} />
               <Route path="/afinador" element={<TunerPage />} />
+              <Route path="/diagnostico" element={<DiagnosticsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ChatWidget />
