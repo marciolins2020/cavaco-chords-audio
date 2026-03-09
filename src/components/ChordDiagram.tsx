@@ -318,7 +318,7 @@ const ChordDiagram: React.FC<Props> = ({
             fontWeight="600"
             style={textAnchorStyle}
           >
-            {effectiveStartFret}fr
+            {effectiveStartFret}ª
           </text>
         )}
 
