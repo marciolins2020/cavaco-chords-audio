@@ -55,7 +55,6 @@ export const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; 
   "5+": { quality: "5+", intervals: ["1", "3", "#5"], description: "Aumentado" },
   "(#5)": { quality: "(#5)", intervals: ["1", "3", "#5"], description: "Aumentado" },
   "(b5)": { quality: "(b5)", intervals: ["1", "3", "b5"], description: "Quinta bemol" },
-  "madd9": { quality: "madd9", intervals: ["1", "b3", "5", "9"], description: "Menor com nona adicionada" },
   "madd11": { quality: "madd11", intervals: ["1", "b3", "5", "11"], description: "Menor com décima primeira adicionada" },
   "7(9)": { quality: "7(9)", intervals: ["1", "3", "5", "b7", "9"], description: "Sétima com nona" },
   "7(13)": { quality: "7(13)", intervals: ["1", "3", "5", "b7", "13"], description: "Sétima com décima terceira" },
