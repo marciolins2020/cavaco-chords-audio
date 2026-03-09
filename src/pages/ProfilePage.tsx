@@ -79,22 +79,22 @@ export default function ProfilePage() {
       <Header />
       <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl overflow-hidden">
         {/* Header do Perfil */}
-        <Card className="p-6 mb-6">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
+        <Card className="p-4 sm:p-6 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/10 flex items-center justify-center text-xl sm:text-2xl font-bold text-primary flex-shrink-0">
                 {(user.user_metadata?.full_name || "M")[0].toUpperCase()}
               </div>
-              <div>
-                <h1 className="text-2xl font-bold">
+              <div className="min-w-0">
+                <h1 className="text-lg sm:text-2xl font-bold truncate">
                   {user.user_metadata?.full_name || "Músico"}
                 </h1>
-                <p className="text-muted-foreground">{user.email}</p>
-                <div className="flex items-center gap-2 mt-2">
-                  <Badge variant="secondary" className="text-sm">
+                <p className="text-muted-foreground text-sm truncate">{user.email}</p>
+                <div className="flex items-center gap-2 mt-2 flex-wrap">
+                  <Badge variant="secondary" className="text-xs sm:text-sm">
                     {levelInfo.level}
                   </Badge>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-xs sm:text-sm text-muted-foreground">
                     {stats.chordsMastered.length} acordes dominados
                   </span>
                 </div>
@@ -102,7 +102,6 @@ export default function ProfilePage() {
             </div>
             <DataExport />
           </div>
-
         </Card>
 
         {/* Progresso de Nível */}
