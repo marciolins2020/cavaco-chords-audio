@@ -80,6 +80,8 @@ const SUFFIX_ALIASES: Record<string, string> = {
   '7M': 'maj7',
   '(#5)': '5+',
   'm7(b5)': 'm7b5',
+  '7(9)': '9',        // same intervals as 9
+  'madd9': 'add9',     // try add9 patterns (minor variant)
 };
 
 const VERIFIED_PATTERNS: Record<string, SourcePattern[]> = {
@@ -287,6 +289,19 @@ function generateFullDatabase(): ChordDatabase {
         const variation = transposeChordWithValidation(tpl, targetRoot, suffix);
         if (variation) variations.push(variation);
       });
+
+      // FALLBACK: se não há padrões dedicados, tenta TODOS os padrões existentes
+      // e aceita os que passam na validação harmônica para o acorde alvo
+      if (variations.length === 0) {
+        const allPatterns = Object.values(VERIFIED_PATTERNS).flat();
+        for (const tpl of allPatterns) {
+          const variation = transposeChordWithValidation(tpl, targetRoot, suffix);
+          if (variation) {
+            variations.push(variation);
+            if (variations.length >= 3) break; // Limita a 3 variações de fallback
+          }
+        }
+      }
 
       // Ordena por posição mais próxima primeiro
       variations.sort((a, b) => {

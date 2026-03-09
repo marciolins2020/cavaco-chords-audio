@@ -67,7 +67,7 @@ export function useHistory(userId?: string) {
     }
   }, [history, userId]);
 
-  const addToHistory = async (
+  const addToHistory = (
     chordId: string,
     context: HistoryEntry["context"] = "browse"
   ) => {
@@ -79,25 +79,27 @@ export function useHistory(userId?: string) {
       return newHistory.slice(0, MAX_HISTORY_ITEMS);
     });
 
-    // Se logado, salvar no Supabase
+    // Se logado, salvar no Supabase (fire-and-forget, não bloqueia UI)
     if (userId) {
-      try {
-        // Deletar entrada anterior do mesmo acorde
-        await supabase
-          .from("user_history")
-          .delete()
-          .eq("user_id", userId)
-          .eq("chord_id", chordId);
-
-        // Inserir nova entrada
-        await supabase.from("user_history").insert({
-          user_id: userId,
-          chord_id: chordId,
-          context,
-        });
-      } catch (error) {
-        console.error("Erro ao salvar histórico:", error);
-      }
+      (async () => {
+        try {
+          // Deletar entrada anterior do mesmo acorde
+          await supabase
+            .from("user_history")
+            .delete()
+            .eq("user_id", userId)
+            .eq("chord_id", chordId)
+            .then(() =>
+              supabase.from("user_history").insert({
+                user_id: userId,
+                chord_id: chordId,
+                context,
+              })
+            );
+        } catch {
+          // Silently fail - local state is already updated
+        }
+      })();
     }
   };
 
