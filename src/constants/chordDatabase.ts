@@ -290,6 +290,19 @@ function generateFullDatabase(): ChordDatabase {
         if (variation) variations.push(variation);
       });
 
+      // FALLBACK: se não há padrões dedicados, tenta TODOS os padrões existentes
+      // e aceita os que passam na validação harmônica para o acorde alvo
+      if (variations.length === 0) {
+        const allPatterns = Object.values(VERIFIED_PATTERNS).flat();
+        for (const tpl of allPatterns) {
+          const variation = transposeChordWithValidation(tpl, targetRoot, suffix);
+          if (variation) {
+            variations.push(variation);
+            if (variations.length >= 3) break; // Limita a 3 variações de fallback
+          }
+        }
+      }
+
       // Ordena por posição mais próxima primeiro
       variations.sort((a, b) => {
         const getAvg = (v: ChordVariation) => {
