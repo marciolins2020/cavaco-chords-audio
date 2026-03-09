@@ -312,14 +312,17 @@ function generateFullDatabase(): ChordDatabase {
       // Obtém as notas teóricas do acorde
       const notes = getExpectedChordNotes(targetRoot, suffix);
 
-      chords.push({
-        root: targetRoot,
-        suffix,
-        displayName: suffix === 'M' ? targetRoot : `${targetRoot}${suffix}`,
-        variations: uniqueVariations.slice(0, 5), // Máximo 5 variações
-        notes,
-        intervals: CHORD_INTERVALS[suffix] || ['1', '3', '5']
-      });
+      // Only add chords that have at least 1 valid variation
+      if (uniqueVariations.length > 0) {
+        chords.push({
+          root: targetRoot,
+          suffix,
+          displayName: suffix === 'M' ? targetRoot : `${targetRoot}${suffix}`,
+          variations: uniqueVariations.slice(0, 5),
+          notes,
+          intervals: CHORD_INTERVALS[suffix] || ['1', '3', '5']
+        });
+      }
     });
   });
 
