@@ -51,7 +51,6 @@ export const SUFFIX_MAP: Record<string, { quality: string; intervals: string[]; 
   "7sus2": { quality: "7sus2", intervals: ["1", "2", "5", "b7"], description: "Sétima suspensa 2" },
   "m7b5": { quality: "m7b5", intervals: ["1", "b3", "b5", "b7"], description: "Meio-diminuto" },
   "m7(b5)": { quality: "m7(b5)", intervals: ["1", "b3", "b5", "b7"], description: "Meio-diminuto" },
-  "7M": { quality: "7M", intervals: ["1", "3", "5", "7"], description: "Sétima maior" },
   "5+": { quality: "5+", intervals: ["1", "3", "#5"], description: "Aumentado" },
   "(#5)": { quality: "(#5)", intervals: ["1", "3", "#5"], description: "Aumentado" },
   "(b5)": { quality: "(b5)", intervals: ["1", "3", "b5"], description: "Quinta bemol" },
