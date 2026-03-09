@@ -75,6 +75,13 @@ interface SourcePattern {
 
 // BIBLIOTECA DE FORMAS VERIFICADAS para afinação DGBD
 // Cada forma foi validada manualmente para produzir as notas corretas do acorde
+// Suffix aliases: map CHORD_TYPES suffixes to VERIFIED_PATTERNS keys
+const SUFFIX_ALIASES: Record<string, string> = {
+  '7M': 'maj7',
+  '(#5)': '5+',
+  'm7(b5)': 'm7b5',
+};
+
 const VERIFIED_PATTERNS: Record<string, SourcePattern[]> = {
   'M': [
     // C: C-E-G -> [2,0,1,2] = E,G,C,E ✓
