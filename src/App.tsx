@@ -20,6 +20,7 @@ import ProfilePage from "./pages/ProfilePage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import TunerPage from "./pages/TunerPage";
 import NotFound from "./pages/NotFound";
+import DiagnosticsPage from "./pages/DiagnosticsPage";
 
 
 const queryClient = new QueryClient();
