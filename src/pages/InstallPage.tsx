@@ -177,6 +177,8 @@ export default function InstallPage() {
           </Card>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
