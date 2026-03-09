@@ -50,19 +50,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email,
         password,
       });
-      
-      if (error) {
-        const msg = error.message === "Invalid login credentials"
-          ? "Email ou senha incorretos"
-          : error.message === "Email not confirmed"
-          ? "Confirme seu email antes de entrar"
-          : "Erro ao fazer login. Tente novamente.";
-        toast.error(msg);
-      }
-      
       return { error };
     } catch (error: any) {
-      toast.error("Erro ao fazer login");
       return { error };
     }
   };
@@ -82,18 +71,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
       });
       
-      if (error) {
-        const msg = error.message.includes("already registered")
-          ? "Este email já está cadastrado. Tente fazer login."
-          : "Erro ao criar conta. Tente novamente.";
-        toast.error(msg);
-      } else {
-        toast.success("Conta criada com sucesso! Você já pode fazer login.");
-      }
-      
       return { error };
     } catch (error: any) {
-      toast.error("Erro ao criar conta");
       return { error };
     }
   };
