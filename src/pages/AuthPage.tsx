@@ -155,7 +155,7 @@ export default function AuthPage() {
       {/* Right side — auth form */}
       <div className="w-full lg:w-1/2 xl:w-[45%] flex items-center justify-center p-6 sm:p-10">
         <motion.div
-          className="w-full max-w-sm"
+          className="w-full max-w-sm bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl p-6 sm:p-8 shadow-elevated"
           initial={{ opacity: 0, x: 10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.05 }}
@@ -197,7 +197,7 @@ export default function AuthPage() {
                     value={signInEmail}
                     onChange={(e) => { setSignInEmail(e.target.value); setSignInError(""); }}
                     required
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -209,7 +209,7 @@ export default function AuthPage() {
                     value={signInPassword}
                     onChange={(e) => { setSignInPassword(e.target.value); setSignInError(""); }}
                     required
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <Button type="submit" className="w-full h-10" disabled={signInLoading}>
@@ -238,7 +238,7 @@ export default function AuthPage() {
                     placeholder="Seu nome"
                     value={signUpName}
                     onChange={(e) => { setSignUpName(e.target.value); setSignUpError(""); }}
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -250,7 +250,7 @@ export default function AuthPage() {
                     value={signUpEmail}
                     onChange={(e) => { setSignUpEmail(e.target.value); setSignUpError(""); }}
                     required
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -263,7 +263,7 @@ export default function AuthPage() {
                     onChange={(e) => { setSignUpPassword(e.target.value); setSignUpError(""); }}
                     required
                     minLength={6}
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                   <p className="text-xs text-muted-foreground">Mínimo de 6 caracteres</p>
                 </div>
