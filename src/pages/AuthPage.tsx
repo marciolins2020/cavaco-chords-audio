@@ -197,7 +197,7 @@ export default function AuthPage() {
                     value={signInEmail}
                     onChange={(e) => { setSignInEmail(e.target.value); setSignInError(""); }}
                     required
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -209,7 +209,7 @@ export default function AuthPage() {
                     value={signInPassword}
                     onChange={(e) => { setSignInPassword(e.target.value); setSignInError(""); }}
                     required
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <Button type="submit" className="w-full h-10" disabled={signInLoading}>
