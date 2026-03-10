@@ -238,7 +238,7 @@ export default function AuthPage() {
                     placeholder="Seu nome"
                     value={signUpName}
                     onChange={(e) => { setSignUpName(e.target.value); setSignUpError(""); }}
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -250,7 +250,7 @@ export default function AuthPage() {
                     value={signUpEmail}
                     onChange={(e) => { setSignUpEmail(e.target.value); setSignUpError(""); }}
                     required
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -263,7 +263,7 @@ export default function AuthPage() {
                     onChange={(e) => { setSignUpPassword(e.target.value); setSignUpError(""); }}
                     required
                     minLength={6}
-                    className="h-10"
+                    className="h-10 bg-background/50 backdrop-blur-sm border-border/60"
                   />
                   <p className="text-xs text-muted-foreground">Mínimo de 6 caracteres</p>
                 </div>
