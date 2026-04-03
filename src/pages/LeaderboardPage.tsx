@@ -7,10 +7,8 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useLeaderboard, LeaderboardType } from "@/hooks/useLeaderboard";
-import { useAuth } from "@/contexts/AuthContext";
 
 export default function LeaderboardPage() {
-  const { user } = useAuth();
   const [selectedType, setSelectedType] = useState<LeaderboardType>("total");
   const { entries, loading, myRank } = useLeaderboard(selectedType);
 

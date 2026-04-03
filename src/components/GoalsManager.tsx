@@ -26,8 +26,7 @@ const goalTypeLabels = {
 };
 
 export const GoalsManager = () => {
-  const { user } = useAuth();
-  const { goals, loading, createGoal, deleteGoal, toggleGoalActive } = useGoals(user?.id);
+  const { goals, loading, createGoal, deleteGoal, toggleGoalActive } = useGoals("local");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [newGoalType, setNewGoalType] = useState<PracticeGoal["goal_type"]>("daily_chords");
   const [targetValue, setTargetValue] = useState("5");

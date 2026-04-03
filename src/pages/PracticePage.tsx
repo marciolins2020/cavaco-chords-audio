@@ -30,8 +30,7 @@ const LEARNING_SEQUENCE = [
 ];
 
 export default function PracticePage() {
-  const { user } = useAuth();
-  const { stats, sessions, recordAttempt, resetStats } = usePractice(user?.id);
+  const { stats, sessions, recordAttempt, resetStats } = usePractice("local");
   const [currentChord, setCurrentChord] = useState<ChordEntry | null>(null);
   const [showAchievements, setShowAchievements] = useState(false);
   const allChords = useChordList();
