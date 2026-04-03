@@ -31,11 +31,6 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
     }
   };
 
-  const handleFavorite = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleFavorite(chord.id);
-  };
 
   return (
     <Link to={`/chord/${chord.id}`} className="group outline-none">
