@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { InteractiveFretboard } from "@/components/InteractiveFretboard";
@@ -8,7 +8,6 @@ import { useChordList } from "@/hooks/useChordList";
 import { useNavigate } from "react-router-dom";
 
 import { calculateChordDistance, arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
-import { useApp } from "@/contexts/AppContext";
 import { audioService } from "@/lib/audio";
 
 interface Note {
