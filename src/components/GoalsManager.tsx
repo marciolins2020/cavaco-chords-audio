@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Target, Calendar, Pause, Trash2, Plus } from "lucide-react";
 
 import { useGoals, PracticeGoal } from "@/hooks/useGoals";
-import { useAuth } from "@/contexts/AuthContext";
+
 import {
   Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger,
 } from "@/components/ui/dialog";
@@ -26,8 +26,7 @@ const goalTypeLabels = {
 };
 
 export const GoalsManager = () => {
-  const { user } = useAuth();
-  const { goals, loading, createGoal, deleteGoal, toggleGoalActive } = useGoals(user?.id);
+  const { goals, loading, createGoal, deleteGoal, toggleGoalActive } = useGoals("local");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [newGoalType, setNewGoalType] = useState<PracticeGoal["goal_type"]>("daily_chords");
   const [targetValue, setTargetValue] = useState("5");

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { InteractiveFretboard } from "@/components/InteractiveFretboard";
@@ -8,7 +8,6 @@ import { useChordList } from "@/hooks/useChordList";
 import { useNavigate } from "react-router-dom";
 
 import { calculateChordDistance, arraysEqual, getDifficultyInfo } from "@/utils/chordAnalysis";
-import { useApp } from "@/contexts/AppContext";
 import { audioService } from "@/lib/audio";
 
 interface Note {
@@ -64,7 +63,7 @@ export default function ChordIdentifier() {
   const [selectedNotes, setSelectedNotes] = useState<Note[]>([]);
   const [result, setResult] = useState<ChordMatch | null>(null);
   const navigate = useNavigate();
-  const { addToHistory } = useApp();
+  
   const allChords = useChordList();
 
   // Convert notes to frets array
@@ -242,7 +241,6 @@ export default function ChordIdentifier() {
 
                       <button
                         onClick={() => {
-                          addToHistory(result.exact!.id, "identifier");
                           navigate(`/chord/${result.exact!.id}`);
                         }}
                         className="w-full md:w-auto px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
@@ -270,7 +268,6 @@ export default function ChordIdentifier() {
                       <button
                         key={chord.id}
                         onClick={() => {
-                          addToHistory(chord.id, "identifier");
                           navigate(`/chord/${chord.id}`);
                         }}
                         className="p-4 border-2 border-border rounded-lg hover:border-primary hover:bg-accent transition-all text-left"

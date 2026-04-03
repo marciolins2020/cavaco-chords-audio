@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import ChordDiagram from "@/components/ChordDiagram";
 import { getHarmonicField, getAvailableKeys, FUNCTION_INFO, HarmonicFunction } from "@/utils/harmonicField";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-import { useApp } from "@/contexts/AppContext";
+
 import { useChordList } from "@/hooks/useChordList";
 import { AutoPlayControls } from "@/components/AutoPlayControls";
 import { Music } from "lucide-react";
@@ -20,7 +19,7 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   const [selectedProgression, setSelectedProgression] = useState<number | null>(null);
   const [highlightedDegreeIndex, setHighlightedDegreeIndex] = useState<number | null>(null);
   const navigate = useNavigate();
-  const { addToHistory } = useApp();
+  
   const allChords = useChordList();
 
   const field = getHarmonicField(currentKey, allChords);
@@ -29,7 +28,6 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   if (!field) return null;
 
   const handleChordClick = (chordId: string) => {
-    addToHistory(chordId, "browse");
     navigate(`/chord/${chordId}`);
   };
 

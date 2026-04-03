@@ -5,15 +5,12 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ChordDiagram from "./ChordDiagram";
 import { playChord, initAudio } from "@/lib/audio";
-import { useApp } from "@/contexts/AppContext";
 import { toast } from "sonner";
 
 type Props = { chord: ChordEntry };
 
 const ChordCard: React.FC<Props> = ({ chord }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { isFavorite, toggleFavorite } = useApp();
-  const favorite = isFavorite(chord.id);
   const mainVariation = chord.variations?.[0];
 
   if (!mainVariation) return null;
@@ -34,11 +31,6 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
     }
   };
 
-  const handleFavorite = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleFavorite(chord.id);
-  };
 
   return (
     <Link to={`/chord/${chord.id}`} className="group outline-none">
@@ -55,15 +47,6 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
           </div>
 
           <div className="flex gap-0.5">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`h-7 w-7 rounded-md ${favorite ? "text-accent" : "text-muted-foreground opacity-0 group-hover:opacity-100"}`}
-              onClick={handleFavorite}
-              aria-label={favorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-            >
-              <span className="text-sm">{favorite ? "★" : "☆"}</span>
-            </Button>
 
             <Button
               variant="ghost"

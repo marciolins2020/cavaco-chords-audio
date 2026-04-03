@@ -7,10 +7,8 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useLeaderboard, LeaderboardType } from "@/hooks/useLeaderboard";
-import { useAuth } from "@/contexts/AuthContext";
 
 export default function LeaderboardPage() {
-  const { user } = useAuth();
   const [selectedType, setSelectedType] = useState<LeaderboardType>("total");
   const { entries, loading, myRank } = useLeaderboard(selectedType);
 
@@ -53,7 +51,7 @@ export default function LeaderboardPage() {
         </div>
 
         {/* My Rank Card */}
-        {user && myRank && (
+        {myRank && (
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -121,7 +119,7 @@ export default function LeaderboardPage() {
             <div className="space-y-2">
               <AnimatePresence mode="popLayout">
                 {entries.map((entry, index) => {
-                  const isCurrentUser = user?.id === entry.user_id;
+                  const isCurrentUser = false;
                   const rankBadge = getRankBadge(entry.rank || index + 1);
                   const value = entry[currentConfig.key];
 

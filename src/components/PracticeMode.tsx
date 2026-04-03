@@ -39,7 +39,7 @@ export function PracticeMode({
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(null);
   const [startTime, setStartTime] = useState<number | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const targetVariation = chord.variations?.[0];
   const successRate = currentAttempts > 0 ? (currentSuccesses / currentAttempts) * 100 : 0;

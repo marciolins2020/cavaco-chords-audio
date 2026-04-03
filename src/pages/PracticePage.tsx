@@ -13,7 +13,7 @@ import { useChordList } from "@/hooks/useChordList";
 import { ChordEntry } from "@/types/chords";
 import { usePractice } from "@/hooks/usePractice";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
-import { useAuth } from "@/contexts/AuthContext";
+
 
 // Helper to display chord names nicely (CM→C, Fsm→F#m, etc.)
 function displayChordName(id: string): string {
@@ -30,8 +30,7 @@ const LEARNING_SEQUENCE = [
 ];
 
 export default function PracticePage() {
-  const { user } = useAuth();
-  const { stats, sessions, recordAttempt, resetStats } = usePractice(user?.id);
+  const { stats, sessions, recordAttempt, resetStats } = usePractice("local");
   const [currentChord, setCurrentChord] = useState<ChordEntry | null>(null);
   const [showAchievements, setShowAchievements] = useState(false);
   const allChords = useChordList();

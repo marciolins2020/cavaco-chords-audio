@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, Zap, Sparkles } from "lucide-react";
 
 import { useDailyChallenges, DailyChallenge } from "@/hooks/useDailyChallenges";
-import { useAuth } from "@/contexts/AuthContext";
+
 import { useEffect, useState } from "react";
 
 const Confetti = () => {
@@ -95,8 +95,7 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
 };
 
 export const DailyChallenges = () => {
-  const { user } = useAuth();
-  const { challenges, loading } = useDailyChallenges(user?.id);
+  const { challenges, loading } = useDailyChallenges("local");
 
   if (loading) {
     return (

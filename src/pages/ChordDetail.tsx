@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 import { makeChordId, resolveChordSlug } from "@/lib/chordIds";
-import { Star, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 function calculateActualNotes(frets: number[]): string[] {
   const CHROMATIC = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
@@ -43,7 +43,7 @@ const ChordDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [selectedVariation, setSelectedVariation] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const { isFavorite, toggleFavorite, addToHistory, chordDatabase } = useApp();
+  const { chordDatabase } = useApp();
 
   const chordIdSet = useMemo(() => {
     const set = new Set<string>();
@@ -87,9 +87,6 @@ const ChordDetail = () => {
     return calculateActualNotes(chord.variations[selectedVariation].frets);
   }, [chord, selectedVariation]);
 
-  useEffect(() => {
-    if (chord) addToHistory(chord.id, "browse");
-  }, [chord?.id]);
 
   if (!chord) {
     return (
@@ -111,7 +108,7 @@ const ChordDetail = () => {
   }
 
   const currentVariation = chord.variations[selectedVariation];
-  const isChordFavorite = isFavorite(chord.id);
+  
 
   const handlePlayChord = async (mode: "strum" | "block") => {
     if (isPlaying) return;
@@ -128,11 +125,6 @@ const ChordDetail = () => {
     }
   };
 
-  const handleToggleFavorite = () => {
-    toggleFavorite(chord.id);
-    toast.success(isChordFavorite ? "Removido dos favoritos" : "Adicionado aos favoritos");
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -146,17 +138,6 @@ const ChordDetail = () => {
                 <ArrowLeft className="h-4 w-4" /> Voltar
               </Button>
             </Link>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleToggleFavorite}
-              className={`gap-1.5 h-8 px-2 ${isChordFavorite ? "text-accent" : "text-muted-foreground"}`}
-              aria-label={isChordFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-            >
-              <Star className={`h-4 w-4 ${isChordFavorite ? "fill-accent" : ""}`} />
-              {isChordFavorite ? "Salvo" : "Salvar"}
-            </Button>
           </div>
         </div>
       </div>
