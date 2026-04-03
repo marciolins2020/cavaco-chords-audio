@@ -20,7 +20,7 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   const [selectedProgression, setSelectedProgression] = useState<number | null>(null);
   const [highlightedDegreeIndex, setHighlightedDegreeIndex] = useState<number | null>(null);
   const navigate = useNavigate();
-  const { addToHistory } = useApp();
+  const { } = useApp();
   const allChords = useChordList();
 
   const field = getHarmonicField(currentKey, allChords);

@@ -128,11 +128,6 @@ const ChordDetail = () => {
     }
   };
 
-  const handleToggleFavorite = () => {
-    toggleFavorite(chord.id);
-    toast.success(isChordFavorite ? "Removido dos favoritos" : "Adicionado aos favoritos");
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -146,17 +141,6 @@ const ChordDetail = () => {
                 <ArrowLeft className="h-4 w-4" /> Voltar
               </Button>
             </Link>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleToggleFavorite}
-              className={`gap-1.5 h-8 px-2 ${isChordFavorite ? "text-accent" : "text-muted-foreground"}`}
-              aria-label={isChordFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-            >
-              <Star className={`h-4 w-4 ${isChordFavorite ? "fill-accent" : ""}`} />
-              {isChordFavorite ? "Salvo" : "Salvar"}
-            </Button>
           </div>
         </div>
       </div>

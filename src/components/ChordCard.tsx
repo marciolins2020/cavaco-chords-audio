@@ -47,15 +47,6 @@ const ChordCard: React.FC<Props> = ({ chord }) => {
           </div>
 
           <div className="flex gap-0.5">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`h-7 w-7 rounded-md ${favorite ? "text-accent" : "text-muted-foreground opacity-0 group-hover:opacity-100"}`}
-              onClick={handleFavorite}
-              aria-label={favorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-            >
-              <span className="text-sm">{favorite ? "★" : "☆"}</span>
-            </Button>
 
             <Button
               variant="ghost"

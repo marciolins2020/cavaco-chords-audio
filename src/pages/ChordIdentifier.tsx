@@ -64,7 +64,7 @@ export default function ChordIdentifier() {
   const [selectedNotes, setSelectedNotes] = useState<Note[]>([]);
   const [result, setResult] = useState<ChordMatch | null>(null);
   const navigate = useNavigate();
-  const { addToHistory } = useApp();
+  
   const allChords = useChordList();
 
   // Convert notes to frets array
