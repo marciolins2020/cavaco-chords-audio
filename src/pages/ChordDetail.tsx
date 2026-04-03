@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
 import { SUFFIX_MAP } from "@/lib/chordConverter";
 import { makeChordId, resolveChordSlug } from "@/lib/chordIds";
-import { Star, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 function calculateActualNotes(frets: number[]): string[] {
   const CHROMATIC = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
