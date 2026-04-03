@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Target, Calendar, Pause, Trash2, Plus } from "lucide-react";
 
 import { useGoals, PracticeGoal } from "@/hooks/useGoals";
-import { useAuth } from "@/contexts/AuthContext";
+
 import {
   Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger,
 } from "@/components/ui/dialog";
