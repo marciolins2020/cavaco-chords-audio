@@ -13,7 +13,7 @@ import { useChordList } from "@/hooks/useChordList";
 import { ChordEntry } from "@/types/chords";
 import { usePractice } from "@/hooks/usePractice";
 import { ACHIEVEMENTS, getLevelInfo } from "@/utils/achievements";
-import { useAuth } from "@/contexts/AuthContext";
+
 
 // Helper to display chord names nicely (CM→C, Fsm→F#m, etc.)
 function displayChordName(id: string): string {
