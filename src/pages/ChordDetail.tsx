@@ -43,7 +43,7 @@ const ChordDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [selectedVariation, setSelectedVariation] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const { isFavorite, toggleFavorite, addToHistory, chordDatabase } = useApp();
+  const { chordDatabase } = useApp();
 
   const chordIdSet = useMemo(() => {
     const set = new Set<string>();
