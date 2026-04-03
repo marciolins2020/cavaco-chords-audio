@@ -51,7 +51,7 @@ export default function LeaderboardPage() {
         </div>
 
         {/* My Rank Card */}
-        {user && myRank && (
+        {myRank && (
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
