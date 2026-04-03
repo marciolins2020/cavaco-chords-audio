@@ -44,7 +44,7 @@ export function TransitionTrainer({ allChords, masteredChords = [] }: Transition
   const [lastTransitionTime, setLastTransitionTime] = useState<number | null>(null);
   const startTimeRef = useRef<number>(0);
   const [elapsed, setElapsed] = useState(0);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const currentChord = currentChordIndex === 0 ? chordA : chordB;
   const nextChord = currentChordIndex === 0 ? chordB : chordA;
