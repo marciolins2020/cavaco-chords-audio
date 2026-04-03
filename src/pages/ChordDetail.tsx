@@ -87,9 +87,6 @@ const ChordDetail = () => {
     return calculateActualNotes(chord.variations[selectedVariation].frets);
   }, [chord, selectedVariation]);
 
-  useEffect(() => {
-    if (chord) addToHistory(chord.id, "browse");
-  }, [chord?.id]);
 
   if (!chord) {
     return (
