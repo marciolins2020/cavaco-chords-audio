@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import ChordDiagram from "@/components/ChordDiagram";
 import { getHarmonicField, getAvailableKeys, FUNCTION_INFO, HarmonicFunction } from "@/utils/harmonicField";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import { useApp } from "@/contexts/AppContext";
 import { useChordList } from "@/hooks/useChordList";
 import { AutoPlayControls } from "@/components/AutoPlayControls";
