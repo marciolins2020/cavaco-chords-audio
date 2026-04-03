@@ -119,7 +119,7 @@ export default function LeaderboardPage() {
             <div className="space-y-2">
               <AnimatePresence mode="popLayout">
                 {entries.map((entry, index) => {
-                  const isCurrentUser = user?.id === entry.user_id;
+                  const isCurrentUser = false;
                   const rankBadge = getRankBadge(entry.rank || index + 1);
                   const value = entry[currentConfig.key];
 

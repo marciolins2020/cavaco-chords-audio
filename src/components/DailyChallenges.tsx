@@ -95,8 +95,7 @@ const ChallengeCard = ({ challenge }: { challenge: DailyChallenge }) => {
 };
 
 export const DailyChallenges = () => {
-  const { user } = useAuth();
-  const { challenges, loading } = useDailyChallenges(user?.id);
+  const { challenges, loading } = useDailyChallenges("local");
 
   if (loading) {
     return (
