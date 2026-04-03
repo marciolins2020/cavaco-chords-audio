@@ -28,7 +28,6 @@ export function HarmonicField({ selectedKey = "C" }: HarmonicFieldProps) {
   if (!field) return null;
 
   const handleChordClick = (chordId: string) => {
-    addToHistory(chordId, "browse");
     navigate(`/chord/${chordId}`);
   };
 

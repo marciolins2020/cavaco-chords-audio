@@ -108,7 +108,7 @@ const ChordDetail = () => {
   }
 
   const currentVariation = chord.variations[selectedVariation];
-  const isChordFavorite = isFavorite(chord.id);
+  
 
   const handlePlayChord = async (mode: "strum" | "block") => {
     if (isPlaying) return;

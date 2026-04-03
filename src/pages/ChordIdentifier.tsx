@@ -268,7 +268,6 @@ export default function ChordIdentifier() {
                       <button
                         key={chord.id}
                         onClick={() => {
-                          addToHistory(chord.id, "identifier");
                           navigate(`/chord/${chord.id}`);
                         }}
                         className="p-4 border-2 border-border rounded-lg hover:border-primary hover:bg-accent transition-all text-left"
